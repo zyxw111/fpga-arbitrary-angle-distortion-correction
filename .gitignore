@@ -1,0 +1,13 @@
+# Windows 临时文件
+Thumbs.db
+Desktop.ini
+
+# 日志
+*.log
+
+# 已确认的 FPGA 日志备份目录
+/FPGA_AADCS/logbackup/
+
+# 本项目约定的编译输出目录
+/rk3568_AADCS/build/
+/rk3568_AADCS/out/
