@@ -7,12 +7,13 @@
   "pcie": "Gen1 x2",
   "bitstream": "aadcs_pcie_top.sbit",
   "bitstream_sha256": "b8081230e2f1f4b6c3a4885016f0a13667b36bc8a357bf9da12dd86605ef3b14",
-  "source_content_sha256_lf": "b4d75997dea6e4e3b99657af7c530d9847e7cbe1cd5b43f661e3a893616c8c78",
-  "source_digest_method": "sorted relative path + NUL + SHA256(file bytes with CRLF normalized to LF); RTL/IP/constraints/build Tcl/PDS",
-  "source_file_count": 82,
+  "source_content_sha256_lf": "91279048f64a76a73076945a913fe8849759e654ba844fcb89d5625ba550daa2",
+  "source_digest_method": "sorted relative path + NUL + SHA256(file bytes with CRLF normalized to LF); RTL/IP/constraints/build Tcl (actual Tcl build inputs)",
+  "source_file_count": 81,
   "verified": [
     "Icarus source/register/MWr tests",
-    "PDS compile, ADS synthesis, device map, place/route, timing, bitstream"
+    "PDS compile, ADS synthesis, device map, place/route, timing, bitstream",
+    "GUI .pds parsed and RTL compiled by PDS (2026-10-14 repair)"
   ],
   "hardware_tested": false,
   "resources_post_route": {

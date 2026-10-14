@@ -10,6 +10,7 @@
 - 指定安装路径：`./scripts/build_fpga_pcie.ps1 -PdsRoot '实际 PDS 安装目录'`。
 - 输出：`build/generate_bitstream/aadcs_pcie_top.sbit`。
 - 仿真：`./scripts/test_fpga_pcie.ps1 -IcarusBin 'Icarus 的 bin 目录'`。
+- GUI 工程检查：`./scripts/check_fpga_project.ps1`，使用 PDS 解析 `.pds` 并编译 RTL；批处理构建会先执行此检查。
 
 构建输入全部在仓库内，工程不引用 `E:/Downloads/fpga`。工具链与构建结果不进入 Git。
 本机缓存的 Icarus 可由测试脚本自动发现；新机器需安装 Icarus 并传入目录或加入 PATH。

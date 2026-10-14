@@ -5,6 +5,7 @@ $fpgaRoot = Join-Path $repoRoot 'FPGA_AADCS'
 $buildRoot = Join-Path $fpgaRoot 'build'
 $shell = Join-Path $PdsRoot 'bin\pds_shell.exe'
 if (-not (Test-Path -LiteralPath $shell)) { throw "PDS shell not found: $shell" }
+& (Join-Path $PSScriptRoot 'check_fpga_project.ps1') -PdsRoot $PdsRoot
 New-Item -ItemType Directory -Path $buildRoot -Force | Out-Null
 $log = Join-Path $buildRoot 'console.log'
 & $shell -file (Join-Path $fpgaRoot 'project\build.tcl') -work_dir $buildRoot *> $log
