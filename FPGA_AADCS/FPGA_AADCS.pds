@@ -4,7 +4,7 @@
     (_status "initial")
     (_project 
         (_option prj_work_dir (_string "."))
-        (_option prj_impl_dir (_string "."))
+        (_option prj_impl_dir (_string "build"))
     )
     (_task tsk_setup
         (_widget wgt_select_arch
@@ -18,10 +18,93 @@
             )
         )
         (_widget wgt_my_design_src
+            (_input
+                (_file "rtl/aadcs_pcie_top.v" + "aadcs_pcie_top"
+                    (_format verilog)
+                )
+                (_file "rtl/pcie_dma/fifo/ipm_distributed_sdpram_v1_2_distributed_fifo.v"
+                    (_format verilog)
+                )
+                (_file "rtl/pcie_dma/fifo/pgs_pciex4_fifo_ctrl.v"
+                    (_format verilog)
+                )
+                (_file "rtl/pcie_dma/fifo/pgs_pciex4_fifo_v1_2.v"
+                    (_format verilog)
+                )
+                (_file "rtl/pcie_dma/ipm_distributed_sdpram_v1_2.v"
+                    (_format verilog)
+                )
+                (_file "rtl/pcie_dma/ips2l_expd_apb_mux.v"
+                    (_format verilog)
+                )
+                (_file "rtl/pcie_dma/ips2l_pcie_dma.v"
+                    (_format verilog)
+                )
+                (_file "rtl/pcie_dma/ips2l_pcie_dma_controller.v"
+                    (_format verilog)
+                )
+                (_file "rtl/pcie_dma/ips2l_pcie_dma_cpld_tx_ctrl.v"
+                    (_format verilog)
+                )
+                (_file "rtl/pcie_dma/ips2l_pcie_dma_mrd_tx_ctrl.v"
+                    (_format verilog)
+                )
+                (_file "rtl/pcie_dma/ips2l_pcie_dma_mwr_tx_ctrl.v"
+                    (_format verilog)
+                )
+                (_file "rtl/pcie_dma/ips2l_pcie_dma_ram/ips2l_pcie_dma_ram.v"
+                    (_format verilog)
+                )
+                (_file "rtl/pcie_dma/ips2l_pcie_dma_ram/rtl/ipm2l_sdpram_v1_1_ips2l_pcie_dma_ram.v"
+                    (_format verilog)
+                )
+                (_file "rtl/pcie_dma/ips2l_pcie_dma_rd_ctrl.v"
+                    (_format verilog)
+                )
+                (_file "rtl/pcie_dma/ips2l_pcie_dma_rx_cpld_wr_ctrl.v"
+                    (_format verilog)
+                )
+                (_file "rtl/pcie_dma/ips2l_pcie_dma_rx_mwr_wr_ctrl.v"
+                    (_format verilog)
+                )
+                (_file "rtl/pcie_dma/ips2l_pcie_dma_rx_top.v"
+                    (_format verilog)
+                )
+                (_file "rtl/pcie_dma/ips2l_pcie_dma_tlp_rcv.v"
+                    (_format verilog)
+                )
+                (_file "rtl/pcie_dma/ips2l_pcie_dma_tlp_tx_mux.v"
+                    (_format verilog)
+                )
+                (_file "rtl/pcie_dma/ips2l_pcie_dma_tx_cpld_rd_ctrl.v"
+                    (_format verilog)
+                )
+                (_file "rtl/pcie_dma/ips2l_pcie_dma_tx_mwr_rd_ctrl.v"
+                    (_format verilog)
+                )
+                (_file "rtl/pcie_dma/ips2l_pcie_dma_tx_top.v"
+                    (_format verilog)
+                )
+                (_file "rtl/pcie_dma/ips2l_pcie_dma_wr_ctrl.v"
+                    (_format verilog)
+                )
+                (_file "rtl/pcie_dma/pgs_pciex4_prefetch_fifo_v1_2.v"
+                    (_format verilog)
+                )
+                (_file "rtl/pcie_test_source.v"
+                    (_format verilog)
+                )
+            )
         )
         (_widget wgt_my_ips_src
+            (_input
+                (_file "ip/pcie_test/pcie_test.idf" (_format idf))
+            )
         )
         (_widget wgt_import_logic_con_file
+            (_input
+                (_file "constraints/pcie_100h.fdc" (_format fdc))
+            )
         )
         (_widget wgt_edit_user_cons
             (_attribute _click_to_run (_switch ON))

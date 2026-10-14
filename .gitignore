@@ -11,3 +11,8 @@ Desktop.ini
 # 本项目约定的编译输出目录
 /rk3568_AADCS/build/
 /rk3568_AADCS/out/
+
+# Local tools, simulations and PDS build results
+/.cache/
+/FPGA_AADCS/build/
+/FPGA_AADCS/sim/results/

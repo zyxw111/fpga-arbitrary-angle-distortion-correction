@@ -1,0 +1,29 @@
+{
+  "build_date": "2026-10-14",
+  "branch": "zyxw",
+  "device": "PG2L100H-6IFBG484",
+  "pds_version": "2022.2-SP6.4 build 146967",
+  "top": "aadcs_pcie_top",
+  "pcie": "Gen1 x2",
+  "bitstream": "aadcs_pcie_top.sbit",
+  "bitstream_sha256": "b8081230e2f1f4b6c3a4885016f0a13667b36bc8a357bf9da12dd86605ef3b14",
+  "source_content_sha256_lf": "b4d75997dea6e4e3b99657af7c530d9847e7cbe1cd5b43f661e3a893616c8c78",
+  "source_digest_method": "sorted relative path + NUL + SHA256(file bytes with CRLF normalized to LF); RTL/IP/constraints/build Tcl/PDS",
+  "source_file_count": 82,
+  "verified": [
+    "Icarus source/register/MWr tests",
+    "PDS compile, ADS synthesis, device map, place/route, timing, bitstream"
+  ],
+  "hardware_tested": false,
+  "resources_post_route": {
+    "LUT": 3112,
+    "FF": 3227,
+    "DRM_36K_equivalents": 24.5,
+    "APM": 0
+  },
+  "timing_ns": {
+    "dma_period": 8.0,
+    "dma_setup_wns_slow": 1.155,
+    "dma_hold_whs_fast": 0.102
+  }
+}

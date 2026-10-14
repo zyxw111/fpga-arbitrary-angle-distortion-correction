@@ -1,0 +1,44 @@
+# RK3568_MES2L100H, FBG484. HSST lane placement fixes the dedicated
+# serial pins: RX D9/C9,B10/A10; TX D7/C7,B6/A6; reference F6/E6.
+create_clock -name {pclk} [get_pins {u_ips2l_pcie_wrap.U_IPS2L_PCIE_TOP.U_IPS2L_HSSTLP_PCIE_SOFT_PHY.pclk}] -period {4.000} -waveform {0.000 2.000}
+# The two HSST clock outputs have no traversable divider arc in PDS STA.
+# Use the reference IP's explicit period for this clock rather than a
+# generated-clock constraint whose source cannot be traced by the tool.
+create_clock -name {pclk_div2} [get_pins {u_ips2l_pcie_wrap.U_IPS2L_PCIE_TOP.U_IPS2L_HSSTLP_PCIE_SOFT_PHY.pclk_div2}] -period {8.000} -waveform {0.000 4.000}
+create_clock -name {ref_clk} [get_pins {u_ips2l_pcie_wrap.U_IPS2L_PCIE_TOP.U_IPS2L_HSSTLP_PCIE_SOFT_PHY/P_REFCK2CORE_0}] -period {10.000} -waveform {0.000 5.000}
+set_clock_groups -asynchronous -group [get_clocks {ref_clk}] -group [get_clocks {pclk pclk_div2}]
+
+define_attribute {i:u_ips2l_pcie_wrap.U_IPS2L_PCIE_TOP.U_IPS2L_HSSTLP_PCIE_SOFT_PHY.x2.GTP_HSST_2LANE_TOP.U_GTP_HSSTLP_WRAPPER.PLL0_ENABLE.U_GTP_HSSTLP_PLL0} {PAP_LOC} {HSSTLP_364_918:U0_HSSTLP_PLL}
+define_attribute {i:u_ips2l_pcie_wrap.U_IPS2L_PCIE_TOP.U_IPS2L_HSSTLP_PCIE_SOFT_PHY.x2.GTP_HSST_2LANE_TOP.U_GTP_HSSTLP_WRAPPER.CHANNEL0_ENABLE.U_GTP_HSSTLP_LANE0} {PAP_LOC} {HSSTLP_364_918:U0_HSSTLP_LANE}
+define_attribute {i:u_ips2l_pcie_wrap.U_IPS2L_PCIE_TOP.U_IPS2L_HSSTLP_PCIE_SOFT_PHY.x2.GTP_HSST_2LANE_TOP.U_GTP_HSSTLP_WRAPPER.CHANNEL1_ENABLE.U_GTP_HSSTLP_LANE1} {PAP_LOC} {HSSTLP_364_918:U1_HSSTLP_LANE}
+define_attribute {p:ref_clk_p} {PAP_IO_LOC} {F6}
+define_attribute {p:ref_clk_n} {PAP_IO_LOC} {E6}
+# PDS rejects PAP_IO_LOC on these dedicated HSST serial package pins.
+# Their connection is fixed by the lane primitive placements above, as in the
+# reference design. Do not treat them as ordinary LVCMOS ports.
+
+# Mechanical buttons enter reset/synchronizer logic; LEDs are observers.
+set_false_path -from [get_ports {key0_n key1_n}]
+set_false_path -to [get_ports {link_led activity_led}]
+
+# KEY0/KEY1 are user buttons, not a PCIe PERST signal.
+define_attribute {p:key0_n} {PAP_IO_LOC} {M15}
+define_attribute {p:key0_n} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:key0_n} {PAP_IO_VCCIO} {1.8}
+define_attribute {p:key0_n} {PAP_IO_STANDARD} {LVCMOS18}
+define_attribute {p:key1_n} {PAP_IO_LOC} {M16}
+define_attribute {p:key1_n} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:key1_n} {PAP_IO_VCCIO} {1.8}
+define_attribute {p:key1_n} {PAP_IO_STANDARD} {LVCMOS18}
+define_attribute {p:link_led} {PAP_IO_LOC} {J16}
+define_attribute {p:link_led} {PAP_IO_DIRECTION} {OUTPUT}
+define_attribute {p:link_led} {PAP_IO_VCCIO} {1.8}
+define_attribute {p:link_led} {PAP_IO_STANDARD} {LVCMOS18}
+define_attribute {p:link_led} {PAP_IO_DRIVE} {4}
+define_attribute {p:link_led} {PAP_IO_SLEW} {SLOW}
+define_attribute {p:activity_led} {PAP_IO_LOC} {M17}
+define_attribute {p:activity_led} {PAP_IO_DIRECTION} {OUTPUT}
+define_attribute {p:activity_led} {PAP_IO_VCCIO} {1.8}
+define_attribute {p:activity_led} {PAP_IO_STANDARD} {LVCMOS18}
+define_attribute {p:activity_led} {PAP_IO_DRIVE} {4}
+define_attribute {p:activity_led} {PAP_IO_SLEW} {SLOW}
