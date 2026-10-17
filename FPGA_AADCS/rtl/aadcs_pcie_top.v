@@ -1,6 +1,7 @@
 // AADCS PCIe bring-up: PG2L100H-6IFBG484, Gen1 x2, no camera/DDR dependency.
 // KEY0 resets the endpoint. KEY1 held low selects the counter test.
 module aadcs_pcie_top(
+    input wire free_clk,
     input wire key0_n,
     input wire key1_n,
     input wire ref_clk_p,
@@ -43,29 +44,39 @@ module aadcs_pcie_top(
     wire [2:0] cfg_max_payload_size;
     wire  smlh_link_up;
     wire  rdlh_link_up;
-    wire source_read;
-    wire [127:0] source_data;
+    wire source_read /* synthesis PAP_MARK_DEBUG="true" */;
+    wire [127:0] source_data /* synthesis PAP_MARK_DEBUG="true" */;
     wire dma_reset_n;
-    reg [1:0] reset_pipe;
-    reg [1:0] key_pipe;
-    reg ramp_previous;
+    wire power_up_rst_n;
+    wire ramp_mode;
     reg [23:0] activity_count;
-
-    // Asynchronous assertion, synchronous release in the DMA clock domain.
-    always @(posedge pclk_div2 or negedge core_rst_n) begin
-        if (!core_rst_n) begin
-            reset_pipe <= 0;
-            key_pipe <= 2'b11;
-            ramp_previous <= 0;
-        end else begin
-            reset_pipe <= {reset_pipe[0], 1'b1};
-            key_pipe <= {key_pipe[0], key1_n};
-            ramp_previous <= ~key_pipe[1];
-        end
+    wire cross_4kb_boundary;
+    // Preserved named probes for the optional Fabric Inserter configuration.
+    wire [15:0] debug_flags /* synthesis PAP_MARK_DEBUG="true" */;
+    assign debug_flags = {cfg_max_payload_size, core_rst_n, dma_reset_n,
+        power_up_rst_n, ramp_mode, source_read, smlh_link_up, rdlh_link_up,
+        axis_master_tvalid, axis_master_tready, axis_slave2_tvalid,
+        axis_slave2_tready, axis_slave2_tlast, cross_4kb_boundary};
+    reg [31:0] debug_read_count /* synthesis PAP_MARK_DEBUG="true" */;
+    always @(posedge pclk_div2 or negedge dma_reset_n)
+        if (!dma_reset_n) debug_read_count <= 0;
+        else if (source_read) debug_read_count <= debug_read_count + 1'b1;
+    reg [31:0] debug_heartbeat /* synthesis PAP_MARK_DEBUG="true" */ = 0;
+    always @(posedge free_clk) debug_heartbeat <= debug_heartbeat + 1'b1;
+    reg [5:0] debug_status_meta = 0;
+    reg [5:0] debug_status_sync /* synthesis PAP_MARK_DEBUG="true" */ = 0;
+    always @(posedge free_clk) begin
+        debug_status_meta <= {key1_n,key0_n,power_up_rst_n,core_rst_n,
+                              smlh_link_up,rdlh_link_up};
+        debug_status_sync <= debug_status_meta;
     end
-    assign dma_reset_n = reset_pipe[1];
-    wire ramp_mode = ~key_pipe[1];
-    wire source_reset_n = dma_reset_n && (ramp_previous == ramp_mode);
+
+    pcie_reset_control u_reset_control(
+        .free_clk(free_clk), .key0_n(key0_n), .key1_n(key1_n),
+        .dma_clk(pclk_div2), .core_rst_n(core_rst_n),
+        .power_up_rst_n(power_up_rst_n), .dma_reset_n(dma_reset_n),
+        .ramp_mode(ramp_mode)
+    );
     assign link_led = smlh_link_up && rdlh_link_up;
     always @(posedge pclk_div2 or negedge dma_reset_n) begin
         if (!dma_reset_n) activity_count <= 0;
@@ -74,7 +85,7 @@ module aadcs_pcie_top(
     assign activity_led = activity_count[20];
 
     pcie_test_source u_test_source(
-        .clk(pclk_div2), .rst_n(source_reset_n),
+        .clk(pclk_div2), .rst_n(dma_reset_n),
         .ramp_mode(ramp_mode), .read_enable(source_read), .read_data(source_data)
     );
 
@@ -85,7 +96,7 @@ module aadcs_pcie_top(
         .ref_clk_n(ref_clk_n),
         .ref_clk_p(ref_clk_p),
         .button_rst_n(key0_n),
-        .power_up_rst_n(1'b1),
+        .power_up_rst_n(power_up_rst_n),
         .perst_n(1'b1),
         .core_rst_n(core_rst_n),
         .p_sel(1'd0),
@@ -208,7 +219,7 @@ module aadcs_pcie_top(
         .i_apb_penable(1'd0),
         .o_apb_prdy(),
         .o_apb_prdata(),
-        .o_cross_4kb_boundary(),
+        .o_cross_4kb_boundary(cross_4kb_boundary),
         .o_dma_write_data_req(source_read),
         .i_dma_write_data(source_data)
     );

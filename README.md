@@ -25,5 +25,6 @@ scripts/build_fpga_pcie.ps1；仿真执行 scripts/test_fpga_pcie.ps1。
 
 ## 当前验证状态
 已实现 FPGA 内部彩条/递增数据的 PCIe DMA 测试工程。
-本地仿真与 PDS 构建结果见 docs/changes/003-fpga-pcie-test.md。
-尚未执行上板及 FPGA/RK3568 联合验证，畸变矫正尚未实现。
+主机侧实测报告见 docs/changes/005-rk3568-host-verification.md，旧位流存在恒定载荷和传输遗漏。
+本次修复、完整 DMA 回归及 DebugCore 使用见 docs/changes/006-pcie-report-fixes.md。
+修复版的主机端复验尚未完成；畸变矫正尚未实现。

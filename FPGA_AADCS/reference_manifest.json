@@ -388,7 +388,7 @@
     "source": "E:/Downloads/fpga/prj/ipcore/pcie_test/example_design/rtl/pcie_dma_ctrl/ips2l_pcie_dma_controller.v",
     "destination": "rtl/pcie_dma/ips2l_pcie_dma_controller.v",
     "sha256_original": "b5db30e71eaf065d67a89e8956f548f3e36b669221755081a1673f21cbb5bfa3",
-    "sha256_imported": "d1d02950288eda07baa6173dbd7793a0807d2dff3f8934b13f7186a169b3658a",
+    "sha256_imported": "9ac4f956d8212e7259d6afda56579d984cba593a080fd4a84b00167d6143c774",
     "modified_from_reference": true
   },
   {
@@ -437,15 +437,15 @@
     "source": "E:/Downloads/fpga/prj/ipcore/pcie_test/example_design/rtl/pcie_dma_ctrl/ips2l_pcie_dma_rx_top.v",
     "destination": "rtl/pcie_dma/ips2l_pcie_dma_rx_top.v",
     "sha256_original": "95587f468f78c71fe7ee8793934e51cd2ec8bb455e36ac0a24d81c33d1cd3ce9",
-    "sha256_imported": "95587f468f78c71fe7ee8793934e51cd2ec8bb455e36ac0a24d81c33d1cd3ce9",
-    "modified_from_reference": false
+    "sha256_imported": "d79dc0837fdcef4c75cdfbe7d085ebc96469272d1bdae9f08968683f4791851e",
+    "modified_from_reference": true
   },
   {
     "source": "E:/Downloads/fpga/prj/ipcore/pcie_test/example_design/rtl/pcie_dma_ctrl/ips2l_pcie_dma_tlp_rcv.v",
     "destination": "rtl/pcie_dma/ips2l_pcie_dma_tlp_rcv.v",
     "sha256_original": "9bcbf5972efaac344d120ca838be16fa9a53cc4afe14c35bc07a7af5a35acef6",
-    "sha256_imported": "9bcbf5972efaac344d120ca838be16fa9a53cc4afe14c35bc07a7af5a35acef6",
-    "modified_from_reference": false
+    "sha256_imported": "e6e32c94fb90c5c3c385e7b02ae4d270dbe8a7144959997097913d833ad073c2",
+    "modified_from_reference": true
   },
   {
     "source": "E:/Downloads/fpga/prj/ipcore/pcie_test/example_design/rtl/pcie_dma_ctrl/ips2l_pcie_dma_tlp_tx_mux.v",

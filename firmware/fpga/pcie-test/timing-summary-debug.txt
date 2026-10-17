@@ -1,0 +1,186 @@
+
+----------------------------------------------------------------------------------------------------
+| Tool Version : Fabric Compiler (version 2022.2-SP6.4 <build 146967>)
+| Date         : Sat Oct 17 20:24:26 2026
+| Design       : aadcs_pcie_top
+| Device       : PG2L100H
+| Speed Grade  : -6
+| Package      : FBG484
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+| Timing Models: Production
+| Tcl Command  : report_timing 
+----------------------------------------------------------------------------------------------------
+
+Timing analysis mode : multi corner
+
+ Clock Summary:                                                                                                                                                                                                                                                   
+******************************************************************************************************************************************************************************************************************************************************************
+                                                                         Clock   Non-clock                                                                                                                                                                        
+ Clock                    Period       Waveform            Type          Loads       Loads  Sources                                                                                                                                                               
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ free_clk                 40.0000      {0.0000 20.0000}    Declared        377          47  {free_clk}                                                                                                                                                            
+ pclk                     4.0000       {0.0000 2.0000}     Declared        107           3  {u_ips2l_pcie_wrap/U_IPS2L_PCIE_TOP/U_IPS2L_HSSTLP_PCIE_SOFT_PHY/x2.GTP_HSST_2LANE_TOP/U_GTP_HSSTLP_WRAPPER/CHANNEL1_ENABLE.U_GTP_HSSTLP_LANE1/gophsst/P_TCLK2FABRIC} 
+ pclk_div2                8.0000       {0.0000 4.0000}     Declared       4107         117  {u_ips2l_pcie_wrap/U_IPS2L_PCIE_TOP/U_IPS2L_HSSTLP_PCIE_SOFT_PHY/x2.GTP_HSST_2LANE_TOP/U_GTP_HSSTLP_WRAPPER/CHANNEL0_ENABLE.U_GTP_HSSTLP_LANE0/gophsst/P_TCLK2FABRIC} 
+ ref_clk                  10.0000      {0.0000 5.0000}     Declared        185          29  {u_ips2l_pcie_wrap/U_IPS2L_PCIE_TOP/U_IPS2L_HSSTLP_PCIE_SOFT_PHY/u_clkbufg/gopclkbufg/CLKOUT}                                                                         
+ DebugCore_JCLK           50.0000      {0.0000 25.0000}    Declared        455          18  {u_CORES/u_GTP_SCANCHAIN_PG/scanchain/TCK1}                                                                                                                           
+ DebugCore_CAPTURE        100.0000     {25.0000 75.0000}   Declared         22           0  {u_CORES/u_GTP_SCANCHAIN_PG/scanchain/CAPTUREDR}                                                                                                                      
+==================================================================================================================================================================================================================================================================
+
+ Clock Groups:                                                                                      
+****************************************************************************************************
+ Clock Group                   Group Type                 Clocks                                    
+----------------------------------------------------------------------------------------------------
+ clock_group_0                 asynchronous                                                         
+     clock_group_0_0                                      ref_clk                                   
+     clock_group_0_1                                      pclk  pclk_div2                           
+ clock_group_1                 asynchronous                                                         
+     clock_group_1_0                                      free_clk                                  
+     clock_group_1_1                                      pclk  pclk_div2  ref_clk                  
+ DebugCoreClockGroup           asynchronous               DebugCore_JCLK  DebugCore_CAPTURE         
+====================================================================================================
+
+ Performance Summary:                                                                               
+****************************************************************************************************
+                              Requested       Estimated      Requested      Estimated               
+ Clock                        Frequency       Frequency      Period         Period             Slack
+----------------------------------------------------------------------------------------------------
+ free_clk                   25.0000 MHz    391.2363 MHz        40.0000         2.5560         37.444
+ pclk                      250.0000 MHz    271.0027 MHz         4.0000         3.6900          0.310
+ pclk_div2                 125.0000 MHz    148.2140 MHz         8.0000         6.7470          1.253
+ ref_clk                   100.0000 MHz    242.4830 MHz        10.0000         4.1240          5.876
+ DebugCore_JCLK             20.0000 MHz    110.8770 MHz        50.0000         9.0190         40.981
+====================================================================================================
+
+Design Summary : All Constraints Met.
+
+Setup Summary(Slow Corner):
+****************************************************************************************************
+                                                                          TNS Failing      TNS Total
+ Launch Clock           Capture Clock              WNS(ns)     TNS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ free_clk               free_clk                    37.444       0.000              0            872
+ pclk                   pclk                         0.310       0.000              0            981
+ pclk_div2              pclk_div2                    1.253       0.000              0          18812
+ ref_clk                ref_clk                      5.876       0.000              0            966
+ DebugCore_JCLK         DebugCore_JCLK              22.129       0.000              0           1811
+ DebugCore_CAPTURE      DebugCore_JCLK              20.717       0.000              0            194
+ DebugCore_JCLK         DebugCore_CAPTURE           46.645       0.000              0             32
+====================================================================================================
+
+Hold Summary(Slow Corner):
+****************************************************************************************************
+                                                                          THS Failing      THS Total
+ Launch Clock           Capture Clock              WHS(ns)     THS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ free_clk               free_clk                     0.174       0.000              0            872
+ pclk                   pclk                         0.249       0.000              0            981
+ pclk_div2              pclk_div2                    0.146       0.000              0          18812
+ ref_clk                ref_clk                      0.203       0.000              0            966
+ DebugCore_JCLK         DebugCore_JCLK               0.331       0.000              0           1811
+ DebugCore_CAPTURE      DebugCore_JCLK              22.057       0.000              0            194
+ DebugCore_JCLK         DebugCore_CAPTURE            0.702       0.000              0             32
+====================================================================================================
+
+Recovery Summary(Slow Corner):
+****************************************************************************************************
+                                                                          TNS Failing      TNS Total
+ Launch Clock           Capture Clock              WNS(ns)     TNS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ free_clk               free_clk                    36.720       0.000              0            274
+ pclk_div2              pclk                         0.946       0.000              0              1
+ pclk                   pclk                         0.782       0.000              0            101
+ pclk_div2              pclk_div2                    3.324       0.000              0           3229
+ ref_clk                ref_clk                      7.168       0.000              0            179
+====================================================================================================
+
+Removal Summary(Slow Corner):
+****************************************************************************************************
+                                                                          THS Failing      THS Total
+ Launch Clock           Capture Clock              WHS(ns)     THS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ free_clk               free_clk                     0.564       0.000              0            274
+ pclk_div2              pclk                         1.375       0.000              0              1
+ pclk                   pclk                         0.360       0.000              0            101
+ pclk_div2              pclk_div2                    0.427       0.000              0           3229
+ ref_clk                ref_clk                      0.352       0.000              0            179
+====================================================================================================
+
+Minimum Pulse Width Summary(Slow Corner):
+****************************************************************************************************
+                                                                         WPWS Failing     WPWS Total
+ Clock                                            WPWS(ns)    TPWS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ free_clk                                           19.040       0.000              0            377
+ pclk                                                1.040       0.000              0            103
+ pclk_div2                                           3.040       0.000              0           4102
+ ref_clk                                             4.800       0.000              0            182
+ DebugCore_JCLK                                     24.040       0.000              0            455
+ DebugCore_CAPTURE                                  49.800       0.000              0             22
+====================================================================================================
+
+Setup Summary(Fast Corner):
+****************************************************************************************************
+                                                                          TNS Failing      TNS Total
+ Launch Clock           Capture Clock              WNS(ns)     TNS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ free_clk               free_clk                    38.393       0.000              0            872
+ pclk                   pclk                         1.707       0.000              0            981
+ pclk_div2              pclk_div2                    3.814       0.000              0          18812
+ ref_clk                ref_clk                      7.605       0.000              0            966
+ DebugCore_JCLK         DebugCore_JCLK              23.318       0.000              0           1811
+ DebugCore_CAPTURE      DebugCore_JCLK              22.496       0.000              0            194
+ DebugCore_JCLK         DebugCore_CAPTURE           47.818       0.000              0             32
+====================================================================================================
+
+Hold Summary(Fast Corner):
+****************************************************************************************************
+                                                                          THS Failing      THS Total
+ Launch Clock           Capture Clock              WHS(ns)     THS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ free_clk               free_clk                     0.120       0.000              0            872
+ pclk                   pclk                         0.174       0.000              0            981
+ pclk_div2              pclk_div2                    0.094       0.000              0          18812
+ ref_clk                ref_clk                      0.124       0.000              0            966
+ DebugCore_JCLK         DebugCore_JCLK               0.249       0.000              0           1811
+ DebugCore_CAPTURE      DebugCore_JCLK              23.183       0.000              0            194
+ DebugCore_JCLK         DebugCore_CAPTURE            0.695       0.000              0             32
+====================================================================================================
+
+Recovery Summary(Fast Corner):
+****************************************************************************************************
+                                                                          TNS Failing      TNS Total
+ Launch Clock           Capture Clock              WNS(ns)     TNS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ free_clk               free_clk                    37.920       0.000              0            274
+ pclk_div2              pclk                         2.058       0.000              0              1
+ pclk                   pclk                         2.024       0.000              0            101
+ pclk_div2              pclk_div2                    5.057       0.000              0           3229
+ ref_clk                ref_clk                      8.306       0.000              0            179
+====================================================================================================
+
+Removal Summary(Fast Corner):
+****************************************************************************************************
+                                                                          THS Failing      THS Total
+ Launch Clock           Capture Clock              WHS(ns)     THS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ free_clk               free_clk                     0.395       0.000              0            274
+ pclk_div2              pclk                         0.862       0.000              0              1
+ pclk                   pclk                         0.241       0.000              0            101
+ pclk_div2              pclk_div2                    0.300       0.000              0           3229
+ ref_clk                ref_clk                      0.249       0.000              0            179
+====================================================================================================
+
+Minimum Pulse Width Summary(Fast Corner):
+****************************************************************************************************
+                                                                         WPWS Failing     WPWS Total
+ Clock                                            WPWS(ns)    TPWS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ free_clk                                           19.430       0.000              0            377
+ pclk                                                1.430       0.000              0            103
+ pclk_div2                                           3.430       0.000              0           4102
+ ref_clk                                             4.800       0.000              0            182
+ DebugCore_JCLK                                     24.430       0.000              0            455
+ DebugCore_CAPTURE                                  49.800       0.000              0             22
+====================================================================================================
+

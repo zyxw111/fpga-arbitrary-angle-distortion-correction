@@ -1,5 +1,8 @@
 `timescale 1ns/1ps
 module tb_pcie_test_source;
+`ifdef GATE_SIM
+    GTP_GRS GRS_INST(.GRS_N(1'b1));
+`endif
     reg clk=0;
     always #4 clk=~clk;
     reg rst_n=0, read_enable=0, ramp_mode=0;

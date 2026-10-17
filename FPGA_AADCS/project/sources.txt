@@ -1,4 +1,5 @@
 rtl/aadcs_pcie_top.v
+rtl/pcie_reset_control.v
 rtl/pcie_dma/fifo/ipm_distributed_sdpram_v1_2_distributed_fifo.v
 rtl/pcie_dma/fifo/pgs_pciex4_fifo_ctrl.v
 rtl/pcie_dma/fifo/pgs_pciex4_fifo_v1_2.v

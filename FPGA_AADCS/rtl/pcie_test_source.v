@@ -14,8 +14,14 @@ module pcie_test_source #(
     reg [15:0] x;
     reg [15:0] y;
     reg [31:0] ramp_word;
-    integer i;
-    reg [15:0] pixel;
+    wire [127:0] color_word;
+    genvar lane;
+    generate for (lane = 0; lane < 8; lane = lane + 1) begin : pixels
+        wire [15:0] px = x + lane;
+        wire [15:0] pixel = test_pixel(px, y);
+        assign color_word[lane*16 +: 16] = SWAP_RGB565_BYTES ?
+            {pixel[7:0], pixel[15:8]} : pixel;
+    end endgenerate
 
     function [15:0] test_pixel;
         input [15:0] px;
@@ -52,17 +58,11 @@ module pcie_test_source #(
                 read_data <= {32'h3568cafe, 32'h5a000000,
                               32'ha55a0000, 32'hd5000001};
             end else begin
-                for (i = 0; i < 8; i = i + 1) begin
-                    pixel = test_pixel(x + i, y);
-                    if (SWAP_RGB565_BYTES)
-                        read_data[i*16 +: 16] <= {pixel[7:0], pixel[15:8]};
-                    else
-                        read_data[i*16 +: 16] <= pixel;
-                end
+                read_data <= color_word;
             end
-            if (x == WIDTH - 8) begin
+            if (x >= WIDTH - 8) begin
                 x <= 0;
-                if (y == HEIGHT - 1) y <= 0;
+                if (y >= HEIGHT - 1) y <= 0;
                 else y <= y + 1'b1;
             end else x <= x + 16'd8;
         end

@@ -1,0 +1,12 @@
+PASS source: two complete 640x400 frames, frame wrap, read pauses, RGB565 byte order and counter reset
+FPGA_AADCS/sim/tb_pcie_test_source.v:67: $finish called at 610616000 (1ps)
+PASS registers: 32/64-bit addresses, high-address pulse, 4KiB encoding, crossing rejection and byte enables
+FPGA_AADCS/sim/tb_pcie_registers.v:61: $finish called at 720000 (1ps)
+PASS MWr payload: 2208 words, 69 packets, repeated descriptors and backpressure
+PASS color MWr: two complete frames, RGB565/header data, page-boundary splits and TX stalls
+FPGA_AADCS/sim/tb_pcie_mwr.v:150: $finish called at 2066000000 (1ps)
+PASS reset: no external startup pulse, stopped PCIe clock, KEY0, key bounce, mode/core restarts
+FPGA_AADCS/sim/tb_pcie_reset.v:56: $finish called at 1788000 (1ps)
+PASS host ramp: 4096 words, complete coverage, 12 MMIO commands
+PASS host color: 2 frames, 64-bit addresses, no holes/duplicates, 1000 descriptors, 8000 TLPs
+FPGA_AADCS/sim/tb_pcie_dma_host.v:173: $finish called at 2840296000 (1ps)

@@ -313,6 +313,11 @@ begin
     end
     else
     begin
+        // Payload outputs are strobes, not held write requests during RX gaps.
+        o_mwr_wr_start <= 1'b0;
+        o_mwr_dw_vld <= 4'b0;
+        o_cpld_wr_start <= 1'b0;
+        o_cpld_dw_vld <= 4'b0;
         case(state)
             IDLE:
             begin
@@ -379,13 +384,13 @@ begin
             DATA_RCV:
             begin
                 o_bar_hit           <=  axis_master_tuser_ff[5:4];
-                if(mwr_data_valid)
+                if(mwr_data_valid && axis_master_tvld_ff && o_axis_master_trdy)
                 begin
                     o_mwr_wr_start  <=  1'b1;
                     o_mwr_data      <=  axis_rx_data;
                     o_mwr_dw_vld    <=  axis_master_tkeep_ff;
                 end
-                else if(cpld_data_valid)
+                else if(cpld_data_valid && axis_master_tvld_ff && o_axis_master_trdy)
                 begin
                     o_cpld_wr_start <=  1'b1;
                     o_cpld_data     <=  axis_rx_data;
@@ -587,10 +592,7 @@ generate
     end
     else
     begin
-        always@(*)
-        begin
-            o_dma_check_result = 64'b0;
-        end
+        always @(posedge clk) o_dma_check_result <= 64'b0;
     end
 endgenerate
 assign axis_rx_data = endian_convert(axis_master_tdata_ff);

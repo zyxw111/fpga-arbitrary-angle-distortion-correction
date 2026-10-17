@@ -551,8 +551,12 @@ assign o_tx_restart = i_bar1_wr_en && (i_bar1_wr_addr[8:0] == 9'h110);
 //detect 4-KB boundary
 assign req_l_addr = device_rc ? apb_cmd_l_addr[12:0] : dma_cmd_l_addr[12:0];
 
-assign total_data   = ~((device_rc && apb_length_cfg_done) || (device_ep && dma_ctrl_cfg_done)) ? 13'd0 :
-                        (o_req_length[9:0] == 10'b0) ? 13'h1000 : {1'b0,o_req_length[9:0],2'b0}; //total byte data
+// Check the current descriptor, not o_req_length (registered one cycle later).
+// A shorter descriptor ending at 4 KiB otherwise sees the previous length,
+// raises a false crossing and clears its valid flags before it can launch.
+assign total_data = device_ep ?
+                    (dma_ctrl_cfg_done ? (({3'b0,dma_cmd_reg[9:0]} + 13'd1) << 2) : 13'd0) :
+                    (apb_length_cfg_done ? (({3'b0,apb_cmd_length[9:0]} + 13'd1) << 2) : 13'd0);
 
 assign target_addr  = ~l_addr_cfg_done ? 13'd0 : (req_l_addr[12:0] + total_data);
 

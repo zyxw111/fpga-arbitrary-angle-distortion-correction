@@ -1,8 +1,11 @@
 set project_root [file normalize [file join [file dirname [info script]] ..]]
 set build_root [file join $project_root build]
+set debug_enabled [expr {[info exists env(AADCS_DEBUG)] && $env(AADCS_DEBUG) eq "1"}]
+if {$debug_enabled} { set build_root [file join $build_root debug] }
 file mkdir $build_root
 cd $build_root
 add_design [file join $project_root {rtl/aadcs_pcie_top.v}]
+add_design [file join $project_root {rtl/pcie_reset_control.v}]
 add_design [file join $project_root {rtl/pcie_dma/fifo/ipm_distributed_sdpram_v1_2_distributed_fifo.v}]
 add_design [file join $project_root {rtl/pcie_dma/fifo/pgs_pciex4_fifo_ctrl.v}]
 add_design [file join $project_root {rtl/pcie_dma/fifo/pgs_pciex4_fifo_v1_2.v}]
@@ -32,6 +35,10 @@ add_constraint [file join $project_root constraints pcie_100h.fdc]
 set_arch -family Logos2 -device PG2L100H -speedgrade -6 -package FBG484
 compile -top_module aadcs_pcie_top
 synthesize -ads -selected_syn_tool_opt 2
+if {$debug_enabled} {
+    source [file join $project_root project debug_config.tcl]
+    add_fic [file join $build_root aadcs_pcie_debug.fic]
+}
 dev_map
 pnr
 report_timing

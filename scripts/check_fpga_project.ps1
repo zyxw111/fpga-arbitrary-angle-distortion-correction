@@ -14,7 +14,11 @@ $absoluteContent = [regex]::Replace($content, $pattern, [System.Text.RegularExpr
     param($match)
     $path = $match.Groups[2].Value
     if (-not [System.IO.Path]::IsPathRooted($path)) { $path = Join-Path $fpgaRoot $path }
-    if (-not (Test-Path -LiteralPath $path -PathType Leaf)) { throw "Missing project input: $path" }
+    # GUI saves transient output records as _file too. A removed compile/map
+    # result is rebuilt by PDS and must not be treated as a missing RTL input.
+    $relative = [System.IO.Path]::GetRelativePath($fpgaRoot, $path).Replace('\', '/')
+    if ($relative -match '^(rtl|ip|constraints)/' -and
+        -not (Test-Path -LiteralPath $path -PathType Leaf)) { throw "Missing project input: $path" }
     return $match.Groups[1].Value + $path.Replace('\', '/') + $match.Groups[3].Value
 })
 $checkProject = Join-Path $checkRoot 'FPGA_AADCS.pds'

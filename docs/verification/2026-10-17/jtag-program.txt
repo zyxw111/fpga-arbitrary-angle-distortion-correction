@@ -1,0 +1,22 @@
+Executing : cfg_connect -ip 127.0.0.1 -port 65420
+Executing : cfg_connect -ip 127.0.0.1 -port 65420 successfully.
+Executing : cfg_set_cable_property -index 0 -freq 1MHz
+Executing : cfg_set_cable_property -index 0 -freq 1MHz successfully.
+Executing : cfg_scan_chain
+This device configure situation (done bit): 1
+Executing : cfg_scan_chain successfully.
+Executing : cfg_assign_file -file F:/AADCS_git/FPGA_AADCS/build/debug/generate_bitstream/aadcs_pcie_top.sbit -device_index 0
+Executing : cfg_assign_file -file F:/AADCS_git/FPGA_AADCS/build/debug/generate_bitstream/aadcs_pcie_top.sbit -device_index 0 successfully.
+Executing : cfg_set_device_property -device_index 0 -program 1
+Executing : cfg_set_device_property -device_index 0 -program 1 successfully.
+Executing : cfg_program -device_index 0
+The done bit is 1
+COMMAND[Program] execute successfully, takes 30.1 secs.
+Executing : cfg_program -device_index 0 successfully.
+Executing : cfg_read_device_property -mode 3 -device_index 0
+Status Register: 0x081ffca0.
+Executing : cfg_read_device_property -mode 3 -device_index 0 successfully.
+Executing : cfg_disconnect
+Executing : cfg_disconnect successfully.
+Executing : cfg_close
+Executing : cfg_close successfully.

@@ -1,30 +1,88 @@
 {
-  "build_date": "2026-10-14",
+  "build_date": "2026-10-17",
   "branch": "zyxw",
+  "base_commit": "50725bd",
   "device": "PG2L100H-6IFBG484",
   "pds_version": "2022.2-SP6.4 build 146967",
   "top": "aadcs_pcie_top",
   "pcie": "Gen1 x2",
   "bitstream": "aadcs_pcie_top.sbit",
-  "bitstream_sha256": "b8081230e2f1f4b6c3a4885016f0a13667b36bc8a357bf9da12dd86605ef3b14",
-  "source_content_sha256_lf": "91279048f64a76a73076945a913fe8849759e654ba844fcb89d5625ba550daa2",
-  "source_digest_method": "sorted relative path + NUL + SHA256(file bytes with CRLF normalized to LF); RTL/IP/constraints/build Tcl (actual Tcl build inputs)",
-  "source_file_count": 81,
+  "bitstream_sha256": "33bce2f30abe2f1ac0551faa8bf9a18b000e177b211ee3ce261904f636b8d838",
+  "source_content_sha256_lf": "e286aa49798708038985e2f831b5bbeeb434cffbfe23c398a759e8b9b60a55c9",
+  "source_digest_method": "sorted relative path + NUL + SHA256(file bytes with CRLF normalized to LF) + LF; RTL/IP .v/.idf, constraints, build.tcl and debug_config.tcl",
+  "source_file_count": 83,
   "verified": [
-    "Icarus source/register/MWr tests",
-    "PDS compile, ADS synthesis, device map, place/route, timing, bitstream",
-    "GUI .pds parsed and RTL compiled by PDS (2026-10-14 repair)"
+    "5 Icarus RTL suites including actual BAR1 RX/controller/FIFO/TX to addressed host RAM",
+    "ADS post-synthesis source and reset fixture simulations using Pango GTP library",
+    "GUI PDS parse/compile; release and debug full PDS builds; all timing constraints met"
   ],
-  "hardware_tested": false,
-  "resources_post_route": {
-    "LUT": 3112,
-    "FF": 3227,
-    "DRM_36K_equivalents": 24.5,
-    "APM": 0
+  "variants": {
+    "release": {
+      "bitstream": "aadcs_pcie_top.sbit",
+      "bytes": 2304860,
+      "sha256": "33bce2f30abe2f1ac0551faa8bf9a18b000e177b211ee3ce261904f636b8d838",
+      "timing_ns": {
+        "setup_slow_ns": {
+          "free_clk": 38.199,
+          "pclk": 0.69,
+          "pclk_div2": 0.967,
+          "ref_clk": 6.563
+        },
+        "hold_fast_ns": {
+          "free_clk": 0.219,
+          "pclk": 0.235,
+          "pclk_div2": 0.1,
+          "ref_clk": 0.101
+        }
+      },
+      "resources_post_route": {
+        "LUT": 3156,
+        "FF": 3274,
+        "DRM_36K_equivalents": 24.5
+      },
+      "timing_result": "All Constraints Met"
+    },
+    "debug": {
+      "bitstream": "aadcs_pcie_top_debug.sbit",
+      "bytes": 2556412,
+      "sha256": "a2f2b64c31e3198cafeb10c2bf424602ff6bebc988406c536c87179681cc8c71",
+      "timing_ns": {
+        "setup_slow_ns": {
+          "free_clk": 37.444,
+          "pclk": 0.31,
+          "pclk_div2": 1.253,
+          "ref_clk": 5.876,
+          "DebugCore_JCLK": 22.129
+        },
+        "hold_fast_ns": {
+          "free_clk": 0.12,
+          "pclk": 0.174,
+          "pclk_div2": 0.094,
+          "ref_clk": 0.124,
+          "DebugCore_JCLK": 0.249
+        }
+      },
+      "resources_post_route": {
+        "LUT": 5019,
+        "FF": 6970,
+        "DRM_36K_equivalents": 31.0
+      },
+      "timing_result": "All Constraints Met"
+    }
   },
-  "timing_ns": {
-    "dma_period": 8.0,
-    "dma_setup_wns_slow": 1.155,
-    "dma_hold_whs_fast": 0.102
-  }
+  "hardware_verification": {
+    "image": "debug",
+    "sram_programmed": true,
+    "jtag_frequency": "1MHz",
+    "program_property": 1,
+    "done": true,
+    "both_debugcores_captured": true,
+    "pcie_link_up_observed": true,
+    "idle_source_read_count": 0,
+    "arm_payload_verified": false,
+    "after_arm_source_read_count": 0,
+    "after_arm_flags_hex": "0x1CD4"
+  },
+  "hardware_tested": false,
+  "hardware_tested_note": "Debug SRAM configuration and idle link/reset probes tested; actual ARM DMA payload has not yet been revalidated."
 }

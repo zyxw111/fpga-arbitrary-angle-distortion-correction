@@ -243,7 +243,8 @@ end
 //bar1 interface
 always@(*)
 begin
-    if(bar_hit == 2'b1 && (DEVICE_TYPE == 3'b000 || DEVICE_TYPE == 3'b001))
+    if(bar_hit == 2'b1 && mwr_wr_start && mwr_dw_vld[0] &&
+       mwr_length == 10'd1 && (DEVICE_TYPE == 3'b000 || DEVICE_TYPE == 3'b001))
     begin
         o_bar1_wr_en       = 1'b1;
         o_bar1_wr_addr     = mwr_addr[ADDR_WIDTH-1:0];

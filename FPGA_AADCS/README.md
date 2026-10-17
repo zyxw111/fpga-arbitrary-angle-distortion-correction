@@ -7,6 +7,7 @@
 
 - GUI：用 PDS 2022.2-SP6.4 打开 `FPGA_AADCS.pds`，顶层 `aadcs_pcie_top`。
 - 批处理：在仓库根目录执行 `./scripts/build_fpga_pcie.ps1`。
+- 调试版：`./scripts/build_fpga_pcie.ps1 -DebugCore`，输出在 `build/debug/`，包含双时钟 DebugCore。
 - 指定安装路径：`./scripts/build_fpga_pcie.ps1 -PdsRoot '实际 PDS 安装目录'`。
 - 输出：`build/generate_bitstream/aadcs_pcie_top.sbit`。
 - 仿真：`./scripts/test_fpga_pcie.ps1 -IcarusBin 'Icarus 的 bin 目录'`。
@@ -21,6 +22,7 @@
 | --- | --- |
 | `rtl/aadcs_pcie_top.v` | PCIe IP、DMA、复位同步、按键模式及 LED |
 | `rtl/pcie_test_source.v` | 128-bit 同步测试数据源 |
+| `rtl/pcie_reset_control.v` | 独立时钟上电复位、同步释放和按键消抖 |
 | `rtl/pcie_dma/` | 参考 PCIe DMA RTL 及必要修改 |
 | `ip/pcie_test/` | 本地 PCIe IP 源码与 IDF，PCIe 1.2c，Gen1 x2 |
 | `constraints/pcie_100h.fdc` | 100H 板卡引脚、HSST 位置及时钟约束 |
@@ -31,14 +33,17 @@
 
 ## 板卡操作
 
-- KEY0（M15）：低电平复位 PCIe IP；运行过程中复位可能使链路掉线，需要重新枚举。
+- KEY0（M15）：向 PCIe IP 断言复位，并重启约 10.49 ms 的上电复位计时；主机可能需要重新枚举。旧版实测 KEY0 不能恢复链路，不能将它描述为已验证的恢复方法。
+- F_RESET：板级 FPGA 重配置。主机报告中有效的恢复方法；重配置载入的内容由板上启动配置决定，未固化的 JTAG 位流可能被替换。
 - KEY1（M16）：释放时为彩条；按住时为递增数据。两个按键都不是主机 PERST 引脚。
 - LED3（J16）：PCIe 两个 link-up 状态均有效时点亮。
 - LED4（M17）：数据读取计数的分频指示；短传输时不一定可见闪烁。
 - PCIe 100 MHz 差分参考时钟：F6/E6；两个 HSST 通道按板卡原连接约束。
+- 独立 25 MHz 板载时钟：V4，LVCMOS15，用于配置完成后的复位计时，不依赖 PCIe 时钟。
 
-**切换 KEY1 模式前停止接收程序，按键稳定后再启动。** 模式改变会将源指针清零；
-运行中切换会混合两个模式的数据。默认彩条帧为 640x400，不随主机 `--size` 自动改变。
+**切换 KEY1 模式前停止接收程序，按键稳定后再启动。** 连续稳定约 2.1 ms 后切换，
+同步清空 DMA 和源指针；运行中切换会中断正在传输的描述符。
+默认彩条帧为 640x400，不随主机 `--size` 自动改变。
 
 ## 数据格式
 
@@ -92,11 +97,12 @@ BAR 路径取决于实际枚举地址；如果不是程序默认的 `0002:21:00.
 ## 验证边界
 
 本地仿真覆盖完整彩条帧、帧循环、暂停、字节序、32/64-bit 地址寄存器、4 KiB 边界、
-4096 字节请求、连续描述符和 MWr 发送背压。PDS 构建与时序结果记录在
-`../docs/changes/003-fpga-pcie-test.md`。
+4096 字节请求、连续描述符和 MWr 发送背压。新增实际 BAR1 TLP 输入到主机内存的逐字验证，
+包括两帧、1000 条描述符、地址和覆盖率；`./scripts/test_fpga_gate.ps1` 还会调用 ADS 综合并验证
+数据源和复位控制的门级网表。记录见 `../docs/changes/006-pcie-report-fixes.md`。
 
 仿真使用实际 DMA 寄存器和包发送 RTL，但不模拟 PCIe 模拟 PHY、Linux 驱动或真实链路。
-本阶段没有执行下载或上板测试，不宣称达到 1080P 帧率或完成比赛算法。
+主机侧旧版实测已发现错误；修复版尚需重新验证载荷。仿真不代表真实链路稳定性或比赛算法完成。
 
 ## 参考代码
 
@@ -106,4 +112,6 @@ BAR 路径取决于实际枚举地址；如果不是程序默认的 `0002:21:00.
 生成的 HDL 包装端口是 x2，IDF 原始图形 pin_list 中的 x4 宽度不是实际 HDL 端口。
 
 DMA 修改包括：导出同步数据源接口、背压时禁止数据源前进、修正高地址写脉冲自清零、
-修正背压下的包头重复，以及正确解释 1024-dword 请求长度。
+修正背压下的包头重复、正确解释 1024-dword 请求长度，以及使用当前描述符进行 4 KiB 检查、
+仅在有效接收载荷时触发 BAR1 写入。主机 PERST# 的实际接线尚不明确，该 IP 输入仍为常高；
+新增上电复位不能代替主机的枚举和复位配合。
