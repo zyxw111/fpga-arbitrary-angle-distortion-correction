@@ -2,9 +2,11 @@
 // No camera. Frame checksum detects DDR faults; host compares every byte.
 module still #(
  parameter integer WIDTH=640,HEIGHT=400,GROUP=0,VIEW=1,
+ parameter integer DYNAMIC_MODE=0,
  parameter integer H_TOTAL=800,V_TOTAL=450,TIMEOUT=268435455
 )(input pix_clk,input clk,input dma_clk,input rst_n,input init_done,
- input request_toggle,input [12:0] request_bytes,
+ input request_toggle,input [12:0] request_bytes,input [1:0] mode,
+ output idle,
  output reg frame_ready,output reg [7:0] error_code,
  output reg [31:0] checksum,output reg [27:0] cursor,
  output prepared,input launch,input rd_req,output [127:0] rd_data,
@@ -27,14 +29,15 @@ module still #(
  wire [127:0] data;
  wire bridge_ready;
  wire active=rst_n && error_code==0;
+ assign idle=(state==IDLE || state==HALT);
  function [31:0] mix;
  input [31:0] h;input [127:0] d;
  begin mix={h[26:0],h[31:27]} ^ d[31:0] ^
  {d[62:32],d[63]} ^ {d[92:64],d[95:93]} ^ {d[120:96],d[127:121]};end
  endfunction
  stream #(.WIDTH(WIDTH),.HEIGHT(HEIGHT),.H_TOTAL(H_TOTAL),.V_TOTAL(V_TOTAL),
- .FIFO_ADDR_BITS(10),.DEMO_GROUP(GROUP),.DEMO_VIEW(VIEW)) source(
- .pix_clk(pix_clk),.tx_clk(clk),.rst_n(active),.enable(enable_sync[1]),
+ .FIFO_ADDR_BITS(10),.DEMO_GROUP(GROUP),.DEMO_VIEW(VIEW),.DYNAMIC_MODE(DYNAMIC_MODE)) source(
+ .pix_clk(pix_clk),.tx_clk(clk),.rst_n(active),.enable(enable_sync[1]),.mode(mode),
  .tx_valid(sv),.tx_ready(sr),.tx_data(sd),.tx_sof(sof),.tx_eof(eof),
  .tx_frame_id(fid),.overflow(overflow));
  burst writer(.clk(clk),.rst_n(active),.start(state==BOOT && init_done),

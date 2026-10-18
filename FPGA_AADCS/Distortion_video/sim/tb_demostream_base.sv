@@ -7,7 +7,7 @@ module tb_demostream_base #(parameter VIEW=0,parameter GOLDEN="sim/demo_vectors/
  reg [15:0] expected[0:10239];integer cycle=0,count=0,lane;
  wire tx_ready=cycle%11!=0 && cycle%7!=0;
  stream #(.WIDTH(128),.HEIGHT(80),.H_TOTAL(144),.V_TOTAL(84),.FIFO_ADDR_BITS(5),
- .DEMO_GROUP(1),.DEMO_VIEW(VIEW)) dut(.*);
+ .DEMO_GROUP(1),.DEMO_VIEW(VIEW)) dut(.mode(2'd0),.*);
  always @(posedge tx_clk)begin
   if(!rst_n)cycle<=0;else cycle<=cycle+1;
   if(rst_n && tx_valid && tx_ready)begin

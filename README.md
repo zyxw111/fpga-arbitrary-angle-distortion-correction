@@ -4,8 +4,8 @@
 
 2026-10-18 交付版位于 [FPGA_AADCS/Distortion_video](FPGA_AADCS/Distortion_video/README.md)，
 包含内部图像、校正算法、DDR3 及 PCIe 数据通路。
-三个板级入口为 `checks/board_bars/board_bars.pds`、`checks/board_raw/board_raw.pds`、
-`checks/board_corrected/board_corrected.pds`，路径相对于该目录。
+统一板级入口为 `board_video.pds`（顶层 `boardtop`），路径相对于该目录。
+一个位流内按 KEY1 循环选择彩条、畸变原图和校正结果，无需重新烧录。
 交付位流在 `firmware/fpga/distortion-video/`；配套 ARM `tools/board_demo` 未包含在本次交付中。
 
 ## 项目组成
@@ -27,9 +27,10 @@
 - 协议版本：测试数据接口 v0.1，见 docs/pcie-test-protocol.md
 
 ## 构建与部署
-FPGA 使用 FPGA_AADCS/FPGA_AADCS.pds，或在仓库根目录执行
-scripts/build_fpga_pcie.ps1；仿真执行 scripts/test_fpga_pcie.ps1。
-详细说明见 FPGA_AADCS/README.md。RK3568 应用环境和联合部署仍待确认。
+当前视频工程使用 `FPGA_AADCS/Distortion_video/board_video.pds`，或在仓库根目录执行
+`./FPGA_AADCS/Distortion_video/build.ps1`，使用说明见该目录 README。
+旧 PCIe 数据源测试工程仍可使用 `FPGA_AADCS/FPGA_AADCS.pds` 和
+`scripts/build_fpga_pcie.ps1`。RK3568 配套接收程序和联合部署仍待确认。
 
 ## 当前验证状态
 已实现 FPGA 内部彩条/递增数据的 PCIe DMA 测试工程。

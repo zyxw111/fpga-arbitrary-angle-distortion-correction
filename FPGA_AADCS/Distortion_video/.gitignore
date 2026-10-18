@@ -1,4 +1,5 @@
 # Local PDS results; source constraints (.fdc/.pcf) stay tracked.
+build/
 **/compile/
 **/synthesize/
 **/device_map/

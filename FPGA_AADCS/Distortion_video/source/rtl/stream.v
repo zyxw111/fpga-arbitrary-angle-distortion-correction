@@ -11,12 +11,14 @@ module stream #(
     parameter integer V_TOTAL = 1125,
     parameter integer FIFO_ADDR_BITS = 9,
     parameter integer DEMO_GROUP = 0,
-    parameter integer DEMO_VIEW = 1
+    parameter integer DEMO_VIEW = 1,
+    parameter integer DYNAMIC_MODE = 0
 )(
     input  wire         pix_clk,
     input  wire         tx_clk,
     input  wire         rst_n,
     input  wire         enable,
+    input  wire [1:0]   mode,
     output wire         tx_valid,
     input  wire         tx_ready,
     output wire [127:0] tx_data,
@@ -35,6 +37,12 @@ module stream #(
     wire fifo_ready;
     wire [161:0] fifo_data;
 
+    generate if(DYNAMIC_MODE) begin:runtime_source
+    demo_select #(.WIDTH(WIDTH),.HEIGHT(HEIGHT),.H_TOTAL(H_TOTAL),.V_TOTAL(V_TOTAL)) u_pat(
+        .clk(pix_clk),.rst_n(rst_n),.enable(enable),.mode(mode),
+        .valid(pix_valid),.pixel(pix_data),.x(pix_x),.y(pix_y),
+        .sof(pix_sof),.sol(pix_sol),.frame_id(pix_frame_id));
+    end else begin:static_source
     demo #(.GROUP(DEMO_GROUP), .VIEW(DEMO_VIEW), .WIDTH(WIDTH), .HEIGHT(HEIGHT),
           .H_TOTAL(H_TOTAL), .V_TOTAL(V_TOTAL)) u_pat (
         .clk(pix_clk), .rst_n(rst_n), .enable(enable),
@@ -42,6 +50,8 @@ module stream #(
         .x(pix_x), .y(pix_y), .sof(pix_sof), .sol(pix_sol),
         .frame_id(pix_frame_id)
     );
+
+    end endgenerate
 
     pack u_pack (
         .clk(pix_clk), .rst_n(rst_n),

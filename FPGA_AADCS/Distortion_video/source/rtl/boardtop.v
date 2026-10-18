@@ -1,7 +1,7 @@
-// AADCS PCIe bring-up: PG2L100H-6IFBG484, Gen1 x2, no camera/DDR dependency.
-// KEY0 resets the endpoint. KEY1 held low selects the counter test.
+// PG2L100H DDR3 + PCIe runtime video demo.
+// KEY0 resets the board; KEY1 cycles bars/raw/corrected without retraining PCIe.
 module boardtop #(
-    parameter integer DEMO_GROUP=0, DEMO_VIEW=1
+    parameter integer MODE_DEBOUNCE_CYCLES=2500000
 )(
     output mem_cs_n,output mem_rst_n,output mem_ck,output mem_ck_n,output mem_cke,
     output mem_ras_n,output mem_cas_n,output mem_we_n,output mem_odt,
@@ -101,30 +101,40 @@ module boardtop #(
     assign activity_led = (error_code!=0 || host_error!=0) ? debug_heartbeat[22] : image_ready;
 
     wire dclk,lock,init;
-    wire av,ar,wr,wl,rv,rr,rl;wire [27:0] aa,ra;wire [3:0] al,rlen;
+    wire [1:0] video_mode;
+    wire video_reset_n,mode_switching,image_idle;
+    wire [31:0] mode_generation;
+    // Forward declarations: controller and status keep running while the image resets.
+    wire request,tx_busy,host_ready,host_busy,req_toggle;
+    video_mode_control #(.DEBOUNCE_CYCLES(MODE_DEBOUNCE_CYCLES)) u_mode(
+      .clk(pclk_div2),.rst_n(dma_reset_n),.key1_n(key1_n),.image_idle(image_idle),
+      .host_busy(host_busy),.request(request),.tx_busy(tx_busy),
+      .mode(video_mode),.image_rst_n(video_reset_n),.switching(mode_switching),
+      .generation(mode_generation));
+    wire av,ar,wr,wl,rv,rr,rl,rvalid;wire [27:0] aa,ra;wire [3:0] al,rlen;
     wire [127:0] wd,rd;wire [15:0] ws;
     reg [1:0] dreset,iready;
     wire init_async=power_up_rst_n && lock && init;
-    always @(posedge dclk or negedge dma_reset_n)
-      if(!dma_reset_n)dreset<=0;else dreset<={dreset[0],1'b1};
+    always @(posedge dclk or negedge video_reset_n)
+      if(!video_reset_n)dreset<=0;else dreset<={dreset[0],1'b1};
     always @(posedge dclk or negedge init_async)
       if(!init_async)iready<=0;else iready<={iready[0],1'b1};
     wire image_ready,prepared,launch,source_done,source_valid;
-    wire request,tx_busy,host_ready,host_busy,req_toggle;
     wire [9:0] length;wire [63:0] address;wire [12:0] bytes;
     wire [7:0] error_code,host_error;wire [31:0] checksum;
     wire [27:0] cursor;wire [11:0] status_addr;wire [127:0] status_data;
-    still #(.GROUP(DEMO_GROUP),.VIEW(DEMO_VIEW)) u_image(
+    still #(.DYNAMIC_MODE(1)) u_image(
       .pix_clk(free_clk_g),.clk(dclk),.dma_clk(pclk_div2),.rst_n(dreset[1]),.init_done(iready[1]),
+      .mode(video_mode),.idle(image_idle),
       .request_toggle(req_toggle),.request_bytes(bytes),.frame_ready(image_ready),
       .error_code(error_code),.checksum(checksum),.cursor(cursor),
       .prepared(prepared),.launch(launch),.rd_req(source_read),.rd_data(source_data),
       .rd_valid(source_valid),.rd_done(source_done),
       .awvalid(av),.awready(ar),.awaddr(aa),.awlen(al),.wdata(wd),.wstrb(ws),.wready(wr),.wlast(wl),
       .arvalid(rv),.arready(rr),.araddr(ra),.arlen(rlen),.rdata(rd),.rvalid(rvalid),.rlast(rl));
-    wire rvalid;
-    hostlink #(.GROUP(DEMO_GROUP),.VIEW(DEMO_VIEW)) u_host(
-      .clk(pclk_div2),.rst_n(dma_reset_n),.frame_ready(image_ready),.engine_error(error_code),
+    hostlink #(.DYNAMIC_MODE(1)) u_host(
+      .mode(video_mode),.switching(mode_switching),.generation(mode_generation),
+      .clk(pclk_div2),.rst_n(video_reset_n),.frame_ready(image_ready),.engine_error(error_code),
       .checksum(checksum),.cursor(cursor),.request(request),.length(length),.address(address),
       .tx_busy(tx_busy),.prepared(prepared),.rd_done(source_done),
       .ready(host_ready),.launch(launch),.request_toggle(req_toggle),.bytes(bytes),

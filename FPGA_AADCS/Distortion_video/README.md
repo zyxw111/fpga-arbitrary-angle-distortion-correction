@@ -4,31 +4,43 @@
 内部静态图像经过校正或直通、DDR3 写入与读回校验，再由 PCIe DMA 传给 RK3568。
 显示器接 RK3568 的 HDMI OUT。原 `FPGA_AADCS.pds` 仍是此前的 PCIe 数据源测试工程。
 
-## 工程入口
+## 工程入口与按键
 
-| 图像 | PDS 工程 | 顶层 |
+打开 [board_video.pds](board_video.pds)，顶层为 `boardtop`，器件为 PG2L100H-6IFBG484。
+同一个位流包含三种模式，上电默认彩条；KEY1（M16，低有效）每次按下循环切换：
+
+| 模式值 | 图像 | BAR0 GROUP / VIEW |
 | --- | --- | --- |
-| 彩条 | [board_bars.pds](checks/board_bars/board_bars.pds) | `board_bars` |
-| 畸变原图 | [board_raw.pds](checks/board_raw/board_raw.pds) | `board_raw` |
-| 校正结果 | [board_corrected.pds](checks/board_corrected/board_corrected.pds) | `board_corrected` |
+| 0 | 彩条 | 0 / 1 |
+| 1 | 畸变原图 | 1 / 0 |
+| 2 | 校正结果 | 1 / 1 |
 
-`Distortion_re.pds` 是诊断入口，顶层 `vtop`；实际板级测试使用表中的三个入口。
+KEY1 有约 20 ms 消抖，长按只切换一次；切换尚未完成时的额外按键不排队。
+KEY0（M15）复位整个端点，恢复彩条模式。
+切换等待图像引擎空闲、当前 DMA 描述符和 PCIe TX 完成，再清除图像会话、
+重新写入并校验 DDR；DDR PHY 和 PCIe IP 保持运行，无需重新枚举 PCIe。
+重建期间 `frame_ready=0`；完成后游标和该模式的完成计数从零开始。
+
+原来的三个 `checks/board_bars/raw/corrected` 工程及复制顶层已由统一入口替代。
+`Distortion_re.pds` 和其余 `checks` 中的工程是单元诊断入口。
 源码在 `source/rtl`，适配后的 DMA 在 `source/pcie_dma`，IP 在 `ipcore`，测试在 `sim`。
-这些模块与旧 PCIe 工程分开编译，不要把两个源码目录同时加入同一工程。
+这些模块与旧 PCIe 测试工程分开编译。
 
 ## 本机使用
 
-GUI：用 PDS 2022.2-SP6.4 打开相应 `.pds`。
-
-PowerShell 构建示例（从仓库根目录执行）：
+GUI：用 PDS 2022.2-SP6.4 打开 `board_video.pds`。
+从仓库根目录构建：
 
 ```powershell
-./FPGA_AADCS/Distortion_video/checks/board_bars/build.ps1 -PdsRoot 'F:\PDS_2022.2-SP6.4'
+./FPGA_AADCS/Distortion_video/build.ps1 -PdsRoot 'F:/PDS_2022.2-SP6.4'
 ```
 
-原始交付位流及厂家工具的时序、资源报告在
-[firmware/fpga/distortion-video](../../firmware/fpga/distortion-video/README.md)。
-自行构建的输出在对应工程的 `generate_bitstream/`，不会覆盖保存的交付位流。
+批处理输出为 `build/generate_bitstream/boardtop.sbit`；GUI 直接构建的输出为
+`generate_bitstream/boardtop.sbit`。脚本在 `build/` 内生成独立 PDS 状态文件。
+[firmware/fpga/distortion-video](../../firmware/fpga/distortion-video/README.md)
+保留的是合并前的三份交付位流，不包含动态切换。
+本次已生成并保存统一版 [boardtop.sbit](../../firmware/fpga/distortion-video/unified/boardtop.sbit)，
+对应时序报告为 `All Constraints Met`，46 项 RTL 测试通过；尚未下载上板或进行 ARM 联调。
 
 RTL 回归：
 
@@ -44,12 +56,26 @@ python FPGA_AADCS/Distortion_video/sim/regress.py --bin 'Icarus安装目录/bin'
 ## 协议及板级状态
 
 本版由 BAR0 读取版本、图像就绪和完成计数，BAR1 写入 DMA 描述符。
+统一版版本号为 `0x00010001`，保留 BAR0 的 0x00–0x30 布局，增加：
+
+| BAR0 字节偏移 | 32 位内容 |
+| --- | --- |
+| 0x40 | `0x4d4f4445`（MODE 标识） |
+| 0x44 | 模式代数 generation，每次实际切换加一，KEY0 复位归零 |
+| 0x48 | [1:0] 当前模式，bit 2 切换请求待执行或复位中 |
+| 0x4c | `1`，支持 KEY1 动态模式 |
+
+以上均为只读状态，当前通过 KEY1 操作。ARM 应在完整帧接收前后读取 generation，
+若变化则丢弃跨模式的半帧，等待 `frame_ready=1` 后重新接收；
+同时刷新 GROUP / VIEW、游标及完成计数基线。建议切换时先停止提交 DMA，等待切换完成再接收。
+
 它需要配套的 ARM `tools/board_demo`，不能直接沿用旧版的 line 模式显示步骤。
 本次交付文件未包含该 ARM 测试包，仍需取得匹配的接收、比较和显示程序。
 
 板级入口使用 R4/T4 的 125 MHz 差分时钟，内部生成 25 MHz；不使用旧测试工程的 V4 时钟。
-时钟、DDR 约束、SCBV 设置及 IP 保持交付版本。导入操作没有执行下载或板级测试。
+时钟、DDR 约束、SCBV 设置及 IP 保持交付版本。未执行统一版的下载或板级测试。
 
 原始交付说明保存在 [交付说明](../../docs/imports/2026-10-18/FPGA工程交付与使用说明.md)。
-仓库内位置与原压缩包不同，本文的工程链接为合入后的入口。详细导入和验证记录见
+仓库内位置与原压缩包不同，本文的工程链接为当前入口。统一改动见
+[统一工程记录](../../docs/changes/008-unified-video-project.md)。历史导入记录见
 [合入记录](../../docs/changes/007-import-distortion-video.md)，文件来源和改动哈希见 `import_manifest.json`。
