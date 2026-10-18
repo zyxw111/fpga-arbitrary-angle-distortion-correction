@@ -1,0 +1,239 @@
+{
+  "status": "REVISED_PENDING_SIGNAL_LEVEL_COMPATIBILITY",
+  "connector": "J8",
+  "signal_side": "FPGA L5 3.3V; actual module side unknown",
+  "j8": {
+    "1": "GND",
+    "2": "5V",
+    "3": "AB21",
+    "4": "P14",
+    "5": "AB22",
+    "6": "R14",
+    "7": "L13",
+    "8": "Y18",
+    "9": "N15",
+    "10": "Y19",
+    "11": "AA19",
+    "12": "V18",
+    "13": "AB20",
+    "14": "V19",
+    "15": "V17",
+    "16": "R18",
+    "17": "W17",
+    "18": "T18",
+    "19": "AA18",
+    "20": "N17",
+    "21": "AB18",
+    "22": "P17",
+    "23": "U20",
+    "24": "P15",
+    "25": "V20",
+    "26": "R16",
+    "27": "W19",
+    "28": "N13",
+    "29": "W20",
+    "30": "N14",
+    "31": "U17",
+    "32": "P16",
+    "33": "U18",
+    "34": "R17",
+    "35": "AA21",
+    "36": "AA20",
+    "37": "GND",
+    "38": "GND",
+    "39": "3V3",
+    "40": "3V3"
+  },
+  "connections": [
+    {
+      "j7": 1,
+      "signal": "GND",
+      "direction": "\u2014",
+      "j8": 37,
+      "ball": null,
+      "kind": "GND",
+      "optional": false
+    },
+    {
+      "j7": 2,
+      "signal": "VCC_3V3",
+      "direction": "\u2014",
+      "j8": 39,
+      "ball": null,
+      "kind": "3V3",
+      "optional": false
+    },
+    {
+      "j7": 3,
+      "signal": "SCL",
+      "direction": "\u53cc\u5411\u5f00\u6f0f",
+      "j8": 3,
+      "ball": "AB21",
+      "kind": "signal",
+      "optional": false
+    },
+    {
+      "j7": 4,
+      "signal": "SDA",
+      "direction": "\u53cc\u5411\u5f00\u6f0f",
+      "j8": 5,
+      "ball": "AB22",
+      "kind": "signal",
+      "optional": false
+    },
+    {
+      "j7": 5,
+      "signal": "VSYNC",
+      "direction": "\u8f93\u5165",
+      "j8": 32,
+      "ball": "P16",
+      "kind": "signal",
+      "optional": false
+    },
+    {
+      "j7": 6,
+      "signal": "HREF",
+      "direction": "\u8f93\u5165",
+      "j8": 34,
+      "ball": "R17",
+      "kind": "signal",
+      "optional": false
+    },
+    {
+      "j7": 7,
+      "signal": "EX_RST",
+      "direction": "\u8f93\u51fa",
+      "j8": 23,
+      "ball": "U20",
+      "kind": "signal",
+      "optional": false
+    },
+    {
+      "j7": 8,
+      "signal": "D0",
+      "direction": "\u8f93\u5165",
+      "j8": 16,
+      "ball": "R18",
+      "kind": "signal",
+      "optional": false
+    },
+    {
+      "j7": 9,
+      "signal": "D2",
+      "direction": "\u8f93\u5165",
+      "j8": 20,
+      "ball": "N17",
+      "kind": "signal",
+      "optional": false
+    },
+    {
+      "j7": 10,
+      "signal": "D1",
+      "direction": "\u8f93\u5165",
+      "j8": 18,
+      "ball": "T18",
+      "kind": "signal",
+      "optional": false
+    },
+    {
+      "j7": 11,
+      "signal": "D4",
+      "direction": "\u8f93\u5165",
+      "j8": 24,
+      "ball": "P15",
+      "kind": "signal",
+      "optional": false
+    },
+    {
+      "j7": 12,
+      "signal": "D3",
+      "direction": "\u8f93\u5165",
+      "j8": 22,
+      "ball": "P17",
+      "kind": "signal",
+      "optional": false
+    },
+    {
+      "j7": 13,
+      "signal": "D6",
+      "direction": "\u8f93\u5165",
+      "j8": 28,
+      "ball": "N13",
+      "kind": "signal",
+      "optional": false
+    },
+    {
+      "j7": 14,
+      "signal": "D5",
+      "direction": "\u8f93\u5165",
+      "j8": 26,
+      "ball": "R16",
+      "kind": "signal",
+      "optional": false
+    },
+    {
+      "j7": 15,
+      "signal": "D7",
+      "direction": "\u8f93\u5165",
+      "j8": 30,
+      "ball": "N14",
+      "kind": "signal",
+      "optional": false
+    },
+    {
+      "j7": 16,
+      "signal": "PCLK",
+      "direction": "\u8f93\u5165\u65f6\u949f",
+      "j8": 8,
+      "ball": "Y18",
+      "kind": "signal",
+      "optional": false
+    },
+    {
+      "j7": 17,
+      "signal": "PWDN",
+      "direction": "\u8f93\u51fa",
+      "j8": 25,
+      "ball": "V20",
+      "kind": "signal",
+      "optional": false
+    },
+    {
+      "j7": 18,
+      "signal": "XCLK",
+      "direction": "\u8f93\u51fa\u65f6\u949f",
+      "j8": 27,
+      "ball": "W19",
+      "kind": "signal",
+      "optional": false,
+      "connect": false,
+      "reason": "Adapter Y1 drives this net; J8-27 reserved but no wire"
+    },
+    {
+      "j7": 19,
+      "signal": "LED",
+      "direction": "\u53ef\u9009\u8f93\u51fa",
+      "j8": 29,
+      "ball": "W20",
+      "kind": "signal",
+      "optional": true,
+      "connect": false
+    },
+    {
+      "j7": 20,
+      "signal": "GND",
+      "direction": "\u2014",
+      "j8": 38,
+      "ball": null,
+      "kind": "GND",
+      "optional": false
+    }
+  ],
+  "clock_source": "User confirms populated adapter oscillator; use adapter 24MHz, do not connect J7-18 to FPGA",
+  "adapter_revision": "Probably 202405 per user, not fully verified",
+  "adapter_oscillator_populated": true,
+  "fpga_drive_xclk": 0,
+  "adapter_schematic_io_voltage": 2.8,
+  "host_io_voltage": 3.3,
+  "electrical_approval": "OPEN_NO_FULL_SIGNAL_TRANSLATOR_IN_PROVIDED_SCHEMATICS"
+}

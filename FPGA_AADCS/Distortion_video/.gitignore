@@ -1,0 +1,18 @@
+# Local PDS results; source constraints (.fdc/.pcf) stay tracked.
+**/compile/
+**/synthesize/
+**/device_map/
+**/place_route/
+**/report_timing/
+**/report_power/
+**/generate_bitstream/
+**/generate_netlist/
+**/constraint_check/
+**/logbackup/
+checks/regression/
+**/__pycache__/
+*.log
+*.lock
+*.vvp
+multiseed_summary.csv
+impl.tcl

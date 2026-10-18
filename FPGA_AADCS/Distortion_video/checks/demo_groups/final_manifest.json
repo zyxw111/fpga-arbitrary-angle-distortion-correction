@@ -1,0 +1,23 @@
+{
+  "status": "RTL_IMPLEMENTED_SIMULATED_SYNTHESIZED_NOT_BOARD_VIDEO",
+  "default_group": 0,
+  "default_view": 1,
+  "regression_tests": 38,
+  "full_frame_previews": 3,
+  "full_preview_pixels": 768000,
+  "original_protected_files": 11,
+  "files": {
+    "source\\rtl\\chart.v": "674c071107c2bad5bd18b3481140cfb4e008d8b57fa1056cd3d20befaae9920f",
+    "source\\rtl\\demo.v": "51668c199682f89c9c6aaf723aa75fc564bdc116c7df8008af4970830351ea88",
+    "source\\rtl\\stream.v": "40d15535d2963cd5e6690ed1adcd7a08ce46141e38ff587ab6b6948aa7bbccd1",
+    "source\\rtl\\vtop.v": "de8bd9ed04558c327f455223caf09bdc37324293c71aadc37b7bc9bb475d3bb2",
+    "source\\rtl\\demo_bars_top.v": "763247fa5024d79db1e6aee0644b51f986b4ce06c48b8d68412a448e48dd9684",
+    "source\\rtl\\demo_lens_top.v": "4476501db42364accc43cf4f48f6374a7df89b9d3605108013f7c4baac5de7ba",
+    "Distortion_re.pds": "8da4a307713a4664352af4a9b8f3ed69b850da30ffe95c939e34e52bd45c60f6",
+    "checks\\demo_main_compile.log": "8c77dae2daf1d8a72dd37fde13e43ffabc30f2ff3884778d9fd942a2d37ddee3",
+    "checks\\upgrade_demo_bars_top\\synthesize.log": "afba93340d4930493090f4040073f177d29c3d2caa446bb05296f398ae96ad1d",
+    "checks\\upgrade_demo_bars_top\\synthesize\\demo_bars_top.snr": "f8d24995a4fa4cbb66e9cbf3f9583398bb0e45820b6759968a29e5675d4c1290",
+    "checks\\upgrade_demo_lens_top\\synthesize.log": "c95a92be4a66301f910cf811734baa6b8899602c70a8442879f8c7b72944c5fe",
+    "checks\\upgrade_demo_lens_top\\synthesize\\demo_lens_top.snr": "70dd938640700ef773b3ba2ab88d9582e6e7dba0dc0c92da0e747b8e955d47f3"
+  }
+}

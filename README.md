@@ -1,5 +1,13 @@
 # AADCS
 
+## 当前视频工程
+
+2026-10-18 交付版位于 [FPGA_AADCS/Distortion_video](FPGA_AADCS/Distortion_video/README.md)，
+包含内部图像、校正算法、DDR3 及 PCIe 数据通路。
+三个板级入口为 `checks/board_bars/board_bars.pds`、`checks/board_raw/board_raw.pds`、
+`checks/board_corrected/board_corrected.pds`，路径相对于该目录。
+交付位流在 `firmware/fpga/distortion-video/`；配套 ARM `tools/board_demo` 未包含在本次交付中。
+
 ## 项目组成
 - FPGA_AADCS：PDS FPGA 工程
 - rk3568_AADCS：RK3568 软件工程
@@ -27,4 +35,5 @@ scripts/build_fpga_pcie.ps1；仿真执行 scripts/test_fpga_pcie.ps1。
 已实现 FPGA 内部彩条/递增数据的 PCIe DMA 测试工程。
 主机侧实测报告见 docs/changes/005-rk3568-host-verification.md，旧位流存在恒定载荷和传输遗漏。
 本次修复、完整 DMA 回归及 DebugCore 使用见 docs/changes/006-pcie-report-fixes.md。
-修复版的主机端复验尚未完成；畸变矫正尚未实现。
+上述旧 PCIe 测试版的主机端复验尚未完成。
+新交付的视频工程已包含校正 RTL，本次合入和验证范围见 `docs/changes/007-import-distortion-video.md`。

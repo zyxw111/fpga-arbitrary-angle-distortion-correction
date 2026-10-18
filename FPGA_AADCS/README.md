@@ -1,5 +1,9 @@
 # AADCS FPGA PCIe 测试工程
 
+2026-10-18 新交付的内部图像、DDR3 与校正工程已加入
+[Distortion_video](Distortion_video/README.md)，板级下载应使用其中的 `board_bars`、
+`board_raw`、`board_corrected` 三个入口。以下内容继续描述原 PCIe 数据源测试工程。
+
 本工程在 PG2L100H-6IFBG484 上生成测试数据，通过 PCIe Memory Write
 发送到 RK3568。第一阶段使用内部数据源；视频采集、DDR3 帧缓存与畸变矫正后续接入。
 

@@ -1,0 +1,19 @@
+{
+  "digital_checks": "PASS",
+  "guard_tests": 12,
+  "ddr_signals": 49,
+  "camera_connector": "J8",
+  "camera_wiring": "DRAFT_NOT_APPROVED_FOR_POWER",
+  "physical_measurements": "NONE",
+  "open_items": [
+    "Vendor schematics reviewed: no full 3.3V/2.8V signal translator; actual revision and module FPC identity not fully verified",
+    "Adapter schematic DOVDD 2.8V and optional SCCB pull-ups to 2.8V; 3.3V host tolerance and populated parts require confirmation",
+    "V4: manual oscillator supply 1.8V; current receiver VCCIO 1.5V / LVCMOS15; tolerance not established",
+    "SCBV unset; configuration-bank mode/voltage rules need confirmation"
+  ],
+  "inputs": {
+    "E:\\pango\\Project_2022.2\\Distortion\\prj\\Distortion_video\\checks\\ddr_bist\\ddr_bist.fdc": "29e62b325dd277a66703a99dc136a610c74a3a244961ffcf1f305131a53e25df",
+    "E:\\pango\\Project_2022.2\\hdmi_pcie\\prj\\ipcore\\ddr3\\pnr\\ddr_test.fdc": "f0549987277292bd8c7868f8c5db7e587ec7f282fa97822db30f02834f5913b8",
+    "E:\\pango\\Project_2022.2\\Distortion\\prj\\Distortion_video\\checks\\electrical\\camera_j8_draft.json": "5e823bc0f1c90a77e2d1aed3a046536b92ce0f806ea1b932cb3fac1463e64900"
+  }
+}
