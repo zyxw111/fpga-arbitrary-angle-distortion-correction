@@ -1,0 +1,2 @@
+PASS affine: 199 exact coordinates, arbitrary angles, one per clock, bubbles, signed rounding, saturation and reset
+F:\AADCS_git_zyxw\FPGA_AADCS\Distortion_video\sim\tb_affine.sv:49: $finish called at 2136000 (1ps)

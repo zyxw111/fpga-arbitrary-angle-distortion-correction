@@ -12,7 +12,7 @@ import time
 
 DEFAULT_TESTS = ["addr", "bilin", "warp", "pat", "pack", "patpack", "afifo",
                  "stream", "overflow", "vtop", "dmapat", "split", "frame",
-                 "burst", "supply", "fetch", "store", "bridge", "faults", "pipeline", "async", "source", "replay", "ddrbist", "ddrlink", "dvp", "sccb", "camseq", "cammon", "camio", "camclock", "demo_bars", "demo_raw", "demo_corrected", "demostream_raw", "demostream_corrected", "demoddr_raw", "demoddr_corrected", "board_bars", "board_raw", "board_corrected", "board_corrupt", "board_invalid", "board_pcie", "board_dynamic", "mode_control"]
+                 "burst", "supply", "fetch", "store", "bridge", "faults", "pipeline", "async", "source", "replay", "ddrbist", "ddrlink", "dvp", "sccb", "camseq", "cammon", "camio", "camclock", "demo_bars", "demo_raw", "demo_corrected", "demostream_raw", "demostream_corrected", "demoddr_raw", "demoddr_corrected", "board_bars", "board_raw", "board_corrected", "board_corrupt", "board_invalid", "board_pcie", "board_dynamic", "mode_control", "affine"]
 
 def run(cmd, cwd, timeout=120):
     p = subprocess.run([str(x) for x in cmd], cwd=cwd, capture_output=True,
@@ -58,6 +58,8 @@ def main():
         extra_inputs = []
         if name.startswith(("demo_", "demostream_", "demoddr_", "preview_", "board_")):
             extra_inputs = sorted((root / "sim/demo_vectors").glob("*.hex"))
+        if name == "affine":
+            extra_inputs = [root / "sim/affine_vectors.hex"]
         preprocessed = outdir / (top + ".pre.v")
         artifact = outdir / (top + ".vvp")
         artifact.unlink(missing_ok=True)
