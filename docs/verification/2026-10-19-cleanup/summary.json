@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-19",
+  "baseline": "ab8b51e",
+  "only_project": "FPGA_AADCS/Distortion_video/board_video.pds",
+  "tracked_files_removed": 168,
+  "build_input_count": 199,
+  "build_inputs_unchanged": true,
+  "pds_compile": "PASS",
+  "compile_log_sha256": "59be174417f48b1d94624fdb77131e02a8988905723b39065de925f625a650a4",
+  "regression_output_directory": "FPGA_AADCS/Distortion_video/build/sim",
+  "mode_control_smoke": "PASS",
+  "rtl_changes": false,
+  "bitstream_unchanged_sha256": "9f63d0b8ee9f2a24a7f6f2a37e1c8d48ee94fb26a8a173109b6c39970b48fa60",
+  "newly_missing_ip_references": 0,
+  "recompiled_bitstream": false,
+  "hardware_actions": false
+}

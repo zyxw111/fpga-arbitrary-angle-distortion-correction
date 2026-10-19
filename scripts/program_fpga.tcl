@@ -1,7 +1,7 @@
 # Run with cdt_cfg_shell.exe -file <absolute path to this script>.
 # Only configures FPGA SRAM. Does not program Flash or eFuse.
 set repo [file normalize [file join [file dirname [info script]] ..]]
-set bitstream [file join $repo firmware fpga pcie-test aadcs_pcie_top.sbit]
+set bitstream [file join $repo firmware fpga distortion-video unified boardtop.sbit]
 if {[info exists env(AADCS_BITSTREAM)]} { set bitstream $env(AADCS_BITSTREAM) }
 if {![file exists $bitstream]} { error "Bitstream not found: $bitstream" }
 cfg_connect -ip 127.0.0.1 -port 65420

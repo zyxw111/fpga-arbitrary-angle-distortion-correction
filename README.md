@@ -1,40 +1,24 @@
 # AADCS
 
-## 当前视频工程
+FPGA 使用一个统一的 PDS 工程，包含内部图像、畸变矫正、DDR3 和 PCIe DMA 通路。
+KEY1 在同一位流内循环选择彩条、畸变原图和校正结果；KEY0 复位回彩条。
 
-2026-10-18 交付版位于 [FPGA_AADCS/Distortion_video](FPGA_AADCS/Distortion_video/README.md)，
-包含内部图像、校正算法、DDR3 及 PCIe 数据通路。
-统一板级入口为 `board_video.pds`（顶层 `boardtop`），路径相对于该目录。
-一个位流内按 KEY1 循环选择彩条、畸变原图和校正结果，无需重新烧录。
-交付位流在 `firmware/fpga/distortion-video/`；配套 ARM `tools/board_demo` 未包含在本次交付中。
+- 工程入口：[board_video.pds](FPGA_AADCS/Distortion_video/board_video.pds)，顶层 `boardtop`。
+- 使用说明：[FPGA 工程说明](FPGA_AADCS/Distortion_video/README.md)。
+- 当前位流：[boardtop.sbit](firmware/fpga/distortion-video/unified/boardtop.sbit)。
+- FPGA：PG2L100H-6IFBG484；工具：PDS 2022.2-SP6.4。
 
-## 项目组成
-- FPGA_AADCS：PDS FPGA 工程
-- rk3568_AADCS：RK3568 软件工程
-- firmware：配套烧录文件及部署包
-- docs：项目文档
-- scripts：构建、打包和检查脚本
+从仓库根目录构建：
 
-## 开发环境
-- FPGA 型号：PG2L100H-6IFBG484
-- PDS 版本：2022.2-SP6.4
-- RK3568 板卡型号：RK3568_MES2L100H（用户已确认 100H）
-- 系统及 SDK 版本：待填写
-- ARM 编译工具链：待填写
+```powershell
+./FPGA_AADCS/Distortion_video/build.ps1
+```
 
-## 两端通信
-- 接口方式：PCIe（第一阶段 Gen1 x2）
-- 协议版本：测试数据接口 v0.1，见 docs/pcie-test-protocol.md
+源码、IP 和约束在 `FPGA_AADCS/Distortion_video/`；构建和仿真输出在其 `build/` 中，
+输出目录的 PDS 是工具生成的中间文件，不能作为工程入口。
+`rk3568_AADCS/` 保留原有 ARM 通信示例，当前统一视频协议仍需匹配的接收程序。
+下载脚本为 `scripts/program_fpga.tcl`，默认使用当前统一版位流，仅在需要下载时主动执行。
+`docs/` 保存设计及验证记录，历史记录中的旧路径可能已清理，当前使用以上工程入口。
 
-## 构建与部署
-当前视频工程使用 `FPGA_AADCS/Distortion_video/board_video.pds`，或在仓库根目录执行
-`./FPGA_AADCS/Distortion_video/build.ps1`，使用说明见该目录 README。
-旧 PCIe 数据源测试工程仍可使用 `FPGA_AADCS/FPGA_AADCS.pds` 和
-`scripts/build_fpga_pcie.ps1`。RK3568 配套接收程序和联合部署仍待确认。
-
-## 当前验证状态
-已实现 FPGA 内部彩条/递增数据的 PCIe DMA 测试工程。
-主机侧实测报告见 docs/changes/005-rk3568-host-verification.md，旧位流存在恒定载荷和传输遗漏。
-本次修复、完整 DMA 回归及 DebugCore 使用见 docs/changes/006-pcie-report-fixes.md。
-上述旧 PCIe 测试版的主机端复验尚未完成。
-新交付的视频工程已包含校正 RTL，本次合入和验证范围见 `docs/changes/007-import-distortion-video.md`。
+统一版已通过 46 项 RTL 测试、完整构建和最终时序检查（`All Constraints Met`），尚未下载上板或进行 ARM 联调。
+2026-10-19 清理了旧工程、单元检查 PDS、旧位流及构建缓存；详见 [清理记录](docs/changes/009-clean-project-files.md)。

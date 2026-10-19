@@ -10,7 +10,6 @@ build/
 **/generate_netlist/
 **/constraint_check/
 **/logbackup/
-checks/regression/
 **/__pycache__/
 *.log
 *.lock

@@ -29,7 +29,7 @@ def main():
     args = ap.parse_args()
     root = args.root.resolve()
     rtl = root / "source/rtl" if (root / "source/rtl").exists() else root / "rtl"
-    outdir = root / "checks/regression"
+    outdir = root / "build/sim"
     outdir.mkdir(parents=True, exist_ok=True)
     core = args.bin.resolve().parent / "lib/ivl"
     report = []
