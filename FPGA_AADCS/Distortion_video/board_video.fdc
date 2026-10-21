@@ -518,3 +518,57 @@ define_attribute {p:board_clk_n} {PAP_IO_STANDARD} {SSTL15D_I}
 define_attribute {p:board_clk_p} {PAP_IO_VCCIO} {1.5}
 define_attribute {p:board_clk_n} {PAP_IO_VCCIO} {1.5}
 set_clock_groups -asynchronous -group [get_clocks {ref_clk board_ref125}] -group [get_clocks {pclk pclk_div2 pcie_ref_clk}]
+
+# OV5640 DVP on J8. External adapter oscillator; J7-18 XCLK is NOT connected.
+define_attribute {p:cam_scl} {PAP_IO_LOC} {AB21}
+define_attribute {p:cam_scl} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:cam_scl} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:cam_sda} {PAP_IO_LOC} {AB22}
+define_attribute {p:cam_sda} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:cam_sda} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:cam_vsync} {PAP_IO_LOC} {P16}
+define_attribute {p:cam_vsync} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:cam_vsync} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:cam_href} {PAP_IO_LOC} {R17}
+define_attribute {p:cam_href} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:cam_href} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:cam_reset_n} {PAP_IO_LOC} {U20}
+define_attribute {p:cam_reset_n} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:cam_reset_n} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:cam_pwdn} {PAP_IO_LOC} {V20}
+define_attribute {p:cam_pwdn} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:cam_pwdn} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:cam_pclk} {PAP_IO_LOC} {Y18}
+define_attribute {p:cam_pclk} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:cam_pclk} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:cam_data[0]} {PAP_IO_LOC} {R18}
+define_attribute {p:cam_data[0]} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:cam_data[0]} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:cam_data[1]} {PAP_IO_LOC} {T18}
+define_attribute {p:cam_data[1]} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:cam_data[1]} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:cam_data[2]} {PAP_IO_LOC} {N17}
+define_attribute {p:cam_data[2]} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:cam_data[2]} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:cam_data[3]} {PAP_IO_LOC} {P17}
+define_attribute {p:cam_data[3]} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:cam_data[3]} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:cam_data[4]} {PAP_IO_LOC} {P15}
+define_attribute {p:cam_data[4]} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:cam_data[4]} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:cam_data[5]} {PAP_IO_LOC} {R16}
+define_attribute {p:cam_data[5]} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:cam_data[5]} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:cam_data[6]} {PAP_IO_LOC} {N13}
+define_attribute {p:cam_data[6]} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:cam_data[6]} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:cam_data[7]} {PAP_IO_LOC} {N14}
+define_attribute {p:cam_data[7]} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:cam_data[7]} {PAP_IO_STANDARD} {LVCMOS33}
+create_clock -name {camera_pclk} [get_ports {cam_pclk}] -period {23.810} -waveform {0 11.905}
+set_clock_groups -asynchronous -group [get_clocks {camera_pclk}] -group [get_clocks {ref_clk board_ref125 rst_clk ddrphy_sysclk phy_dq_sysclk_0 phy_dq_sysclk_1 pclk pclk_div2 pcie_ref_clk}]
+# PCLK sample on rising edge. 42 MHz vendor mode; external DVP launch/path budget.
+set_input_delay -clock [get_clocks {camera_pclk}] -max 8.000 [get_ports {cam_vsync cam_href cam_data[*]}]
+set_input_delay -clock [get_clocks {camera_pclk}] -min 1.000 [get_ports {cam_vsync cam_href cam_data[*]}]
+set_false_path -from [get_ports {cam_sda}]
+set_false_path -to [get_ports {cam_scl cam_sda cam_pwdn cam_reset_n}]

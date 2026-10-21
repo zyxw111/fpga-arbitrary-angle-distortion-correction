@@ -1,4 +1,12 @@
-# AADCS RK3568 软件
+# RK3568 软件
+
+当前新增 [ov5640_capture](apps/ov5640_capture)：匹配 CAM2 FPGA 位流，申请 coherent DDR DMA 缓冲，
+读取完整 OV5640 RGB565 帧，可保存 `.rgb565` 与 PPM 图片。
+预编译 ARM64 程序在 `firmware/rk3568/ov5640-capture`；命令和驱动要求见
+[OV5640 使用说明](../docs/ov5640-camera.md)。尚未在 RK3568 上运行或联合验证。
+
+以下为最初保留的厂家示例记录，不代表当前 CAM2 接收程序。
+
 
 ## 当前内容
 

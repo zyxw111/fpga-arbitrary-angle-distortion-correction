@@ -1,7 +1,7 @@
-// PG2L100H DDR3 + PCIe runtime video demo.
-// KEY0 resets the board; KEY1 cycles bars/raw/corrected without retraining PCIe.
+// PG2L100H: OV5640 DVP -> checked external DDR frame -> PCIe -> RK3568 DDR.
+// KEY0 resets. Module uses its populated 24 MHz oscillator; XCLK is not driven.
 module boardtop #(
-    parameter integer MODE_DEBOUNCE_CYCLES=2500000
+    parameter integer WIDTH=640,HEIGHT=400
 )(
     output mem_cs_n,output mem_rst_n,output mem_ck,output mem_ck_n,output mem_cke,
     output mem_ras_n,output mem_cas_n,output mem_we_n,output mem_odt,
@@ -10,6 +10,10 @@ module boardtop #(
     input wire board_clk_p,input wire board_clk_n,
     input wire key0_n,
     input wire key1_n,
+    input wire cam_pclk,input wire cam_vsync,input wire cam_href,
+    input wire [7:0] cam_data,
+    inout wire cam_scl,inout wire cam_sda,output wire cam_pwdn,
+    output wire cam_reset_n,
     input wire ref_clk_p,
     input wire ref_clk_n,
     input wire [1:0] rxp,
@@ -98,19 +102,27 @@ module boardtop #(
         if (!dma_reset_n) activity_count <= 0;
         else if (source_read) activity_count <= activity_count + 1'b1;
     end
-    assign activity_led = (error_code!=0 || host_error!=0) ? debug_heartbeat[22] : image_ready;
+    assign activity_led = (error_code!=0 || host_error!=0 || camera_error!=0) ? debug_heartbeat[22] : image_ready;
 
     wire dclk,lock,init;
-    wire [1:0] video_mode;
-    wire video_reset_n,mode_switching,image_idle;
-    wire [31:0] mode_generation;
-    // Forward declarations: controller and status keep running while the image resets.
     wire request,tx_busy,host_ready,host_busy,req_toggle;
-    video_mode_control #(.DEBOUNCE_CYCLES(MODE_DEBOUNCE_CYCLES)) u_mode(
-      .clk(pclk_div2),.rst_n(dma_reset_n),.key1_n(key1_n),.image_idle(image_idle),
-      .host_busy(host_busy),.request(request),.tx_busy(tx_busy),
-      .mode(video_mode),.image_rst_n(video_reset_n),.switching(mode_switching),
-      .generation(mode_generation));
+    wire video_reset_n=dma_reset_n;
+    wire camera_ready,camera_pwdn_cmd,scl_low,sda_low,camera_pclk_g;
+    wire [7:0] camera_error;
+    wire [15:0] camera_id;
+    wire [8:0] camera_reg_index;
+    wire [31:0] captured_frames,dropped_frames;
+    // Open drain: the adapter's SCCB pull-ups are on its 2.8 V side.
+    // Keep PWDN low throughout operation. Reset sequencing uses the module's
+    // EX_RST transistor circuit, avoiding a 3.3 V high on the 2.8 V PWDN input.
+    assign cam_scl=scl_low?1'b0:1'bz;
+    assign cam_sda=sda_low?1'b0:1'bz;
+    assign cam_pwdn=1'b0;
+    GTP_CLKBUFG u_camera_clock(.CLKIN(cam_pclk),.CLKOUT(camera_pclk_g));
+    ov5640_init u_camera_init(.clk(free_clk_g),.rst_n(power_up_rst_n),.sda_in(cam_sda),
+      .scl_pull_low(scl_low),.sda_pull_low(sda_low),.cam_rst_n(cam_reset_n),
+      .cam_pwdn(camera_pwdn_cmd),.ready(camera_ready),.error_code(camera_error),
+      .chip_id(camera_id),.register_index(camera_reg_index));
     wire av,ar,wr,wl,rv,rr,rl,rvalid;wire [27:0] aa,ra;wire [3:0] al,rlen;
     wire [127:0] wd,rd;wire [15:0] ws;
     reg [1:0] dreset,iready;
@@ -122,23 +134,28 @@ module boardtop #(
     wire image_ready,prepared,launch,source_done,source_valid;
     wire [9:0] length;wire [63:0] address;wire [12:0] bytes;
     wire [7:0] error_code,host_error;wire [31:0] checksum;
-    wire [27:0] cursor;wire [11:0] status_addr;wire [127:0] status_data;
-    still #(.DYNAMIC_MODE(1)) u_image(
-      .pix_clk(free_clk_g),.clk(dclk),.dma_clk(pclk_div2),.rst_n(dreset[1]),.init_done(iready[1]),
-      .mode(video_mode),.idle(image_idle),
+    wire [27:0] cursor;wire [11:0] status_addr;wire [127:0] status_data,host_status;
+    wire [31:0] camera_flags=host_status[95:64] | (camera_ready?32'd8:32'd0) | (camera_error!=0?32'd16:32'd0);
+    assign status_data=(status_addr==0)?{host_status[127:96],camera_flags,32'h00020000,32'h43414d32}:
+      (status_addr==2)?{checksum,{4'd0,cursor},dropped_frames,captured_frames}:
+      (status_addr==3)?{{24'd0,error_code},{23'd0,camera_reg_index},{16'd0,camera_error,host_error},{16'd0,camera_id}}:host_status;
+    camera_frame #(.WIDTH(WIDTH),.HEIGHT(HEIGHT)) u_image(
+      .pclk(camera_pclk_g),.clk(dclk),.dma_clk(pclk_div2),.rst_n(dreset[1]),.init_done(iready[1]),
+      .camera_ready(camera_ready),.vsync(cam_vsync),.href(cam_href),.camera_data(cam_data),
+      .good_frames(captured_frames),.dropped_frames(dropped_frames),
       .request_toggle(req_toggle),.request_bytes(bytes),.frame_ready(image_ready),
       .error_code(error_code),.checksum(checksum),.cursor(cursor),
       .prepared(prepared),.launch(launch),.rd_req(source_read),.rd_data(source_data),
       .rd_valid(source_valid),.rd_done(source_done),
       .awvalid(av),.awready(ar),.awaddr(aa),.awlen(al),.wdata(wd),.wstrb(ws),.wready(wr),.wlast(wl),
       .arvalid(rv),.arready(rr),.araddr(ra),.arlen(rlen),.rdata(rd),.rvalid(rvalid),.rlast(rl));
-    hostlink #(.DYNAMIC_MODE(1)) u_host(
-      .mode(video_mode),.switching(mode_switching),.generation(mode_generation),
+    hostlink #(.WIDTH(WIDTH),.HEIGHT(HEIGHT)) u_host(
+      .mode(2'd0),.switching(1'b0),.generation(32'd0),
       .clk(pclk_div2),.rst_n(video_reset_n),.frame_ready(image_ready),.engine_error(error_code),
       .checksum(checksum),.cursor(cursor),.request(request),.length(length),.address(address),
       .tx_busy(tx_busy),.prepared(prepared),.rd_done(source_done),
       .ready(host_ready),.launch(launch),.request_toggle(req_toggle),.bytes(bytes),
-      .busy(host_busy),.status_addr(),.bar_addr(status_addr),.status_data(status_data),.error_code(host_error));
+      .busy(host_busy),.status_addr(),.bar_addr(status_addr),.status_data(host_status),.error_code(host_error));
     ddrlink u_mem(.ref_clk(free_clk_g),.rst_n(power_up_rst_n),.clk(dclk),.pll_lock(lock),.init_done(init),
       .axi_awvalid(av),.axi_awready(ar),.axi_awaddr(aa),.axi_awlen(al),
       .axi_wdata(wd),.axi_wstrb(ws),.axi_wready(wr),.axi_wusero_last(wl),

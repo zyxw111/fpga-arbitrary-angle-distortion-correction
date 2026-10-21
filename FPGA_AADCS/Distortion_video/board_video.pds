@@ -27,6 +27,26 @@
                     (_format verilog)
                     (_timespec "2026-10-18T22:00:00")
                 )
+                (_file "source/rtl/camera_stream.v"
+                    (_format verilog)
+                    (_timespec "2026-10-21T00:00:00")
+                )
+                (_file "source/rtl/camera_frame.v"
+                    (_format verilog)
+                    (_timespec "2026-10-21T00:00:00")
+                )
+                (_file "source/rtl/sccb_xfer.v"
+                    (_format verilog)
+                    (_timespec "2026-10-21T00:00:00")
+                )
+                (_file "source/rtl/ov5640_regs.v"
+                    (_format verilog)
+                    (_timespec "2026-10-21T00:00:00")
+                )
+                (_file "source/rtl/ov5640_init.v"
+                    (_format verilog)
+                    (_timespec "2026-10-21T00:00:00")
+                )
                 (_file "source/rtl/addr.v"
                     (_format verilog)
                     (_timespec "2026-10-17T11:26:38")

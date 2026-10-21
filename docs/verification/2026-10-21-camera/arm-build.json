@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-21",
+  "toolchain": "Zig 0.13.0 cc",
+  "flags": "-target aarch64-linux-musl -static -s -O2 -std=c11 -Wall -Wextra -Werror",
+  "elf_machine": "AArch64",
+  "static": true,
+  "bytes": 43480,
+  "sha256": "e487af8b0e9f4c75bf5352ec3e43e29d04a861a0142609112743df6c1edbb78d",
+  "protocol_test": "PASS (native Windows executable; RTL checksum fixture, page boundaries and frame descriptor count)",
+  "hardware_tested": false,
+  "sources": {
+    "ov5640_capture.c": "16a60879898d868a7a0a640818d5ed9b4cfa250c8df99e5cf36bde3c3ff14d14",
+    "camera_protocol.h": "5554f9ae659bf2a669f65865ca2a057d408aa5a61c3bd40ad1943145be95ebd0",
+    "test_protocol.c": "1c27efce73c0dcd4d471f98950f21b02c419c115f245d277c02b957b13d19b0f",
+    "Makefile": "c0122d7c7ef6720a15d5dc35fd5959e47f05da4843642aba13cd03719e3adaf8"
+  },
+  "sources_lf": {
+    "ov5640_capture.c": "16a60879898d868a7a0a640818d5ed9b4cfa250c8df99e5cf36bde3c3ff14d14",
+    "camera_protocol.h": "5554f9ae659bf2a669f65865ca2a057d408aa5a61c3bd40ad1943145be95ebd0",
+    "test_protocol.c": "1c27efce73c0dcd4d471f98950f21b02c419c115f245d277c02b957b13d19b0f",
+    "Makefile": "c0122d7c7ef6720a15d5dc35fd5959e47f05da4843642aba13cd03719e3adaf8"
+  }
+}

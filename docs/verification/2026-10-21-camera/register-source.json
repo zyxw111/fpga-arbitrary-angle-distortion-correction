@@ -1,0 +1,15 @@
+{
+  "source": "E:\\Downloads\\OV5640\\OV5640\\OV5640摄像头--资料--1712\\2、OV5640摄像头驱动程序\\F407VE_OV5640摄像头\\HARDWARE\\OV5640\\ov5640cfg.h",
+  "sha256": "2997b9db7dd54871a1785d76e7f0bd3d812271f08d689fffd18063e25b292ed5",
+  "register_count": 264,
+  "width": 640,
+  "height": 400,
+  "xclk_hz": 24000000,
+  "rgb_format_register": "0x6f (user supplied RGB565 sequence)",
+  "modifications": [
+    "software reset prefix",
+    "defer final wake until RGB565 and dimensions configured",
+    "override output dimensions 640x400",
+    "disable test pattern"
+  ]
+}

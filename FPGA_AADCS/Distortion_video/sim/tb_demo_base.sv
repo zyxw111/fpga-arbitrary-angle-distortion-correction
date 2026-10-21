@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 module tb_demo_base #(parameter GROUP=0,VIEW=0,parameter WIDTH=128,HEIGHT=80,parameter TEST_RESETS=1,
- parameter GOLDEN="sim/demo_vectors/bars_128x80.hex",parameter DUMP="checks/regression/demo_bars_actual.hex");
+ parameter GOLDEN="sim/demo_vectors/bars_128x80.hex",parameter DUMP="build/sim/demo_bars_actual.hex");
  reg clk=0;always #5 clk=~clk;
  reg rst_n=0,enable=0;
  wire valid,sof,sol;wire [15:0] pixel;wire [11:0] x,y;wire [31:0] frame_id;

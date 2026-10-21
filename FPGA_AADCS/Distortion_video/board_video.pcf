@@ -63,3 +63,20 @@ def_inst_site {u_ips2l_pcie_wrap/U_IPS2L_PCIE_TOP/U_IPS2L_HSSTLP_PCIE_SOFT_PHY/x
 def_inst_site {u_mem/u_ddr/u_ddrphy_top/ddrphy_reset_ctrl/ddrphy_ioclk_gate[0]/opit_0_inv} CLMA_357_354 FF3
 def_inst_site {u_mem/u_ddr/u_ddrphy_top/ddrphy_reset_ctrl/ddrphy_ioclk_gate[1]/opit_0_inv} CLMA_357_660 FF3
 def_inst_site {u_mem/u_ddr/u_ddrphy_top/u_ddrphy_cpd/cpd_inst} DDRPHY_CPD_369_466
+
+# OV5640 J8 camera ports
+def_port {cam_scl} LOC=AB21 VCCIO=3.3 IOSTANDARD=LVCMOS33
+def_port {cam_sda} LOC=AB22 VCCIO=3.3 IOSTANDARD=LVCMOS33
+def_port {cam_vsync} LOC=P16 VCCIO=3.3 IOSTANDARD=LVCMOS33
+def_port {cam_href} LOC=R17 VCCIO=3.3 IOSTANDARD=LVCMOS33
+def_port {cam_reset_n} LOC=U20 VCCIO=3.3 IOSTANDARD=LVCMOS33
+def_port {cam_pwdn} LOC=V20 VCCIO=3.3 IOSTANDARD=LVCMOS33
+def_port {cam_pclk} LOC=Y18 VCCIO=3.3 IOSTANDARD=LVCMOS33
+def_port {cam_data[0]} LOC=R18 VCCIO=3.3 IOSTANDARD=LVCMOS33
+def_port {cam_data[1]} LOC=T18 VCCIO=3.3 IOSTANDARD=LVCMOS33
+def_port {cam_data[2]} LOC=N17 VCCIO=3.3 IOSTANDARD=LVCMOS33
+def_port {cam_data[3]} LOC=P17 VCCIO=3.3 IOSTANDARD=LVCMOS33
+def_port {cam_data[4]} LOC=P15 VCCIO=3.3 IOSTANDARD=LVCMOS33
+def_port {cam_data[5]} LOC=R16 VCCIO=3.3 IOSTANDARD=LVCMOS33
+def_port {cam_data[6]} LOC=N13 VCCIO=3.3 IOSTANDARD=LVCMOS33
+def_port {cam_data[7]} LOC=N14 VCCIO=3.3 IOSTANDARD=LVCMOS33

@@ -1,15 +1,18 @@
 {
+  "date": "2026-10-21",
   "project": "FPGA_AADCS/Distortion_video/board_video.pds",
   "top": "boardtop",
   "device": "PG2L100H-6IFBG484",
-  "pds": "2022.2-SP6.4",
-  "rtl_tests": 46,
+  "protocol": "CAM2 0x00020000",
+  "camera": "OV5640 DVP 640x400 RGB565 low-byte-first, adapter 24MHz",
+  "rtl_tests": 50,
   "timing": "All Constraints Met",
   "hardware_tested": false,
+  "build_log_sha256": "abf033dc416ac7c7d9a16fcba6dfec063f16993c9ddcfb50a3509fc031f39125",
   "inputs": {
     "board_video.pds": {
-      "sha256": "52d2e9945e3a5d01b4e3a10cacd6b3914cb69b959c99ad432d01a87f46d8a5df",
-      "sha256_lf": "8d13208d56fd799c880c195b5149c576a27aa8bc0a7b51ff2f1315f718bfc4bf"
+      "sha256": "b962dbb56ec6ea722f28d17353c905c991dc41285396a4b1e6fa2d08f6c17bd9",
+      "sha256_lf": "de6d01d07d40d7b4d8c6fef5a4ba0a7f98b5e1d73473ffe998ac7824b2af3603"
     },
     "source/rtl/demo_select.v": {
       "sha256": "2996fdaa5f0298724fb26af42a9317d01550ef1dc3ab17d02f31d0f475b782ec",
@@ -18,6 +21,26 @@
     "source/rtl/video_mode_control.v": {
       "sha256": "c8ed20da7ae53e15eaa81923b53d596248e66b9ea0bf1b3e0a70e0c0f4fcb2eb",
       "sha256_lf": "c8ed20da7ae53e15eaa81923b53d596248e66b9ea0bf1b3e0a70e0c0f4fcb2eb"
+    },
+    "source/rtl/camera_stream.v": {
+      "sha256": "12c965b953e66ee324587bff9292a228033dbe79be840bd964239a20bf62fa78",
+      "sha256_lf": "473673eac852fb442c576cfb941ae411d66392f8fd2ae9bb17b8c7d6aaac14a3"
+    },
+    "source/rtl/camera_frame.v": {
+      "sha256": "a7ceafbe4e08504217a4aaacb3bf34239a27d8051023b24bcc0e560383e2f6b5",
+      "sha256_lf": "a7ceafbe4e08504217a4aaacb3bf34239a27d8051023b24bcc0e560383e2f6b5"
+    },
+    "source/rtl/sccb_xfer.v": {
+      "sha256": "2b6867a724941b123673ae16d58d2117b40b34f925abe5d40e5d055f9f4b11fa",
+      "sha256_lf": "83900317d266b7d3238093b01389e7d2669f23d6e4545baee3816b6d72051b0d"
+    },
+    "source/rtl/ov5640_regs.v": {
+      "sha256": "ed8f0a06680899a9c55cdc0becb93c9c48ce0876d427448e059b8932f99ea7a0",
+      "sha256_lf": "63f3120eb700f8355c3dfb92a89837dce2f99754ec518d893fecd16756f341fa"
+    },
+    "source/rtl/ov5640_init.v": {
+      "sha256": "056a7b47c9bbff61e7cd67721a3416648972ac3578d2b7592780f5cbd78acfd5",
+      "sha256_lf": "056a7b47c9bbff61e7cd67721a3416648972ac3578d2b7592780f5cbd78acfd5"
     },
     "source/rtl/addr.v": {
       "sha256": "5dd995b163d074f781c0a2654214a1d2033fc4b8f06974965fb50897840d1365",
@@ -32,8 +55,8 @@
       "sha256_lf": "eb73fb652f3963d790c4f446f56282cf88266a70d31fd260250f87e2365a6aa1"
     },
     "source/rtl/boardtop.v": {
-      "sha256": "e35ef017eeb33d09e79fe55349a5b9d408033297f6d68204b9132fb545791423",
-      "sha256_lf": "412b49bac95859087275e220b70beed851deae8704abe4caa111a94d7ce21f5b"
+      "sha256": "011145f2e128d396feae81e5f9d123394239010b4d09eab5586adcd05a853cf9",
+      "sha256_lf": "c027b77ab31416e034ce36789805bb0f4599af691b1240724d708c494e7e48e8"
     },
     "source/rtl/bridge.v": {
       "sha256": "219226d046f9aaa9e82d26f457bdb639934c737bafcc1ec67a04ba22426ecac4",
@@ -796,32 +819,33 @@
       "sha256_lf": "c41f32129ad1462f9caad02c1d85da95bc3c18ec7e2a1fc6a759ad909c7dd4a4"
     },
     "board_video.fdc": {
-      "sha256": "505689422f3c636d9ca8bc2459062f8f4de24e6e950648cca6783ff0d55fc24a",
-      "sha256_lf": "6df138191db1eb897b72a5b11656cf7571d68ecd71493f945ec134557f6e45e7"
+      "sha256": "f66ada609d9fc0aad2dad2fdb1786a57b73d6a795e9ba09d8e7a48a4b655256d",
+      "sha256_lf": "60eeda212cb5fd0a04619e89573acf15b2abe48400d25bc7d98874ec8d3be7ef"
     },
     "board_video.pcf": {
-      "sha256": "5f2317766b070fe11c2ebc9c16dd003d34ffbbb72c91fce51c8c464b6366b651",
-      "sha256_lf": "c86b172cb2c958230c9bd95120bd477a1442cc21dd9ba4dbc81ac58f01202750"
+      "sha256": "822f697e1d38ff3175fe6f2b433fa0c2e7b17d8bff1f5275f7ba7b97d34ccf48",
+      "sha256_lf": "a6f322a7069412a5aa073f578a0cf0d7eb3ba56e8047648e82ac14bd894955be"
     }
   },
-  "bitstream_generated": true,
   "artifacts": {
-    "firmware/fpga/distortion-video/unified/boardtop.bgr": {
-      "sha256": "b78dc493f25ab1ffe07d2346d46861d624ddbd1c3752b5c7ad3216e46bade882",
-      "bytes": 1616
+    "boardtop.bgr": {
+      "sha256": "c92d72c52d481312d3469c35e021ded46ad9da09f67375d437bd3d98dac7c61b",
+      "bytes": 1618,
+      "sha256_lf": "06e9f6a6cf482bb5afa5419e7d0e5443d14179c7a6a2d59e312f13be2c0554d3"
     },
-    "firmware/fpga/distortion-video/unified/boardtop.prr": {
-      "sha256": "e94fea44cfd4e70cac564a7daad72f35da840b6305658a76dbfcf7247476cf38",
-      "bytes": 127590
+    "boardtop.prr": {
+      "sha256": "7362ca0b17e226548940dde56f92c8d3d0c3bfaa187b87f26c498655d8b314b2",
+      "bytes": 127224,
+      "sha256_lf": "e85123838921eaf43fce432b9764fa71b7e632a27c43a2355f55321ca1217586"
     },
-    "firmware/fpga/distortion-video/unified/boardtop.rtr": {
-      "sha256": "27e1cbf918ced6cf616e699ab8e487a856c8ea02e75cdc966870f76476176759",
-      "bytes": 1605971
+    "boardtop.rtr": {
+      "sha256": "9b9cbae2f4a9f79aa2374dc366727449962d1250077781e6c2df2b3aee75aaee",
+      "bytes": 1665132,
+      "sha256_lf": "9e3cca54960123e0996e41d867db5e2129126a495cee3f065937ec9008ad2806"
     },
-    "firmware/fpga/distortion-video/unified/boardtop.sbit": {
-      "sha256": "9f63d0b8ee9f2a24a7f6f2a37e1c8d48ee94fb26a8a173109b6c39970b48fa60",
+    "boardtop.sbit": {
+      "sha256": "06a2e076faccdf6c3e62230bc1f2bdd8d9cb5d86b52bfaaa1a316de95073187c",
       "bytes": 3791112
     }
-  },
-  "build_log_sha256": "b20dec4d460f6e71b6930d19bf3f14a5f41609dca10840057605e1d15366ce87"
+  }
 }

@@ -12,7 +12,7 @@ import time
 
 DEFAULT_TESTS = ["addr", "bilin", "warp", "pat", "pack", "patpack", "afifo",
                  "stream", "overflow", "vtop", "dmapat", "split", "frame",
-                 "burst", "supply", "fetch", "store", "bridge", "faults", "pipeline", "async", "source", "replay", "ddrbist", "ddrlink", "dvp", "sccb", "camseq", "cammon", "camio", "camclock", "demo_bars", "demo_raw", "demo_corrected", "demostream_raw", "demostream_corrected", "demoddr_raw", "demoddr_corrected", "board_bars", "board_raw", "board_corrected", "board_corrupt", "board_invalid", "board_pcie", "board_dynamic", "mode_control", "affine"]
+                 "burst", "supply", "fetch", "store", "bridge", "faults", "pipeline", "async", "source", "replay", "ddrbist", "ddrlink", "dvp", "sccb", "camseq", "cammon", "camio", "camclock", "demo_bars", "demo_raw", "demo_corrected", "demostream_raw", "demostream_corrected", "demoddr_raw", "demoddr_corrected", "board_bars", "board_raw", "board_corrected", "board_corrupt", "board_invalid", "board_pcie", "board_dynamic", "mode_control", "affine", "camera_pcie", "ov5640_init", "camera_stream"]
 
 def run(cmd, cwd, timeout=120):
     p = subprocess.run([str(x) for x in cmd], cwd=cwd, capture_output=True,
@@ -50,9 +50,9 @@ def main():
             sources.append(root / "sim/tb_demostream_base.sv")
         if name.startswith("demoddr_"):
             sources += [root / "sim/tb_pipeline.sv", root / "sim/ddrmodel.sv"]
-        if name.startswith("board_"):
+        if name.startswith(("board_", "camera_")):
             sources += [root / "sim/tb_board.sv", root / "sim/ddrmodel.sv"]
-        if name in ("board_pcie", "board_dynamic"):
+        if name in ("board_pcie", "board_dynamic", "camera_pcie"):
             sources.append(root / "sim/pcie_ram_model.sv")
             sources += [p for p in (root / "source/pcie_dma").rglob("*.v") if "ips2l_pcie_dma_ram" not in str(p)]
         extra_inputs = []
