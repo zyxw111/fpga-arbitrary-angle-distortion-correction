@@ -18,4 +18,6 @@ FPGA 为 PG2L100H-6IFBG484，PDS 2022.2-SP6.4，板卡 RK3568_MES2L100H。
 ```
 
 构建/仿真在 `build/`，不要打开里面的临时 PDS。`scripts/program_fpga.tcl` 默认下载交付目录的位流。
-新版本未实板下载或 ARM 联调；历史 JTAG 成功记录对应之前的物理摄像头版。
+内部畸变视频源版本已于 2026-10-22 完成 FPGA SRAM 下载，DONE 和唤醒状态回读成功；ARM 图像接收仍待联调。新 HDMI 工程尚未上板验证。
+
+后续 SSH 联调统一使用 `zyxw-gpt` 分支：FPGA、ARM 代码及联调记录都在此分支修改和提交。开始操作前确认当前 Git 分支为 `zyxw-gpt`；原 `zyxw` 分支保留为本次联调前的基线。

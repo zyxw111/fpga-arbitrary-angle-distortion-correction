@@ -1,0 +1,124 @@
+Executing : cfg_connect -ip 127.0.0.1 -port 65420
+Connecting to server[127.0.0.1 : 65420].
+Connect to server[127.0.0.1 : 65420] successfully.
+COMMAND[check version information] execute successfully, takes 0.0 secs.
+The cable List : 
+Cable index 0:USB Cable II/fffffffffffffffe 
+
+COMMAND[get_cable_paras] execute successfully, takes 1.5 secs.
+Executing : cfg_connect -ip 127.0.0.1 -port 65420 successfully.
+Executing : cfg_set_cable_property -index 0 -freq 1MHz
+COMMAND[set_cable_paras] execute successfully, takes 1.0 secs.
+Executing : cfg_set_cable_property -index 0 -freq 1MHz successfully.
+Executing : cfg_scan_chain
+PANGO USB CABLE II cable driver: D2XX DLL
+PG2L100H
+This device configure situation (done bit): 1
+COMMAND[Open config cable] execute successfully, takes 1.9 secs.
+Executing : cfg_scan_chain successfully.
+BEFORE_PROGRAM
+Executing : cfg_read_device_property -mode 3 -device_index 0
+The Status Register Code is :00001000000111111111110010100000
+Bits[27 ..0]
+Bit[n]:	      VALUE	      NAME
+--------------------------------------------------------------------
+Bit 27:	      1	      over_temp
+Bit 26:	      0	      flg_x32
+Bit 25:	      0	      flg_x16
+Bit 24:	      0	      flg_x8
+Bit [23-22]:	    00	      ipal_m[1:0]
+Bit 21:	      0	      fallback
+Bit 19:	      1	      pll_lock
+Bit 18:	      1	      gwen
+Bit 17:	      1	      grsn
+Bit 16:	      1	      gouten
+Bit 15:	      1	      glogen_fb
+Bit 14:	      1	      glogen
+Bit 13:	      1	      done_i
+Bit 12:	      1	      done
+Bit 11:	      1	      init_n
+Bit 10:	      1	      init_complete
+Bit [9-7]:	   001	      m[2:0]
+Bit  6:	      0	      wakedown_over
+Bit  5:	      1	      wakeup_over
+Bit  4:	      0	      timeout
+Bit  3:	      0	      rbcrc_err
+Bit  2:	      0	      aut_err
+Bit  1:	      0	      crc_err
+Bit  0:	      0	      id_err
+
+Status Register: 0x081ffca0.
+COMMAND[Read status] execute successfully, takes 1.8 secs.
+Executing : cfg_read_device_property -mode 3 -device_index 0 successfully.
+Executing : cfg_assign_file -file F:/AADCS_git_zyxw/firmware/fpga/distortion-video/unified/boardtop.sbit -device_index 0
+Executing : cfg_assign_file -file F:/AADCS_git_zyxw/firmware/fpga/distortion-video/unified/boardtop.sbit -device_index 0 successfully.
+Executing : cfg_set_device_property -device_index 0 -program 1
+Executing : cfg_set_device_property -device_index 0 -program 1 successfully.
+Executing : cfg_program -device_index 0
+The Progress: 0%
+The Progress: ����11%
+The Progress: ������15%
+The Progress: ��������20%
+The Progress: ����������25%
+The Progress: ������������30%
+The Progress: ��������������35%
+The Progress: ����������������40%
+The Progress: ������������������45%
+The Progress: ��������������������50%
+The Progress: ����������������������55%
+The Progress: ������������������������60%
+The Progress: ��������������������������65%
+The Progress: ����������������������������70%
+The Progress: ������������������������������75%
+The Progress: ��������������������������������80%
+The Progress: ����������������������������������85%
+The Progress: ������������������������������������90%
+The Progress: ��������������������������������������95%
+The Progress: ����������������������������������������100%
+The done bit is 1
+COMMAND[Program] execute successfully, takes 34.5 secs.
+Executing : cfg_program -device_index 0 successfully.
+PROGRAM_RESULT=0 1
+AFTER_PROGRAM
+Executing : cfg_read_device_property -mode 3 -device_index 0
+The Status Register Code is :00001000000101111111110010100000
+Bits[27 ..0]
+Bit[n]:	      VALUE	      NAME
+--------------------------------------------------------------------
+Bit 27:	      1	      over_temp
+Bit 26:	      0	      flg_x32
+Bit 25:	      0	      flg_x16
+Bit 24:	      0	      flg_x8
+Bit [23-22]:	    00	      ipal_m[1:0]
+Bit 21:	      0	      fallback
+Bit 19:	      0	      pll_lock
+Bit 18:	      1	      gwen
+Bit 17:	      1	      grsn
+Bit 16:	      1	      gouten
+Bit 15:	      1	      glogen_fb
+Bit 14:	      1	      glogen
+Bit 13:	      1	      done_i
+Bit 12:	      1	      done
+Bit 11:	      1	      init_n
+Bit 10:	      1	      init_complete
+Bit [9-7]:	   001	      m[2:0]
+Bit  6:	      0	      wakedown_over
+Bit  5:	      1	      wakeup_over
+Bit  4:	      0	      timeout
+Bit  3:	      0	      rbcrc_err
+Bit  2:	      0	      aut_err
+Bit  1:	      0	      crc_err
+Bit  0:	      0	      id_err
+
+Status Register: 0x0817fca0.
+COMMAND[Read status] execute successfully, takes 1.8 secs.
+Executing : cfg_read_device_property -mode 3 -device_index 0 successfully.
+Executing : cfg_read_device_property -mode 2 -device_index 0
+The user code value is: 0xffffffff
+COMMAND[Get user code] execute successfully, takes 2.1 secs.
+Executing : cfg_read_device_property -mode 2 -device_index 0 successfully.
+Executing : cfg_disconnect
+Server is disconnect
+Executing : cfg_disconnect successfully.
+Executing : cfg_close
+Executing : cfg_close successfully.

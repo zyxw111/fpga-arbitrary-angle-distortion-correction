@@ -82,7 +82,23 @@ python FPGA_AADCS/Distortion_video/sim/regress.py --bin 'F:/AADCS_git/.cache/too
 以及虚拟摄像头→原接收器→DDR 模型→实际厂商 DMA RX/TX 的端到端像素比较、
 主机停顿期间持续产帧及 DDR 快照保持、随机 PCIe 反压。
 新位流的构建/仿真证据保存于 `docs/verification/2026-10-22-internal-video/`。
-上一版 2026-10-21 的 JTAG 成功日志对应真实摄像头版本，不代表本位流已实板验证。
+上一版 2026-10-21 的 JTAG 成功日志对应真实摄像头版本。本内部视频源位流于
+2026-10-22 完成 SRAM 下载验证，记录见下文；实际 ARM 图像接收仍待联调。
 
 最终离线验证：52 项 RTL 测试通过；PDS 完整构建和位流生成成功，时序报告 All Constraints Met。
 [RTL 实际输出预览](verification/2026-10-22-internal-video/synthetic_640x400.png)。
+
+### 2026-10-22 JTAG 下载结果
+
+本内部视频源位流 SHA-256 为
+`293047d5b075f114f67656670a3ca306b1b411c4869c837f91047913f457052c`。
+仅按 F_RESET 后仍报 DONE 未拉高；降到 500 kHz 也未解决，ISC 组合尝试超时后停止。
+整板断电重上电并重启 JTAG Server、刷新下载器枚举后，以 **1 MHz、WakeDownReconfigure**
+下载同一份位流成功，耗时 34.5 秒，未修改 RTL 或位流，未写入 Flash/eFuse。
+
+日志确认 `Program execute successfully`，状态寄存器为 `0x0817fca0`，
+`done=1`、`done_i=1`、`wakeup_over=1`，CRC/ID/认证/超时错误均为 0。
+这确认配置成功；不能据此认定 DDR、PCIe 或 ARM 图像显示已验证。
+本次操作同时改变了整板上电状态和 JTAG 服务状态，尚不能将根因唯一归于其中一项。
+
+[完整成功日志](verification/2026-10-22-internal-video/jtag-program-after-power-cycle.txt)。
