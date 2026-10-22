@@ -4,9 +4,15 @@ $buildRoot=Join-Path $PSScriptRoot 'build'
 New-Item -ItemType Directory -Path $buildRoot -Force | Out-Null
 # PDS writes its state back into the project. Keep the portable GUI entry clean.
 $template=Get-Content -LiteralPath (Join-Path $PSScriptRoot 'board_video.pds') -Raw
+# GUI saves populated flow state/output paths into the source PDS. Rebuild
+# independently and keep every generated file inside this isolated directory.
+$template=[regex]::Replace($template,'(\(_gci_state \(_integer )\d+(\)\))','${1}0${2}')
 $template=[regex]::Replace($template,'(\(_(?:file|ip|ip_source_item) ")([^"]+)(")',{
  param($m)
- $resolved=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot $m.Groups[2].Value)).Replace('\','/')
+ $relative=$m.Groups[2].Value
+ $pathRoot=$PSScriptRoot
+ if($relative -match '^(compile|synthesize|device_map|place_route|report_timing|report_power|generate_bitstream|generate_netlist|constraint_check)/'){$pathRoot=$buildRoot}
+ $resolved=[IO.Path]::GetFullPath((Join-Path $pathRoot $relative)).Replace('\','/')
  # Mapping refreshes the PCF header; keep that write inside the build directory.
  if([IO.Path]::GetExtension($resolved) -in @('.fdc','.pcf')){
   $localConstraint=Join-Path $buildRoot ([IO.Path]::GetFileName($resolved))

@@ -1,18 +1,30 @@
 {
-  "date": "2026-10-21",
+  "date": "2026-10-22",
   "project": "FPGA_AADCS/Distortion_video/board_video.pds",
   "top": "boardtop",
   "device": "PG2L100H-6IFBG484",
-  "protocol": "CAM2 0x00020000",
-  "camera": "OV5640 DVP 640x400 RGB565 low-byte-first, adapter 24MHz",
-  "rtl_tests": 50,
+  "parameters": {
+    "WIDTH": 640,
+    "HEIGHT": 400,
+    "INTERNAL_CAMERA": 1
+  },
+  "protocol": "CAM2 0x00020000; flags bit5 internal source",
+  "source": "chart.v (byte-identical to E:/Downloads/Distortion/Distortion/prj/Distortion_video/source/rtl/chart.v) -> synthetic_camera RGB565 LE DVP",
+  "source_clock_hz": 25000000,
+  "source_clocks_per_frame": 832000,
+  "source_fps": 30.048076923076923,
+  "capture": "single immutable snapshot; continuous source frames may be skipped while the host consumes the snapshot",
+  "rtl_tests": 52,
   "timing": "All Constraints Met",
   "hardware_tested": false,
-  "build_log_sha256": "abf033dc416ac7c7d9a16fcba6dfec063f16993c9ddcfb50a3509fc031f39125",
+  "arm_source_changed": false,
+  "build_log_sha256": "fce9b3946b049bc8e254d73b62cdfcd0a4e071bc6f08b7fe09f41394cdfbbc03",
+  "build_script_sha256": "0dd6c3435dd00fd4bdf009e030472d70ea2d89163a162c2b934ef682b00f049d",
+  "build_script_sha256_lf": "cff9bf55de7456dfb1e6d8ef4048d6f1026b0932006ab5fc35604c0602d9c617",
   "inputs": {
     "board_video.pds": {
-      "sha256": "b962dbb56ec6ea722f28d17353c905c991dc41285396a4b1e6fa2d08f6c17bd9",
-      "sha256_lf": "de6d01d07d40d7b4d8c6fef5a4ba0a7f98b5e1d73473ffe998ac7824b2af3603"
+      "sha256": "5b0d24e3845479db90388de9df1e0533bff6bba491dc71b817ce0f543657ceb4",
+      "sha256_lf": "a757a1a41941a4e28032abc1d367d86dd16e7463253231be4e42f8f031cdc038"
     },
     "source/rtl/demo_select.v": {
       "sha256": "2996fdaa5f0298724fb26af42a9317d01550ef1dc3ab17d02f31d0f475b782ec",
@@ -21,6 +33,10 @@
     "source/rtl/video_mode_control.v": {
       "sha256": "c8ed20da7ae53e15eaa81923b53d596248e66b9ea0bf1b3e0a70e0c0f4fcb2eb",
       "sha256_lf": "c8ed20da7ae53e15eaa81923b53d596248e66b9ea0bf1b3e0a70e0c0f4fcb2eb"
+    },
+    "source/rtl/synthetic_camera.v": {
+      "sha256": "68ae8ab8e29f165d1669e2b2837e74f8e8f203d5479ebf1f1c242736f75f4010",
+      "sha256_lf": "ed3a3763b257f9917eee5a0f3979e6cd1fb7c861469a93de543e0f44a6b4de25"
     },
     "source/rtl/camera_stream.v": {
       "sha256": "12c965b953e66ee324587bff9292a228033dbe79be840bd964239a20bf62fa78",
@@ -55,8 +71,8 @@
       "sha256_lf": "eb73fb652f3963d790c4f446f56282cf88266a70d31fd260250f87e2365a6aa1"
     },
     "source/rtl/boardtop.v": {
-      "sha256": "011145f2e128d396feae81e5f9d123394239010b4d09eab5586adcd05a853cf9",
-      "sha256_lf": "c027b77ab31416e034ce36789805bb0f4599af691b1240724d708c494e7e48e8"
+      "sha256": "2c4e6c5d018f95cb144120a89287a30f28601e29128834ed811322c728253da1",
+      "sha256_lf": "2dda41381e21b90b736336432c71a4a024bbe2ca8f9109dfc76d48c762c5a92b"
     },
     "source/rtl/bridge.v": {
       "sha256": "219226d046f9aaa9e82d26f457bdb639934c737bafcc1ec67a04ba22426ecac4",
@@ -823,28 +839,28 @@
       "sha256_lf": "60eeda212cb5fd0a04619e89573acf15b2abe48400d25bc7d98874ec8d3be7ef"
     },
     "board_video.pcf": {
-      "sha256": "822f697e1d38ff3175fe6f2b433fa0c2e7b17d8bff1f5275f7ba7b97d34ccf48",
-      "sha256_lf": "a6f322a7069412a5aa073f578a0cf0d7eb3ba56e8047648e82ac14bd894955be"
+      "sha256": "96c737763410445bfb9b59f8de6db150db7910156b4779710bb2af4b54fb3746",
+      "sha256_lf": "88174e1f1e2ed5b231f7763d1bce23c06f4fe8e9c72079ecc5d280f07a4330ee"
     }
   },
   "artifacts": {
     "boardtop.bgr": {
-      "sha256": "c92d72c52d481312d3469c35e021ded46ad9da09f67375d437bd3d98dac7c61b",
+      "sha256": "667fad9707c7d37a2337f8dcd8fd48fd3e46b98a7eb1288322d6f09c84ee7811",
       "bytes": 1618,
-      "sha256_lf": "06e9f6a6cf482bb5afa5419e7d0e5443d14179c7a6a2d59e312f13be2c0554d3"
+      "sha256_lf": "a85247a3bc3bb7906cf6daa69d7f314c06c59a04eb190b6375996ba493c438ac"
     },
     "boardtop.prr": {
-      "sha256": "7362ca0b17e226548940dde56f92c8d3d0c3bfaa187b87f26c498655d8b314b2",
-      "bytes": 127224,
-      "sha256_lf": "e85123838921eaf43fce432b9764fa71b7e632a27c43a2355f55321ca1217586"
+      "sha256": "21e2033f773e164c412a2cba130fa2814e70b4c3a355cf6c0542d453596afcfe",
+      "bytes": 122081,
+      "sha256_lf": "d071e948a5cba26bfeee02616ff91eb8cc9c4069842a0c0f6bd9100d967f9593"
     },
     "boardtop.rtr": {
-      "sha256": "9b9cbae2f4a9f79aa2374dc366727449962d1250077781e6c2df2b3aee75aaee",
-      "bytes": 1665132,
-      "sha256_lf": "9e3cca54960123e0996e41d867db5e2129126a495cee3f065937ec9008ad2806"
+      "sha256": "baeba9997b058a813aeadb46a4250ee8d3758cbd7f348506d71f5a5f5be16373",
+      "bytes": 1562271,
+      "sha256_lf": "acdb8986ea04cd7725522c59b6a369c863748c4192bf1765d0bb83cd9a0bcb23"
     },
     "boardtop.sbit": {
-      "sha256": "06a2e076faccdf6c3e62230bc1f2bdd8d9cb5d86b52bfaaa1a316de95073187c",
+      "sha256": "293047d5b075f114f67656670a3ca306b1b411c4869c837f91047913f457052c",
       "bytes": 3791112
     }
   }

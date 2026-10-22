@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-21",
+  "bitstream": "firmware/fpga/distortion-video/unified/boardtop.sbit",
+  "sha256": "06a2e076faccdf6c3e62230bc1f2bdd8d9cb5d86b52bfaaa1a316de95073187c",
+  "device": "PG2L100H",
+  "cable_frequency": "1MHz",
+  "program_property": "1 (WakeDownReconfigure)",
+  "storage": "FPGA SRAM only",
+  "sequence": "Default GUI attempt failed with DONE low; explicit program=1 also failed before manual F_RESET; after user-confirmed F_RESET, the same explicit Tcl command succeeded.",
+  "download_success": true,
+  "status_register": "0x0817fca0",
+  "done": 1,
+  "done_i": 1,
+  "wakeup_over": 1,
+  "crc_err": 0,
+  "id_err": 0,
+  "camera_capture_tested": false,
+  "arm_dma_tested": false,
+  "note": "Raw status also reports over_temp=1 and pll_lock=0. No temperature measurement or user-clock validation was performed; DONE success is not a claim that all hardware states are normal."
+}

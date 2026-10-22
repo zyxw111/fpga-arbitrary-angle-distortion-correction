@@ -1,0 +1,88 @@
+# FPGA 内部畸变视频源
+
+本地 zyxw 分支的当前默认功能：在 FPGA 内生成连续的畸变图像，作为虚拟摄像头输入，
+经过原摄像头接收器、外部 DDR 和 PCIe DMA，最终由主机接收到 RK3568 DDR。
+不需要连接 OV5640，也不等待 SCCB 应答。FPGA 仍是 PG2L100H-6IFBG484。
+
+## 工程和来源
+
+唯一入口为 `FPGA_AADCS/Distortion_video/board_video.pds`，顶层 `boardtop`。
+`boardtop.INTERNAL_CAMERA=1` 为默认内部源；设置为 0 后重新构建可恢复真实 OV5640 通路。
+两种配置共用同一个源工程，不额外创建 PDS。当前交付目录只保存默认内部源位流。
+
+图像直接复用旧工程 `E:/Downloads/Distortion/Distortion/prj/Distortion_video/source/rtl/chart.v`。
+本仓库已有相同文件，核对 SHA-256 为
+`674c071107c2bad5bd18b3481140cfb4e008d8b57fa1056cd3d20befaae9920f`，本次不改动图像模型。
+该模块以固定点流水线生成模拟镜头畸变：弯曲白色网格、红色中心线、绿色矩形和彩色背景。
+它是人工测试图案，不能代替真实相机标定。
+
+新增 `synthetic_camera.v` 负责连续光栅、帧/行同步和 DVP 字节发送。
+左下角额外显示八个 8×8 的色块，按低位在左编码帧号低 8 位：黄色=1，蓝色=0；
+每 256 个源帧循环，用于观察源视频是否继续运行。其余像素与旧图像模型一致。
+
+## 通路和时序
+
+```text
+25 MHz 板内时钟 → chart 畸变图像 → RGB565 DVP 虚拟摄像头
+                                         ↓
+原 camera_stream 接收器 → 异步 FIFO → FPGA DDR 完整帧写入/读回校验
+                                         ↓
+4 KiB 页缓存 → 厂商 PCIe DMA → RK3568 DDR
+```
+
+- 有效图像：640×400，RGB565 小端，每帧 512,000 字节。
+- 每像素两个 PCLK，先低字节再高字节，HREF 高期间连续发送。
+- 总时序：每行 800 像素周期、每帧 520 行；25 MHz 下每帧 832,000 时钟，约 30.048 fps。
+- VSYNC 高有效，位于帧消隐区；不会与 HREF 重叠。
+- 连续源不受 ARM/DMA 请求或采集器复位的反压控制；KEY0 全局复位会重新开始视频。
+- 继续使用原单帧快照缓冲：主机读取期间 DDR 内的完整帧保持不变，读完才采下一完整源帧。
+  等待期间经过的源帧被跳过；源的约 30 fps 不等于 ARM 每秒收到 30 帧。
+
+当前发送的是**畸变原图**。此板级通路尚未接入畸变/任意角度矫正处理，
+之前保留的算法模块仍可用于下一阶段。本次不将已生成畸变图像写成已完成矫正。
+
+默认内部源模式下，外部 PCLK/HREF/VSYNC/DATA 不参与采集，SCL/SDA 为高阻，
+PWDN 保持低，EX_RST 保持低。无需摄像头、额外跳线或额外时钟。
+物理摄像头配置的接线和电气约定见 [OV5640 文档](ov5640-camera.md)。
+
+## ARM 兼容与状态
+
+保留 CAM2 magic `0x43414d32`、版本 `0x00020000` 和全部 DMA 描述符约定。
+不需要修改 ARM 源码，可继续使用 `firmware/rk3568/ov5640-capture`：
+
+```sh
+chmod +x ./ov5640-capture
+sudo ./ov5640-capture --frames 1 --output frame.rgb565 --ppm frame.ppm
+sudo ./ov5640-capture --frames 30
+```
+
+设备 BDF、驱动、coherent mmap 和 32 位 DMA 地址等要求与上一版相同。
+旧的 `fpga-view` / `fpga-probe --mode line` 不兼容 CAM2，不应拿旧 line 程序判断本版输出。
+这个接收程序保存图像，不启动显示窗口。
+
+BAR0 原寄存器含义保留，0x08 flags 新增 bit5=内部畸变源。
+bit3 在内部模式表示源就绪；0x30 的 camera_id=0、初始化错误/索引=0，
+不伪造 0x5640 硬件 ID。物理模式下 bit5=0，ID 和初始化状态来自真实摄像头。
+0x20/0x24 是已发布/尝试丢弃的采集帧数，不是内部光栅源的所有帧计数。
+
+## 构建、下载和验证
+
+```powershell
+./FPGA_AADCS/Distortion_video/build.ps1
+python FPGA_AADCS/Distortion_video/sim/regress.py --bin 'F:/AADCS_git/.cache/tools/iverilog/bin'
+```
+
+批处理先清除临时 PDS 中的 GUI 执行状态，再把全部构建输出留在 `build/` 内，
+避免源 PDS 中残留 GUI 输出路径导致批处理复用外面的旧结果。
+位流统一交付在 `firmware/fpga/distortion-video/unified/boardtop.sbit`。
+下载方式沿用 `scripts/program_fpga.tcl`（1 MHz、WakeDownReconfigure、仅 SRAM）；
+遇到 DONE 未拉高时按此前实测步骤使用 F_RESET 后重试。
+
+验证覆盖实际 640×400 DVP 输出对旧黄金图像的逐字节比较、连续帧节拍和中途复位；
+以及虚拟摄像头→原接收器→DDR 模型→实际厂商 DMA RX/TX 的端到端像素比较、
+主机停顿期间持续产帧及 DDR 快照保持、随机 PCIe 反压。
+新位流的构建/仿真证据保存于 `docs/verification/2026-10-22-internal-video/`。
+上一版 2026-10-21 的 JTAG 成功日志对应真实摄像头版本，不代表本位流已实板验证。
+
+最终离线验证：52 项 RTL 测试通过；PDS 完整构建和位流生成成功，时序报告 All Constraints Met。
+[RTL 实际输出预览](verification/2026-10-22-internal-video/synthetic_640x400.png)。

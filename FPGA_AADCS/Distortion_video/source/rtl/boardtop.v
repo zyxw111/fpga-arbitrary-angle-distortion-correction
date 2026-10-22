@@ -1,7 +1,7 @@
-// PG2L100H: OV5640 DVP -> checked external DDR frame -> PCIe -> RK3568 DDR.
+// PG2L100H: internal distorted DVP (default) or OV5640 -> DDR -> PCIe.
 // KEY0 resets. Module uses its populated 24 MHz oscillator; XCLK is not driven.
 module boardtop #(
-    parameter integer WIDTH=640,HEIGHT=400
+    parameter integer WIDTH=640,HEIGHT=400,INTERNAL_CAMERA=1
 )(
     output mem_cs_n,output mem_rst_n,output mem_ck,output mem_ck_n,output mem_cke,
     output mem_ras_n,output mem_cas_n,output mem_we_n,output mem_odt,
@@ -107,7 +107,8 @@ module boardtop #(
     wire dclk,lock,init;
     wire request,tx_busy,host_ready,host_busy,req_toggle;
     wire video_reset_n=dma_reset_n;
-    wire camera_ready,camera_pwdn_cmd,scl_low,sda_low,camera_pclk_g;
+    wire camera_ready,scl_low,sda_low,camera_pclk_g;
+    wire input_vsync,input_href;wire [7:0] input_data;
     wire [7:0] camera_error;
     wire [15:0] camera_id;
     wire [8:0] camera_reg_index;
@@ -118,11 +119,23 @@ module boardtop #(
     assign cam_scl=scl_low?1'b0:1'bz;
     assign cam_sda=sda_low?1'b0:1'bz;
     assign cam_pwdn=1'b0;
-    GTP_CLKBUFG u_camera_clock(.CLKIN(cam_pclk),.CLKOUT(camera_pclk_g));
-    ov5640_init u_camera_init(.clk(free_clk_g),.rst_n(power_up_rst_n),.sda_in(cam_sda),
-      .scl_pull_low(scl_low),.sda_pull_low(sda_low),.cam_rst_n(cam_reset_n),
-      .cam_pwdn(camera_pwdn_cmd),.ready(camera_ready),.error_code(camera_error),
-      .chip_id(camera_id),.register_index(camera_reg_index));
+    generate if(INTERNAL_CAMERA!=0) begin:virtual_camera
+      assign camera_pclk_g=free_clk_g;
+      synthetic_camera #(.WIDTH(WIDTH),.HEIGHT(HEIGHT)) source(
+        .clk(free_clk_g),.rst_n(power_up_rst_n),.vsync(input_vsync),
+        .href(input_href),.data(input_data),.frame_id());
+      assign camera_ready=power_up_rst_n;
+      assign camera_error=0;assign camera_id=0;assign camera_reg_index=0;
+      // The physical module is not used; release SCCB and hold EX_RST low.
+      assign scl_low=0;assign sda_low=0;assign cam_reset_n=0;
+    end else begin:physical_camera
+      GTP_CLKBUFG u_camera_clock(.CLKIN(cam_pclk),.CLKOUT(camera_pclk_g));
+      assign input_vsync=cam_vsync;assign input_href=cam_href;assign input_data=cam_data;
+      ov5640_init u_camera_init(.clk(free_clk_g),.rst_n(power_up_rst_n),.sda_in(cam_sda),
+        .scl_pull_low(scl_low),.sda_pull_low(sda_low),.cam_rst_n(cam_reset_n),
+        .cam_pwdn(),.ready(camera_ready),.error_code(camera_error),
+        .chip_id(camera_id),.register_index(camera_reg_index));
+    end endgenerate
     wire av,ar,wr,wl,rv,rr,rl,rvalid;wire [27:0] aa,ra;wire [3:0] al,rlen;
     wire [127:0] wd,rd;wire [15:0] ws;
     reg [1:0] dreset,iready;
@@ -135,13 +148,13 @@ module boardtop #(
     wire [9:0] length;wire [63:0] address;wire [12:0] bytes;
     wire [7:0] error_code,host_error;wire [31:0] checksum;
     wire [27:0] cursor;wire [11:0] status_addr;wire [127:0] status_data,host_status;
-    wire [31:0] camera_flags=host_status[95:64] | (camera_ready?32'd8:32'd0) | (camera_error!=0?32'd16:32'd0);
+    wire [31:0] camera_flags=host_status[95:64] | (camera_ready?32'd8:32'd0) | (camera_error!=0?32'd16:32'd0) | (INTERNAL_CAMERA!=0?32'd32:32'd0);
     assign status_data=(status_addr==0)?{host_status[127:96],camera_flags,32'h00020000,32'h43414d32}:
       (status_addr==2)?{checksum,{4'd0,cursor},dropped_frames,captured_frames}:
       (status_addr==3)?{{24'd0,error_code},{23'd0,camera_reg_index},{16'd0,camera_error,host_error},{16'd0,camera_id}}:host_status;
     camera_frame #(.WIDTH(WIDTH),.HEIGHT(HEIGHT)) u_image(
       .pclk(camera_pclk_g),.clk(dclk),.dma_clk(pclk_div2),.rst_n(dreset[1]),.init_done(iready[1]),
-      .camera_ready(camera_ready),.vsync(cam_vsync),.href(cam_href),.camera_data(cam_data),
+      .camera_ready(camera_ready),.vsync(input_vsync),.href(input_href),.camera_data(input_data),
       .good_frames(captured_frames),.dropped_frames(dropped_frames),
       .request_toggle(req_toggle),.request_bytes(bytes),.frame_ready(image_ready),
       .error_code(error_code),.checksum(checksum),.cursor(cursor),

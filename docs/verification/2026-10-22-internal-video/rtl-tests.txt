@@ -1,0 +1,53 @@
+tb_addr: PASS tb_addr: interior, right/bottom edge, negative and outside
+tb_bilin: PASS tb_bilin: 60 mixed RGB565 pixels and valid bubbles
+tb_warp: PASS tb_warp: 12 identity-mapped RGB565 pixels
+tb_pat: PASS tb_pat: 2 frames, 64 active pixels, 120 total cycles
+tb_pack: PASS tb_pack: byte lanes, frame markers and backpressure
+tb_patpack: PASS tb_patpack: 2 continuous frames, 4 ordered beats
+tb_afifo: PASS tb_afifo: 64 ordered words across unequal clocks and stalls
+tb_stream: PASS tb_stream: 3 frames across unequal clocks and stalls
+tb_overflow: PASS tb_overflow: sustained stall reports sticky overflow
+tb_vtop: PASS tb_vtop: 3 diagnostic frames, 6 beats, hash=0000000a
+tb_dmapat: tb_dmapat PASS
+tb_split: tb_split PASS
+tb_frame: PASS frame: ownership, discard, backpressure, simultaneous commit/release, wrap, errors/reset
+tb_burst: PASS burst: prebuffering, AW stalls, data stalls, page transition, payload, invalid request, early last
+tb_supply: PASS supply: 16/112/4096 bytes, launch/read overlap, gaps, under/overread, bounds, reset
+tb_fetch: PASS fetch: 1/17/255/256/513 beats, page splits, zero-latency R, stalls, bounds
+tb_store: PASS store: fence, two owned slots, drop, early/missing EOF, ID/SOF errors, abort/pad, recovery/reset
+tb_bridge: PASS bridge: unequal clocks, 12 ownership toggles, 16/272/4096 bytes, launch+read, pauses, error/reset
+tb_faults: PASS faults: early/missing/extra DDR returns, unsolicited response, reset pending AR, zero length
+tb_pipeline: PASS pipeline async=0: framed writes -> fenced DDR -> prefetch -> synchronous DMA; 3 frames, concurrent slots, segmentation, bounds/reset
+tb_async: PASS pipeline async=1: framed writes -> fenced DDR -> prefetch -> synchronous DMA; 3 frames, concurrent slots, segmentation, bounds/reset
+tb_source: PASS source: pat -> pack -> async FIFO -> owned DDR -> prefetch -> async descriptor -> DMA; three clocks, 3 checked frames
+tb_replay: PASS replay: 1920x1080 RGB565, 4147200 bytes, 16200 DDR writes, 2025 real-ARM descriptors, 259200 ordered DMA beats
+tb_ddrbist: PASS DDR BIST two patterns, page boundary, init gating, corruption, timeout, init loss, reset recovery
+tb_ddrlink: PASS DDR native x16 address conversion, burst spacing, boundary and two-pattern readback
+tb_dvp: PASS tb_dvp: 8 pixels, SOF/SOL and odd-byte recovery
+tb_sccb: PASS tb_sccb: ID high/low and NACK detection
+tb_camseq: PASS tb_camseq: power/reset/SCCB wait sequence
+tb_cammon: PASS tb_cammon: exact and short-line frames
+tb_camio: PASS camio: all 16 wired-AND combinations, external sink, pull-up release, input feedback, reset/PWDN polarity, XCLK
+tb_camclock: PASS camclock: default high-Z and no contention with independent adapter oscillator
+tb_demo_bars: PASS demo group=0 view=0: 128x80 exact golden pixels, frame/line tags, back-to-back frames and mid-frame reset
+tb_demo_raw: PASS demo group=1 view=0: 128x80 exact golden pixels, frame/line tags, back-to-back frames and mid-frame reset
+tb_demo_corrected: PASS demo group=1 view=1: 128x80 exact golden pixels, frame/line tags, back-to-back frames and mid-frame reset
+tb_demostream_raw: PASS demostream view=0: synthetic source/warp -> pack -> unequal clocks -> stalled receiver, two exact frames
+tb_demostream_corrected: PASS demostream view=1: synthetic source/warp -> pack -> unequal clocks -> stalled receiver, two exact frames
+tb_demoddr_raw: PASS source: pat -> pack -> async FIFO -> owned DDR -> prefetch -> async descriptor -> DMA; three clocks, 3 checked frames
+tb_demoddr_corrected: PASS source: pat -> pack -> async FIFO -> owned DDR -> prefetch -> async descriptor -> DMA; three clocks, 3 checked frames
+tb_board_bars: PASS board GROUP=0 VIEW=1 FAULT=0 DDR checked, CDC pages, delayed TX completion
+tb_board_raw: PASS board GROUP=1 VIEW=0 FAULT=0 DDR checked, CDC pages, delayed TX completion
+tb_board_corrected: PASS board GROUP=1 VIEW=1 FAULT=0 DDR checked, CDC pages, delayed TX completion
+tb_board_corrupt: PASS board GROUP=0 VIEW=1 FAULT=1 DDR checked, CDC pages, delayed TX completion
+tb_board_invalid: PASS board GROUP=0 VIEW=1 FAULT=2 DDR checked, CDC pages, delayed TX completion
+tb_board_pcie: PASS real PCIe DMA RX/MMIO/CplD/TX: 90 descriptors 350 TLPs 20480 pixels exact, random backpressure
+tb_board_dynamic: PASS runtime modes bars/raw/corrected/bars: 40960 exact pixels, 180 real DMA descriptors, BAR0 mode/generation, DDR rebuild, debounce/held press, random TX stalls
+tb_mode_control: PASS mode control: waits for DDR idle, DMA request and posted TX drain; held key; mode wrap; global reset
+tb_affine: PASS affine: 199 exact coordinates, arbitrary angles, one per clock, bubbles, signed rounding, saturation and reset
+tb_camera_pcie: PASS camera DVP -> actual frame DDR -> real PCIe RX/MMIO/CplD/TX: 135 descriptors 525 TLPs 30720 exact pixels, short-frame discard/recovery, three distinct frames, random TX stalls
+tb_ov5640_init: PASS OV5640 wire SCCB: 0x5640 ID, 264 register writes, 640x400 RGB565, transient NACK retry, persistent NACK rejection
+tb_camera_stream: PASS camera stream: raw DVP counts, RGB565 byte/lane order, delayed EOF, short line and overflow rejection
+tb_synthetic_camera: PASS synthetic camera: 640x400 exact distorted fixture, LOW-byte-first, 512000 bytes/frame, continuous 832000-clock cadence, changing marker and mid-frame reset; 1024018 pixels
+tb_synthetic_pcie: PASS internal distorted DVP -> camera receiver -> frame DDR -> real PCIe RX/MMIO/CplD/TX: 135 descriptors 525 TLPs 30720 exact pixels, three exact distorted frames, live source during host idle, stable DDR snapshot, random TX stalls
+PASS 52 tests; recorded input hashes match final RTL sources

@@ -1,0 +1,2 @@
+PASS synthetic camera: 640x400 exact distorted fixture, LOW-byte-first, 512000 bytes/frame, continuous 832000-clock cadence, changing marker and mid-frame reset; 1024018 pixels
+F:\AADCS_git_zyxw\FPGA_AADCS\Distortion_video\sim\tb_synthetic_camera.sv:44: $finish called at 125506800000 (1ps)

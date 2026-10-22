@@ -1,10 +1,8 @@
-# 当前 FPGA 位流：OV5640 摄像头版
+# 当前 FPGA 位流：内部畸变视频源
 
-[unified/boardtop.sbit](unified/boardtop.sbit) 对应 CAM2 v2：
-OV5640 DVP → FPGA DDR 完整帧校验 → PCIe DMA → RK3568 DDR，640×400 RGB565。
+[unified/boardtop.sbit](unified/boardtop.sbit) 为默认 `INTERNAL_CAMERA=1`、CAM2 v2：
+内部畸变视频 → DVP 接收器 → FPGA DDR 完整帧校验 → PCIe DMA → RK3568 DDR，640×400 RGB565。
+无需连接摄像头，当前发送畸变原图；使用说明见 [内部畸变视频](../../../docs/internal-distorted-video.md)。
 工程入口为 [board_video.pds](../../../FPGA_AADCS/Distortion_video/board_video.pds)。
-接线和 ARM 接收程序见 [使用说明](../../../docs/ov5640-camera.md)。
-
-此路径已更新为摄像头版，不能继续按旧三模式内部演示或旧 ARM line 协议使用。
-同目录保存本次 `.rtr`、`.prr`、`.bgr` 和 `build-inputs.json`；未下载上板或进行 ARM 联调。
-历史三模式位流可从 Git 提交 `ab8b51e` 恢复。
+同目录保存 `.rtr`、`.prr`、`.bgr` 和 `build-inputs.json`。新位流尚未实板下载/ARM 联调。
+物理 OV5640 版本可从 Git 提交 `3135047` 恢复；历史三模式版为 `ab8b51e`。

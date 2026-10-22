@@ -1,5 +1,9 @@
 # OV5640 → FPGA DDR → PCIe → RK3568 DDR
 
+> 2026-10-22 起，当前默认位流改为 FPGA 内部畸变视频源，不需要摄像头。
+> 本文的接线和 SCCB 参数适用于 `boardtop.INTERNAL_CAMERA=0` 重新构建的物理摄像头配置；
+> 当前默认使用方法见 [内部畸变视频源](internal-distorted-video.md)。
+
 本阶段完成摄像头原始 RGB565 图像传输。目标板为 RK3568_MES2L100H，FPGA 为
 PG2L100H-6IFBG484。保留唯一工程入口 `FPGA_AADCS/Distortion_video/board_video.pds`，
 顶层 `boardtop`。默认 640×400，每帧 512,000 字节，通过 125 个 4 KiB 描述符传到 ARM。
@@ -77,6 +81,27 @@ KEY0 复位端点和摄像头初始化，KEY1 本版保留，不再切换内部�
 J16 为 PCIe link-up；M17 在有效帧就绪时亮，发生配置或通路错误时闪烁。
 当前时序约束按 42 MHz PCLK、DVP 输入最大 8 ns/最小 1 ns 路径预算建模；上线时需核对实际 PCLK 与波形。
 
+## FPGA SRAM 下载
+
+2026-10-21 实测：下载到 100% 后曾报 `JtagServer-0312: DONE pin did not go high`。
+JTAG 能识别芯片并不代表配置已经完成。先按板上 **F_RESET**（不是 KEY0/KEY1），
+关闭 Fabric Configuration 下载窗口以释放下载器；保留本机 JTAG Server（端口 65420）。
+然后在 PowerShell 运行仓库已有的下载脚本：
+
+```powershell
+& 'F:/PDS_2022.2-SP6.4/bin/cdt_cfg_shell.exe' -file 'F:/AADCS_git_zyxw/scripts/program_fpga.tcl'
+```
+
+脚本选择交付目录 `firmware/fpga/distortion-video/unified/boardtop.sbit`，
+设置 1 MHz JTAG、`cfg_set_device_property -device_index 0 -program 1`，
+显式启用 **Enable WakeDownReconfigure**，只配置 FPGA SRAM，不写 Flash/eFuse。
+若使用 GUI，需在器件编程属性中设置上述选项；GUI 和脚本不要同时占用下载器。
+
+本次复位后输出 `The done bit is 1`、`Program execute successfully`，
+状态回读 `0x0817fca0`，DONE、DONE 输入和 wakeup_over 均为 1，CRC/ID 错误为 0。
+完整状态和日志保存在 `docs/verification/2026-10-21-camera/jtag-*`。
+这是配置成功的证据，摄像头初始化、DDR、PCIe 和 ARM 载荷仍需分别验证。
+
 ## ARM 接收程序
 
 源码：`rk3568_AADCS/apps/ov5640_capture/`。
@@ -146,4 +171,4 @@ BAR1 的 0x110/0x120 为 DMA 地址低/高字，0x100 写 `0x01000000 | (字节�
 本机验证包括 SCCB 线级从机模型、坏帧/溢出测试，以及
 DVP→DDR 模型→实际厂商 DMA RX/控制器/TX 的端到端像素比较与随机反压。
 保留已有单元测试，结果及最终 PDS 时序、资源、位流输入指纹在 `docs/verification/2026-10-21-camera/` 和固件目录。
-PDS 构建成功仅证明当前约束模型下可实现；未执行本版下载、真实摄像头采集、ARM 驱动运行或实际帧率测量。
+PDS 构建成功仅证明当前约束模型下可实现；本版已通过 FPGA SRAM 下载和 DONE 状态回读，未执行真实摄像头采集、ARM 驱动运行或实际帧率测量。

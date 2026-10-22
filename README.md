@@ -1,25 +1,20 @@
 # AADCS
 
-当前板级工程实现 **OV5640 → FPGA DDR 帧缓冲 → PCIe DMA → RK3568 DDR**，默认 640×400 RGB565。
-在确认一帧完整结束并通过 DDR 读回校验后供主机读取，取完后重新采集；本阶段不做畸变矫正。
+当前默认工程：**FPGA 内部畸变视频源 → DVP 摄像头接收器 → FPGA DDR → PCIe DMA → RK3568 DDR**。
+640×400 RGB565，不需要连接摄像头。内部连续源约 30.048 fps；主机仍按完整帧快照读取，
+实际接收帧率取决于采集、DDR 和 ARM。当前发送畸变原图，尚未接入板级矫正处理。
 
-- 唯一工程入口：[board_video.pds](FPGA_AADCS/Distortion_video/board_video.pds)，顶层 `boardtop`。
-- 接线、电气、运行和寄存器：[OV5640 使用说明](docs/ov5640-camera.md)。
-- 当前 FPGA 位流：[boardtop.sbit](firmware/fpga/distortion-video/unified/boardtop.sbit)。
-- ARM64 接收程序：[ov5640-capture](firmware/rk3568/ov5640-capture)。
-- ARM 源码：[ov5640_capture](rk3568_AADCS/apps/ov5640_capture)。
+- 唯一工程：[board_video.pds](FPGA_AADCS/Distortion_video/board_video.pds)，顶层 `boardtop`。
+- 当前使用说明：[内部畸变视频源](docs/internal-distorted-video.md)。
+- 当前位流：[boardtop.sbit](firmware/fpga/distortion-video/unified/boardtop.sbit)。
+- ARM 接收程序：[ov5640-capture](firmware/rk3568/ov5640-capture)，兼容 CAM2。
+- 物理摄像头可通过 `INTERNAL_CAMERA=0` 重新构建，接线见 [OV5640 文档](docs/ov5640-camera.md)。
 
-FPGA 型号 PG2L100H-6IFBG484，工具 PDS 2022.2-SP6.4，板卡 RK3568_MES2L100H。
-摄像头使用所提供 1712 转接板的 24 MHz 晶振，XCLK 不接 FPGA。
-**J7-2 必须接 J8-39 的 3.3 V，不能接 J8-2 的 5 V。先按接线表确认再上电。**
-
-构建：
+FPGA 为 PG2L100H-6IFBG484，PDS 2022.2-SP6.4，板卡 RK3568_MES2L100H。
 
 ```powershell
 ./FPGA_AADCS/Distortion_video/build.ps1
 ```
 
-构建和仿真输出在该目录的 `build/`，不要打开里面的临时 PDS 作为源工程。
-`scripts/program_fpga.tcl` 默认下载上述当前位流，仅在需要时主动运行。
-`docs/` 中的历史记录不代表当前接线或运行协议，当前使用 CAM2 v2，旧 line 模式程序不兼容。
-本次只完成代码、离线验证和构建，未下载上板或进行真实摄像头、ARM 驱动联调；实际帧率尚未测量。
+构建/仿真在 `build/`，不要打开里面的临时 PDS。`scripts/program_fpga.tcl` 默认下载交付目录的位流。
+新版本未实板下载或 ARM 联调；历史 JTAG 成功记录对应之前的物理摄像头版。
