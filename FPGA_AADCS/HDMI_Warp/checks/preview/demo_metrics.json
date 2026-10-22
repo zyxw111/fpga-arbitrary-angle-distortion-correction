@@ -1,0 +1,7 @@
+{
+  "config": "config\\demo.json",
+  "max_coordinate_error_pixels": 0.04162776156454129,
+  "mean_bgr_difference_vs_opencv": 0.36807421875,
+  "p99_bgr_difference_vs_opencv": 6.0,
+  "note": "Software references. OpenCV uses quantized interpolation weights; RTL rounds RGB565 channels."
+}

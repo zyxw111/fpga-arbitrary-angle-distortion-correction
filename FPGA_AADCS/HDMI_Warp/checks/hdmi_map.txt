@@ -1,0 +1,2 @@
+PASS 300 inverse-affine/Brown coordinates versus independent float model; <=1/16 pixel incl k1,k2,k3,p1,p2, negative borders, non-square focal lengths
+F:\AADCS_git_zyxw\FPGA_AADCS\HDMI_Warp\sim\tb_hdmi_map.sv:24: $finish called at 348016000 (1ps)

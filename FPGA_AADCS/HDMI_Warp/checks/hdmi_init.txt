@@ -1,0 +1,2 @@
+PASS MS7200 wire I2C: 0x56/0x57 addressing, 300-register initialization, frequency status edge, receiver setup, NACK rejection
+F:\AADCS_git_zyxw\FPGA_AADCS\HDMI_Warp\sim\tb_hdmi_init.sv:76: $finish called at 1518415000 (1ps)

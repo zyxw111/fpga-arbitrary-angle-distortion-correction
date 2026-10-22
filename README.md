@@ -4,7 +4,8 @@
 640×400 RGB565，不需要连接摄像头。内部连续源约 30.048 fps；主机仍按完整帧快照读取，
 实际接收帧率取决于采集、DDR 和 ARM。当前发送畸变原图，尚未接入板级矫正处理。
 
-- 唯一工程：[board_video.pds](FPGA_AADCS/Distortion_video/board_video.pds)，顶层 `boardtop`。
+- 原视频源工程：[board_video.pds](FPGA_AADCS/Distortion_video/board_video.pds)，顶层 `boardtop`。
+- 新 HDMI 处理工程：[hdmi_warp.pds](FPGA_AADCS/HDMI_Warp/hdmi_warp.pds)，顶层 `hdmi_warp_top`；[使用说明](FPGA_AADCS/HDMI_Warp/README.md)。HDMIK V1.1 输入，经 DDR 畸变/仿射重采样后，通过 CAM2 PCIe 送到 RK3568。
 - 当前使用说明：[内部畸变视频源](docs/internal-distorted-video.md)。
 - 当前位流：[boardtop.sbit](firmware/fpga/distortion-video/unified/boardtop.sbit)。
 - ARM 接收程序：[ov5640-capture](firmware/rk3568/ov5640-capture)，兼容 CAM2。

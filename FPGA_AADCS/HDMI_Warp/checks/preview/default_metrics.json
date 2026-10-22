@@ -1,0 +1,7 @@
+{
+  "config": "F:\\AADCS_git_zyxw\\FPGA_AADCS\\HDMI_Warp\\config\\warp.json",
+  "max_coordinate_error_pixels": 0.0,
+  "mean_bgr_difference_vs_opencv": 0.0,
+  "p99_bgr_difference_vs_opencv": 0.0,
+  "note": "Software references. OpenCV uses quantized interpolation weights; RTL rounds RGB565 channels."
+}
