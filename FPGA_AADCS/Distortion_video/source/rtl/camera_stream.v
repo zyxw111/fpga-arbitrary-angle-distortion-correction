@@ -9,7 +9,7 @@ module camera_stream #(
 )(input pclk,input clk,input rst_n,input enable,
  input vsync,input href,input [7:0] cam_data,
  output valid,input ready,output [127:0] data,output sof,output eof,
- output reg bad);
+ output reg bad,output reg [7:0] bad_reason);
  reg [1:0] enable_sync,reset_sync;
  reg vsync_d,href_d,phase;
  reg [1:0] state;
@@ -43,7 +43,7 @@ module camera_stream #(
    state<=0;vsync_d<=0;href_d<=0;phase<=0;first_byte<=0;
    byte_count<=0;line_count<=0;pixel_count<=0;lane<=0;partial<=0;
    final_word<=0;final_pending<=0;push_valid<=0;push_data<=0;
-   push_sof<=0;push_eof<=0;bad<=0;
+   push_sof<=0;push_eof<=0;bad<=0;bad_reason<=0;
   end else if(source_ok)begin
    vsync_d<=vsync;href_d<=href;
    if(push_valid && push_ready)push_valid<=0;
@@ -57,10 +57,10 @@ module camera_stream #(
      if(!bad && !href && last_line_ok && completed_lines==HEIGHT &&
         pixel_count==WIDTH*HEIGHT && final_pending && room)begin
       push_data<=final_word;push_sof<=WIDTH*HEIGHT==8;push_eof<=1;push_valid<=1;
-     end else bad<=1;
+     end else begin bad<=1;bad_reason[3]<=1;end
     end else if(href && !vsync)begin
      if(byte_count!=8191)byte_count<=byte_count+1'b1;
-     if(byte_count>=WIDTH*2 || line_count>=HEIGHT)bad<=1;
+     if(byte_count>=WIDTH*2 || line_count>=HEIGHT)begin bad<=1;bad_reason[0]<=1;end
      if(!phase)begin first_byte<=cam_data;phase<=1;end
      else begin
       phase<=0;
@@ -73,14 +73,14 @@ module camera_stream #(
         end else if(room)begin
          push_data<={cam_data,first_byte,partial};push_sof<=pixel_count==7;
          push_eof<=0;push_valid<=1;
-        end else bad<=1;
+        end else begin bad<=1;bad_reason[1]<=1;end
        end else begin partial[lane*16+:16]<={cam_data,first_byte};lane<=lane+1'b1;end
       end
      end
     end else if(line_ending)begin
-     if(byte_count!=WIDTH*2 || phase)bad<=1;
+     if(byte_count!=WIDTH*2 || phase)begin bad<=1;bad_reason[2]<=1;end
      byte_count<=0;phase<=0;
-     if(line_count!=4095)line_count<=line_count+1'b1;else bad<=1;
+     if(line_count!=4095)line_count<=line_count+1'b1;else begin bad<=1;bad_reason[4]<=1;end
     end
    end
   end

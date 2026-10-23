@@ -30,6 +30,13 @@ module fetch (
     assign out_data = buffer[index];
     assign out_last = out_valid && remaining == {27'd0,chunk} &&
                       {1'b0,index} == chunk - 1'b1;
+    // One physical write port. Keep both the immediate first return and the
+    // later returns on the SAME indexed assignment: PDS 2022.2 inferred the
+    // old separate buffer[0]/buffer[index] assignments with write address 0,
+    // overwriting beat 0 on hardware although RTL simulation was correct.
+    wire receive = rvalid && ((state == ADDR && arready) || state == RECV);
+    always @(posedge clk)
+        if (rst_n && receive) buffer[index] <= rdata;
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             state <= IDLE; index <= 0; cursor <= 0; remaining <= 0;
@@ -48,7 +55,6 @@ module fetch (
                     else if (arready) begin
                         // Some controllers can return beat 0 with AR acceptance.
                         if (rvalid) begin
-                            buffer[0] <= rdata;
                             if (rlast != (chunk == 1)) begin error <= 1; state <= HALT; end
                             else if (chunk == 1) begin index <= 0; state <= SEND; end
                             else begin index <= 1; state <= RECV; end
@@ -56,7 +62,6 @@ module fetch (
                     end
                 end
                 RECV: if (rvalid) begin
-                    buffer[index] <= rdata;
                     if (rlast != ({1'b0,index} == chunk - 1'b1)) begin
                         error <= 1; state <= HALT;
                     end else if ({1'b0,index} == chunk - 1'b1) begin

@@ -1,0 +1,4 @@
+PASS frame-0.rgb565: all 256000 pixels exact; live source frame low byte=1
+PASS frame-1.rgb565: all 256000 pixels exact; live source frame low byte=16
+PASS frame-2.rgb565: all 256000 pixels exact; live source frame low byte=24
+PASS frame-3.rgb565: all 256000 pixels exact; live source frame low byte=31

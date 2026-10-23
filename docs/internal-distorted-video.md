@@ -1,6 +1,6 @@
 # FPGA 内部畸变视频源
 
-本地 zyxw 分支的当前默认功能：在 FPGA 内生成连续的畸变图像，作为虚拟摄像头输入，
+本地 zyxw-gpt 分支的当前默认功能：在 FPGA 内生成连续的畸变图像，作为虚拟摄像头输入，
 经过原摄像头接收器、外部 DDR 和 PCIe DMA，最终由主机接收到 RK3568 DDR。
 不需要连接 OV5640，也不等待 SCCB 应答。FPGA 仍是 PG2L100H-6IFBG484。
 
@@ -48,7 +48,13 @@ PWDN 保持低，EX_RST 保持低。无需摄像头、额外跳线或额外时�
 ## ARM 兼容与状态
 
 保留 CAM2 magic `0x43414d32`、版本 `0x00020000` 和全部 DMA 描述符约定。
-不需要修改 ARM 源码，可继续使用 `firmware/rk3568/ov5640-capture`：
+2026-10-23 联调已在 `F:/git_clone/RK3568-PCIE` 加入 CAM2 接收/显示，并安装到板卡 `/userdata/fpga-view`。已验证的实时显示命令：
+
+```sh
+sh /userdata/fpga-view/run.sh --mode cam2 --fit
+```
+
+当前已启动一个显示实例，重复启动采集会被设备锁拒绝。此前的命令行保存程序仍保留：
 
 ```sh
 chmod +x ./ov5640-capture
@@ -77,6 +83,8 @@ python FPGA_AADCS/Distortion_video/sim/regress.py --bin 'F:/AADCS_git/.cache/too
 位流统一交付在 `firmware/fpga/distortion-video/unified/boardtop.sbit`。
 下载方式沿用 `scripts/program_fpga.tcl`（1 MHz、WakeDownReconfigure、仅 SRAM）；
 遇到 DONE 未拉高时按此前实测步骤使用 F_RESET 后重试。
+
+2026-10-23 当前交付为带三组 DebugCore 的实机验证版本，复现构建使用 `build.ps1 -Debug`。已修复 PLL 启动与 fetch RAM 推断问题，连续四帧共 1,024,000 像素与参考图像完全一致；ARM 实时显示约 10～11 fps。完整日志、当前位流哈希与截图见 [联调记录](verification/2026-10-23-joint/notes.md)。下面的 2026-10-22 结果是历史记录，其旧位流哈希不再代表当前交付文件。
 
 验证覆盖实际 640×400 DVP 输出对旧黄金图像的逐字节比较、连续帧节拍和中途复位；
 以及虚拟摄像头→原接收器→DDR 模型→实际厂商 DMA RX/TX 的端到端像素比较、

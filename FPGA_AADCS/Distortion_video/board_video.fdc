@@ -572,3 +572,7 @@ set_input_delay -clock [get_clocks {camera_pclk}] -max 8.000 [get_ports {cam_vsy
 set_input_delay -clock [get_clocks {camera_pclk}] -min 1.000 [get_ports {cam_vsync cam_href cam_data[*]}]
 set_false_path -from [get_ports {cam_sda}]
 set_false_path -to [get_ports {cam_scl cam_sda cam_pwdn cam_reset_n}]
+
+# First stage of diagnostic-only CDC; the second stage is timed normally.
+
+set_false_path -to [get_cells -hierarchical {*debug_boot_meta*}]

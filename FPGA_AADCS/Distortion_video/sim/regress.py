@@ -10,9 +10,9 @@ from pathlib import Path
 import subprocess
 import time
 
-DEFAULT_TESTS = ["addr", "bilin", "warp", "pat", "pack", "patpack", "afifo",
+DEFAULT_TESTS = ["board_startup", "addr", "bilin", "warp", "pat", "pack", "patpack", "afifo",
                  "stream", "overflow", "vtop", "dmapat", "split", "frame",
-                 "burst", "supply", "fetch", "store", "bridge", "faults", "pipeline", "async", "source", "replay", "ddrbist", "ddrlink", "dvp", "sccb", "camseq", "cammon", "camio", "camclock", "demo_bars", "demo_raw", "demo_corrected", "demostream_raw", "demostream_corrected", "demoddr_raw", "demoddr_corrected", "board_bars", "board_raw", "board_corrected", "board_corrupt", "board_invalid", "board_pcie", "board_dynamic", "mode_control", "affine", "camera_pcie", "ov5640_init", "camera_stream", "synthetic_camera", "synthetic_pcie"]
+                 "burst", "supply", "fetch", "store", "bridge", "faults", "pipeline", "async", "source", "replay", "ddrbist", "ddrlink", "dvp", "sccb", "camseq", "cammon", "camio", "camclock", "demo_bars", "demo_raw", "demo_corrected", "demostream_raw", "demostream_corrected", "demoddr_raw", "demoddr_corrected", "board_bars", "board_raw", "board_corrected", "board_corrupt", "board_invalid", "board_pcie", "board_dynamic", "mode_control", "affine", "camera_pcie", "ov5640_init", "camera_stream", "synthetic_camera", "synthetic_pcie", "synthetic_full"]
 
 def run(cmd, cwd, timeout=120):
     p = subprocess.run([str(x) for x in cmd], cwd=cwd, capture_output=True,
@@ -59,7 +59,7 @@ def main():
         if name.startswith(("demo_", "demostream_", "demoddr_", "preview_", "board_")):
             extra_inputs = sorted((root / "sim/demo_vectors").glob("*.hex"))
         if name.startswith("synthetic_"):
-            extra_inputs = [root / "sim/demo_vectors" / ("raw_640x400.hex" if name=="synthetic_camera" else "raw_128x80.hex")]
+            extra_inputs = [root / "sim/demo_vectors" / ("raw_640x400.hex" if name in ("synthetic_camera","synthetic_full") else "raw_128x80.hex")]
         if name == "affine":
             extra_inputs = [root / "sim/affine_vectors.hex"]
         preprocessed = outdir / (top + ".pre.v")

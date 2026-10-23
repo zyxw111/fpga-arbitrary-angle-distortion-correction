@@ -1,0 +1,12 @@
+(* PAP_BLE_DEF="B" *)    V_RAM32X2 /* u_CORES/u_debug_core_0/TRIG0_ff[0][129]/opit_0_inv_32X2SL6Q/FYB/RAM32X2 */ #(
+            .INIT0(32'b00000000000000000000000000000000), 
+            .INIT1(32'b00000000000000000000000000000000), 
+            .WE_POL("TRUE"))
+        \CLMS_243_793/FYB/RAM32X2  (
+            .RDO ({debug_verify_data[113], debug_verify_data[112]}),
+            .RADDR ({1'b0, \u_image/reader/index [3] , \u_image/reader/index [2] , \u_image/reader/index [1] , \u_image/reader/index [0] }),
+            .WADDR ({1'b0, \u_image/reader/index [3] , \u_image/reader/index [2] , \u_image/reader/index [1] , \u_image/reader/index [0] }),
+            .WDI ({rd[113], rd[112]}),
+            .WCLK (ntR4412),
+            .WE (\CLMS_309_805/ntWE ));
+	// ../../../source/rtl/camera_frame.v:4168

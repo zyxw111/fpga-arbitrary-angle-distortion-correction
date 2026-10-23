@@ -1,0 +1,4 @@
+Synthetic PCIe test starting
+DDR image ready at 1957980000
+PASS internal distorted DVP -> camera receiver -> frame DDR -> real PCIe RX/MMIO/CplD/TX: 135 descriptors 525 TLPs 30720 exact pixels, three exact distorted frames, live source during host idle, stable DDR snapshot, random TX stalls
+F:\AADCS_git_zyxw\FPGA_AADCS\Distortion_video\sim\tb_synthetic_pcie.sv:138: $finish called at 7997590000 (1ps)

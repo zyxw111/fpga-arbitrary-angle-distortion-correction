@@ -3,7 +3,7 @@ module tb_camera_stream;
  reg pclk=0,clk=0,rst_n=0,enable=1,vsync=0,href=0,ready=1;
  reg [7:0] cam_data=0;
  always #10 pclk=~pclk;always #7 clk=~clk;
- wire valid,sof,eof,bad;wire [127:0] data;
+ wire valid,sof,eof,bad;wire [7:0] bad_reason;wire [127:0] data;
  integer received=0,endings=0,j;
  camera_stream #(.WIDTH(16),.HEIGHT(4),.FIFO_BITS(2)) dut(.*);
  always @(posedge clk)if(rst_n && valid && ready)begin
@@ -41,10 +41,10 @@ module tb_camera_stream;
   if(received!=8 || endings!=1 || bad)$fatal(1,"full camera frame");
   // Short line aborts the frame without publishing an EOF.
   reset_source();frame(1);boundary();repeat(12)@(negedge pclk);
-  if(!bad || endings)$fatal(1,"short frame was published");
+  if(!bad || endings || !bad_reason[2])$fatal(1,"short frame was published or not diagnosed");
   // Consumer stall longer than FIFO capacity must fail, not silently splice.
   ready=0;reset_source();frame(0);boundary();repeat(12)@(negedge pclk);
-  if(!bad)$fatal(1,"overflow not detected");
+  if(!bad || !bad_reason[1])$fatal(1,"overflow not detected/diagnosed");
   $display("PASS camera stream: raw DVP counts, RGB565 byte/lane order, delayed EOF, short line and overflow rejection");$finish;
  end
  initial begin #100000;$fatal(1,"camera stream timeout");end

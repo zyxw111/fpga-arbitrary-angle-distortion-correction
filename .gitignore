@@ -11,3 +11,8 @@ Desktop.ini
 
 # Local tools, simulations and PDS build results
 /.cache/
+
+# Fabric Debugger and one-off PDS command discovery output
+/log/
+/scripts/data.wf
+/joint-pnr-help.pds

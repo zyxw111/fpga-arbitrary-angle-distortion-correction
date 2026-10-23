@@ -1,0 +1,37 @@
+make: Entering directory '/userdata/fpga-view-gpt/tests'
+gcc -O1 -g -Wall -Wextra -D_GNU_SOURCE -I/userdata/fpga-view-gpt/src \
+    test_convert.c /userdata/fpga-view-gpt/src/convert.c /userdata/fpga-view-gpt/src/fpga_capture.c /userdata/fpga-view-gpt/src/cam2.c /userdata/fpga-view-gpt/src/synth.c -o /userdata/fpga-view-gpt/.cache/tests/test-host -lm
+--- native (scalar) ---
+== fpga-view unit tests ==
+convert: reference colours
+convert: bulk agreement (NEON vs scalar)
+capture: frame header detection and rotation
+capture: status header decode
+synth: pattern generation
+== 32 checks, 0 failure(s) ==
+PASS CAM2: 640x400, 125 descriptors/frame, startup ready wait, serial completion, counter wrap, consecutive frames
+PASS CAM2: unaligned-to-page bus address, 4 KiB split, payload visibility after posted completion
+PASS CAM2: interrupted snapshot drained before new frame; no row rotation or mixed frame
+PASS CAM2: timeout retains in-flight ownership and never issues a second descriptor
+PASS CAM2: corrupt pixels and FPGA errors are rejected before display
+make: Leaving directory '/userdata/fpga-view-gpt/tests'
+[I] render 10.0 fps, 900 us/draw, capture published 10/s
+[I] capture 10.0 fps
+[I] render 10.0 fps, 856 us/draw, capture published 10/s
+[I] render 10.0 fps, 900 us/draw, capture published 20/s
+000000  32 4d 41 43 00 00 02 00 28 00 00 00 06 ed 02 00  | 2MAC....(.......
+000010  80 02 00 00 90 01 00 00 00 05 00 00 00 d0 07 00  | ................
+000020  fe 05 00 00 00 00 00 00 00 00 00 00 00 00 00 00  | ................
+000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  | ................
+000040  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  | ................
+000050  00 00 00 00 00 00 00 00 00 00 00 00 6d 73 6c 7d  | ............msl}
+000060  6d 73 6c 7d 00 00 00 00 00 00 00 00 00 00 00 00  | msl}............
+000070  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  | ................
+
+== status decode ==
+  CAM2 version=00020000 flags=00000028 frame_ready=0 busy=0 error=0 internal=1
+  geometry=640x400 stride=1280 bytes=512000
+  completed descriptors=191750 published=1534 dropped=0 cursor=0 checksum=00000000
+  sensor_id=0000 host_error=00 sensor_error=00 engine_error=00
+  last_drop=0 DVP_flags=00 wrote=0 read=0 expected=00000000 actual=00000000
+  current native DDR checksum=7d6c736d (changes during verification)

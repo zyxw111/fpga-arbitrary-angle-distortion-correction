@@ -1,0 +1,2 @@
+PASS full 640x400 synthetic DVP capture: all 256000 DDR pixels exact, geometry accepted, readback checksum=7d6c736d
+F:\AADCS_git_zyxw\FPGA_AADCS\Distortion_video\sim\tb_synthetic_full.sv:29: $finish called at 59583045000 (1ps)

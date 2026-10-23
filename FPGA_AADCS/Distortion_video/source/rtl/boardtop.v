@@ -84,13 +84,28 @@ module boardtop #(
     wire board_ref,board_ref_g,clock25,board_clock_locked,free_clk_g;
     GTP_INBUFDS u_board_input(.I(board_clk_p),.IB(board_clk_n),.O(board_ref));
     GTP_CLKBUFG u_board_ref(.CLKIN(board_ref),.CLKOUT(board_ref_g));
+    wire board_pll_reset;
+    board_pll_startup u_board_startup(.clk(board_ref_g),.key0_n(key0_n),.pll_reset(board_pll_reset));
+    // 125/5 * 40 = 1000 MHz VCO; /40 = 25 MHz, 50% duty.
+    // DUTY parameters count VCO half-cycles: 50% requires DUTY==ODIV.
     ips2l_ddrphy_gpll_v1_3 #(.CLKIN_FREQ(125.0),.BANDWIDTH("OPTIMIZED"),
-      .IDIV(1),.FDIV(8.0),.DUTYF(4),.ODIV0(40.0),.DUTY0(20),
+      .IDIV(5),.FDIV(40.0),.DUTYF(40),.ODIV0(40.0),.DUTY0(40),
       .ODIV1(40),.STATIC_PHASE0(0),.INTERNAL_FB("CLKOUTF")) u_board_clock(
-      .clk_in0(board_ref_g),.pll_rst(!key0_n),.dps_clk(1'b0),.dps_en(1'b0),.dps_dir(1'b0),
+      .clk_in0(board_ref_g),.pll_rst(board_pll_reset),.dps_clk(1'b0),.dps_en(1'b0),.dps_dir(1'b0),
       .clkout0_gate(1'b0),.clkout0(clock25),.clkout0n(),.clkout1(),.clkout1n(),
       .dps_done(),.pll_lock(board_clock_locked));
     GTP_CLKBUFG u_free_clk(.CLKIN(clock25),.CLKOUT(free_clk_g));
+    // Independent board-clock probes remain observable when PCIe clocks stop.
+    reg [31:0] debug_board_count /* synthesis PAP_MARK_DEBUG="true" */ = 0;
+    always @(posedge board_ref_g) debug_board_count <= debug_board_count + 1'b1;
+    reg [31:0] debug_boot_flags /* synthesis PAP_MARK_DEBUG="true" */ = 0;
+    reg [31:0] debug_boot_meta /* synthesis PAP_MARK_DEBUG="true" */ = 0;
+    always @(posedge board_ref_g) begin
+      debug_boot_flags <= debug_boot_meta;
+      debug_boot_meta <= {host_error,error_code,5'd0,image_ready,init,lock,
+        board_clock_locked,power_up_rst_n,dma_reset_n,core_rst_n,
+        smlh_link_up,rdlh_link_up,key1_n,key0_n};
+    end
     pcie_reset_control u_reset_control(
         .free_clk(free_clk_g), .key0_n(key0_n && board_clock_locked), .key1_n(1'b1),
         .dma_clk(pclk_div2), .core_rst_n(core_rst_n),
@@ -112,7 +127,7 @@ module boardtop #(
     wire [7:0] camera_error;
     wire [15:0] camera_id;
     wire [8:0] camera_reg_index;
-    wire [31:0] captured_frames,dropped_frames;
+    wire [31:0] captured_frames,dropped_frames;wire [255:0] camera_diagnostics;
     // Open drain: the adapter's SCCB pull-ups are on its 2.8 V side.
     // Keep PWDN low throughout operation. Reset sequencing uses the module's
     // EX_RST transistor circuit, avoiding a 3.3 V high on the 2.8 V PWDN input.
@@ -148,14 +163,25 @@ module boardtop #(
     wire [9:0] length;wire [63:0] address;wire [12:0] bytes;
     wire [7:0] error_code,host_error;wire [31:0] checksum;
     wire [27:0] cursor;wire [11:0] status_addr;wire [127:0] status_data,host_status;
+    wire [255:0] debug_ddr_vector /* synthesis PAP_MARK_DEBUG="true" */;
+    wire [127:0] debug_verify_data /* synthesis PAP_MARK_DEBUG="true" */;
+    wire debug_verify_valid /* synthesis PAP_MARK_DEBUG="true" */;
+    wire [31:0] native_checksum;
+    wire [175:0] debug_verify_vector /* synthesis PAP_MARK_DEBUG="true" */;
+    assign debug_verify_vector={camera_diagnostics[223:192],debug_verify_data,15'd0,debug_verify_valid};
+    assign debug_ddr_vector={20'd0,6'd0,lock,init,wl,wr,ar,av,rr,rv,rl,rvalid,
+       wd[31:0],ra,camera_diagnostics[223:192],rd};
     wire [31:0] camera_flags=host_status[95:64] | (camera_ready?32'd8:32'd0) | (camera_error!=0?32'd16:32'd0) | (INTERNAL_CAMERA!=0?32'd32:32'd0);
     assign status_data=(status_addr==0)?{host_status[127:96],camera_flags,32'h00020000,32'h43414d32}:
       (status_addr==2)?{checksum,{4'd0,cursor},dropped_frames,captured_frames}:
-      (status_addr==3)?{{24'd0,error_code},{23'd0,camera_reg_index},{16'd0,camera_error,host_error},{16'd0,camera_id}}:host_status;
+      (status_addr==3)?{{24'd0,error_code},{23'd0,camera_reg_index},{16'd0,camera_error,host_error},{16'd0,camera_id}}:
+      (status_addr==4)?camera_diagnostics[127:0]:(status_addr==5)?camera_diagnostics[255:128]:
+      (status_addr==6)?{96'd0,native_checksum}:host_status;
     camera_frame #(.WIDTH(WIDTH),.HEIGHT(HEIGHT)) u_image(
       .pclk(camera_pclk_g),.clk(dclk),.dma_clk(pclk_div2),.rst_n(dreset[1]),.init_done(iready[1]),
       .camera_ready(camera_ready),.vsync(input_vsync),.href(input_href),.camera_data(input_data),
-      .good_frames(captured_frames),.dropped_frames(dropped_frames),
+      .good_frames(captured_frames),.dropped_frames(dropped_frames),.diagnostics(camera_diagnostics),
+      .debug_verify_data(debug_verify_data),.debug_verify_valid(debug_verify_valid),.native_checksum(native_checksum),
       .request_toggle(req_toggle),.request_bytes(bytes),.frame_ready(image_ready),
       .error_code(error_code),.checksum(checksum),.cursor(cursor),
       .prepared(prepared),.launch(launch),.rd_req(source_read),.rd_data(source_data),

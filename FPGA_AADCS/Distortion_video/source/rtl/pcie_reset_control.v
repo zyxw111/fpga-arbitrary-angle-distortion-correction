@@ -1,5 +1,5 @@
 // Configuration-time initialization is synthesized into FPGA FF INIT bits.
-// The board's V4 oscillator runs even while the PCIe PHY clocks are stopped.
+// free_clk is the board's 25 MHz PLL output, independent of PCIe clocks.
 module pcie_reset_control #(
     parameter integer POR_BITS = 18,
     parameter integer DEBOUNCE_BITS = 18
@@ -54,4 +54,15 @@ module pcie_reset_control #(
         end
     end
     assign dma_reset_n = stream_run;
+endmodule
+
+// GPLL needs an explicit startup reset, independent of its own output/LOCK.
+// The differential reference keeps running while the PLL/PCIe are in reset.
+module board_pll_startup #(parameter integer COUNT_BITS=18)(
+ input wire clk,input wire key0_n,output wire pll_reset);
+ reg [COUNT_BITS-1:0] count=0;
+ always @(posedge clk or negedge key0_n)
+   if(!key0_n) count<=0;
+   else if(!(&count)) count<=count+1'b1;
+ assign pll_reset=!key0_n || !(&count);
 endmodule
