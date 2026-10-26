@@ -24,7 +24,7 @@ def run(cmd,timeout=180):
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument('--bin',type=Path,default=Path('F:/AADCS_git/.cache/tools/iverilog/bin'))
-    ap.add_argument('--tests',nargs='+',default=['hdmi_map','hdmi_stream','hdmi_init','hdmi_pcie'])
+    ap.add_argument('--tests',nargs='+',default=['hdmi_map','hdmi_stream','hdmi_init','hdmi_monitor','hdmi_pcie','profile_control','clock_meter','video_rx','warp_control','hdmi_rx_stream','hdmi_v2_pcie'])
     args=ap.parse_args(); core=args.bin.resolve().parent/'lib/ivl'
     os.environ['PATH']=str(args.bin.resolve())+os.pathsep+os.environ['PATH']
     out=ROOT/'build/sim';out.mkdir(parents=True,exist_ok=True)
@@ -35,7 +35,7 @@ def main():
             k1=rng.uniform(-.3,.1),k2=.04,k3=-.01,p1=.002,p2=-.003,fy=480.)
         values=parameters(c);q=quantize(values);x=rng.randrange(640);y=rng.randrange(400)
         mx,my=float_map(x,y,values)
-        vectors.extend([x,y]+[q[k] for k in ORDER]+[round(mx*4096),round(my*4096)])
+        vectors.extend([x,y]+[q[k] for k in ORDER]+[*fixed_map(x,y,q),round(mx*4096),round(my*4096)])
     (out/'map_vectors.hex').write_text('\n'.join(f'{v&0xffffffff:08x}' for v in vectors)+'\n')
     c=base.copy();c.update(input_width=64,input_height=64,output_width=64,output_height=40,
         fx=64.,fy=64.,cx=32.,cy=32.,angle_degrees=12.,k1=-.16,k2=.04,k3=-.01,p1=.002,p2=-.003)
@@ -43,12 +43,17 @@ def main():
     (out/'test_config.v').write_text(render(values))
     golden=[sample(*fixed_map(x,y,q),64,64) for y in range(40) for x in range(64)]
     (out/'hdmi_golden.hex').write_text('\n'.join(f'{v:04x}' for v in golden)+'\n')
+    for phase in (1,2):
+        qp=q.copy();qp['a02']+=3*65536
+        if phase==2:qp['k1']+=round(.05*65536)
+        image=[sample(*fixed_map(x,y,qp),64,64) for y in range(40) for x in range(64)]
+        (out/f'hdmi_golden{phase}.hex').write_text('\n'.join(f'{v:04x}' for v in image)+'\n')
     results=[]
     for name in args.tests:
         t0=time.monotonic();top='tb_'+name
         sources=[p for p in sorted((ROOT/'source/rtl').glob('*.v')) if p.stem!='hdmi_config']
         sources += [out/'test_config.v',ROOT/'sim'/f'{top}.sv']
-        if name=='hdmi_pcie':
+        if name in ('hdmi_pcie','hdmi_v2_pcie'):
             sources += [ROOT/'sim/ddrmodel.sv',ROOT/'sim/pcie_ram_model.sv']
             sources += [p for p in (ROOT/'source/pcie_dma').rglob('*.v') if 'ips2l_pcie_dma_ram' not in str(p)]
         pre=out/f'{top}.pre.v';artifact=out/f'{top}.vvp';artifact.unlink(missing_ok=True)
@@ -62,7 +67,7 @@ def main():
         cfg.write_text('\n'.join(lines)+'\n')
         log=run([core/'ivlpp.exe','-L','-o',pre,*sources])
         log+=run([core/'ivl.exe','-C',core/'vvp.conf','-C',cfg,pre])
-        log+=run([args.bin.resolve()/'vvp.exe',artifact])
+        log+=run([args.bin.resolve()/'vvp.exe',artifact],timeout=1200 if name=='video_rx' else 180)
         (out/f'{top}.log').write_text(log)
         if 'PASS' not in log:raise RuntimeError(log)
         print(next(line for line in log.splitlines() if 'PASS' in line),flush=True)

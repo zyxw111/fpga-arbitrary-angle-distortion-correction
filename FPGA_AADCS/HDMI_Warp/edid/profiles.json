@@ -1,0 +1,70 @@
+[
+  {
+    "profile": 0,
+    "file": "0-multi.bin",
+    "preferred": "1920x1080@60",
+    "modes": [
+      "640x480@60",
+      "1280x720@50",
+      "1280x720@60",
+      "1920x1080@30",
+      "1920x1080@50",
+      "1920x1080@60"
+    ],
+    "sha256": "f3a2f6076348b0b9c27c38e51d21f201b675d9b901f424a4c0651bd6e5e5a169"
+  },
+  {
+    "profile": 1,
+    "file": "1-640x480_60.bin",
+    "preferred": "640x480@60",
+    "modes": [
+      "640x480@60"
+    ],
+    "sha256": "8e633578c82e00f7c1a94db07477ca56a974845f4b696bbf7c53556b2d99adba"
+  },
+  {
+    "profile": 2,
+    "file": "2-1280x720_50.bin",
+    "preferred": "1280x720@50",
+    "modes": [
+      "1280x720@50"
+    ],
+    "sha256": "4b4374781052e8b18f9abf0474846e7ce9101ecdb04015d67c465e2607fb146d"
+  },
+  {
+    "profile": 3,
+    "file": "3-1280x720_60.bin",
+    "preferred": "1280x720@60",
+    "modes": [
+      "1280x720@60"
+    ],
+    "sha256": "74430d7fdb2dce64d6ebeb520aebdd5bd4ce7fa6f1e17038b4faa6a0bab7e70e"
+  },
+  {
+    "profile": 4,
+    "file": "4-1920x1080_30.bin",
+    "preferred": "1920x1080@30",
+    "modes": [
+      "1920x1080@30"
+    ],
+    "sha256": "17faeb590109f0a56897f706865dd1671ec62ad3fbf4a11788bc1ba0461de44c"
+  },
+  {
+    "profile": 5,
+    "file": "5-1920x1080_50.bin",
+    "preferred": "1920x1080@50",
+    "modes": [
+      "1920x1080@50"
+    ],
+    "sha256": "b99de497bb4b461cc1e7494c8cd76416684dafece31284178d79a01191e837ff"
+  },
+  {
+    "profile": 6,
+    "file": "6-1920x1080_60.bin",
+    "preferred": "1920x1080@60",
+    "modes": [
+      "1920x1080@60"
+    ],
+    "sha256": "50a7ac4ca4182b7e0c01b0274117534e3bd319cd7e5fbf3cc5db53096d4a7e78"
+  }
+]

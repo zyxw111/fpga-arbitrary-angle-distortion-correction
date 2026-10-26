@@ -1,0 +1,2 @@
+PASS profile debounce, held key, I2C idle switch, reset pulse, seven-profile wrap
+F:\AADCS_git_zyxw\FPGA_AADCS\HDMI_Warp\sim\tb_profile_control.sv:18: $finish called at 2380000 (1ps)

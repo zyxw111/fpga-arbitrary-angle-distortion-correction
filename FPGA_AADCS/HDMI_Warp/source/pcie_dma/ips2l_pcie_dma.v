@@ -82,7 +82,9 @@ module ips2l_pcie_dma #(
     input wire i_video_ready,input wire i_video_busy,
     output wire o_video_request,output wire [9:0] o_video_length,
     output wire [63:0] o_video_address,output wire o_video_tx_busy,
-    output wire [11:0] o_video_status_addr,input wire [127:0] i_video_status_data
+    output wire [11:0] o_video_status_addr,input wire [127:0] i_video_status_data,
+    output wire o_control_wr_en,output wire [11:0] o_control_wr_addr,
+    output wire [31:0] o_control_wr_data,output wire [15:0] o_control_wr_be
     //debug
     //output  wire    [159:0]             o_dbg_bus
 );
@@ -151,6 +153,11 @@ wire                            bar1_wr_en;
 wire        [ADDR_WIDTH-1:0]    bar1_wr_addr;
 wire        [127:0]             bar1_wr_data;
 wire        [15:0]              bar1_wr_byte_en;
+assign o_control_wr_en=bar1_wr_en;
+assign o_control_wr_addr=bar1_wr_addr;
+assign o_control_wr_data=bar1_wr_data[31:0];
+assign o_control_wr_be=bar1_wr_byte_en;
+
 //bar2 rd interface
 wire                            bar2_rd_clk_en;
 wire        [ADDR_WIDTH-1:0]    bar2_rd_addr;

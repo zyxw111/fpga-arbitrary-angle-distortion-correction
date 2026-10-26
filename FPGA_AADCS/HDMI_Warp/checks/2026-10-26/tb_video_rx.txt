@@ -1,0 +1,10 @@
+PASS RGB frame 16x7, polarity 0
+PASS RGB frame 16x7, polarity 0
+PASS RGB frame 32x9, polarity 1
+PASS RGB frame 640x480, polarity 1
+PASS RGB frame 1280x720, polarity 0
+PASS RGB frame 1280x720, polarity 0
+PASS RGB frame 1920x1080, polarity 0
+PASS RGB frame 1920x1080, polarity 0
+PASS geometry/rate switches, RGB checksum/coordinates, ragged-frame rejection, coherent CDC, reset
+F:\AADCS_git_zyxw\FPGA_AADCS\HDMI_Warp\sim\tb_video_rx.sv:75: $finish called at 262260090000 (1ps)

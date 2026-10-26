@@ -1,6 +1,7 @@
 `timescale 1ns/1ps
 
-// MS7200 SCCB register read/write: 16-bit register address, 8-bit data.
+// MS7200 SCCB register read/write: 16-bit register address, LOW address byte first.
+// Matches the supplied vendor iic_dri.v ADDR_BYTE=2 sequence, not common sensor I2C.
 // 25 MHz / HALF_CYCLES=125 gives a conservative bus below 100 kHz.
 // Open-drain outputs: 1 means pull low, 0 means release. No clock stretching.
 module hdmi_i2c #(
@@ -132,11 +133,11 @@ module hdmi_i2c #(
                         bit_index <= 3'd7;
                         if (tx_index == 0) begin
                             tx_index <= 2'd1;
-                            tx_byte <= addr_latched[15:8];
+                            tx_byte <= addr_latched[7:0];
                             state <= TX_SETUP;
                         end else if (tx_index == 1) begin
                             tx_index <= 2'd2;
-                            tx_byte <= addr_latched[7:0];
+                            tx_byte <= addr_latched[15:8];
                             state <= TX_SETUP;
                         end else if (tx_index == 2) begin
                             if(write_latched)begin tx_index<=3;tx_byte<=data_latched;state<=TX_SETUP;end

@@ -1,0 +1,265 @@
+
+----------------------------------------------------------------------------------------------------
+| Tool Version : Fabric Compiler (version 2022.2-SP6.4 <build 146967>)
+| Date         : Mon Oct 26 15:07:38 2026
+| Design       : hdmi_warp_top
+| Device       : PG2L100H
+| Speed Grade  : -6
+| Package      : FBG484
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+| Timing Models: Production
+| Tcl Command  : report_timing 
+----------------------------------------------------------------------------------------------------
+
+Timing analysis mode : multi corner
+
+ Clock Summary:                                                                                                                                                                                                                                                                
+*******************************************************************************************************************************************************************************************************************************************************************************
+                                                                                      Clock   Non-clock                                                                                                                                                                        
+ Clock                    Period       Waveform            Type                       Loads       Loads  Sources                                                                                                                                                               
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ board_ref125             8.0000       {0.0000 4.0000}     Declared                     312         109  {board_clk_p}                                                                                                                                                         
+   ref_clk                40.0000      {0.0000 20.0000}    Generated (board_ref125)      14          32  {u_board_clock/u_gpll/gpll_inst/CLKOUT0}                                                                                                                              
+     rst_clk              40.0000      {0.0000 20.0000}    Generated (ref_clk)          104          19  {u_mem/u_ddr/u_ddrphy_top/rst_clk_gpll/u_gpll/gpll_inst/CLKOUT0}                                                                                                      
+     ddrphy_sysclk        7.6190       {0.0000 3.8090}     Generated (ref_clk)         5511         631  {u_mem/u_ddr/u_ddrphy_top/ddrphy_gpll/u_gpll/gpll_inst/CLKOUT0}                                                                                                       
+     phy_dq_clk_0         0.9524       {0.0000 0.4760}     Generated (ref_clk)           35           1  {u_mem/u_ddr/u_ddrphy_top/ddrphy_slice_top/i_dqs_bank[0].ddrphy_ppll/u_ppll/ppll_inst/CLKOUTPHY}                                                                      
+       phy_dq_sysclk_0    7.6190       {1.9040 5.7140}     Generated (phy_dq_clk_0)      35           0  {u_mem/u_ddr/u_ddrphy_top/ddrphy_slice_top/i_dqs_bank[0].u_ddrphy_ioclkdiv/ddrphy_ioclk_div_inst/CLKOUT}                                                              
+     phy_dq_clk_1         0.9524       {0.0000 0.4760}     Generated (ref_clk)           42           1  {u_mem/u_ddr/u_ddrphy_top/ddrphy_slice_top/i_dqs_bank[1].ddrphy_ppll/u_ppll/ppll_inst/CLKOUTPHY}                                                                      
+       phy_dq_sysclk_1    7.6190       {1.9040 5.7140}     Generated (phy_dq_clk_1)      42           0  {u_mem/u_ddr/u_ddrphy_top/ddrphy_slice_top/i_dqs_bank[1].u_ddrphy_ioclkdiv/ddrphy_ioclk_div_inst/CLKOUT}                                                              
+ pclk                     4.0000       {0.0000 2.0000}     Declared                     107           3  {u_ips2l_pcie_wrap/U_IPS2L_PCIE_TOP/U_IPS2L_HSSTLP_PCIE_SOFT_PHY/x2.GTP_HSST_2LANE_TOP/U_GTP_HSSTLP_WRAPPER/CHANNEL1_ENABLE.U_GTP_HSSTLP_LANE1/gophsst/P_TCLK2FABRIC} 
+ pclk_div2                8.0000       {0.0000 4.0000}     Declared                    3183          66  {u_ips2l_pcie_wrap/U_IPS2L_PCIE_TOP/U_IPS2L_HSSTLP_PCIE_SOFT_PHY/x2.GTP_HSST_2LANE_TOP/U_GTP_HSSTLP_WRAPPER/CHANNEL0_ENABLE.U_GTP_HSSTLP_LANE0/gophsst/P_TCLK2FABRIC} 
+ pcie_ref_clk             10.0000      {0.0000 5.0000}     Declared                     190          31  {u_ips2l_pcie_wrap/U_IPS2L_PCIE_TOP/U_IPS2L_HSSTLP_PCIE_SOFT_PHY/u_clkbufg/gopclkbufg/CLKOUT}                                                                         
+ hdmi_pclk                6.7340       {0.0000 3.3670}     Declared                     754          72  {pixclk_in}                                                                                                                                                           
+===============================================================================================================================================================================================================================================================================
+
+ Clock Groups:                                                                                      
+****************************************************************************************************
+ Clock Group                   Group Type                 Clocks                                    
+----------------------------------------------------------------------------------------------------
+ ref_clk                       asynchronous               ref_clk                                   
+ rst_clk                       asynchronous               rst_clk                                   
+ phy_dq_clk_0                  asynchronous               phy_dq_clk_0                              
+ phy_dq_clk_1                  asynchronous               phy_dq_clk_1                              
+ clock_group_0                 asynchronous                                                         
+     clock_group_0_0                                      pcie_ref_clk                              
+     clock_group_0_1                                      pclk  pclk_div2                           
+ clock_group_1                 asynchronous                                                         
+     clock_group_1_0                                      ddrphy_sysclk  phy_dq_sysclk_0  phy_dq_sysclk_1
+     clock_group_1_1                                      pclk  pclk_div2  pcie_ref_clk             
+ clock_group_2                 asynchronous                                                         
+     clock_group_2_0                                      ref_clk  board_ref125                     
+     clock_group_2_1                                      pclk  pclk_div2  pcie_ref_clk             
+ clock_group_3                 asynchronous                                                         
+     clock_group_3_0                                      hdmi_pclk                                 
+     clock_group_3_1                                      ref_clk  board_ref125  rst_clk  ddrphy_sysclk  phy_dq_sysclk_0  phy_dq_sysclk_1  pclk  pclk_div2  pcie_ref_clk
+====================================================================================================
+
+ Performance Summary:                                                                               
+****************************************************************************************************
+                              Requested       Estimated      Requested      Estimated               
+ Clock                        Frequency       Frequency      Period         Period             Slack
+----------------------------------------------------------------------------------------------------
+ board_ref125              125.0000 MHz    131.8218 MHz         8.0000         7.5860          0.414
+ ref_clk                    25.0000 MHz    425.5319 MHz        40.0000         2.3500         37.650
+ rst_clk                    25.0000 MHz    373.1343 MHz        40.0000         2.6800         37.320
+ ddrphy_sysclk             131.2500 MHz    142.8767 MHz         7.6190         6.9990          0.620
+ pclk                      250.0000 MHz    289.7711 MHz         4.0000         3.4510          0.549
+ pclk_div2                 125.0000 MHz    145.9002 MHz         8.0000         6.8540          1.146
+ pcie_ref_clk              100.0000 MHz    243.4275 MHz        10.0000         4.1080          5.892
+ hdmi_pclk                 148.5001 MHz    168.1803 MHz         6.7340         5.9460          0.788
+====================================================================================================
+
+Design Summary : All Constraints Met.
+
+Setup Summary(Slow Corner):
+****************************************************************************************************
+                                                                          TNS Failing      TNS Total
+ Launch Clock           Capture Clock              WNS(ns)     TNS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ board_ref125           board_ref125                 0.414       0.000              0           1463
+ ref_clk                ref_clk                     37.650       0.000              0             63
+ rst_clk                rst_clk                     37.320       0.000              0            437
+ ddrphy_sysclk          ddrphy_sysclk                0.620       0.000              0          22841
+ phy_dq_sysclk_1        ddrphy_sysclk                2.639       0.000              0            130
+ phy_dq_sysclk_0        ddrphy_sysclk                3.539       0.000              0              1
+ ddrphy_sysclk          phy_dq_sysclk_0              0.517       0.000              0            196
+ ddrphy_sysclk          phy_dq_sysclk_1              0.970       0.000              0            210
+ pclk                   pclk                         0.549       0.000              0            981
+ pclk_div2              pclk_div2                    1.146       0.000              0          15764
+ pcie_ref_clk           pcie_ref_clk                 5.892       0.000              0           1011
+ hdmi_pclk              hdmi_pclk                    0.752       0.000              0           2729
+====================================================================================================
+
+Hold Summary(Slow Corner):
+****************************************************************************************************
+                                                                          THS Failing      THS Total
+ Launch Clock           Capture Clock              WHS(ns)     THS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ board_ref125           board_ref125                 0.279       0.000              0           1463
+ ref_clk                ref_clk                      0.288       0.000              0             63
+ rst_clk                rst_clk                      0.249       0.000              0            437
+ ddrphy_sysclk          ddrphy_sysclk                0.141       0.000              0          22841
+ phy_dq_sysclk_1        ddrphy_sysclk                0.686       0.000              0            130
+ phy_dq_sysclk_0        ddrphy_sysclk                0.994       0.000              0              1
+ ddrphy_sysclk          phy_dq_sysclk_0              0.452       0.000              0            196
+ ddrphy_sysclk          phy_dq_sysclk_1              0.497       0.000              0            210
+ pclk                   pclk                         0.248       0.000              0            981
+ pclk_div2              pclk_div2                    0.061       0.000              0          15764
+ pcie_ref_clk           pcie_ref_clk                 0.224       0.000              0           1011
+ hdmi_pclk              hdmi_pclk                    0.215       0.000              0           2729
+====================================================================================================
+
+Recovery Summary(Slow Corner):
+****************************************************************************************************
+                                                                          TNS Failing      TNS Total
+ Launch Clock           Capture Clock              WNS(ns)     TNS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ board_ref125           board_ref125                 0.877       0.000              0            216
+ rst_clk                rst_clk                     37.509       0.000              0            102
+ ddrphy_sysclk          ddrphy_sysclk                2.588       0.000              0           5312
+ pclk_div2              pclk                         1.476       0.000              0              1
+ pclk                   pclk                         1.484       0.000              0            101
+ pclk_div2              pclk_div2                    4.249       0.000              0           1765
+ pcie_ref_clk           pcie_ref_clk                 7.212       0.000              0            184
+ hdmi_pclk              hdmi_pclk                    4.984       0.000              0            124
+====================================================================================================
+
+Removal Summary(Slow Corner):
+****************************************************************************************************
+                                                                          THS Failing      THS Total
+ Launch Clock           Capture Clock              WHS(ns)     THS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ board_ref125           board_ref125                 0.372       0.000              0            216
+ rst_clk                rst_clk                      0.467       0.000              0            102
+ ddrphy_sysclk          ddrphy_sysclk                0.350       0.000              0           5312
+ pclk_div2              pclk                         0.942       0.000              0              1
+ pclk                   pclk                         0.477       0.000              0            101
+ pclk_div2              pclk_div2                    0.341       0.000              0           1765
+ pcie_ref_clk           pcie_ref_clk                 0.399       0.000              0            184
+ hdmi_pclk              hdmi_pclk                    0.379       0.000              0            124
+====================================================================================================
+
+Minimum Pulse Width Summary(Slow Corner):
+****************************************************************************************************
+                                                                         WPWS Failing     WPWS Total
+ Clock                                            WPWS(ns)    TPWS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ board_ref125                                        3.800       0.000              0            312
+ ref_clk                                            19.800       0.000              0             14
+ rst_clk                                            19.800       0.000              0            103
+ ddrphy_sysclk                                       2.849       0.000              0           5510
+ phy_dq_clk_0                                        0.011       0.000              0             35
+ phy_dq_sysclk_0                                     1.659       0.000              0             35
+ phy_dq_clk_1                                        0.011       0.000              0             42
+ phy_dq_sysclk_1                                     2.209       0.000              0             42
+ pclk                                                1.040       0.000              0            103
+ pclk_div2                                           3.040       0.000              0           3178
+ pcie_ref_clk                                        4.800       0.000              0            187
+ hdmi_pclk                                           2.407       0.000              0            754
+====================================================================================================
+
+Setup Summary(Fast Corner):
+****************************************************************************************************
+                                                                          TNS Failing      TNS Total
+ Launch Clock           Capture Clock              WNS(ns)     TNS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ board_ref125           board_ref125                 3.352       0.000              0           1463
+ ref_clk                ref_clk                     38.603       0.000              0             63
+ rst_clk                rst_clk                     38.380       0.000              0            437
+ ddrphy_sysclk          ddrphy_sysclk                3.181       0.000              0          22841
+ phy_dq_sysclk_1        ddrphy_sysclk                4.134       0.000              0            130
+ phy_dq_sysclk_0        ddrphy_sysclk                4.680       0.000              0              1
+ ddrphy_sysclk          phy_dq_sysclk_0              2.907       0.000              0            196
+ ddrphy_sysclk          phy_dq_sysclk_1              3.137       0.000              0            210
+ pclk                   pclk                         1.913       0.000              0            981
+ pclk_div2              pclk_div2                    3.760       0.000              0          15764
+ pcie_ref_clk           pcie_ref_clk                 7.584       0.000              0           1011
+ hdmi_pclk              hdmi_pclk                    1.807       0.000              0           2729
+====================================================================================================
+
+Hold Summary(Fast Corner):
+****************************************************************************************************
+                                                                          THS Failing      THS Total
+ Launch Clock           Capture Clock              WHS(ns)     THS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ board_ref125           board_ref125                 0.183       0.000              0           1463
+ ref_clk                ref_clk                      0.187       0.000              0             63
+ rst_clk                rst_clk                      0.170       0.000              0            437
+ ddrphy_sysclk          ddrphy_sysclk                0.102       0.000              0          22841
+ phy_dq_sysclk_1        ddrphy_sysclk                0.186       0.000              0            130
+ phy_dq_sysclk_0        ddrphy_sysclk                0.378       0.000              0              1
+ ddrphy_sysclk          phy_dq_sysclk_0              0.107       0.000              0            196
+ ddrphy_sysclk          phy_dq_sysclk_1              0.122       0.000              0            210
+ pclk                   pclk                         0.172       0.000              0            981
+ pclk_div2              pclk_div2                    0.026       0.000              0          15764
+ pcie_ref_clk           pcie_ref_clk                 0.133       0.000              0           1011
+ hdmi_pclk              hdmi_pclk                    0.151       0.000              0           2729
+====================================================================================================
+
+Recovery Summary(Fast Corner):
+****************************************************************************************************
+                                                                          TNS Failing      TNS Total
+ Launch Clock           Capture Clock              WNS(ns)     TNS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ board_ref125           board_ref125                 3.581       0.000              0            216
+ rst_clk                rst_clk                     38.392       0.000              0            102
+ ddrphy_sysclk          ddrphy_sysclk                4.477       0.000              0           5312
+ pclk_div2              pclk                         2.405       0.000              0              1
+ pclk                   pclk                         2.520       0.000              0            101
+ pclk_div2              pclk_div2                    5.609       0.000              0           1765
+ pcie_ref_clk           pcie_ref_clk                 8.256       0.000              0            184
+ hdmi_pclk              hdmi_pclk                    5.648       0.000              0            124
+====================================================================================================
+
+Removal Summary(Fast Corner):
+****************************************************************************************************
+                                                                          THS Failing      THS Total
+ Launch Clock           Capture Clock              WHS(ns)     THS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ board_ref125           board_ref125                 0.253       0.000              0            216
+ rst_clk                rst_clk                      0.328       0.000              0            102
+ ddrphy_sysclk          ddrphy_sysclk                0.247       0.000              0           5312
+ pclk_div2              pclk                         0.551       0.000              0              1
+ pclk                   pclk                         0.333       0.000              0            101
+ pclk_div2              pclk_div2                    0.229       0.000              0           1765
+ pcie_ref_clk           pcie_ref_clk                 0.279       0.000              0            184
+ hdmi_pclk              hdmi_pclk                    0.256       0.000              0            124
+====================================================================================================
+
+Minimum Pulse Width Summary(Fast Corner):
+****************************************************************************************************
+                                                                         WPWS Failing     WPWS Total
+ Clock                                            WPWS(ns)    TPWS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ board_ref125                                        3.800       0.000              0            312
+ ref_clk                                            19.800       0.000              0             14
+ rst_clk                                            19.800       0.000              0            103
+ ddrphy_sysclk                                       3.154       0.000              0           5510
+ phy_dq_clk_0                                        0.011       0.000              0             35
+ phy_dq_sysclk_0                                     1.659       0.000              0             35
+ phy_dq_clk_1                                        0.011       0.000              0             42
+ phy_dq_sysclk_1                                     2.209       0.000              0             42
+ pclk                                                1.430       0.000              0            103
+ pclk_div2                                           3.430       0.000              0           3178
+ pcie_ref_clk                                        4.800       0.000              0            187
+ hdmi_pclk                                           2.712       0.000              0            754
+====================================================================================================
+
+Slow Corner
+****************************************************************************************************
+====================================================================================================
+
+Startpoint  : frequency_meter/meta[7]/opit_0_srl/CLK
+Endpoint    : frequency_meter/N117.lt_12/gateop_perm/CIN
+Path Group  : board_ref125
+Path Type   : max (slow corner)
+Path Class  : sequential timing path
+Clock Skew  :    -0.058  (Capture Clock Delay - Launch Clock Delay + Clock Pessimism Removal)
+  Capture Clock Delay     :  3.039
+  Launch Clock Delay      :  3.536
+  Clock Pessimism Removal :  0.439
+
+ Location                          Delay Type             Incr        Path         Logical Resource 
+----------------------------------------------------------------------------------------------------
+

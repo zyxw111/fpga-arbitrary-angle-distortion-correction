@@ -1,0 +1,2 @@
+PASS MS7200 wire I2C: low-byte-first address, 300-register initialization, late/already-locked 0x02/0x03 input, live 0x03-to-0x02 mode change, receiver setup, NACK rejection
+F:\AADCS_git_zyxw\FPGA_AADCS\HDMI_Warp\sim\tb_hdmi_init.sv:109: $finish called at 6897015000 (1ps)

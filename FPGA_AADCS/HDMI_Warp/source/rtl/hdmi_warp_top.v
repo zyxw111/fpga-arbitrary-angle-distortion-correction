@@ -1,7 +1,7 @@
 // PG2L100H: HDMIK V1.1 / MS7200 -> DDR -> inverse warp -> DDR -> PCIe.
 // KEY0 resets. Snapshot pipeline holds frames immutable until host DMA finishes.
 module hdmi_warp_top #(
-    parameter integer WIDTH=640,HEIGHT=400,IN_WIDTH=640,IN_HEIGHT=480,VS_ACTIVE_HIGH=0
+    parameter integer WIDTH=640,HEIGHT=400,IN_WIDTH=1920,IN_HEIGHT=1080,VS_ACTIVE_HIGH=1
 )(
     output mem_cs_n,output mem_rst_n,output mem_ck,output mem_ck_n,output mem_cke,
     output mem_ras_n,output mem_cas_n,output mem_we_n,output mem_odt,
@@ -83,10 +83,12 @@ module hdmi_warp_top #(
     wire board_ref,board_ref_g,clock25,board_clock_locked,free_clk_g;
     GTP_INBUFDS u_board_input(.I(board_clk_p),.IB(board_clk_n),.O(board_ref));
     GTP_CLKBUFG u_board_ref(.CLKIN(board_ref),.CLKOUT(board_ref_g));
+    wire board_pll_reset;
+    board_pll_startup u_board_pll_startup(.clk(board_ref_g),.key0_n(key0_n),.pll_reset(board_pll_reset));
     ips2l_ddrphy_gpll_v1_3 #(.CLKIN_FREQ(125.0),.BANDWIDTH("OPTIMIZED"),
-      .IDIV(1),.FDIV(8.0),.DUTYF(4),.ODIV0(40.0),.DUTY0(20),
+      .IDIV(5),.FDIV(40.0),.DUTYF(40),.ODIV0(40.0),.DUTY0(40),
       .ODIV1(40),.STATIC_PHASE0(0),.INTERNAL_FB("CLKOUTF")) u_board_clock(
-      .clk_in0(board_ref_g),.pll_rst(!key0_n),.dps_clk(1'b0),.dps_en(1'b0),.dps_dir(1'b0),
+      .clk_in0(board_ref_g),.pll_rst(board_pll_reset),.dps_clk(1'b0),.dps_en(1'b0),.dps_dir(1'b0),
       .clkout0_gate(1'b0),.clkout0(clock25),.clkout0n(),.clkout1(),.clkout1n(),
       .dps_done(),.pll_lock(board_clock_locked));
     GTP_CLKBUFG u_free_clk(.CLKIN(clock25),.CLKOUT(free_clk_g));
@@ -111,10 +113,19 @@ module hdmi_warp_top #(
     wire [15:0] camera_id=16'h7200;
     wire [15:0] hdmi_register;
     wire [31:0] captured_frames,dropped_frames;
+    wire edid_written;wire [6:0] receiver_state;wire [8:0] receiver_index;
+    wire [31:0] receiver_frequency,receiver_transactions;wire [7:0] receiver_read;
+    wire [255:0] frame_diagnostics;wire [31:0] native_checksum;
     GTP_CLKBUFG u_hdmi_clock(.CLKIN(pixclk_in),.CLKOUT(camera_pclk_g));
-    hdmi_rx_init receiver(.clk(free_clk_g),.rst_n(power_up_rst_n),
+    wire cfg_reset_n,receiver_bus_busy,profile_pending;
+    wire [2:0] profile;
+    profile_control profiles(.clk(board_ref_g),.rst_n(power_up_rst_n),.key_n(key1_n),
+      .bus_busy(receiver_bus_busy),.profile(profile),.cfg_rst_n(cfg_reset_n),.pending(profile_pending));
+    hdmi_rx_init receiver(.clk(board_ref_g),.rst_n(cfg_reset_n),.profile_select(profile),.bus_busy(receiver_bus_busy),
       .hd_scl(hd_scl),.hd_sda(hd_sda),.ready(camera_ready),
-      .error_code(camera_error),.register_addr(hdmi_register));
+      .error_code(camera_error),.register_addr(hdmi_register),
+      .edid_written(edid_written),.controller_state(receiver_state),.controller_index(receiver_index),
+      .receiver_frequency(receiver_frequency),.transactions(receiver_transactions),.last_read(receiver_read));
     wire av,ar,wr,wl,rv,rr,rl,rvalid;wire [27:0] aa,ra;wire [3:0] al,rlen;
     wire [127:0] wd,rd;wire [15:0] ws;
     reg [1:0] dreset,iready;
@@ -130,11 +141,30 @@ module hdmi_warp_top #(
     wire [31:0] camera_flags=host_status[95:64] | (camera_ready?32'd8:32'd0) | (camera_error!=0?32'd16:32'd0) | 32'd64;
     assign status_data=(status_addr==0)?{host_status[127:96],camera_flags,32'h00020000,32'h43414d32}:
       (status_addr==2)?{checksum,{4'd0,cursor},dropped_frames,captured_frames}:
-      (status_addr==3)?{{24'd0,error_code},{16'd0,hdmi_register},{16'd0,camera_error,host_error},{16'd0,camera_id}}:host_status;
-    hdmi_frame #(.WIDTH(WIDTH),.HEIGHT(HEIGHT),.IN_WIDTH(IN_WIDTH),.IN_HEIGHT(IN_HEIGHT),.VS_ACTIVE_HIGH(VS_ACTIVE_HIGH)) u_image(
+      (status_addr==3)?{{24'd0,error_code},{16'd0,hdmi_register},{16'd0,camera_error,host_error},{16'd0,camera_id}}:
+      (status_addr==4)?frame_diagnostics[127:0]:(status_addr==5)?frame_diagnostics[255:128]:
+      (status_addr==6)?{96'd0,native_checksum}:
+      (status_addr==7)?{monitor_frames,pixel_hz,monitor_dimensions,receiver_flags}:
+      (status_addr==9)?{64'd0,source_height,source_width,published_generation}:
+      (status_addr==8 || (status_addr>=16 && status_addr<=20))?warp_status:host_status;
+    wire control_wr;wire [11:0] control_addr;wire [31:0] control_data;wire [15:0] control_be;
+    wire [543:0] defaults,runtime_config;wire [31:0] active_generation,published_generation;
+    wire [15:0] source_width,source_height;wire frame_safe,params_pending;wire [127:0] warp_status;
+    hdmi_defaults default_bank(.defaults(defaults));
+    warp_control control(.host_clk(pclk_div2),.frame_clk(dclk),.rst_n(dreset[1]),
+      .wr_en(control_wr),.wr_addr(control_addr),.wr_data(control_data),.wr_be(control_be),
+      .defaults(defaults),.frame_safe(frame_safe),.status_addr(status_addr),.status_data(warp_status),
+      .active_config(runtime_config),.active_generation(active_generation),.pending(params_pending));
+    hdmi_frame #(.WIDTH(WIDTH),.HEIGHT(HEIGHT),.IN_WIDTH(IN_WIDTH),.IN_HEIGHT(IN_HEIGHT),.VS_ACTIVE_HIGH(VS_ACTIVE_HIGH),.RUNTIME(1),.USE_RX_STREAM(1),.OUTPUT_BASE(28'h0800000)) u_image(
+      .runtime_config(runtime_config),.active_generation(active_generation),.published_generation(published_generation),
+      .frame_safe(frame_safe),.source_width(source_width),.source_height(source_height),
+      .input_width(ddr_record[15:0]),.input_height(ddr_record[31:16]),
+      .pixel_valid(pixel_valid),.pixel_sof(pixel_sof),.pixel_rgb(pixel_rgb),
+      .pixel_x(pixel_x),.pixel_y(pixel_y),.frame_end(frame_end),.frame_good(frame_good),
       .pclk(camera_pclk_g),.clk(dclk),.dma_clk(pclk_div2),.rst_n(dreset[1]),.init_done(iready[1]),
-      .camera_ready(camera_ready),.vsync(vs_in),.de(de_in),.rgb({r_in,g_in,b_in}),
+      .camera_ready(camera_ready && video_reset_n_rx && ddr_record[288]),.vsync(vs_in),.de(de_in),.rgb({r_in,g_in,b_in}),
       .good_frames(captured_frames),.dropped_frames(dropped_frames),
+      .diagnostics(frame_diagnostics),.native_checksum(native_checksum),
       .request_toggle(req_toggle),.request_bytes(bytes),.frame_ready(image_ready),
       .error_code(error_code),.checksum(checksum),.cursor(cursor),
       .prepared(prepared),.launch(launch),.rd_req(source_read),.rd_data(source_data),
@@ -157,6 +187,48 @@ module hdmi_warp_top #(
       .mem_cke(mem_cke),.mem_ras_n(mem_ras_n),.mem_cas_n(mem_cas_n),.mem_we_n(mem_we_n),
       .mem_odt(mem_odt),.mem_a(mem_a),.mem_ba(mem_ba),.mem_dqs(mem_dqs),.mem_dqs_n(mem_dqs_n),
       .mem_dq(mem_dq),.mem_dm(mem_dm));
+
+    wire [31:0] pixel_hz,monitor_frames,monitor_dimensions;
+    wire [31:0] receiver_flags={receiver_index,receiver_state,camera_error,
+      (camera_error!=0),hd_scl,hd_sda,monitor_present,(pixel_hz>1000000),camera_ready,edid_written,power_up_rst_n};
+    wire monitor_present;
+    wire clock_changed,video_reset_n_rx;
+    clock_meter frequency_meter(.sys_clk(board_ref_g),.pix_clk(camera_pclk_g),.rst_n(cfg_reset_n),
+      .pixel_hz(pixel_hz),.clock_changed(clock_changed));
+    assign video_reset_n_rx=cfg_reset_n && camera_ready && pixel_hz>1000000 && !clock_changed;
+    wire pixel_valid,pixel_sof,pixel_eol,frame_end,frame_good;wire [23:0] pixel_rgb;
+    wire [15:0] pixel_x,pixel_y;wire [319:0] frame_record,sys_record,ddr_record;
+    wire sys_record_valid,ddr_record_valid;
+    video_rx receiver_pixels(.pix_clk(camera_pclk_g),.rst_n(video_reset_n_rx),.vs(vs_in),.hs(hs_in),
+      .de(de_in),.rgb({r_in,g_in,b_in}),.pixel_valid(pixel_valid),.sof(pixel_sof),.eol(pixel_eol),
+      .pixel_rgb(pixel_rgb),.pixel_x(pixel_x),.pixel_y(pixel_y),.frame_end(frame_end),
+      .frame_good(frame_good),.frame_record(frame_record));
+    frame_mailbox monitor_mailbox(.src_clk(camera_pclk_g),.dst_clk(board_ref_g),.rst_n(video_reset_n_rx),
+      .src_send(frame_end),.src_data(frame_record),.dst_valid(sys_record_valid),.dst_data(sys_record));
+    frame_mailbox geometry_mailbox(.src_clk(camera_pclk_g),.dst_clk(dclk),.rst_n(video_reset_n_rx),
+      .src_send(frame_end),.src_data(frame_record),.dst_valid(ddr_record_valid),.dst_data(ddr_record));
+    reg [25:0] frame_age;
+    always @(posedge board_ref_g or negedge video_reset_n_rx)
+      if(!video_reset_n_rx)frame_age<=26'h3ffffff;
+      else if(sys_record_valid)frame_age<=0;else if(!(&frame_age))frame_age<=frame_age+1'b1;
+    assign monitor_frames=sys_record[191:160];assign monitor_dimensions=sys_record[31:0];
+    assign monitor_present=video_reset_n_rx && sys_record[288] && frame_age<37500000;
+    assign debug_pixel={frame_record[191:160],pixel_x,pixel_y,pixel_rgb,hs_in,vs_in,de_in,
+                        pixel_valid,pixel_sof,pixel_eol,frame_end,frame_good,32'd0};
+    wire [255:0] debug_sink /* synthesis PAP_MARK_DEBUG="true" */;
+    wire [127:0] debug_pixel /* synthesis PAP_MARK_DEBUG="true" */;
+    reg [103:0] debug_ddr_meta /* synthesis syn_preserve=1 */;
+    reg [103:0] debug_ddr_sync /* synthesis syn_preserve=1 */;
+    always @(posedge board_ref_g or negedge power_up_rst_n)
+      if(!power_up_rst_n)begin debug_ddr_meta<=0;debug_ddr_sync<=0;end
+      else begin
+        debug_ddr_meta<={frame_diagnostics[31:0],dropped_frames,captured_frames,
+          image_ready,dma_reset_n,core_rst_n,smlh_link_up,rdlh_link_up,init,lock,board_clock_locked};
+        debug_ddr_sync<=debug_ddr_meta;
+      end
+    assign debug_sink={debug_ddr_sync[103:72],debug_ddr_sync[71:40],debug_ddr_sync[39:8],
+      {camera_error,receiver_read,hdmi_register},monitor_frames,monitor_dimensions,pixel_hz,
+      receiver_state,key1_n,debug_ddr_sync[7:0],camera_error,receiver_flags[7:0]};
 
     pcie_test u_ips2l_pcie_wrap(
         .pclk(pclk),
@@ -245,6 +317,7 @@ module hdmi_warp_top #(
 
     ips2l_pcie_dma #(.DEVICE_TYPE(3'b000), .AXIS_SLAVE_NUM(3)) u_dma(
         .i_video_ready(host_ready),.i_video_busy(host_busy),
+        .o_control_wr_en(control_wr),.o_control_wr_addr(control_addr),.o_control_wr_data(control_data),.o_control_wr_be(control_be),
         .o_video_request(request),.o_video_length(length),.o_video_address(address),
         .o_video_tx_busy(tx_busy),.o_video_status_addr(status_addr),.i_video_status_data(status_data),
         .clk(pclk_div2),

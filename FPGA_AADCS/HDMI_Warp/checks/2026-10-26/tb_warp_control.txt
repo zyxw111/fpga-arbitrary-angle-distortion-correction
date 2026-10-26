@@ -1,0 +1,2 @@
+PASS warp control: 17 signed words, atomic frame-safe commit, busy rejection, partial write rejection, repeated CDC handshakes
+F:\AADCS_git_zyxw\FPGA_AADCS\HDMI_Warp\sim\tb_warp_control.sv:31: $finish called at 1010000 (1ps)

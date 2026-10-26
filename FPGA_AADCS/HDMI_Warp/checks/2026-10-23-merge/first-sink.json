@@ -1,0 +1,23 @@
+{
+  "flags": "217f001b",
+  "edid_written": true,
+  "receiver_ready": false,
+  "video_present": true,
+  "i2c_error": 0,
+  "controller_state": 16,
+  "pll_lock": true,
+  "ddr_lock": true,
+  "ddr_init": true,
+  "rdlh_link": true,
+  "smlh_link": true,
+  "frame_ready": false,
+  "pixel_hz": 148499060,
+  "width": 510,
+  "height": 2542,
+  "source_frames": 6020,
+  "last_register": "209f",
+  "last_read": "03",
+  "good_frames": 0,
+  "dropped_frames": 0,
+  "last_drop_reason": 0
+}

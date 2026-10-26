@@ -1,0 +1,37 @@
+2000 1280
+{
+  "input_width": 1920,
+  "input_height": 1080,
+  "pixel_hz": 148499460,
+  "source_frames": 23778,
+  "receiver_flags": "0x9610003f",
+  "good_frames": 561,
+  "dropped_frames": 0,
+  "flags": 0,
+  "accepted": 3,
+  "applied": 3,
+  "published": 3
+}
+000000  32 4d 41 43 00 00 02 00 48 00 00 00 ed 11 01 00  | 2MAC....H.......
+000010  80 02 00 00 90 01 00 00 00 05 00 00 00 d0 07 00  | ................
+000020  31 02 00 00 00 00 00 00 00 00 00 00 53 ff 30 4b  | 1...........S.0K
+000030  00 72 00 00 00 00 00 00 9d 20 00 00 00 00 00 00  | .r....... ......
+000040  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  | ................
+000050  00 00 00 00 80 f4 03 00 00 00 00 00 5b 17 55 e3  | ............[.U.
+000060  5b 17 55 e3 00 00 00 00 00 00 00 00 00 00 00 00  | [.U.............
+000070  3f 00 10 96 80 07 38 04 04 ec d9 08 e5 5c 00 00  | ?.....8......\..
+
+== status decode ==
+  CAM2 version=00020000 flags=00000048 frame_ready=0 busy=0 error=0 internal=0
+  geometry=640x400 stride=1280 bytes=512000
+  completed descriptors=70125 published=561 dropped=0 cursor=0 checksum=4b30ff53
+  sensor_id=7200 host_error=00 sensor_error=00 engine_error=00
+  last_drop=0 DVP_flags=00 wrote=0 read=0 expected=00000000 actual=00000000
+  current native DDR checksum=e355175b (changes during verification)
+[I] render 3.0 fps, 793 us/draw, capture published 3/s
+[I] render 3.0 fps, 789 us/draw, capture published 3/s
+[I] render 3.0 fps, 848 us/draw, capture published 3/s
+[I] capture 2.8 fps
+7f02199d20ceb558b9b638fc3391769b0f0c3fe5c49ac1ef23e76da92175128e  /userdata/fpga-view/fpga-view
+b2b6f7ce72cfeaf21224c7258d55c832ac0f38799a40c81d56f780ad65beca08  /userdata/fpga-view/fpga-probe
+dbfaa513508b4ded52602f9a65486325daa25ef9c60078afb728ed57ff42ea11  /userdata/fpga-view/run.sh

@@ -1,0 +1,2 @@
+PASS HDMI RGB888 packing, both VS polarities, final-frame validation, short lines, FIFO overflow
+F:\AADCS_git_zyxw\FPGA_AADCS\HDMI_Warp\sim\tb_hdmi_stream.sv:36: $finish called at 8904000 (1ps)

@@ -1,0 +1,2 @@
+PASS HDMI v2 stream: RGB565 packing, final-beat commit, invalid-frame discard, FIFO overflow rejection
+F:\AADCS_git_zyxw\FPGA_AADCS\HDMI_Warp\sim\tb_hdmi_rx_stream.sv:38: $finish called at 5070000 (1ps)

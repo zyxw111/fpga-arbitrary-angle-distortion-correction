@@ -1,0 +1,2 @@
+PASS pixel frequency changes, stopped clock, recovery, reset
+F:\AADCS_git_zyxw\FPGA_AADCS\HDMI_Warp\sim\tb_clock_meter.sv:20: $finish called at 140060000 (1ps)

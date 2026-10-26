@@ -1,0 +1,2 @@
+PASS HDMI monitor: pixel-domain width/height, both VS polarities, asynchronous clock frequency, missing clock, reset recovery
+F:\AADCS_git_zyxw\FPGA_AADCS\HDMI_Warp\sim\tb_hdmi_monitor.sv:27: $finish called at 430210000 (1ps)

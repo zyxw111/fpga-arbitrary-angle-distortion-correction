@@ -1,0 +1,15 @@
+HDMI DDR warp/PCIe test starting
+progress t=1000000000 capture=1 warp=0 x=0 y=0 drops=4 ec=0
+progress t=2000000000 capture=12 warp=2 x=41 y=8 drops=5 ec=0
+progress t=3000000000 capture=12 warp=2 x=53 y=22 drops=5 ec=0
+progress t=4000000000 capture=12 warp=2 x=5 y=37 drops=5 ec=0
+DDR image ready at 4218092000
+progress t=5000000000 capture=1 warp=0 x=0 y=40 drops=5 ec=0
+progress t=6000000000 capture=12 warp=2 x=7 y=13 drops=5 ec=0
+progress t=7000000000 capture=12 warp=2 x=18 y=27 drops=5 ec=0
+progress t=8000000000 capture=1 warp=0 x=0 y=40 drops=5 ec=0
+progress t=9000000000 capture=12 warp=2 x=58 y=9 drops=5 ec=0
+progress t=10000000000 capture=12 warp=2 x=5 y=24 drops=5 ec=0
+progress t=11000000000 capture=12 warp=2 x=22 y=38 drops=5 ec=0
+PASS HDMI RGB888 -> raw DDR -> inverse affine/Brown/bilinear -> output DDR -> real PCIe RX/MMIO/CplD/TX: 34 descriptors 132 TLPs 7680 exact pixels, three exact warped frames with live BAR1 affine/Brown changes and generation checks; malformed input discarded, live source during host idle, stable DDR snapshot, random TX stalls
+./sim/tb_hdmi_pcie.sv:180: $finish called at 11152270000 (1ps)
