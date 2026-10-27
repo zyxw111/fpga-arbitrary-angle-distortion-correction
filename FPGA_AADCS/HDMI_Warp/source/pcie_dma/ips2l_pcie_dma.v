@@ -15,6 +15,7 @@
 module ips2l_pcie_dma #(
     parameter                           DEVICE_TYPE = 3'd0      ,   //3'd0:EP,3'd1:Legacy EP,3'd4:RC
     parameter   integer                 AXIS_SLAVE_NUM = 3      ,
+    parameter                           FRAME_STREAM = 0,
     parameter                           ADDR_WIDTH  = 4'd12
 
 )(
@@ -84,7 +85,9 @@ module ips2l_pcie_dma #(
     output wire [63:0] o_video_address,output wire o_video_tx_busy,
     output wire [11:0] o_video_status_addr,input wire [127:0] i_video_status_data,
     output wire o_control_wr_en,output wire [11:0] o_control_wr_addr,
-    output wire [31:0] o_control_wr_data,output wire [15:0] o_control_wr_be
+    output wire [31:0] o_control_wr_data,output wire [15:0] o_control_wr_be,
+    input wire i_stream_busy,input wire i_stream_wr_en,
+    input wire [11:0] i_stream_wr_addr,input wire [31:0] i_stream_wr_data
     //debug
     //output  wire    [159:0]             o_dbg_bus
 );
@@ -254,10 +257,10 @@ u_ips2l_pcie_dma_controller
     .rst_n                      (rst_n                      ),
     //**********************************************************************
     //bar1 wr interface
-    .i_bar1_wr_en               (bar1_wr_en && !i_video_busy                 ),
-    .i_bar1_wr_addr             (bar1_wr_addr               ),
-    .i_bar1_wr_data             (bar1_wr_data               ),
-    .i_bar1_wr_byte_en          (bar1_wr_byte_en            ),
+    .i_bar1_wr_en               (FRAME_STREAM ? (i_stream_wr_en || (bar1_wr_en && !i_stream_busy && !i_video_busy)) : (bar1_wr_en && !i_video_busy)),
+    .i_bar1_wr_addr             ((FRAME_STREAM && i_stream_wr_en)?i_stream_wr_addr:bar1_wr_addr),
+    .i_bar1_wr_data             ((FRAME_STREAM && i_stream_wr_en)?{96'd0,i_stream_wr_data}:bar1_wr_data),
+    .i_bar1_wr_byte_en          ((FRAME_STREAM && i_stream_wr_en)?16'hffff:bar1_wr_byte_en),
     //**********************************************************************
     //apb interface
     .i_apb_psel                 (i_apb_psel                 ),

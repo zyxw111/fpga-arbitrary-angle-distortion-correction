@@ -22,8 +22,8 @@ def parameters(c, host_check=True):
             raise ValueError('Frame pixel count must be a multiple of 128')
     if c['input_width']*c['input_height']*2 > 0x800000:
         raise ValueError('Input overlaps OUTPUT_BASE (8 MiB)')
-    if host_check and (c['output_width'], c['output_height']) != (640, 400):
-        raise ValueError('CAM2 host currently requires output 640x400')
+    if host_check and (c['output_width']>1920 or c['output_height']>1080):
+        raise ValueError('Video output currently supports up to 1920x1080')
     for name, value in c.items():
         if isinstance(value, (int, float)) and not math.isfinite(value):
             raise ValueError('Nonfinite parameter: ' + name)

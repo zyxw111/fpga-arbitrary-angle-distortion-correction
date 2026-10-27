@@ -4,12 +4,12 @@ module hdmi_config #(parameter RUNTIME=0)(input clk,input rst_n,input start,outp
  input [11:0] x,y,output valid,output signed [31:0] map_x,map_y);
  hdmi_map mapper(.clk(clk),.rst_n(rst_n),.start(start),.ready(ready),
  .x(x),.y(y),.valid(valid),.map_x(map_x),.map_y(map_y),
- .a00(RUNTIME ? $signed(runtime_config[0+:32]) : 32'sh00030000),
+ .a00(RUNTIME ? $signed(runtime_config[0+:32]) : 32'sh00010000),
  .a01(RUNTIME ? $signed(runtime_config[32+:32]) : 32'sh00000000),
  .a02(RUNTIME ? $signed(runtime_config[64+:32]) : 32'sh00000000),
  .a10(RUNTIME ? $signed(runtime_config[96+:32]) : 32'sh00000000),
- .a11(RUNTIME ? $signed(runtime_config[128+:32]) : 32'sh00030000),
- .a12(RUNTIME ? $signed(runtime_config[160+:32]) : 32'shffc40000),
+ .a11(RUNTIME ? $signed(runtime_config[128+:32]) : 32'sh00010000),
+ .a12(RUNTIME ? $signed(runtime_config[160+:32]) : 32'sh00000000),
  .fx(RUNTIME ? $signed(runtime_config[192+:32]) : 32'sh04000000),
  .fy(RUNTIME ? $signed(runtime_config[224+:32]) : 32'sh04000000),
  .cx(RUNTIME ? $signed(runtime_config[256+:32]) : 32'sh03c00000),
@@ -23,5 +23,5 @@ module hdmi_config #(parameter RUNTIME=0)(input clk,input rst_n,input start,outp
  .p2(RUNTIME ? $signed(runtime_config[512+:32]) : 32'sh00000000));
 endmodule
 module hdmi_defaults(output [543:0] defaults);
- assign defaults={32'h00000000,32'h00000000,32'h00000000,32'h00000000,32'h00000000,32'h00100000,32'h00100000,32'h021c0000,32'h03c00000,32'h04000000,32'h04000000,32'hffc40000,32'h00030000,32'h00000000,32'h00000000,32'h00000000,32'h00030000};
+ assign defaults={32'h00000000,32'h00000000,32'h00000000,32'h00000000,32'h00000000,32'h00100000,32'h00100000,32'h021c0000,32'h03c00000,32'h04000000,32'h04000000,32'h00000000,32'h00010000,32'h00000000,32'h00000000,32'h00000000,32'h00010000};
 endmodule

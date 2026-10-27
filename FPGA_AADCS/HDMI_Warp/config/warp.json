@@ -1,8 +1,8 @@
 {
   "input_width": 1920,
   "input_height": 1080,
-  "output_width": 640,
-  "output_height": 400,
+  "output_width": 1920,
+  "output_height": 1080,
   "vs_active_high": true,
   "fx": 1024.0,
   "fy": 1024.0,
@@ -14,7 +14,7 @@
   "p1": 0.0,
   "p2": 0.0,
   "angle_degrees": 0.0,
-  "scale": 0.3333333333333333,
+  "scale": 1.0,
   "translate_x": 0.0,
   "translate_y": 0.0
 }

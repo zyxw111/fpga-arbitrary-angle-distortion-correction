@@ -1,6 +1,6 @@
-param([string]$PdsRoot='F:\PDS_2022.2-SP6.4',[switch]$Debug)
+param([string]$PdsRoot='F:\PDS_2022.2-SP6.4',[switch]$Debug,[string]$BuildDir='build')
 $ErrorActionPreference='Stop'
-$buildRoot=Join-Path $PSScriptRoot 'build'
+$buildRoot=Join-Path $PSScriptRoot $BuildDir
 if($Debug){$buildRoot=Join-Path $buildRoot 'debug'}
 $timing=Join-Path $buildRoot 'report_timing/hdmi_warp_top.rtr'
 $bit=Join-Path $buildRoot 'generate_bitstream/hdmi_warp_top.sbit'

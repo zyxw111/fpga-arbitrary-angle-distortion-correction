@@ -676,3 +676,7 @@ set_false_path -from [get_cells -hierarchical {*control/held*}] -to [get_cells -
 set_false_path -to [get_cells -hierarchical {*control/ack_sync* *control/request_sync*}]
 set_false_path -from [get_cells -hierarchical {*monitor_mailbox/held* *geometry_mailbox/held*}] -to [get_cells -hierarchical {*monitor_mailbox/dst_data* *geometry_mailbox/dst_data*}]
 set_false_path -to [get_cells -hierarchical {*monitor_mailbox/src_release* *monitor_mailbox/dst_release* *geometry_mailbox/src_release* *geometry_mailbox/dst_release*}]
+
+# Frequency is held as a bundle until the DDR-domain mailbox ACK returns.
+set_false_path -from [get_cells -hierarchical {*frequency_mailbox/held*}] -to [get_cells -hierarchical {*frequency_mailbox/dst_data*}]
+set_false_path -to [get_cells -hierarchical {*frequency_mailbox/ack_sync* *frequency_mailbox/request_sync* *frequency_mailbox/src_release* *frequency_mailbox/dst_release*}]

@@ -2,8 +2,9 @@
 // complete_count means final posted TLP accepted by the PCIe IP, not a CPU
 // cache maintenance operation. Host additionally checks full expected payload.
 module hostlink #(
- parameter integer WIDTH=640,HEIGHT=400,GROUP=0,VIEW=1,DYNAMIC_MODE=0,TIMEOUT=268435455
+ parameter integer WIDTH=640,HEIGHT=400,GROUP=0,VIEW=1,DYNAMIC_MODE=0,DYNAMIC_GEOMETRY=0,TIMEOUT=268435455
 )(input [1:0] mode,input switching,input [31:0] generation,
+ input [15:0] runtime_width,runtime_height,input [31:0] runtime_bytes,output [31:0] complete_count,
  input clk,input rst_n,input frame_ready,input [7:0] engine_error,
  input [31:0] checksum,input [27:0] cursor,input request,input [9:0] length,input [63:0] address,
  input tx_busy,input prepared,input rd_done,
@@ -16,6 +17,9 @@ module hostlink #(
  wire [31:0] active_view=DYNAMIC_MODE ? (mode==1?32'd0:32'd1) : V;
  reg [2:0] state;reg [1:0] frame_sync,err_sync;
  reg [31:0] count,timer;reg source_done,seen_tx;
+ wire [31:0] geom_width=DYNAMIC_GEOMETRY?{16'd0,runtime_width}:W;
+ wire [31:0] geom_height=DYNAMIC_GEOMETRY?{16'd0,runtime_height}:H;
+ assign complete_count=count;
  // The vendor controller already converts count-minus-one to PCIe DW count;
  // zero in its 10-bit output represents 1024 DW, i.e. a full 4096-byte page.
  wire [12:0] size=(length==0)?13'd4096:{1'b0,length,2'b00};
@@ -62,7 +66,7 @@ module hostlink #(
  always @*begin
   case(bar_addr)
    0:status_data={count,{24'd0,5'd0,(error_code!=0 || err_sync[1]),busy,frame_sync[1]},(DYNAMIC_MODE?32'h00010001:32'h00010000),32'h44564d31};
-   1:status_data={FRAME,STRIDE,H,W};
+   1:status_data={(DYNAMIC_GEOMETRY?runtime_bytes:FRAME),geom_width*32'd2,geom_height,geom_width};
    2:status_data={checksum,{4'd0,cursor},active_view,active_group};
    3:status_data={96'd0,16'd0,engine_error,error_code};
    4:status_data=DYNAMIC_MODE ? {32'd1,29'd0,switching,mode,generation,32'h4d4f4445} : 128'd0;

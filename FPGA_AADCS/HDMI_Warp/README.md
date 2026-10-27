@@ -6,25 +6,30 @@
 合入 `F:/AADCS_git/hdmi_dummy_plug/v2.0` 的七档 EDID、MS7200 初始化、0x03→0x02
 模式切换修复、下降沿采样、完整帧检查和频率检测。源 dummy 工程不改，不需另烧 dummy。
 
+当前源码升级为 **CAM3 连续视频链路**，目标最高 1920×1080、30 fps。
+输出有效像素尺寸及新帧速率跟随电脑 HDMI 有源信号；实际吞吐需以当前版本上板测量为准。
+
 ```text
 Windows HDMI → HDMIK V1.1 / MS7200（FPGA 装载 EDID）
- → RGB888 下降沿采样 → 帧检查 → RGB565 / 异步 FIFO
- → FPGA DDR 输入帧：字节地址 0，最大 1920×1080×2
- → 逆仿射 → Brown 畸变映射 → 四邻域 DDR 读取 → 双线性插值
- → FPGA DDR 输出帧：字节地址 0x800000，640×400 RGB565 LE
- → DDR 整帧读回校验 → PCIe DMA → RK3568 coherent DDR → 原 fpga-view
+ → RGB888 下降沿采样 → 完整帧检查 → RGB565 / 异步 FIFO
+ → FPGA DDR 原始三帧池（0 / 4 / 8 MiB）
+ → 参数/尺寸变化时建立 XY 映射表（32 MiB）
+ → 双缓冲 32×8 分块、四邻域预取、双线性插值
+ → FPGA DDR 矫正三帧池（16 / 20 / 24 MiB）
+ → 一帧一次门铃、硬件拆分 4KB DMA、16 字节完成记录
+ → RK3568 coherent DDR → CAM3 感知的 fpga-view → 屏幕
 ```
 
-输入宽高按有效视频帧识别，支持不超过 1920×1080、像素数为 128 倍数的逐行 RGB 信号。
-EDID 声明 VGA60、720p50/60、1080p30/50/60。本合并工程的硬件结论见
-`checks/2026-10-26/result.md`；源 dummy 接收实测不能代替当前整链路实测。
+采集、矫正、DMA 各自持有帧槽，ARM 尚未取完的帧保持不变。
+每帧携带尺寸、源帧号、参数代数、帧周期与校验值。尺寸/参数改变时重建映射表会短暂停顿。
+格式为 RGB565 LE，宽度须是 32 的倍数，像素数为 128 的倍数，宽 ≤1920，高 8..1080。
+电脑需设置 **有源信号** ≤30 Hz；桌面缩放尺寸不等于输入尺寸。
+默认多模式 EDID 优选 1080p30，并声明 1080p/720p 的 24、25、30 Hz；
+其余历史 KEY1 档保留，接收 60 Hz 不代表完整矫正链路保证 60 fps。
+上电为恒等映射，在线调参仍使用原有 BAR1 协议。
 
-这是逐像素的**帧快照实现**：采一帧、矫正、校验，等 ARM 取完才采下一帧。
-期间跳过其他源帧，**不承诺 30/60 fps 矫正输出**。坏帧、FIFO 溢出、中断会完成
-已开始的 DDR 事务并丢帧，不复位在途 DDR/PCIe。
-
-上电参数按 1920×1080、零畸变/旋转、比例 1/3 设置，输出上下留黑。输入其他尺寸或
-切换分辨率后，用 `warpctl.py apply` 重新适配。演示系数不是镜头标定结果。
+旧交付 `firmware/fpga/hdmi-warp` 仍是 CAM2；使用 CAM3 须配套构建当前 FPGA 与
+更新后的 RK3568-PCIE 源码。详情见 [CAM3 连续视频](../../docs/hdmi-live-cam3.md)。
 
 ## 接线、按键
 
@@ -39,7 +44,7 @@ EDID 声明 VGA60、720p50/60、1080p30/50/60。本合并工程的硬件结论�
 | B[7:0] | AB18 P15 U20 R16 V20 N13 W20 N14 |
 | SDA / SCL | AA20 / AA21，开漏，MS7200 地址 0x2B |
 
-KEY0 重置整个链路，先停止采集程序。KEY1 循环 EDID：0 多模式、1 VGA60、2 720p50、
+KEY0 重置整个链路，先停止采集程序。KEY1 循环 EDID：0 为 ≤30 Hz 多模式、1 VGA60、2 720p50、
 3 720p60、4 1080p30、5 1080p50、6 1080p60；等待 I²C 空闲后重新配置。
 Windows 可能需要重插 HDMI 才会读取新 EDID；未假定未经验证的 HPD 寄存器有效。
 核对 Windows **有源信号分辨率**，桌面分辨率可能受显卡缩放影响。
@@ -59,15 +64,15 @@ Windows 可能需要重插 HDMI 才会读取新 EDID；未假定未经验证的 
 
 普通位流 `build/generate_bitstream/hdmi_warp_top.sbit`；调试版在 `build/debug/generate_bitstream`。
 专用 program.ps1 检查对应时序报告、以 500 kHz JTAG 下载 SRAM，不写 Flash/eFuse。
-`firmware/fpga/hdmi-warp` 已同步本次上板验证位流；以后修改源码仍需重新构建、更新交付快照。
+修改源码后须重新构建、检查时序，并更新对应交付快照。
 根目录旧下载脚本默认指向内部图案。
 修改 `config/warp.json` 可改变上电参数；在线调参无需重新编译。
 
 ## ARM 显示、调参
 
-ARM 仍用 `RK3568-PCIE` 的 6cf5ab5 采集/显示源码和 coherent DMA 驱动。新增独立工具
+ARM 使用当前 `RK3568-PCIE` 的 CAM2/CAM3 兼容采集和动态显示源码，沿用 coherent DMA 驱动。参数工具
 `tools/warpctl.py`、`tools/warp_math.py`，一起复制到板卡 `/userdata/fpga-view/tools/`。
-需 root/Python3，无第三方 Python 包。先用原程序恢复 JTAG 下载后的 BAR，再启动窗口：
+需 root/Python3，无第三方 Python 包。先用更新后的程序恢复 JTAG 下载后的 BAR，再启动窗口：
 
 ```sh
 /userdata/fpga-view/fpga-probe --mode cam2 -n 1 -v
@@ -94,7 +99,7 @@ python3 /userdata/fpga-view/tools/warpctl.py apply --config /userdata/warp.json 
 ssh -p 2222 root@10.144.144.2 "python3 /userdata/fpga-view/tools/warpctl.py apply --k1 -0.12"
 ```
 
-协议详见 ARM 仓库 `docs/hdmi-warp-control.md`。CAM2 仍为 640×400、stride1280、512000 字节。
+CAM3 DMA 协议见本文前述文档，参数地址兼容 ARM 仓库 `docs/hdmi-warp-control.md`。历史 CAM2 为 640×400、stride1280、512000 字节。
 BAR0 0x80 WRP1、0x84 pending/rejected、0x88 accepted、0x8C applied 参数代号；
 0x90 是当前处理/就绪帧代号，ready 时可与帧关联；0x94 为该帧源高宽。
 BAR0 0x100..140 读影子，BAR1 0x200..240 写 17 个完整 DWORD，0x250 提交非零新代号。

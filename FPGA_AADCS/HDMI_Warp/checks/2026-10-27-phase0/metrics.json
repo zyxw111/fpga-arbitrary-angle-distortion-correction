@@ -1,0 +1,173 @@
+{
+  "baseline": {
+    "all_constraints_met": true,
+    "minimum_wns_ns": 0.356,
+    "clock_pairs": [
+      {
+        "launch": "board_ref125",
+        "capture": "board_ref125",
+        "wns_ns": 3.132,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "ref_clk",
+        "capture": "ref_clk",
+        "wns_ns": 38.049,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "rst_clk",
+        "capture": "rst_clk",
+        "wns_ns": 36.946,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 0.356,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "phy_dq_sysclk_1",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 2.737,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "phy_dq_sysclk_0",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 3.508,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_0",
+        "wns_ns": 1.276,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_1",
+        "wns_ns": 1.009,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "pclk",
+        "capture": "pclk",
+        "wns_ns": 0.821,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "pclk_div2",
+        "capture": "pclk_div2",
+        "wns_ns": 0.394,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "pcie_ref_clk",
+        "capture": "pcie_ref_clk",
+        "wns_ns": 6.201,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "hdmi_pclk",
+        "capture": "hdmi_pclk",
+        "wns_ns": 0.658,
+        "failing_endpoints": 0
+      }
+    ]
+  },
+  "phase0": {
+    "all_constraints_met": true,
+    "minimum_wns_ns": 0.358,
+    "clock_pairs": [
+      {
+        "launch": "board_ref125",
+        "capture": "board_ref125",
+        "wns_ns": 2.405,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "ref_clk",
+        "capture": "ref_clk",
+        "wns_ns": 37.729,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "rst_clk",
+        "capture": "rst_clk",
+        "wns_ns": 37.234,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 0.358,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "phy_dq_sysclk_1",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 2.286,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "phy_dq_sysclk_0",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 3.493,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_0",
+        "wns_ns": 0.993,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_1",
+        "wns_ns": 0.883,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "pclk",
+        "capture": "pclk",
+        "wns_ns": 1.231,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "pclk_div2",
+        "capture": "pclk_div2",
+        "wns_ns": 0.664,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "pcie_ref_clk",
+        "capture": "pcie_ref_clk",
+        "wns_ns": 6.421,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "hdmi_pclk",
+        "capture": "hdmi_pclk",
+        "wns_ns": 0.622,
+        "failing_endpoints": 0
+      }
+    ]
+  },
+  "resources": {
+    "baseline": {
+      "LUT": 13631,
+      "FF": 14194,
+      "DRM": 80.5,
+      "APM": 30
+    },
+    "phase0": {
+      "LUT": 15413,
+      "FF": 18570,
+      "DRM": 80.5,
+      "APM": 30
+    }
+  },
+  "board_video_validation": "PASS Phase0 v2: original calibration; headless 1800 frames, 12s counter window; GUI live with 8s counter window. Not a 60fps/10k acceptance."
+}

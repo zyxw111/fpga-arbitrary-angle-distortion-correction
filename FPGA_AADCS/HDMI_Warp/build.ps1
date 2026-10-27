@@ -1,4 +1,4 @@
-param([ValidateSet('compile','synthesize','dev_map','pnr','report_timing','gen_bit_stream')][string]$Action='gen_bit_stream',[string]$PdsRoot='F:\PDS_2022.2-SP6.4',[string]$PythonExe='',[switch]$Debug,[int]$Seed=2)
+param([ValidateSet('compile','synthesize','dev_map','pnr','report_timing','gen_bit_stream')][string]$Action='gen_bit_stream',[string]$PdsRoot='F:\PDS_2022.2-SP6.4',[string]$PythonExe='',[switch]$Debug,[int]$Seed=2,[string]$BuildDir='build',[switch]$PerfDisable)
 $ErrorActionPreference='Stop'
 if(!$PythonExe){
  $bundled=Join-Path $env:USERPROFILE '.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe'
@@ -6,7 +6,7 @@ if(!$PythonExe){
 }
 & $PythonExe (Join-Path $PSScriptRoot 'tools\configure.py')
 if($LASTEXITCODE -ne 0){throw 'Invalid HDMI warp configuration'}
-$buildRoot=Join-Path $PSScriptRoot 'build'
+$buildRoot=Join-Path $PSScriptRoot $BuildDir
 if($Debug){$buildRoot=Join-Path $buildRoot 'debug'}
 New-Item -ItemType Directory -Path $buildRoot -Force | Out-Null
 # PDS writes its state back into the project. Keep the portable GUI entry clean.
@@ -28,6 +28,13 @@ $template=[regex]::Replace($template,'(\(_(?:file|ip|ip_source_item) ")([^"]+)("
  }
  $m.Groups[1].Value+$resolved+$m.Groups[3].Value
 })
+if($PerfDisable){
+ $topPath=(Join-Path $PSScriptRoot 'source/rtl/hdmi_warp_top.v').Replace('\','/')
+ $localTop=(Join-Path $buildRoot 'hdmi_warp_top_perf_off.v').Replace('\','/')
+ $topText=(Get-Content -LiteralPath $topPath -Raw).Replace('PERF_ENABLE=1','PERF_ENABLE=0')
+ [IO.File]::WriteAllText($localTop,$topText,[Text.UTF8Encoding]::new($false))
+ $template=$template.Replace($topPath,$localTop)
+}
 if($Debug){
  $ficPath=(Join-Path $buildRoot 'hdmi.fic').Replace('\','/')
  $netlist=(Join-Path $buildRoot 'synthesize/hdmi_warp_top_syn.adf').Replace('\','/')
@@ -42,5 +49,9 @@ $project=Join-Path $buildRoot 'hdmi_warp.pds'
 [IO.File]::WriteAllText($project,$template,[Text.UTF8Encoding]::new($false))
 & (Join-Path $PdsRoot 'bin\pds_shell.exe') -project $project -work_dir $buildRoot -run $Action *> (Join-Path $buildRoot "$Action.log")
 if($LASTEXITCODE -ne 0 -or (Select-String -LiteralPath (Join-Path $buildRoot "$Action.log") -Pattern "^E:|Program Error Out|All Constraints NOT Met")){Get-Content -LiteralPath (Join-Path $buildRoot "$Action.log") -Tail 25;throw "HDMI WARP $Action failed"}
+$compileLog=Join-Path $buildRoot 'compile/run.log'
+if((Test-Path -LiteralPath $compileLog) -and (Select-String -LiteralPath $compileLog -Pattern 'Width mismatch between port page_completed|Net perf_enabled[.].*driver')){
+ throw 'Performance tap binding failed (implicit or width-mismatched net); do not program this build.'
+}
 if($Action -eq "gen_bit_stream"){ $r=Join-Path $buildRoot "report_timing/hdmi_warp_top.rtr"; if(!(Test-Path $r) -or !(Select-String -LiteralPath $r -SimpleMatch "Design Summary : All Constraints Met.")){throw "Timing did not pass"} }
 Write-Output "PASS HDMI WARP $Action; logs: $buildRoot"

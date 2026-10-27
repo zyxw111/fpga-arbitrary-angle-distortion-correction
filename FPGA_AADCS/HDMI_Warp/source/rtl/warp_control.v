@@ -11,9 +11,12 @@ module warp_control(input host_clk,frame_clk,rst_n,
  reg request,ack,rejected;reg [1:0] ack_sync,request_sync;
  wire outstanding=request!=ack_sync[1];
  assign pending=outstanding;
- assign status_data=(status_addr==8)?{applied_generation,accepted_generation,{30'd0,rejected,outstanding},32'h57525031}:
-   (status_addr>=16 && status_addr<=19)?shadow[(status_addr-16)*128+:128]:
-   (status_addr==20)?{96'd0,shadow[512+:32]}:128'd0;
+ assign status_data=({128{status_addr==8}} & {applied_generation,accepted_generation,{30'd0,rejected,outstanding},32'h57525031}) |
+   ({128{status_addr==16}} & shadow[0+:128]) |
+   ({128{status_addr==17}} & shadow[128+:128]) |
+   ({128{status_addr==18}} & shadow[256+:128]) |
+   ({128{status_addr==19}} & shadow[384+:128]) |
+   ({128{status_addr==20}} & {96'd0,shadow[512+:32]});
  always @(posedge host_clk or negedge rst_n)
  if(!rst_n)begin
   shadow<=defaults;held<=defaults;held_generation<=0;accepted_generation<=0;applied_generation<=0;

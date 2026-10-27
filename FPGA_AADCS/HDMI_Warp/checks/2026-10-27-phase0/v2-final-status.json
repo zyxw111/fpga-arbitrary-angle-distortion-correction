@@ -1,0 +1,39 @@
+{
+  "gui_pid": 7657,
+  "status": {
+    "version": 196608,
+    "output_width": 1920,
+    "output_height": 1080,
+    "source_fps": 29.999919191919194,
+    "input_width": 1920,
+    "input_height": 1080,
+    "pixel_hz": 74249800,
+    "source_frames": 11605,
+    "receiver_flags": "0x9610005f",
+    "good_frames": 2100,
+    "dropped_frames": 0,
+    "flags": 0,
+    "accepted": 1,
+    "applied": 1,
+    "published": 1
+  },
+  "shadow_words": [
+    65536,
+    0,
+    0,
+    0,
+    96242,
+    4280788329,
+    64126953,
+    63881881,
+    66200803,
+    32557175,
+    1097335,
+    1101545,
+    4294938396,
+    22052,
+    4294955452,
+    4294967193,
+    4294967236
+  ]
+}

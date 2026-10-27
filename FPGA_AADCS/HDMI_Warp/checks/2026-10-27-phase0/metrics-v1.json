@@ -1,0 +1,173 @@
+{
+  "baseline": {
+    "all_constraints_met": true,
+    "minimum_wns_ns": 0.356,
+    "clock_pairs": [
+      {
+        "launch": "board_ref125",
+        "capture": "board_ref125",
+        "wns_ns": 3.132,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "ref_clk",
+        "capture": "ref_clk",
+        "wns_ns": 38.049,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "rst_clk",
+        "capture": "rst_clk",
+        "wns_ns": 36.946,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 0.356,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "phy_dq_sysclk_1",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 2.737,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "phy_dq_sysclk_0",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 3.508,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_0",
+        "wns_ns": 1.276,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_1",
+        "wns_ns": 1.009,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "pclk",
+        "capture": "pclk",
+        "wns_ns": 0.821,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "pclk_div2",
+        "capture": "pclk_div2",
+        "wns_ns": 0.394,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "pcie_ref_clk",
+        "capture": "pcie_ref_clk",
+        "wns_ns": 6.201,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "hdmi_pclk",
+        "capture": "hdmi_pclk",
+        "wns_ns": 0.658,
+        "failing_endpoints": 0
+      }
+    ]
+  },
+  "phase0": {
+    "all_constraints_met": true,
+    "minimum_wns_ns": 0.244,
+    "clock_pairs": [
+      {
+        "launch": "board_ref125",
+        "capture": "board_ref125",
+        "wns_ns": 3.815,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "ref_clk",
+        "capture": "ref_clk",
+        "wns_ns": 38.033,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "rst_clk",
+        "capture": "rst_clk",
+        "wns_ns": 36.941,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 0.6,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "phy_dq_sysclk_1",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 2.665,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "phy_dq_sysclk_0",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 3.556,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_0",
+        "wns_ns": 0.244,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_1",
+        "wns_ns": 0.283,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "pclk",
+        "capture": "pclk",
+        "wns_ns": 1.197,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "pclk_div2",
+        "capture": "pclk_div2",
+        "wns_ns": 0.272,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "pcie_ref_clk",
+        "capture": "pcie_ref_clk",
+        "wns_ns": 6.353,
+        "failing_endpoints": 0
+      },
+      {
+        "launch": "hdmi_pclk",
+        "capture": "hdmi_pclk",
+        "wns_ns": 0.759,
+        "failing_endpoints": 0
+      }
+    ]
+  },
+  "resources": {
+    "baseline": {
+      "LUT": 13631,
+      "FF": 14194,
+      "DRM": 80.5,
+      "APM": 30
+    },
+    "phase0": {
+      "LUT": 15245,
+      "FF": 18312,
+      "DRM": 80.5,
+      "APM": 30
+    }
+  },
+  "board_video_validation": "pending HDMI reacquisition; idle PRF0 only"
+}

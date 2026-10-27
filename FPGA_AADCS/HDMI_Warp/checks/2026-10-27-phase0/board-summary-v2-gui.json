@@ -1,0 +1,49 @@
+{
+  "mode": "gui",
+  "samples": 8,
+  "seconds": 8.021107078095238,
+  "warped_fps": 29.048359251592267,
+  "consumed_fps": 28.92368818184294,
+  "warp_ms_range": [
+    34.51151238095238,
+    34.62242285714286
+  ],
+  "dma_ms_range": [
+    20.687876595107543,
+    20.926308427472367
+  ],
+  "max_outstanding": {
+    "warp": 16,
+    "host": 1,
+    "total": 16
+  },
+  "MB_per_s": {
+    "map_return": 481.251106414187,
+    "source_return": 176.16689794092065,
+    "host_return": 120.28066931492779,
+    "capture_write": 120.27144565050347,
+    "lut_write": 0.0,
+    "output_write": 120.31279256144369,
+    "pagebuffer_read": 120.28105230445406
+  },
+  "average_burst_beats": {
+    "map": 16.0,
+    "source": 3.784362336253341,
+    "host": 15.360358669001752
+  },
+  "error_flags": [
+    "0x0"
+  ],
+  "discarded_captures": 0,
+  "stage_fraction": {
+    "warp_cycles": 0.9999986720750056,
+    "host_page_cycles": 0.5957758588144979,
+    "output_slot_wait_cycles": 0.0,
+    "raw_queue_empty_cycles": 0.0,
+    "warp_return_wait_cycles": 0.25125571741050934,
+    "host_return_wait_cycles": 0.19025588130570978
+  },
+  "dma_busy_fraction": 0.6040065583867503,
+  "dma_frames": 232,
+  "completed_pages": 235735
+}

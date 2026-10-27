@@ -14,7 +14,11 @@ for profile in profiles:
  assert hashlib.sha256(edid).hexdigest()==profile['sha256']
  table={int(k,16):int(v,16) for k,v in re.findall(r"8'h([0-9a-fA-F]+): get_edid=8'h([0-9a-fA-F]+)",tables[profile['profile']])}
  assert bytes(table[i] for i in range(256))==edid
-print('PASS seven imported EDID profiles: checksums, SHA256 and all 1792 internal RAM bytes')
+default=(ROOT/'edid/0-multi.bin').read_bytes()
+assert list(default[133:139])==[0x80|34,33,32,62,61,60]
+assert int.from_bytes(default[54:56],'little')==7425
+assert (default[56]+((default[58]>>4)<<8),default[59]+((default[61]>>4)<<8))==(1920,1080)
+print('PASS seven EDID profiles: checksums, SHA256 and all 1792 internal RAM bytes')
 if a.build:
  # Independent HDMIK V1.1 reference, including its PCLK/B[1] swap vs V1.0.
  expected=dict(zip(('pixclk_in','vs_in','hs_in','de_in','hd_sda','hd_scl','board_clk_p','board_clk_n','key0_n','key1_n'),
