@@ -2,7 +2,7 @@
 // KEY0 resets. Capture, warp and DMA use independent immutable frame slots.
 module hdmi_warp_top #(
     parameter integer WIDTH=1920,HEIGHT=1080,IN_WIDTH=1920,IN_HEIGHT=1080,VS_ACTIVE_HIGH=1,
-    parameter integer PERF_ENABLE=1,PERF_SNAPSHOT_BITS=20
+    parameter integer PERF_ENABLE=1,PERF_SNAPSHOT_BITS=20,WARP_OVERLAP_WRITE=1,WARP_OUTPUT_BANKS=2
 )(
     output mem_cs_n,output mem_rst_n,output mem_ck,output mem_ck_n,output mem_cke,
     output mem_ras_n,output mem_cas_n,output mem_we_n,output mem_odt,
@@ -152,7 +152,7 @@ module hdmi_warp_top #(
        10,11:status_data=stream_status;
        12:status_data={active_generation,live_header[159:128],live_header[319:288],live_header[191:160]};
        8,16,17,18,19,20:status_data=0;
-       32,33,34,35,36,37,38,39,40,41,42:status_data=perf_status;
+       32,33,34,35,36,37,38,39,40,41,42,43,44:status_data=perf_status;
        default:status_data=host_status;
       endcase
     end
@@ -175,17 +175,17 @@ module hdmi_warp_top #(
     // creates local implicit one-bit nets instead of binding the later nets.
     wire [31:0] page_completed;wire stream_busy,stream_wr;wire [11:0] stream_addr;
     wire [31:0] stream_data;wire [127:0] stream_status;
-    wire [1023:0] perf_counters;wire [127:0] perf_status;
+    wire [1023:0] perf_counters;wire [127:0] perf_status;wire [255:0] tile_perf;
     generate if(PERF_ENABLE)begin:perf_enabled
       warp_perf_regs #(.SNAPSHOT_BITS(PERF_SNAPSHOT_BITS)) registers(
-        .dclk(dclk),.hclk(pclk_div2),.rst_n(dreset[1]),.counters(perf_counters),
+        .dclk(dclk),.hclk(pclk_div2),.rst_n(dreset[1]),.counters(perf_counters),.tile_counters(tile_perf),
         .dma_busy(stream_busy),.frame_ready(image_ready),.source_read(source_read),
         .txvalid(axis_master_tvalid),.txready(axis_master_tready),.page_completed(page_completed),
         .status_addr(status_addr),.status_data(perf_status));
     end else begin:perf_disabled
       assign perf_status=128'd0;
     end endgenerate
-    hdmi_live #(.PERF_ENABLE(PERF_ENABLE)) u_image(
+    hdmi_live #(.PERF_ENABLE(PERF_ENABLE),.WARP_OVERLAP_WRITE(WARP_OVERLAP_WRITE),.WARP_OUTPUT_BANKS(WARP_OUTPUT_BANKS)) u_image(
       .runtime_config(runtime_config),.active_generation(active_generation),
       .frame_safe(frame_safe),.header(live_header),
       .input_width(ddr_record[15:0]),.input_height(ddr_record[31:16]),
@@ -201,7 +201,7 @@ module hdmi_warp_top #(
       .rd_valid(source_valid),.rd_done(source_done),
       .awvalid(av),.awready(ar),.awaddr(aa),.awlen(al),.wdata(wd),.wstrb(ws),.wready(wr),.wlast(wl),
       .arvalid(rv),.arready(rr),.araddr(ra),.arlen(rlen),.rdata(rd),.rvalid(rvalid),.rlast(rl),
-      .perf_counters(perf_counters));
+      .perf_counters(perf_counters),.tile_perf(tile_perf));
     frame_dma stream(.clk(pclk_div2),.rst_n(video_reset_n),.control_wr(control_wr),.control_addr(control_addr),.control_data(control_data),.control_be(control_be),
       .frame_ready(image_ready),.frame_bytes(live_header[255:224]+32'd16),
       .frame_id(live_header[95:64]),.page_completed(page_completed),.page_busy(host_busy),

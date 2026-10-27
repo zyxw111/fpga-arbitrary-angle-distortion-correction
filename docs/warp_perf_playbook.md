@@ -97,3 +97,20 @@ python3 tools/warp_perf.py --samples 60 --interval 1 > /tmp/warp-perf.jsonl
 Windows能枚举FTDI不代表PDS一定能打开。若PDS返回`CableList is empty`，可从USB远程助手所配置的VirtualHere客户端读取`LIST`，再只对该列表中的FTDI地址执行`STOP USING`和`USE`；该流程无需停止SSH/VPN或其他USB设备。命令与返回值见[VirtualHere官方客户端API](https://www.virtualhere.com/client_api)。
 
 助手可能在释放后自动重新接入，此时`USE`返回Already in use，应以`LIST`中的In-use by you及PDS重新扫描结果核对，不重复断开。下载进行中保持连接。记录DONE与CRC检查；若下载到100%/DONE=1后仅状态读失败，应先检查ARM端实际固件与数据，避免把状态读取失败直接等同于配置失败。
+
+## 8. 已确认的WP1：计算与写回重叠
+
+Phase0后已获得继续实施WP1的确认。当前实现与验收见 `warp_perf_wp1.md`，证据在 `FPGA_AADCS/HDMI_Warp/checks/2026-10-27-wp1`。本包不修改源坐标、插值、帧协议或ARM显示路径。
+
+```powershell
+./FPGA_AADCS/HDMI_Warp/build.ps1 -Seed 4 -BuildDir build/wp1-overlap
+./FPGA_AADCS/HDMI_Warp/program.ps1 -BuildDir build/wp1-overlap
+# A/B回退，使用相同数学和接口：
+./FPGA_AADCS/HDMI_Warp/build.ps1 -Seed 4 -BuildDir build/wp1-serial -WarpSerial
+```
+
+新读取工具自动识别BAR0 `0x2B0` 的TIL1，只读尾部包含计算、写回、同时活跃、输出槽满、源tile等待及帧计数。原PRF0字段和地址保持兼容。`tile_pipeline.write_overlap_fraction`只描述tile写回与计算的重叠；整帧DMA此前已经与warp重叠，不能把约21ms DMA直接从端到端时间中减掉。
+
+板测使用已发布的原标定代次，输入1920×1080/30Hz，先启动现有headless捕获，再每秒采样，连续累加至少10000个`delta.warped_frames`和`delta.consumed_frames`。同时记录capture日志的source/skipped，要求稳态skipped不增加、错误及discard为0。启动前无人消费造成的历史skipped绝对值不作为测试期丢帧。关闭headless后再启动GUI，不能让两个进程同时争用DMA。
+
+若输出scratch满等待远高于源tile等待，下一包应验证短行写突发与DDR仲裁占用，不应仅凭先验假设增加source缓存。平均AR突发仍受硬件16-beat上限限制；TIL1没有伪造256-beat能力。

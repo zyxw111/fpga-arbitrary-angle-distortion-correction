@@ -1,0 +1,68 @@
+{
+  "inputs": {
+    "key": "148ab13fa89fbfe996c53e665365cb46458198976e6eb25659c6c17f192bdb4e",
+    "calibration_record_sha256": "da3e9d9c6316735ef7b8425cda9931fdd941a8d34ed8a72980b564261e714203",
+    "words": [
+      65536,
+      0,
+      0,
+      0,
+      96242,
+      -14178967,
+      64126953,
+      63881881,
+      66200803,
+      32557175,
+      1097335,
+      1101545,
+      -28900,
+      22052,
+      -11844,
+      -103,
+      -60
+    ],
+    "hashes": {
+      "source.hex": "5ddbb55f5997e686d4d53c9d8727e2457508f885686cec1c949185139c25145a",
+      "map.hex": "85df70c0c9ee62d7699e2732b5e342340a227e1a8bd4e44cb4bafaf6ef46ebfe",
+      "golden.hex": "82fbe0bab3c477ac1dd1b677d6175624411b9d5871e201eb99473928e7d821a4"
+    },
+    "pixels": 2073600
+  },
+  "results": [
+    {
+      "mode": "serial",
+      "pixels": 2073600,
+      "max_absolute_error": 0,
+      "psnr_db": "Infinity (bit exact)",
+      "cycles": 2715781,
+      "checksum": "4de73ca9",
+      "seconds": 113.3440000000046,
+      "source_hashes": {
+        "source\\rtl\\warp_tiles.v": "5f58637f11bd3041bc666464a8b10de6165fb59afe9aa27d6ae0fd275de4fffa",
+        "source\\rtl\\tile_fetch.v": "ee0c7438a3dfce4b1f5ce8054fad71132097fc1525e79fc7db1bdbc3bb9eb830",
+        "source\\rtl\\bilin.v": "eb73fb652f3963d790c4f446f56282cf88266a70d31fd260250f87e2365a6aa1",
+        "source\\rtl\\video_ddr_arb.v": "bc8b19d5991e30c4f43bc5ed71f370a134bbeba9e2a929a64e0e50b8747f4962",
+        "sim\\ddrmodel.sv": "b139e63a819c6f4cd5fdb17d31f682814a0f743cdbe5f6f1e5719749288c4668",
+        "sim\\tb_warp_full.sv": "ae94f135004e74bd4950af05895e01e0315114fb52bcc223fc9a9e01b0514912",
+        "sim\\tb_warp_full_serial.sv": "8d74245750683e02b714f6337c402f44c8115002cf4b03c455fbff993ca9d5f7"
+      }
+    },
+    {
+      "mode": "overlap",
+      "pixels": 2073600,
+      "max_absolute_error": 0,
+      "psnr_db": "Infinity (bit exact)",
+      "cycles": 2656833,
+      "checksum": "4de73ca9",
+      "seconds": 115.43699999999808,
+      "source_hashes": {
+        "source\\rtl\\warp_tiles.v": "5f58637f11bd3041bc666464a8b10de6165fb59afe9aa27d6ae0fd275de4fffa",
+        "source\\rtl\\tile_fetch.v": "ee0c7438a3dfce4b1f5ce8054fad71132097fc1525e79fc7db1bdbc3bb9eb830",
+        "source\\rtl\\bilin.v": "eb73fb652f3963d790c4f446f56282cf88266a70d31fd260250f87e2365a6aa1",
+        "source\\rtl\\video_ddr_arb.v": "bc8b19d5991e30c4f43bc5ed71f370a134bbeba9e2a929a64e0e50b8747f4962",
+        "sim\\ddrmodel.sv": "b139e63a819c6f4cd5fdb17d31f682814a0f743cdbe5f6f1e5719749288c4668",
+        "sim\\tb_warp_full.sv": "ae94f135004e74bd4950af05895e01e0315114fb52bcc223fc9a9e01b0514912"
+      }
+    }
+  ]
+}

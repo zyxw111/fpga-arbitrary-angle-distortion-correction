@@ -1,0 +1,2 @@
+PASS FULL1080 mode=1 pixels=2073600 max_error=0 cycles=2656833 checksum=4de73ca9
+F:\AADCS_git_zyxw\FPGA_AADCS\HDMI_Warp\sim\tb_warp_full.sv:50: $finish called at 21254712000 (1ps)

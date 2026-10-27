@@ -1,6 +1,6 @@
 // Three raw and three corrected DDR frame slots. Capture, tile processing and
 // host page reads own independent slots and share only complete DDR bursts.
-module hdmi_live #(parameter FIFO_BITS=11,SLOT_SHIFT=22,PERF_ENABLE=1,
+module hdmi_live #(parameter FIFO_BITS=11,SLOT_SHIFT=22,PERF_ENABLE=1,WARP_OVERLAP_WRITE=1,WARP_OUTPUT_BANKS=2,
  parameter [27:0] OUTPUT_BASE=28'h1000000,LUT_BASE=28'h2000000)(
  input pclk,clk,dma_clk,rst_n,init_done,camera_ready,
  input [15:0] input_width,input_height,input [31:0] input_sequence,input_period,input_pixel_hz,
@@ -13,7 +13,7 @@ module hdmi_live #(parameter FIFO_BITS=11,SLOT_SHIFT=22,PERF_ENABLE=1,
  output awvalid,input awready,output [27:0] awaddr,output [3:0] awlen,
  output [127:0] wdata,output [15:0] wstrb,input wready,wlast,
  output arvalid,input arready,output [27:0] araddr,output [3:0] arlen,
- input [127:0] rdata,input rvalid,rlast,output [1023:0] perf_counters);
+ input [127:0] rdata,input rvalid,rlast,output [1023:0] perf_counters,output [255:0] tile_perf);
  function [1:0] advance;input [1:0] p;begin advance=p==2?0:p+1'b1;end endfunction
  function [27:0] slot_offset;input [1:0] p;begin slot_offset={26'd0,p}<<SLOT_SHIFT;end endfunction
  reg [2:0] raw_free,out_free;
@@ -107,12 +107,12 @@ module hdmi_live #(parameter FIFO_BITS=11,SLOT_SHIFT=22,PERF_ENABLE=1,
   .config_bank(runtime_config),.ready(build_ready),.done(build_done),.error(build_error),
   .awvalid(wav[1]),.awready(war[1]),.awaddr(waa[28+:28]),.awlen(wal[4+:4]),
   .wdata(wd[128+:128]),.wstrb(ws[16+:16]),.wready(wr[1]),.wlast(wl[1]));
- warp_tiles #(.LUT_BASE(LUT_BASE)) processor(.clk(clk),.rst_n(rst_n),.start(ps==P_START),.width(pw),.height(ph),
+ warp_tiles #(.LUT_BASE(LUT_BASE),.WARP_OVERLAP_WRITE(WARP_OVERLAP_WRITE),.WARP_OUTPUT_BANKS(WARP_OUTPUT_BANKS)) processor(.clk(clk),.rst_n(rst_n),.start(ps==P_START),.width(pw),.height(ph),
   .source_base(slot_offset(processing_raw)),.output_base(OUTPUT_BASE+slot_offset(processing_out)),
   .ready(process_ready),.done(process_done),.error(process_error),.checksum(process_hash),
   .awvalid(wav[2]),.awready(war[2]),.awaddr(waa[56+:28]),.awlen(wal[8+:4]),
   .wdata(wd[256+:128]),.wstrb(ws[32+:16]),.wready(wr[2]),.wlast(wl[2]),
-  .arvalid(rav[0]),.arready(rar[0]),.araddr(raa[0+:28]),.arlen(ral[0+:4]),.rdata(rd),.rvalid(rv[0]),.rlast(rl[0]));
+  .arvalid(rav[0]),.arready(rar[0]),.araddr(raa[0+:28]),.arlen(ral[0+:4]),.rdata(rd),.rvalid(rv[0]),.rlast(rl[0]),.tile_perf(tile_perf));
  always @(posedge clk or negedge rst_n)
  if(!rst_n)begin
   ps<=P_IDLE;config_wait<=0;pw<=0;ph<=0;lut_width<=0;lut_height<=0;lut_generation<=0;

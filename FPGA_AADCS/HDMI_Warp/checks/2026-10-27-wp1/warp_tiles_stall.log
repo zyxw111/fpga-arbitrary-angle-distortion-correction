@@ -1,0 +1,5 @@
+PASS warp tiles frame 0: 2560 bilinear pixels, raster checksum, cycles=14068
+PASS warp tiles frame 1: 2560 bilinear pixels, raster checksum, cycles=14079
+PASS output scheduling mode=1 banks=2 stall=1500 compute=5260 write=26394 overlap=4310 outwait=15849
+PASS queued DDR prefetch: peak=16 outstanding
+F:\AADCS_git_zyxw\FPGA_AADCS\HDMI_Warp\sim\tb_warp_tiles.sv:82: $finish called at 3227800000 (1ps)

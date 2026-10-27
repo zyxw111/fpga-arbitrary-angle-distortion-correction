@@ -10,6 +10,7 @@ module tb_warp_perf;
  reg [11:0] status_addr=0;wire [127:0] status;
  reg dma_busy=0;reg [31:0] pages=7;
  warp_perf_regs #(.SNAPSHOT_BITS(6)) regs(.dclk(clk),.hclk(hclk),.rst_n(rst_n),.counters(counts),
+  .tile_counters({32'd6,32'd5,32'd4,32'd3,32'd2,32'd1,32'h201,32'h54494c31}),
   .dma_busy(dma_busy),.frame_ready(1'b1),.source_read(1'b0),.txvalid(1'b0),.txready(1'b1),
   .page_completed(pages),.status_addr(status_addr),.status_data(status));
  task tick(input [1:0] xpush,xvalid,xlast,input [27:0] address,input [7:0] length);
@@ -51,6 +52,10 @@ module tb_warp_perf;
   status_addr=41;#1;
   if(status[63:32]!==8 || status[95:64]!==1 || status[127:96]!==8)
    $fatal(1,"DMA busy, completion, duration counters %h",status);
+  status_addr=43;#1;
+  if(status!=={32'd2,32'd1,32'h201,32'h54494c31})$fatal(1,"tile snapshot bank0 %h",status);
+  status_addr=44;#1;
+  if(status!=={32'd6,32'd5,32'd4,32'd3})$fatal(1,"tile snapshot bank1 %h",status);
   status_addr=0;#1;if(status!==0)$fatal(1,"legacy bank changed");
   tick(0,1,1,0,0);tick(0,0,0,0,0);tick(0,0,0,0,0);
   if(!counts[31*32+8])$fatal(1,"unexpected response not reported");

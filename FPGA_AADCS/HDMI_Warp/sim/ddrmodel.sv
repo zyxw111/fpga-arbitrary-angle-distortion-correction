@@ -1,7 +1,8 @@
 `timescale 1ns/1ps
 // Interface model, not a PHY model. Optional queued/latent read channel tests
 // multiple in-flight commands and in-order returns without RREADY.
-module ddrmodel #(parameter integer WORDS=1024,FORMULA=0,READ_QUEUE=1,READ_DELAY=0)(
+module ddrmodel #(parameter integer WORDS=1024,FORMULA=0,READ_QUEUE=1,READ_DELAY=0,
+ WRITE_STALL_CYCLES=0,WRITE_RUN_CYCLES=64)(
  input clk,input rst_n,
  input awvalid,output awready,input [27:0] awaddr,input [3:0] awlen,
  input [127:0] wdata,input [15:0] wstrb,output wready,output wlast,
@@ -13,7 +14,8 @@ module ddrmodel #(parameter integer WORDS=1024,FORMULA=0,READ_QUEUE=1,READ_DELAY
  pattern={32'h12340000 ^ n,32'h56780000 ^ n,32'habcd0000 ^ n,32'hfedc0000 ^ n};
  endfunction
  assign awready=rst_n && !wa && cycle%5!=0;
- assign wready=rst_n && (wa || (awvalid && awready)) && cycle%4!=0;
+ assign wready=rst_n && (wa || (awvalid && awready)) && cycle%4!=0 &&
+               (WRITE_STALL_CYCLES==0 || cycle%(WRITE_STALL_CYCLES+WRITE_RUN_CYCLES)>=WRITE_STALL_CYCLES);
  assign wlast=wa ? wi==wn-1 : awlen==0;
  integer j,addr;
  always @(posedge clk)begin

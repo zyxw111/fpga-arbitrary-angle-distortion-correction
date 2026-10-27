@@ -1,0 +1,11 @@
+PASS live frame 1 geometry 64x40
+PASS live frame 2 geometry 64x40
+PASS live frame 3 geometry 64x40
+PASS live frame 4 geometry 64x40
+PASS live frame 5 geometry 64x40
+PASS live frame 6 geometry 96x44
+PASS live frame 7 geometry 96x44
+PASS live frame 8 geometry 96x44
+PASS live frame 9 geometry 96x44
+PASS HDMI live three-frame ownership, whole-frame DMA, unaligned destination page split, footer, random PCIe/DDR stalls, automatic 64x40 -> 96x44 partial-tile mode switch, atomic parameter commit/LUT rebuild, 29696 exact pixels
+F:\AADCS_git_zyxw\FPGA_AADCS\HDMI_Warp\sim\tb_hdmi_live_pcie.sv:149: $finish called at 12711960000 (1ps)

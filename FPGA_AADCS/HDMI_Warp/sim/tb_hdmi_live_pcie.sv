@@ -3,7 +3,7 @@
 `ifndef TB_NAME
 `define TB_NAME tb_hdmi_pcie
 `endif
-module tb_hdmi_live_pcie #(parameter PERF_ENABLE=1);
+module tb_hdmi_live_pcie #(parameter PERF_ENABLE=1,OVERLAP_WRITE=1);
 reg pix_clk=0,clk=0,dma_clk=0,rst_n=0;
 reg [15:0] sensor_w=64,sensor_h=40;reg [31:0] sensor_hz=120000;
 reg pv=0,ps=0,ended=0,good=1;reg [23:0] prgb=0;reg [15:0] px=0,py=0;
@@ -31,7 +31,7 @@ warp_control control(.host_clk(dma_clk),.frame_clk(clk),.rst_n(rst_n),.wr_en(con
  .frame_safe(frame_safe),.status_addr(status_addr),.status_data(warp_status),
  .active_config(active_config),.active_generation(generation),.pending(pending));
 wire [319:0] header;
-hdmi_live #(.PERF_ENABLE(PERF_ENABLE),.SLOT_SHIFT(14),.OUTPUT_BASE(28'h10000),.LUT_BASE(28'h20000)) image(
+hdmi_live #(.WARP_OVERLAP_WRITE(OVERLAP_WRITE),.PERF_ENABLE(PERF_ENABLE),.SLOT_SHIFT(14),.OUTPUT_BASE(28'h10000),.LUT_BASE(28'h20000)) image(
  .pixel_valid(pv),.pixel_sof(ps),.pixel_rgb(prgb),.pixel_x(px),.pixel_y(py),.frame_end(ended),.frame_good(good),
  .runtime_config(active_config),.active_generation(generation),.frame_safe(frame_safe),
  .input_width(sensor_w),.input_height(sensor_h),.input_sequence(sensor_sequence),.input_period(32'd4000),.input_pixel_hz(sensor_hz),

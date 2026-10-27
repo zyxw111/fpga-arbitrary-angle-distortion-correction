@@ -116,3 +116,5 @@ python tools/check_sink.py --build build
 覆盖独立浮点/整数坐标模型、真实 PCIe RX/MMIO/CplD/TX、在线系数变化和精确像素比较、
 HDMI v2 接收、坏帧/FIFO、尺寸/频率切换、I²C、七档 EDID、原子参数提交及复位。
 硬 PCIe/DDR PHY 在仿真中由模型替代。历史检查保存在 checks，不能用旧版记录证明新版成功。
+
+WP1默认启用tile计算/写回双缓冲，关闭可用`build.ps1 -WarpSerial -BuildDir build/wp1-serial`。新位流位于`build/wp1-overlap`，不要混用旧`build/`位流。参数、只读计数器、逐像素与板测结果见仓库`docs/warp_perf_wp1.md`。

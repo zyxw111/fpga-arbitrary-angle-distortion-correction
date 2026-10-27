@@ -45,6 +45,10 @@ def main():
     (out/'hdmi_golden.hex').write_text('\n'.join(f'{v:04x}' for v in golden)+'\n')
     native=[sample(*fixed_map(x,y,q),64,40) for y in range(40) for x in range(64)]
     (out/'native_golden.hex').write_text('\n'.join(f'{v:04x}' for v in native)+'\n')
+    def changed_pattern(x,y,w,h):
+        return (((x+3)%32)<<11)|(((y+7)%64)<<5)|((x+y+11)%32) if 0<=x<w and 0<=y<h else 0
+    changed=[sample(*fixed_map(x,y,q),64,40,changed_pattern) for y in range(40) for x in range(64)]
+    (out/'native_golden_changed.hex').write_text('\n'.join(f'{v:04x}' for v in changed)+'\n')
     large=[sample(*fixed_map(x,y,q),96,44) for y in range(44) for x in range(96)]
     (out/'live_large_golden.hex').write_text('\n'.join(f'{v:04x}' for v in large)+'\n')
     qp=q.copy();qp['a02']+=3*65536
@@ -68,11 +72,12 @@ def main():
         t0=time.monotonic();top='tb_'+name
         sources=[p for p in sorted((ROOT/'source/rtl').glob('*.v')) if p.stem!='hdmi_config']
         sources += [out/'test_config.v',ROOT/'sim'/f'{top}.sv']
-        if name=='warp_tiles':
+        if name.startswith('warp_tiles'):
             sources += [ROOT/'sim/ddrmodel.sv']
-        if name=='hdmi_live_perf_off':
+            if name!='warp_tiles':sources += [ROOT/'sim/tb_warp_tiles.sv']
+        if name in ('hdmi_live_perf_off','hdmi_live_serial'):
             sources += [ROOT/'sim/tb_hdmi_live_pcie.sv']
-        if name in ('hdmi_pcie','hdmi_v2_pcie','hdmi_live_pcie','hdmi_live_perf_off'):
+        if name in ('hdmi_pcie','hdmi_v2_pcie','hdmi_live_pcie','hdmi_live_perf_off','hdmi_live_serial'):
             sources += [ROOT/'sim/ddrmodel.sv',ROOT/'sim/pcie_ram_model.sv']
             sources += [p for p in (ROOT/'source/pcie_dma').rglob('*.v') if 'ips2l_pcie_dma_ram' not in str(p)]
         pre=out/f'{top}.pre.v';artifact=out/f'{top}.vvp';artifact.unlink(missing_ok=True)
@@ -88,7 +93,7 @@ def main():
         inputs={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in input_paths}
         log=run([core/'ivlpp.exe','-L','-o',pre,*sources])
         log+=run([core/'ivl.exe','-C',core/'vvp.conf','-C',cfg,pre])
-        log+=run([args.bin.resolve()/'vvp.exe',artifact],timeout=1200 if name=='video_rx' else 420 if name in ('hdmi_live_pcie','hdmi_live_perf_off') else 180)
+        log+=run([args.bin.resolve()/'vvp.exe',artifact],timeout=1200 if name=='video_rx' else 420 if name in ('hdmi_live_pcie','hdmi_live_perf_off','hdmi_live_serial') else 180)
         (out/f'{top}.log').write_text(log)
         if 'PASS' not in log:raise RuntimeError(log)
         print(next(line for line in log.splitlines() if 'PASS' in line),flush=True)

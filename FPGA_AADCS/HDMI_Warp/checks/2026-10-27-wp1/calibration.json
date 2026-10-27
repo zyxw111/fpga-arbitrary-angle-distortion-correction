@@ -1,0 +1,143 @@
+{
+  "input_size": [
+    1920,
+    1080
+  ],
+  "output_size": [
+    1920,
+    1080
+  ],
+  "source_scale": 1.5,
+  "roi_cropped": false,
+  "assumption": "HDMI contains the calibration image uniformly resized, without cropping",
+  "output_K": [
+    [
+      978.4996421632654,
+      0,
+      1010.1440812716137
+    ],
+    [
+      0,
+      663.7628615564179,
+      485.6105535813119
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  "coefficients": {
+    "a00": 1.0,
+    "a01": 0.0,
+    "a02": 0.0,
+    "a10": 0.0,
+    "a11": 1.4685367285386002,
+    "a12": -216.3538715013762,
+    "fx": 978.4996421632654,
+    "fy": 974.7601412354817,
+    "cx": 1010.1440812716137,
+    "cy": 496.78306219874213,
+    "inv_fx": 0.0010219727804797166,
+    "inv_fy": 0.001025893404640579,
+    "k1": -0.4409816950630447,
+    "k2": 0.3364814857605504,
+    "k3": -0.18072313212094004,
+    "p1": -0.001569093982807901,
+    "p2": -0.0009195269440539544
+  },
+  "order": [
+    "a00",
+    "a01",
+    "a02",
+    "a10",
+    "a11",
+    "a12",
+    "fx",
+    "fy",
+    "cx",
+    "cy",
+    "inv_fx",
+    "inv_fy",
+    "k1",
+    "k2",
+    "k3",
+    "p1",
+    "p2"
+  ],
+  "words": [
+    65536,
+    0,
+    0,
+    0,
+    96242,
+    -14178967,
+    64126953,
+    63881881,
+    66200803,
+    32557175,
+    1097335,
+    1101545,
+    -28900,
+    22052,
+    -11844,
+    -103,
+    -60
+  ],
+  "calibration_file": "/userdata/fpga-view/calibration/my_camera_params.json",
+  "calibration_sha256": "982882c4f23bd89c6b2642d6ad95f56b4baeb094592d7c9c7d685962b241779f",
+  "before": {
+    "version": 196608,
+    "output_width": 1920,
+    "output_height": 1080,
+    "source_fps": 29.999919191919194,
+    "input_width": 1920,
+    "input_height": 1080,
+    "pixel_hz": 74249800,
+    "source_frames": 3827,
+    "receiver_flags": "0x9610001f",
+    "good_frames": 22,
+    "dropped_frames": 0,
+    "flags": 0,
+    "accepted": 0,
+    "applied": 0,
+    "published": 0
+  },
+  "previous_shadow_words": [
+    65536,
+    0,
+    0,
+    0,
+    65536,
+    0,
+    67108864,
+    67108864,
+    62914560,
+    35389440,
+    1048576,
+    1048576,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "applied": 1,
+  "after": {
+    "version": 196608,
+    "output_width": 1920,
+    "output_height": 1080,
+    "source_fps": 29.999919191919194,
+    "input_width": 1920,
+    "input_height": 1080,
+    "pixel_hz": 74249800,
+    "source_frames": 3885,
+    "receiver_flags": "0x9610001f",
+    "good_frames": 25,
+    "dropped_frames": 0,
+    "flags": 0,
+    "accepted": 1,
+    "applied": 1,
+    "published": 1
+  }
+}

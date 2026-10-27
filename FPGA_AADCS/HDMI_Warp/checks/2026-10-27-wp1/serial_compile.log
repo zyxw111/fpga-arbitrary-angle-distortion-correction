@@ -1,0 +1,36 @@
+Original log SHA256: b939d6ab9675e5a5311723fcfde4627a78f85546331d5b82be14f500f7070d52
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+Executing : sdm2adm successfully. Time elapsed: 2.679s wall, 2.312s user + 0.031s system = 2.344s CPU (87.5%)
+
+Saving design to DB.
+Action compile: Real time elapsed is 0h:0m:53s
+Action compile: CPU time elapsed is 0h:0m:29s
+Action compile: Process CPU time elapsed is 0h:0m:29s
+Current time: Tue Oct 27 17:39:38 2026
+Action compile: Peak memory pool usage is 446 MB
+Action from compile to compile: Total Real Time elapsed is 0h:0m:53s
+Action from compile to compile: Total CPU time elapsed is 0h:0m:29s
+Action from compile to compile: Total Process CPU Time elapsed is 0h:0m:29s
+Process "Compile" done.

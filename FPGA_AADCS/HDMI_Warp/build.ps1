@@ -1,4 +1,4 @@
-param([ValidateSet('compile','synthesize','dev_map','pnr','report_timing','gen_bit_stream')][string]$Action='gen_bit_stream',[string]$PdsRoot='F:\PDS_2022.2-SP6.4',[string]$PythonExe='',[switch]$Debug,[int]$Seed=2,[string]$BuildDir='build',[switch]$PerfDisable)
+param([ValidateSet('compile','synthesize','dev_map','pnr','report_timing','gen_bit_stream')][string]$Action='gen_bit_stream',[string]$PdsRoot='F:\PDS_2022.2-SP6.4',[string]$PythonExe='',[switch]$Debug,[int]$Seed=2,[string]$BuildDir='build',[switch]$PerfDisable,[switch]$WarpSerial,[ValidateRange(1,8)][int]$OutputBanks=2)
 $ErrorActionPreference='Stop'
 if(!$PythonExe){
  $bundled=Join-Path $env:USERPROFILE '.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe'
@@ -28,10 +28,13 @@ $template=[regex]::Replace($template,'(\(_(?:file|ip|ip_source_item) ")([^"]+)("
  }
  $m.Groups[1].Value+$resolved+$m.Groups[3].Value
 })
-if($PerfDisable){
+if($PerfDisable -or $WarpSerial -or $OutputBanks -ne 2){
  $topPath=(Join-Path $PSScriptRoot 'source/rtl/hdmi_warp_top.v').Replace('\','/')
- $localTop=(Join-Path $buildRoot 'hdmi_warp_top_perf_off.v').Replace('\','/')
- $topText=(Get-Content -LiteralPath $topPath -Raw).Replace('PERF_ENABLE=1','PERF_ENABLE=0')
+ $localTop=(Join-Path $buildRoot 'hdmi_warp_top_configured.v').Replace('\','/')
+ $topText=Get-Content -LiteralPath $topPath -Raw
+ if($PerfDisable){$topText=$topText.Replace('PERF_ENABLE=1','PERF_ENABLE=0')}
+ if($WarpSerial){$topText=$topText.Replace('WARP_OVERLAP_WRITE=1','WARP_OVERLAP_WRITE=0')}
+ if($OutputBanks -ne 2){$topText=$topText.Replace('WARP_OUTPUT_BANKS=2',"WARP_OUTPUT_BANKS=$OutputBanks")}
  [IO.File]::WriteAllText($localTop,$topText,[Text.UTF8Encoding]::new($false))
  $template=$template.Replace($topPath,$localTop)
 }

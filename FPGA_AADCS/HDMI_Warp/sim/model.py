@@ -33,10 +33,10 @@ def fixed_map(x,y,c):
 def pattern(x,y,w,h):
     return ((x%32)<<11)|((y%64)<<5)|((x+y)%32) if 0<=x<w and 0<=y<h else 0
 
-def sample(mx,my,w,h):
+def sample(mx,my,w,h,pattern_fn=pattern):
     x=mx//4096;y=my//4096;dx=mx%4096;dy=my%4096
     weights=((4096-dx)*(4096-dy),dx*(4096-dy),(4096-dx)*dy,dx*dy)
-    pix=[pattern(x,y,w,h),pattern(x+1,y,w,h),pattern(x,y+1,w,h),pattern(x+1,y+1,w,h)]
+    pix=[pattern_fn(x,y,w,h),pattern_fn(x+1,y,w,h),pattern_fn(x,y+1,w,h),pattern_fn(x+1,y+1,w,h)]
     result=0
     for shift,mask in ((11,31),(5,63),(0,31)):
         result|=((sum(((p>>shift)&mask)*a for p,a in zip(pix,weights))+(1<<23))>>24)<<shift

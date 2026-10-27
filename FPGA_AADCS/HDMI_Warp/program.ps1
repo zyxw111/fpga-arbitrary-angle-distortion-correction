@@ -9,8 +9,14 @@ if(!(Test-Path -LiteralPath $bit) -or !(Test-Path -LiteralPath $timing) -or
  throw 'Build this HDMI project successfully, including timing, before programming.'
 }
 if(!(Get-NetTCPConnection -LocalPort 65420 -State Listen -ErrorAction SilentlyContinue)){
- Start-Process -FilePath (Join-Path $PdsRoot 'bin/cdt_js.exe') -WorkingDirectory $buildRoot -WindowStyle Hidden
- Start-Sleep -Seconds 2
+ $programJtagServer=Start-Process -FilePath (Join-Path $PdsRoot 'bin/cdt_js.exe') -WorkingDirectory $buildRoot -WindowStyle Hidden -PassThru
+ $programServerDeadline=[DateTime]::UtcNow.AddSeconds(30)
+ while(!(Get-NetTCPConnection -LocalPort 65420 -State Listen -ErrorAction SilentlyContinue)){
+  $programJtagServer.Refresh()
+  if($programJtagServer.HasExited){throw 'JTAG Server exited before listening.'}
+  if([DateTime]::UtcNow -ge $programServerDeadline){throw 'JTAG Server did not become ready within 30 seconds.'}
+  Start-Sleep -Milliseconds 500
+ }
 }
 $previousBit=$env:AADCS_BITSTREAM
 try{

@@ -1,0 +1,201 @@
+run.sh: DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0
+[I]   ... checking the PCI device state
+[I]   ... mapping BAR
+[I] BAR mapped from /sys/bus/pci/devices/0002:21:00.0/resource1 (4096 bytes)
+[I] CAM2 detected: 1920x1080 RGB565 little-endian; ready/completion/checksum enabled
+[I]   ... allocating DMA buffer
+[I] DMA buffer: 12441792 bytes at bus 0x7eb00000 (user 0x7f9aa12000)
+[I] capture ready: 1920x1080 stride 3840, 3 slots, mode cam2
+
+(fpga-view:8736): dbind-WARNING **: 09:45:16.112: AT-SPI: Error retrieving accessibility bus address: org.freedesktop.DBus.Error.ServiceUnknown: The name org.a11y.Bus was not provided by any .service files
+[I] window: 1920x1080 video, scaled to fit
+fpga-view: 1920x1080, mode cam2, 3 slot(s), ring 3
+[I] capture 32.0 fps, HDMI 30.00 fps, source=36038 skipped=1454
+[I] CAM3 timing: DMA=22242 us copy=44171 us checksum=2588 us ready-wait=11387 us slot-wait=0 us
+[I] render 30.0 fps, 14844 us/draw, capture published 61/s
+[I] capture 29.7 fps, HDMI 30.00 fps, source=36068 skipped=1454
+[I] CAM3 timing: DMA=22110 us copy=36564 us checksum=2202 us ready-wait=10964 us slot-wait=0 us
+[I] render 12.5 fps, 15016 us/draw, capture published 48/s
+[I] capture 30.5 fps, HDMI 30.00 fps, source=36098 skipped=1454
+[I] CAM3 timing: DMA=28014 us copy=51221 us checksum=3676 us ready-wait=11390 us slot-wait=1 us
+[I] render 29.7 fps, 15151 us/draw, capture published 30/s
+[I] capture 29.3 fps, HDMI 30.00 fps, source=36128 skipped=1454
+[I] CAM3 timing: DMA=22121 us copy=55192 us checksum=2978 us ready-wait=4984 us slot-wait=6133 us
+[I] render 30.8 fps, 16358 us/draw, capture published 30/s
+[I] capture 30.6 fps, HDMI 30.00 fps, source=36158 skipped=1454
+[I] CAM3 timing: DMA=22895 us copy=39724 us checksum=2351 us ready-wait=13693 us slot-wait=1 us
+[I] render 9.0 fps, 12303 us/draw, capture published 30/s
+[I] capture 30.1 fps, HDMI 30.00 fps, source=36188 skipped=1454
+[I] CAM3 timing: DMA=22143 us copy=40590 us checksum=2101 us ready-wait=10877 us slot-wait=0 us
+[I] render 30.0 fps, 14573 us/draw, capture published 30/s
+[I] capture 29.6 fps, HDMI 30.00 fps, source=36218 skipped=1454
+[I] CAM3 timing: DMA=22295 us copy=42887 us checksum=2441 us ready-wait=10179 us slot-wait=0 us
+[I] capture 30.0 fps, HDMI 30.00 fps, source=36248 skipped=1454
+[I] CAM3 timing: DMA=22146 us copy=28253 us checksum=2173 us ready-wait=11268 us slot-wait=0 us
+[I] render 17.5 fps, 14786 us/draw, capture published 49/s
+[I] capture 30.5 fps, HDMI 30.00 fps, source=36278 skipped=1454
+[I] CAM3 timing: DMA=22089 us copy=36266 us checksum=3247 us ready-wait=10959 us slot-wait=0 us
+[I] render 30.0 fps, 13819 us/draw, capture published 29/s
+[I] capture 29.5 fps, HDMI 30.00 fps, source=36308 skipped=1454
+[I] CAM3 timing: DMA=22302 us copy=49181 us checksum=2007 us ready-wait=10673 us slot-wait=0 us
+[I] render 29.5 fps, 14994 us/draw, capture published 31/s
+[I] capture 30.0 fps, HDMI 30.00 fps, source=36338 skipped=1454
+[I] CAM3 timing: DMA=22639 us copy=43810 us checksum=1992 us ready-wait=11479 us slot-wait=0 us
+[I] render 12.0 fps, 11827 us/draw, capture published 29/s
+[I] capture 29.9 fps, HDMI 30.00 fps, source=36368 skipped=1454
+[I] CAM3 timing: DMA=22743 us copy=46760 us checksum=2227 us ready-wait=11108 us slot-wait=1 us
+[I] render 30.0 fps, 14657 us/draw, capture published 30/s
+[I] capture 29.6 fps, HDMI 30.00 fps, source=36398 skipped=1454
+[I] CAM3 timing: DMA=22194 us copy=44668 us checksum=2715 us ready-wait=10868 us slot-wait=1 us
+[I] render 17.0 fps, 13892 us/draw, capture published 47/s
+[I] capture 31.0 fps, HDMI 30.00 fps, source=36428 skipped=1454
+[I] CAM3 timing: DMA=22188 us copy=46139 us checksum=3344 us ready-wait=10729 us slot-wait=0 us
+[I] render 29.7 fps, 13007 us/draw, capture published 30/s
+[I] capture 29.5 fps, HDMI 30.00 fps, source=36458 skipped=1454
+[I] CAM3 timing: DMA=22866 us copy=38220 us checksum=2238 us ready-wait=13143 us slot-wait=3923 us
+[I] render 30.0 fps, 14684 us/draw, capture published 30/s
+[I] capture 29.7 fps, HDMI 30.00 fps, source=36488 skipped=1454
+[I] CAM3 timing: DMA=22326 us copy=37810 us checksum=1989 us ready-wait=6775 us slot-wait=0 us
+[I] render 12.0 fps, 15875 us/draw, capture published 30/s
+[I] capture 30.5 fps, HDMI 30.00 fps, source=36518 skipped=1454
+[I] CAM3 timing: DMA=22699 us copy=48383 us checksum=3852 us ready-wait=12784 us slot-wait=0 us
+[I] render 30.0 fps, 15225 us/draw, capture published 30/s
+[I] capture 29.7 fps, HDMI 30.00 fps, source=36548 skipped=1454
+[I] CAM3 timing: DMA=22223 us copy=43774 us checksum=1989 us ready-wait=8197 us slot-wait=1 us
+[I] capture 30.2 fps, HDMI 30.00 fps, source=36578 skipped=1454
+[I] CAM3 timing: DMA=22131 us copy=36153 us checksum=2761 us ready-wait=10718 us slot-wait=1 us
+[I] render 16.4 fps, 16035 us/draw, capture published 48/s
+[I] capture 30.6 fps, HDMI 30.00 fps, source=36608 skipped=1454
+[I] CAM3 timing: DMA=22466 us copy=43070 us checksum=2062 us ready-wait=9890 us slot-wait=313 us
+[I] render 30.0 fps, 14964 us/draw, capture published 29/s
+[I] capture 28.8 fps, HDMI 30.00 fps, source=36638 skipped=1454
+[I] CAM3 timing: DMA=22211 us copy=41889 us checksum=1939 us ready-wait=10470 us slot-wait=0 us
+[I] render 30.0 fps, 13117 us/draw, capture published 30/s
+[I] capture 30.4 fps, HDMI 30.00 fps, source=36668 skipped=1454
+[I] CAM3 timing: DMA=22460 us copy=35528 us checksum=2013 us ready-wait=4089 us slot-wait=0 us
+[I] render 13.9 fps, 13734 us/draw, capture published 31/s
+[I] capture 29.6 fps, HDMI 30.00 fps, source=36698 skipped=1454
+[I] CAM3 timing: DMA=22135 us copy=34746 us checksum=2103 us ready-wait=11075 us slot-wait=0 us
+[I] render 29.8 fps, 16271 us/draw, capture published 30/s
+[I] capture 30.5 fps, HDMI 30.00 fps, source=36728 skipped=1454
+[I] CAM3 timing: DMA=22305 us copy=42774 us checksum=2215 us ready-wait=9707 us slot-wait=1 us
+[I] render 17.1 fps, 15420 us/draw, capture published 42/s
+[I] capture 30.2 fps, HDMI 30.00 fps, source=36758 skipped=1454
+[I] CAM3 timing: DMA=22176 us copy=38361 us checksum=2803 us ready-wait=10564 us slot-wait=0 us
+[I] render 29.9 fps, 12691 us/draw, capture published 30/s
+[I] capture 29.9 fps, HDMI 30.00 fps, source=36788 skipped=1454
+[I] CAM3 timing: DMA=22527 us copy=49628 us checksum=2646 us ready-wait=10785 us slot-wait=0 us
+[I] render 30.0 fps, 15010 us/draw, capture published 30/s
+[I] capture 30.0 fps, HDMI 30.00 fps, source=36818 skipped=1454
+[I] CAM3 timing: DMA=22152 us copy=49606 us checksum=6388 us ready-wait=8169 us slot-wait=6 us
+[I] render 11.0 fps, 12277 us/draw, capture published 30/s
+[I] capture 30.0 fps, HDMI 30.00 fps, source=36848 skipped=1454
+[I] CAM3 timing: DMA=22298 us copy=37077 us checksum=2018 us ready-wait=10723 us slot-wait=0 us
+[I] render 30.0 fps, 15107 us/draw, capture published 30/s
+[I] capture 29.9 fps, HDMI 30.00 fps, source=36878 skipped=1454
+[I] CAM3 timing: DMA=22346 us copy=44133 us checksum=2354 us ready-wait=10108 us slot-wait=1 us
+[I] capture 29.0 fps, HDMI 30.00 fps, source=36908 skipped=1454
+[I] CAM3 timing: DMA=22074 us copy=38891 us checksum=2407 us ready-wait=10777 us slot-wait=1 us
+[I] render 18.1 fps, 13618 us/draw, capture published 45/s
+[I] capture 31.0 fps, HDMI 30.00 fps, source=36938 skipped=1454
+[I] CAM3 timing: DMA=22907 us copy=40463 us checksum=2393 us ready-wait=3470 us slot-wait=0 us
+[I] render 29.4 fps, 15291 us/draw, capture published 30/s
+[I] capture 30.0 fps, HDMI 30.00 fps, source=36968 skipped=1454
+[I] CAM3 timing: DMA=22385 us copy=43930 us checksum=2003 us ready-wait=10996 us slot-wait=1 us
+[I] render 30.5 fps, 13296 us/draw, capture published 31/s
+[I] capture 30.3 fps, HDMI 30.00 fps, source=36998 skipped=1454
+[I] CAM3 timing: DMA=22276 us copy=37480 us checksum=2665 us ready-wait=10243 us slot-wait=1 us
+[I] render 9.9 fps, 11186 us/draw, capture published 31/s
+[I] capture 29.9 fps, HDMI 30.00 fps, source=37028 skipped=1454
+[I] CAM3 timing: DMA=22181 us copy=40964 us checksum=2248 us ready-wait=7879 us slot-wait=2839 us
+[I] render 29.9 fps, 14213 us/draw, capture published 29/s
+[I] capture 29.5 fps, HDMI 30.00 fps, source=37058 skipped=1454
+[I] CAM3 timing: DMA=22607 us copy=41330 us checksum=2055 us ready-wait=11247 us slot-wait=0 us
+[I] render 16.7 fps, 16794 us/draw, capture published 48/s
+[I] capture 30.3 fps, HDMI 30.00 fps, source=37088 skipped=1454
+[I] CAM3 timing: DMA=22411 us copy=43542 us checksum=2264 us ready-wait=10495 us slot-wait=0 us
+[I] render 30.9 fps, 14810 us/draw, capture published 31/s
+[I] capture 29.3 fps, HDMI 30.00 fps, source=37118 skipped=1454
+[I] CAM3 timing: DMA=22425 us copy=51063 us checksum=2001 us ready-wait=5809 us slot-wait=0 us
+[I] render 28.9 fps, 17039 us/draw, capture published 29/s
+[I] capture 29.4 fps, HDMI 30.00 fps, source=37148 skipped=1454
+[I] CAM3 timing: DMA=22413 us copy=44336 us checksum=2835 us ready-wait=36 us slot-wait=1531 us
+[I] capture 31.1 fps, HDMI 30.00 fps, source=37178 skipped=1454
+[I] CAM3 timing: DMA=22148 us copy=34930 us checksum=2079 us ready-wait=11103 us slot-wait=0 us
+[I] render 3.8 fps, 14893 us/draw, capture published 33/s
+[I] capture 30.2 fps, HDMI 30.00 fps, source=37208 skipped=1454
+[I] CAM3 timing: DMA=22968 us copy=36165 us checksum=2406 us ready-wait=37 us slot-wait=15265 us
+[I] render 29.8 fps, 14999 us/draw, capture published 30/s
+[I] capture 30.1 fps, HDMI 30.00 fps, source=37238 skipped=1454
+[I] CAM3 timing: DMA=22142 us copy=50580 us checksum=2060 us ready-wait=9677 us slot-wait=1 us
+[I] render 31.0 fps, 14630 us/draw, capture published 30/s
+[I] capture 30.0 fps, HDMI 30.00 fps, source=37268 skipped=1454
+[I] CAM3 timing: DMA=26861 us copy=42992 us checksum=2241 us ready-wait=10417 us slot-wait=0 us
+[I] render 11.8 fps, 12541 us/draw, capture published 30/s
+[I] capture 29.8 fps, HDMI 30.00 fps, source=37298 skipped=1454
+[I] CAM3 timing: DMA=22394 us copy=40338 us checksum=3191 us ready-wait=10823 us slot-wait=1 us
+[I] render 30.0 fps, 15215 us/draw, capture published 30/s
+[I] capture 30.1 fps, HDMI 30.00 fps, source=37328 skipped=1454
+[I] CAM3 timing: DMA=22368 us copy=39212 us checksum=2005 us ready-wait=10469 us slot-wait=0 us
+[I] render 16.6 fps, 15163 us/draw, capture published 46/s
+[I] capture 29.9 fps, HDMI 30.00 fps, source=37358 skipped=1454
+[I] CAM3 timing: DMA=22406 us copy=53059 us checksum=2041 us ready-wait=10818 us slot-wait=0 us
+[I] render 29.9 fps, 15028 us/draw, capture published 29/s
+[I] capture 29.9 fps, HDMI 30.00 fps, source=37388 skipped=1454
+[I] CAM3 timing: DMA=22217 us copy=40028 us checksum=2413 us ready-wait=11345 us slot-wait=0 us
+[I] render 30.0 fps, 13687 us/draw, capture published 30/s
+[I] capture 30.5 fps, HDMI 30.00 fps, source=37418 skipped=1454
+[I] CAM3 timing: DMA=22193 us copy=36639 us checksum=2392 us ready-wait=6908 us slot-wait=1 us
+[I] render 9.9 fps, 10805 us/draw, capture published 31/s
+[I] capture 29.9 fps, HDMI 30.00 fps, source=37448 skipped=1454
+[I] CAM3 timing: DMA=22623 us copy=60003 us checksum=2641 us ready-wait=36 us slot-wait=0 us
+[I] render 30.0 fps, 15531 us/draw, capture published 30/s
+[I] capture 29.7 fps, HDMI 30.00 fps, source=37478 skipped=1454
+[I] CAM3 timing: DMA=22342 us copy=52430 us checksum=4742 us ready-wait=10857 us slot-wait=0 us
+[I] capture 30.0 fps, HDMI 30.00 fps, source=37508 skipped=1454
+[I] CAM3 timing: DMA=22291 us copy=43365 us checksum=2642 us ready-wait=9568 us slot-wait=1 us
+[I] render 17.2 fps, 14473 us/draw, capture published 49/s
+[I] capture 30.1 fps, HDMI 30.00 fps, source=37538 skipped=1454
+[I] CAM3 timing: DMA=22215 us copy=48387 us checksum=3181 us ready-wait=10848 us slot-wait=2 us
+[I] render 29.6 fps, 12296 us/draw, capture published 30/s
+[I] capture 29.7 fps, HDMI 30.00 fps, source=37568 skipped=1454
+[I] CAM3 timing: DMA=22133 us copy=71490 us checksum=3271 us ready-wait=10970 us slot-wait=1 us
+[I] render 29.8 fps, 16588 us/draw, capture published 30/s
+[I] capture 29.5 fps, HDMI 30.00 fps, source=37598 skipped=1454
+[I] CAM3 timing: DMA=22591 us copy=42600 us checksum=2026 us ready-wait=10969 us slot-wait=1 us
+[I] render 10.0 fps, 10630 us/draw, capture published 30/s
+[I] capture 31.0 fps, HDMI 30.00 fps, source=37628 skipped=1454
+[I] CAM3 timing: DMA=22297 us copy=55212 us checksum=6650 us ready-wait=10188 us slot-wait=0 us
+[I] render 30.7 fps, 14372 us/draw, capture published 31/s
+[I] capture 29.6 fps, HDMI 30.00 fps, source=37658 skipped=1454
+[I] CAM3 timing: DMA=22224 us copy=35296 us checksum=2003 us ready-wait=11086 us slot-wait=1 us
+[I] render 18.8 fps, 14955 us/draw, capture published 43/s
+[I] capture 30.4 fps, HDMI 30.00 fps, source=37688 skipped=1454
+[I] CAM3 timing: DMA=22748 us copy=38585 us checksum=1987 us ready-wait=10674 us slot-wait=1 us
+[I] render 31.0 fps, 16369 us/draw, capture published 30/s
+[I] capture 29.7 fps, HDMI 30.00 fps, source=37718 skipped=1454
+[I] CAM3 timing: DMA=22154 us copy=53531 us checksum=2478 us ready-wait=11108 us slot-wait=0 us
+[I] render 29.6 fps, 15266 us/draw, capture published 30/s
+[I] capture 29.7 fps, HDMI 30.00 fps, source=37748 skipped=1454
+[I] CAM3 timing: DMA=22148 us copy=39942 us checksum=2390 us ready-wait=9845 us slot-wait=2 us
+[I] render 12.0 fps, 14007 us/draw, capture published 30/s
+[I] capture 30.5 fps, HDMI 30.00 fps, source=37778 skipped=1454
+[I] CAM3 timing: DMA=25402 us copy=55147 us checksum=2616 us ready-wait=10921 us slot-wait=0 us
+[I] render 30.0 fps, 16238 us/draw, capture published 30/s
+[I] capture 29.6 fps, HDMI 30.00 fps, source=37808 skipped=1454
+[I] CAM3 timing: DMA=22718 us copy=56073 us checksum=2106 us ready-wait=37 us slot-wait=13544 us
+[I] capture 29.9 fps, HDMI 30.00 fps, source=37838 skipped=1454
+[I] CAM3 timing: DMA=22376 us copy=39095 us checksum=2023 us ready-wait=9508 us slot-wait=0 us
+[I] render 16.0 fps, 15412 us/draw, capture published 48/s
+[I] capture 30.3 fps, HDMI 30.00 fps, source=37868 skipped=1454
+[I] CAM3 timing: DMA=22152 us copy=41814 us checksum=2416 us ready-wait=10452 us slot-wait=1 us
+[I] render 30.0 fps, 11189 us/draw, capture published 29/s
+[I] capture 29.6 fps, HDMI 30.00 fps, source=37898 skipped=1454
+[I] CAM3 timing: DMA=22254 us copy=41215 us checksum=1999 us ready-wait=10512 us slot-wait=3 us
+[I] render 30.7 fps, 15135 us/draw, capture published 31/s
+[I] capture 30.6 fps, HDMI 30.00 fps, source=37928 skipped=1454
+[I] CAM3 timing: DMA=22311 us copy=35207 us checksum=2407 us ready-wait=11377 us slot-wait=0 us
+[I] render 13.9 fps, 10721 us/draw, capture published 30/s
+[I] capture 29.5 fps, HDMI 30.00 fps, source=37958 skipped=1454
+[I] CAM3 timing: DMA=27700 us copy=48852 us checksum=2524 us ready-wait=37 us slot-wait=2377 us
+[I] render 27.0 fps, 19572 us/draw, capture published 27/s

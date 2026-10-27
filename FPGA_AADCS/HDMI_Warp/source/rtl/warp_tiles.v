@@ -1,14 +1,16 @@
 // Double-buffered 32x8 output tiles. XY maps are precomputed in DDR; source
 // bounding rectangles are burst-loaded into four parity-banked scratch RAMs.
 // One bilinear output pixel per clock while the next tile is being loaded.
-module warp_tiles #(parameter [27:0] LUT_BASE=28'h2000000)(
+module warp_tiles #(parameter [27:0] LUT_BASE=28'h2000000,
+ parameter WARP_OVERLAP_WRITE=1,WARP_OUTPUT_BANKS=2)(
  input clk,rst_n,start,input [15:0] width,height,
  input [27:0] source_base,output_base,
  output ready,output reg done,output reg [7:0] error,output reg [31:0] checksum,
  output arvalid,input arready,output [27:0] araddr,output [3:0] arlen,
  input [127:0] rdata,input rvalid,rlast,
  output awvalid,input awready,output [27:0] awaddr,output [3:0] awlen,
- output [127:0] wdata,output [15:0] wstrb,input wready,wlast);
+ output [127:0] wdata,output [15:0] wstrb,input wready,wlast,
+ output [255:0] tile_perf);
  // Register DDR returns before cache control. Native same-cycle first data
  // becomes valid in L_DATA on the following cycle, including RLAST.
  reg [127:0] read_data_q;reg read_valid_q,read_last_q;
@@ -114,11 +116,13 @@ module warp_tiles #(parameter [27:0] LUT_BASE=28'h2000000)(
   end
  end
 
- localparam R_IDLE=0,R_WAIT=1,R_SCAN=2,R_DRAIN=3,R_AW=4,R_W=5;
+ localparam R_IDLE=0,R_WAIT=1,R_SCAN=2,R_DRAIN=3,R_AW=4,R_W=5,R_FINISH=6;
  reg [2:0] rs;reg rb;
  reg [8:0] issue_count,result_count,pixel_total;
  reg [2:0] output_row;reg [1:0] output_word;
- reg [127:0] output_words[0:31];reg [111:0] partial;
+ localparam OUTPUT_BANKS=WARP_OVERLAP_WRITE?WARP_OUTPUT_BANKS:1;
+ reg [127:0] output_words[0:OUTPUT_BANKS*32-1];reg [111:0] partial;
+ wire perf_write_active,perf_output_wait;
  reg [127:0] coord_q;reg coord_lane,v1,v2,v3,v4;
  wire [63:0] coord=coord_lane?coord_q[127:64]:coord_q[63:0];
  wire signed [31:0] sx=$signed(coord[31:0])>>>12,sy=$signed(coord[63:32])>>>12;
@@ -173,11 +177,7 @@ module warp_tiles #(parameter [27:0] LUT_BASE=28'h2000000)(
   for(k=0;k<4;k=k+1)samples[k]<=mask_d[k]?(select_data(selectors_d[k*2+:2])>>(16*(k[0]?lane1_d:lane0_d))):128'd0;
  end
  assign ready=!running && ls==L_IDLE && rs==R_IDLE && error==0;
- assign awvalid=rs==R_AW;
- assign awaddr=output_base+(tile_y[rb]+output_row)*width*2+tile_x[rb]*2;
  assign awlen=3;
- assign wdata=output_words[{output_row,output_word}];
- assign wstrb=(rs==R_AW || rs==R_W)?16'hffff:16'h0000;
  function [31:0] mix;
  input [127:0] d;
  begin mix=d[31:0]^{d[62:32],d[63]}^{d[92:64],d[95:93]}^{d[120:96],d[127:121]};end
@@ -201,6 +201,14 @@ module warp_tiles #(parameter [27:0] LUT_BASE=28'h2000000)(
   hash_valid<=interp_valid && result_count[2:0]==7;
   if(interp_valid && result_count[2:0]==7)begin hash_word_q<=hash_word;rotate_q<=rotate_amount;end
  end
+ // Keep the serial controller intact for an exact A/B fallback.
+ generate if(!WARP_OVERLAP_WRITE)begin:serial_write
+ assign awvalid=rs==R_AW;
+ assign awaddr=output_base+(tile_y[rb]+output_row)*width*2+tile_x[rb]*2;
+ assign wdata=output_words[{output_row,output_word}];
+ assign wstrb=(rs==R_AW || rs==R_W)?16'hffff:16'h0000;
+ assign perf_write_active=rs==R_AW || rs==R_W;
+ assign perf_output_wait=1'b0;
  always @(posedge clk or negedge rst_n)
  if(!rst_n)begin
   running<=0;done<=0;error<=0;checksum<=0;rs<=R_IDLE;rb<=0;ack<=0;
@@ -239,4 +247,97 @@ module warp_tiles #(parameter [27:0] LUT_BASE=28'h2000000)(
    if(result_count[2:0]==7)begin output_words[result_count[7:3]]<=complete_word;end
   end
  end
+ end else begin:overlap_write
+ // Each output bank is reserved from R_WAIT until the writer accepts its
+ // final beat. Source-cache ACK is independent and follows final interpolation.
+ localparam W_IDLE=0,W_ADDR=1,W_DATA=2;
+ localparam OBITS=WARP_OUTPUT_BANKS<=1?1:$clog2(WARP_OUTPUT_BANKS);
+ reg [1:0] ws;reg [OBITS-1:0] ob,wb;
+ reg [WARP_OUTPUT_BANKS-1:0] produced,consumed,out_last;
+ reg [27:0] out_address[0:WARP_OUTPUT_BANKS-1],write_address;
+ reg [3:0] out_rows[0:WARP_OUTPUT_BANKS-1];integer output_bank;
+ function [OBITS-1:0] advance_output;input [OBITS-1:0] bank;
+ begin advance_output=bank==WARP_OUTPUT_BANKS-1?0:bank+1'b1;end endfunction
+ reg [2:0] write_row;reg [1:0] write_word;
+ wire output_free=produced[ob]==consumed[ob];
+ wire write_tile_done=ws==W_DATA && wready && write_word==3 &&
+                      {1'b0,write_row}+4'd1==out_rows[wb];
+ wire write_frame_done=write_tile_done && out_last[wb];
+ assign awvalid=ws==W_ADDR;
+ assign awaddr=write_address;
+ assign wdata=output_words[{wb,write_row,write_word}];
+ assign wstrb=(ws==W_ADDR || ws==W_DATA)?16'hffff:16'h0000;
+ assign perf_write_active=ws!=W_IDLE;
+ assign perf_output_wait=rs==R_WAIT && published[rb]!=ack[rb] && !output_free;
+ always @(posedge clk or negedge rst_n)
+ if(!rst_n)begin ws<=W_IDLE;wb<=0;consumed<=0;write_row<=0;write_word<=0;write_address<=0;end
+ else if(start && ready)begin ws<=W_IDLE;wb<=0;consumed<=0;write_row<=0;write_word<=0;write_address<=0;end
+ else case(ws)
+  W_IDLE:if(produced[wb]!=consumed[wb])begin write_row<=0;write_word<=0;write_address<=out_address[wb];ws<=W_ADDR;end
+  W_ADDR:if(awready)begin write_word<=wready?1:0;ws<=W_DATA;end
+  W_DATA:if(wready)begin
+   if(write_word==3)begin
+    write_word<=0;
+    if(write_tile_done)begin consumed[wb]<=produced[wb];wb<=advance_output(wb);ws<=W_IDLE;end
+    else begin write_row<=write_row+1'b1;write_address<=write_address+{11'd0,width,1'b0};ws<=W_ADDR;end
+   end else write_word<=write_word+1'b1;
+  end
+ endcase
+ always @(posedge clk or negedge rst_n)
+ if(!rst_n)begin
+  running<=0;done<=0;error<=0;checksum<=0;rs<=R_IDLE;rb<=0;ack<=0;ob<=0;produced<=0;
+  issue_count<=0;result_count<=0;pixel_total<=0;partial<=0;output_row<=0;output_word<=0;
+  out_last<=0;
+  for(output_bank=0;output_bank<WARP_OUTPUT_BANKS;output_bank=output_bank+1)begin
+   out_address[output_bank]<=0;out_rows[output_bank]<=0;
+  end
+ end else begin
+  done<=0;
+  if(hash_valid)checksum<=checksum^hash_term;
+  if(load_error!=0)error<=load_error;
+  if(ws==W_ADDR && awready && wready && wlast)error<=8'h33;
+  if(ws==W_DATA && wready && wlast!=(write_word==3))error<=8'h34;
+  if(start && ready)begin
+   running<=1;rs<=R_WAIT;rb<=0;ack<=0;ob<=0;produced<=0;checksum<=0;
+  end else case(rs)
+   R_WAIT:if(published[rb]!=ack[rb] && output_free)begin
+    issue_count<=0;result_count<=0;partial<=0;
+    pixel_total<=((tile_y[rb]+8<=height)?9'd256:((height-tile_y[rb])<<5));
+    out_address[ob]<=output_base+tile_y[rb]*width*2+tile_x[rb]*2;
+    out_rows[ob]<=(tile_y[rb]+8<=height)?4'd8:height-tile_y[rb];
+    out_last[ob]<=tile_x[rb]+32>=width && tile_y[rb]+8>=height;
+    rs<=R_SCAN;
+   end
+   R_SCAN:begin issue_count<=issue_count+1'b1;if(issue_count+1==pixel_total)rs<=R_DRAIN;end
+   R_DRAIN:if(interp_valid && result_count+1==pixel_total)begin
+    produced[ob]<=!produced[ob];ob<=advance_output(ob);
+    ack[rb]<=published[rb];rb<=!rb;
+    rs<=out_last[ob]?R_FINISH:R_WAIT;
+   end
+  endcase
+  // Completion remains a DDR-write completion, never merely compute completion.
+  if(write_frame_done)begin rs<=R_IDLE;running<=0;done<=1;end
+  if(interp_valid)begin
+   if(result_count[2:0]!=7)partial[result_count[2:0]*16+:16]<=interp_pixel;
+   result_count<=result_count+1'b1;
+   if(result_count[2:0]==7)output_words[{ob,result_count[7:3]}]<=complete_word;
+  end
+ end
+ end endgenerate
+ // Additive TIL1 diagnostics; legacy PRF0 words retain their addresses.
+ reg [31:0] compute_cycles,write_cycles,overlap_cycles,output_wait_cycles,source_wait_cycles,tile_frames;
+ wire compute_active=rs==R_SCAN || rs==R_DRAIN;
+ always @(posedge clk or negedge rst_n)
+ if(!rst_n)begin compute_cycles<=0;write_cycles<=0;overlap_cycles<=0;
+  output_wait_cycles<=0;source_wait_cycles<=0;tile_frames<=0;end
+ else begin
+  if(running && compute_active)compute_cycles<=compute_cycles+1'b1;
+  if(running && perf_write_active)write_cycles<=write_cycles+1'b1;
+  if(running && compute_active && perf_write_active)overlap_cycles<=overlap_cycles+1'b1;
+  if(running && perf_output_wait)output_wait_cycles<=output_wait_cycles+1'b1;
+  if(running && rs==R_WAIT && published[rb]==ack[rb])source_wait_cycles<=source_wait_cycles+1'b1;
+  if(done)tile_frames<=tile_frames+1'b1;
+ end
+ assign tile_perf={tile_frames,source_wait_cycles,output_wait_cycles,overlap_cycles,
+                   write_cycles,compute_cycles,((OUTPUT_BANKS<<8)|(WARP_OVERLAP_WRITE?32'd1:32'd0)),32'h54494c31};
 endmodule

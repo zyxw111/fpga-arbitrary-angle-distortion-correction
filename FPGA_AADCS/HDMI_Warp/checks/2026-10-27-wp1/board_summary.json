@@ -1,0 +1,325 @@
+{
+  "before": {
+    "samples": 12,
+    "seconds": 12.023671466666666,
+    "delta": {
+      "ddr_cycles": 1578106880,
+      "capture_cycles": 1574310430,
+      "build_cycles": 0,
+      "warp_cycles": 1578104792,
+      "host_page_cycles": 939738368,
+      "output_slot_wait_cycles": 0,
+      "map_return_beats": 361590144,
+      "source_return_beats": 132380633,
+      "host_return_beats": 90382340,
+      "capture_write_beats": 90650400,
+      "lut_write_beats": 0,
+      "output_write_beats": 90397520,
+      "map_read_bursts": 22599384,
+      "source_read_bursts": 34979189,
+      "host_read_bursts": 5884503,
+      "map_requested_beats": 361590144,
+      "source_requested_beats": 132380633,
+      "host_requested_beats": 90382340,
+      "warp_ar_stall_cycles": 261706253,
+      "host_ar_stall_cycles": 19804218,
+      "warp_return_wait_cycles": 396159722,
+      "host_return_wait_cycles": 299799975,
+      "captured_frames": 350,
+      "warped_frames": 348,
+      "consumed_frames": 349,
+      "raw_queue_empty_cycles": 0,
+      "discarded_captures": 0,
+      "host_cycles": 751481462,
+      "dma_busy_cycles": 453681678,
+      "dma_frames": 349,
+      "pagebuffer_read_beats": 90382809,
+      "tx_stall_cycles": 0,
+      "completed_pages": 353348,
+      "host_ready_wait_cycles": 294067224
+    },
+    "warped_fps": 28.94290657930596,
+    "consumed_fps": 29.026075851085576,
+    "warp_ms": {
+      "min": 31.56048,
+      "median": 34.51238476190476,
+      "max": 34.624053333333336
+    },
+    "dma_ms": {
+      "min": 20.23476253855692,
+      "median": 20.77773677109153,
+      "max": 20.92189705831171
+    },
+    "MB_per_s": {
+      "map_return": 481.171023346657,
+      "source_return": 176.16001350935113,
+      "host_return": 120.27253439260083,
+      "capture_write": 120.62924407249274,
+      "lut_write": 0.0,
+      "output_write": 120.29273454533067,
+      "pagebuffer_read": 120.27315849481627
+    },
+    "average_burst_beats": {
+      "map": 16.0,
+      "source": 3.7845540958654014,
+      "host": 15.359383791630322
+    },
+    "max_outstanding": {
+      "warp": 16,
+      "host": 1,
+      "total": 16
+    },
+    "error_flags": [
+      "0x0"
+    ],
+    "discarded_captures": 0,
+    "capture_log": {
+      "samples": 29,
+      "first": [
+        25638,
+        19
+      ],
+      "last": [
+        26506,
+        47
+      ],
+      "skipped_values": [
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47
+      ],
+      "warnings_or_errors": []
+    }
+  },
+  "after": {
+    "samples": 12,
+    "seconds": 12.015682316190475,
+    "delta": {
+      "ddr_cycles": 1577058304,
+      "capture_cycles": 1577046064,
+      "build_cycles": 0,
+      "warp_cycles": 1476503994,
+      "host_page_cycles": 1022548404,
+      "output_slot_wait_cycles": 0,
+      "map_return_beats": 373758336,
+      "source_return_beats": 136834678,
+      "host_return_beats": 93360364,
+      "capture_write_beats": 93438768,
+      "lut_write_beats": 0,
+      "output_write_beats": 93439664,
+      "map_read_bursts": 23359896,
+      "source_read_bursts": 36155979,
+      "host_read_bursts": 6078044,
+      "map_requested_beats": 373758336,
+      "source_requested_beats": 136834648,
+      "host_requested_beats": 93360348,
+      "warp_ar_stall_cycles": 349493091,
+      "host_ar_stall_cycles": 35991059,
+      "warp_return_wait_cycles": 519928465,
+      "host_return_wait_cycles": 346004953,
+      "captured_frames": 360,
+      "warped_frames": 361,
+      "consumed_frames": 361,
+      "raw_queue_empty_cycles": 100552150,
+      "discarded_captures": 0,
+      "host_cycles": 750981721,
+      "dma_busy_cycles": 493319771,
+      "dma_frames": 361,
+      "pagebuffer_read_beats": 93360725,
+      "tx_stall_cycles": 0,
+      "completed_pages": 364989,
+      "host_ready_wait_cycles": 253344680,
+      "tile_compute_cycles": 767956844,
+      "tile_write_cycles": 1447816804,
+      "tile_overlap_cycles": 742428018,
+      "tile_output_wait_cycles": 595160216,
+      "tile_source_wait_cycles": 110379660,
+      "tile_frames": 361
+    },
+    "warped_fps": 30.04406994961678,
+    "consumed_fps": 30.04406994961678,
+    "warp_ms": {
+      "min": 31.181165714285715,
+      "median": 31.209859047619048,
+      "max": 31.22818285714286
+    },
+    "dma_ms": {
+      "min": 21.499138893011505,
+      "median": 21.569810408745198,
+      "max": 22.13699357162832
+    },
+    "MB_per_s": {
+      "map_return": 497.69403173568406,
+      "source_return": 182.20811689153632,
+      "host_return": 124.31801912632396,
+      "capture_write": 124.4224213539286,
+      "lut_write": 0.0,
+      "output_write": 124.42361446137124,
+      "pagebuffer_read": 124.31849983144316
+    },
+    "average_burst_beats": {
+      "map": 16.0,
+      "source": 3.784564870999621,
+      "host": 15.360261952693993
+    },
+    "max_outstanding": {
+      "warp": 16,
+      "host": 1,
+      "total": 16
+    },
+    "error_flags": [
+      "0x0"
+    ],
+    "discarded_captures": 0,
+    "tile_pipeline": {
+      "write_overlap_fraction": 0.512791408380421,
+      "source_wait_fraction": 0.06999085558221695,
+      "output_wait_fraction": 0.3773863112672846
+    },
+    "capture_log": {
+      "samples": 60,
+      "first": [
+        3889,
+        3839
+      ],
+      "last": [
+        5659,
+        3839
+      ],
+      "skipped_values": [
+        3839
+      ],
+      "warnings_or_errors": [
+        "[E] BAR mismatch: the kernel has resource1 at 0xf0204000 but the device reports 0 in its own config space.",
+        "[E] The FPGA was reconfigured (JTAG download or F_RESET) after the kernel enumerated it, so its PCIe core came back with zeroed BARs and it currently decodes nothing: register writes are dropped and every transfer returns untouched memory."
+      ]
+    }
+  },
+  "10k": {
+    "samples": 340,
+    "seconds": 340.48960414476187,
+    "delta": {
+      "ddr_cycles": 44689260544,
+      "capture_cycles": 44688913234,
+      "build_cycles": 0,
+      "warp_cycles": 41835834166,
+      "host_page_cycles": 28994303054,
+      "output_slot_wait_cycles": 0,
+      "map_return_beats": 10590554624,
+      "source_return_beats": 3876927793,
+      "host_return_beats": 2647602095,
+      "capture_write_beats": 2647637318,
+      "lut_write_beats": 0,
+      "output_write_beats": 2647638628,
+      "map_read_bursts": 661909664,
+      "source_read_bursts": 1024417720,
+      "host_read_bursts": 172369763,
+      "map_requested_beats": 10590554624,
+      "source_requested_beats": 3876927806,
+      "host_requested_beats": 2647602080,
+      "warp_ar_stall_cycles": 9903272622,
+      "host_ar_stall_cycles": 1020511785,
+      "warp_return_wait_cycles": 14731478447,
+      "host_return_wait_cycles": 9808407259,
+      "captured_frames": 10215,
+      "warped_frames": 10215,
+      "consumed_frames": 10215,
+      "raw_queue_empty_cycles": 2853365088,
+      "discarded_captures": 0,
+      "host_cycles": 21280648148,
+      "dma_busy_cycles": 13988109646,
+      "dma_frames": 10215,
+      "pagebuffer_read_beats": 2647612263,
+      "tx_stall_cycles": 0,
+      "completed_pages": 10350708,
+      "host_ready_wait_cycles": 7176951824,
+      "tile_compute_cycles": 21760279965,
+      "tile_write_cycles": 41023208829,
+      "tile_overlap_cycles": 21037090470,
+      "tile_output_wait_cycles": 16863596105,
+      "tile_source_wait_cycles": 3126758086,
+      "tile_frames": 10215
+    },
+    "warped_fps": 30.000915962347595,
+    "consumed_fps": 30.000915962347595,
+    "warp_ms": {
+      "min": 31.162499047619047,
+      "median": 31.205066666666667,
+      "max": 31.24230857142857
+    },
+    "dma_ms": {
+      "min": 21.421262611072073,
+      "median": 22.069086890987457,
+      "max": 22.21364869905585
+    },
+    "MB_per_s": {
+      "map_return": 497.66240120493507,
+      "source_return": 182.18131752894016,
+      "host_return": 124.41388225759049,
+      "capture_write": 124.41553742706745,
+      "lut_write": 0.0,
+      "output_write": 124.4155989854814,
+      "pagebuffer_read": 124.41436006366158
+    },
+    "average_burst_beats": {
+      "map": 16.0,
+      "source": 3.7845184931006464,
+      "host": 15.360014621589983
+    },
+    "max_outstanding": {
+      "warp": 16,
+      "host": 1,
+      "total": 16
+    },
+    "error_flags": [
+      "0x0"
+    ],
+    "discarded_captures": 0,
+    "tile_pipeline": {
+      "write_overlap_fraction": 0.5128094820103035,
+      "source_wait_fraction": 0.06996665525314448,
+      "output_wait_fraction": 0.3773523190968107
+    },
+    "capture_log": {
+      "samples": 365,
+      "first": [
+        23583,
+        17863
+      ],
+      "last": [
+        34503,
+        17863
+      ],
+      "skipped_values": [
+        17863
+      ],
+      "warnings_or_errors": []
+    }
+  }
+}

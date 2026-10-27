@@ -1,0 +1,2 @@
+PASS passive warp counters: 16 in flight, ordered map/source returns, immediate RLAST, frame cycles, coherent CDC, legacy banks, reset
+F:\AADCS_git_zyxw\FPGA_AADCS\HDMI_Warp\sim\tb_warp_perf.sv:63: $finish called at 3271000 (1ps)
