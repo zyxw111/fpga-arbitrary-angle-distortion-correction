@@ -1,0 +1,1 @@
+storagemedia=emmc androidboot.storagemedia=emmc androidboot.mode=normal  androidboot.verifiedbootstate=orange rw rootwait earlycon=uart8250,mmio32,0xfe660000 console=ttyFIQ0 root=PARTUUID=614e0000-0000 androidboot.fwver=ddr-v1.23-03ea844c5d,spl-v1.14,bl31-v1.44,bl32-v2.15,uboot-03/21/2025

@@ -1,0 +1,24 @@
+{
+  "log": "/userdata/warpchecks_20261030/worker3_verbose_22000.log",
+  "verified_frame_records": 22000,
+  "discontinuities": 12,
+  "duplicate_sources": 0,
+  "longest_contiguous_run": {
+    "frames": 15775,
+    "first_frame": 22016,
+    "last_frame": 37790,
+    "first_source": 37548,
+    "last_source": 53322,
+    "generation": 1,
+    "seconds": 263.837665,
+    "fps": 59.78676319774131
+  },
+  "kms_totals": {
+    "submitted": 22000,
+    "rendered": 22000,
+    "dropped": 0
+  },
+  "minimum_frames": 10000,
+  "minimum_fps": 59.9,
+  "source_and_presentation_pass": false
+}

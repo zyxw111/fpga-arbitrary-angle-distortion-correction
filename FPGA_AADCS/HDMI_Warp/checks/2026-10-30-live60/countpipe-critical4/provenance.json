@@ -1,0 +1,12 @@
+{
+  "created": "2026-10-30T14:19:30.1978513+08:00",
+  "map_sha256": "3103CF7010BE245FA3659C377AB42F42BD86A5B303EB31F58DB662A0C98B09BD",
+  "warp_read_weight": 2,
+  "sample_pipeline": 1,
+  "capture_count_pipeline": 1,
+  "seed": 4,
+  "route_mode": "normal",
+  "targeted_optional_loc_hints": 2,
+  "source_snapshot": "rtl_source_sha256.json",
+  "actual_placement_binding": "must inspect after PNR; names may be optimized away"
+}

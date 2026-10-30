@@ -1,0 +1,1 @@
+ARGB expand+paint 14.271 ms; native565 copy+paint 8.033 ms; max channel error 0

@@ -27,6 +27,8 @@
                 (_file "source/rtl/video_ddr_arb.v" (_format verilog) (_timespec "2026-10-26T00:00:00"))
                 (_file "source/rtl/warp_lut.v" (_format verilog) (_timespec "2026-10-26T00:00:00"))
                 (_file "source/rtl/warp_tiles.v" (_format verilog) (_timespec "2026-10-26T00:00:00"))
+                (_file "source/rtl/warp_fast.v" (_format verilog) (_timespec "2026-10-27T00:00:00"))
+                (_file "source/rtl/hdmi_map_pipe.v" (_format verilog) (_timespec "2026-10-27T00:00:00"))
                 (_file "source/rtl/tile_fetch.v" (_format verilog) (_timespec "2026-10-26T00:00:00"))
                 (_file "source/rtl/warp_perf.v" (_format verilog) (_timespec "2026-10-27T00:00:00"))
                 (_file "source/rtl/warp_perf_regs.v" (_format verilog) (_timespec "2026-10-27T00:00:00"))
@@ -719,6 +721,8 @@
     )
     (_task tsk_pnr
         (_command cmd_pnr
+            (_option mode (_string "performance"))
+            (_option gplace_seed (_integer 4))
             (_gci_state (_integer 0))
             (_db_output
                 (_file "place_route/hdmi_warp_top_pnr.adf"

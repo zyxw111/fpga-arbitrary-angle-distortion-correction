@@ -1,0 +1,6 @@
+# Placement hints for the measured DDR PHY cross-clock path. These are not
+# timing exceptions. Final independent STA must still meet +0.197 ns.
+# The packer may relocate LUT hints; inspect actual_placement.pcf after PNR.
+def_inst_site {u_mem/u_ddr/u_ddrphy_top/ddrphy_slice_top/i_dqs_group[1].ddrphy_data_slice/ddrphy_dqs_rddata_align/ck_dqs_diff[1]/opit_0_inv_L6QL5Q1} CLMA_327_642 FYB -no_check
+def_inst_site {u_mem/u_ddr/u_ddrphy_top/ddrphy_slice_top/i_dqs_group[1].ddrphy_data_slice/ddrphy_wdata_path_adj/N657_7[0]/gateop_perm} CLMS_345_691 FYB -no_check
+def_inst_site {u_mem/u_ddr/u_ddrphy_top/ddrphy_slice_top/i_dqs_group[1].ddrphy_data_slice/ddrphy_wdata_path_adj/N659[0]/LUT6_inst_perm} CLMA_357_690 FYB -no_check

@@ -1,0 +1,60 @@
+{
+  "build": "build/live60-capture2-fifo13-s8",
+  "status": "Restored native1080p60 input; source/presentation passed 20866 consecutive generation1 frames. Strict <=17ms still fails (17.090910ms max warp).",
+  "setup_wns_ns": 0.265,
+  "capture_fifo_bits": 13,
+  "capture_write_banks": 2,
+  "coord_pipeline": 1,
+  "warp_read_weight": 1,
+  "done": 1,
+  "crc_err": 0,
+  "rbcrc_err": 0,
+  "bitstream_sha256": "002dfd2466ff5d77c644f13c52121681384e1a11749b7511cccdb7f986451a46",
+  "trace": {
+    "complete": true,
+    "seconds": 10.162199405714286,
+    "totals": {
+      "ddr_cycles": 1333788672,
+      "host_cycles": 635138977,
+      "captured_frames": 600,
+      "warped_frames": 600,
+      "consumed_frames": 600,
+      "dma_frames": 600,
+      "discarded_captures": 0,
+      "fifo_failed_frames": 0,
+      "invalid_input_frames": 0,
+      "marker_errors": 0,
+      "capture_timeouts": 0
+    },
+    "fps": {
+      "captured_frames": 59.042336805811466,
+      "warped_frames": 59.042336805811466,
+      "consumed_frames": 59.042336805811466,
+      "dma_frames": 59.042336805811466
+    },
+    "observed_max_warp_ms": 17.09182476190476,
+    "observed_max_dma_ms": 13.559599674444994,
+    "missed_frame_observations": {
+      "warp": 0,
+      "dma": 0
+    },
+    "error_flags": "0x0",
+    "host_hz": 62500148.997554235,
+    "capture_diagnostics_available": true,
+    "hardware_acceptance_pass": false
+  },
+  "arm_local_commit": "f324379",
+  "configured_top_sha256": "0a77bee6af893352735f22985ca1153d621b151e3c2fc43a8c72ca136d915950",
+  "arm_decouple_long_test": "fifo13_decouple_10k.summary.json",
+  "arm_decouple_long_hardware_acceptance_pass": false,
+  "postboot_program_log": "postboot_program.log",
+  "postboot_runtime_sha256": "fifo13_postboot_runtime.sha256",
+  "eos_log": "fifo13_decouple_eos_tail.log",
+  "arm_optimization_commit": "ddfdac9",
+  "postboot_hdmi_status": "1920x1080, ~148.499MHz / 60Hz recovered; exact native calibration generation1 restored; viewer running.",
+  "latest_trace": "fifo13_resume_compact_10k.summary.json",
+  "latest_source_check": "fifo13_resume_source_check.json",
+  "latest_source_and_presentation_pass": true,
+  "latest_hardware_acceptance_pass": false,
+  "runtime_sha256": "eebf19155f61e4264433b6513db29cc1b4f01faec470ecea3c0106f17b286d9d"
+}

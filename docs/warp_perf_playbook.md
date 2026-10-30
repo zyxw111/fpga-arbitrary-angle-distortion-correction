@@ -111,6 +111,85 @@ Phase0后已获得继续实施WP1的确认。当前实现与验收见 `warp_perf
 
 新读取工具自动识别BAR0 `0x2B0` 的TIL1，只读尾部包含计算、写回、同时活跃、输出槽满、源tile等待及帧计数。原PRF0字段和地址保持兼容。`tile_pipeline.write_overlap_fraction`只描述tile写回与计算的重叠；整帧DMA此前已经与warp重叠，不能把约21ms DMA直接从端到端时间中减掉。
 
-板测使用已发布的原标定代次，输入1920×1080/30Hz，先启动现有headless捕获，再每秒采样，连续累加至少10000个`delta.warped_frames`和`delta.consumed_frames`。同时记录capture日志的source/skipped，要求稳态skipped不增加、错误及discard为0。启动前无人消费造成的历史skipped绝对值不作为测试期丢帧。关闭headless后再启动GUI，不能让两个进程同时争用DMA。
+## 9. 1080p60 采集诊断扩展
+
+后续已获得1080p60优化授权，当前测试和回退开关见 `warp_perf_1080p60.md`。上文Phase 0的30Hz限制仅描述当时阶段。
+
+新候选在BAR0 `0x2D0..0x2FF`增加RXD1只读快照，与PRF0使用同一host快照代次。旧字段和写入地址均不变；旧位流没有该magic时，ARM工具跳过此扩展。`PERF_ENABLE=0`移除该监测。
+
+| 地址 | 字段 | 含义 |
+|---|---|---|
+| 0x2D0 | capture_magic | 0x52584431 (RXD1) |
+| 0x2D4 | input_frame_ends | 像素域观察到的输入帧边界 |
+| 0x2D8 | invalid_input_frames | frame_end时frame_good为0 |
+| 0x2DC | fifo_failed_frames | 每次采集首次发生无打包槽/FIFO背压溢出 |
+| 0x2E0 | geometry_failed_frames | 非预期SOF、越界坐标或像素数过量 |
+| 0x2E4 | incomplete_frames | 提交时像素数不足或最后一字未准备 |
+| 0x2E8 | invalid_commits | 提交时frame_good为0 |
+| 0x2EC | marker_errors | DDR侧SOF/EOF与预期beat位置不符 |
+| 0x2F0 | padded_frames | 未发布而填零结束的采集帧 |
+| 0x2F4 | capture_timeouts | 采集看门狗触发次数 |
+| 0x2F8 | max_capture_stall_cycles | 有有效采集字但writer不接收的最长连续DDR时钟数 |
+| 0x2FC | last_capture_failure | 最近失败的原因锁存 |
+
+last_capture_failure的bit0/1/2/3分别是FIFO满、输入帧无效、提交不完整、坐标异常；bit4为同步后的bad，bit5为pad。原因计数允许重叠，例如FIFO溢出也可能造成提交不完整。该扩展不控制ready、复位、DDR仲裁或像素发布；像素域累计数通过held-bundle mailbox跨域，不能用失败标志简单双拍同步替代累计数的跨域传递。
+
+若同一标定下显示与headless均约40fps、warp/DMA单阶段均小于17ms，应先核对RXD1与源帧号。invalid_input_frames增长指向输入时序；fifo_failed_frames增长且输入帧有效指向采集写入背压；marker_errors增长则应查打包/帧边界。不能仅因单个阶段小于17ms宣称整链路60fps。
+
+逐帧硬件追踪在ARM仓库运行：
+
+```sh
+python3 tools/warp_frame_trace.py --frames 10000 --timeout 300 --out /userdata/warp-10k.jsonl
+```
+
+工具只读BAR0，先检查快照代次；同一代次只读取sequence，出现新快照才取完整计数。它累加每个8ms快照的周期和帧差分，记录每个新warp/DMA完成的last周期。`missed_frame_observations`非0时，不能把所记录的最大值宣称为全部帧的最大值；完整验收要求warp和DMA都没有漏观测。还需联合capture/skipped与KMS EOS总数核对，工具通过不单独证明物理屏幕送显。
+
+可加`--compact`降低采样自身的MMIO流量，RXD1可用时每快照从约67次读取降至20次，全部验收字段和首尾代次一致性检查保留；默认完整快照不变。精简快照省去未用于本工具判定的带宽/tile计数，测各流带宽时另用低频`warp_perf.py`。此优化尚未证明能改善真实帧周期。
+
+有限显示运行加`--verbose --frames 22000`，退出后在ARM仓库执行`python3 tools/check_frame_log.py <完整显示日志>`，核对至少10000个连续的新source、连续frame、固定generation、平均≥59.9fps及EOS submitted=rendered=已验证日志条数、dropped=0。周期追踪和源帧/送显检查都须通过，任何一项失败都不能验收。
+
+结果文件和`.summary.json`包含原始首尾快照、逐阶段fps、耗时最大值和采集异常；缺少RXD1明确标记诊断不可用，不把缺失字段当成实测0。`hardware_acceptance_pass`同时要求至少目标帧数、无漏观测/错误/采集丢弃、各阶段≥59.9fps（容许标称60Hz时钟偏差）、warp/DMA最大值≤17ms。原始数值仍需保留，不能仅提交一个PASS标签。
+
+全帧精度复核在Windows的`FPGA_AADCS/HDMI_Warp`目录运行，参数文件必须是ARM实际应用后导出的17个定点字记录：
+
+```sh
+python sim/full_frame.py --params checks/2026-10-28-live60/capture2/capture2_calibration.applied.json --modes serial fast --out build/full-native-ab --timeout 1800
+```
+
+结果保存各路径2073600像素、校验和、输入和源码SHA256。任一像素不一致立即失败；`max_error=0`因此也满足逐RGB565通道最大误差0和PSNR=∞。这使用DDR接口模型验证数学/边界/所有权，不代替物理DDR或10k帧连续送显测试。与当前`COORD_PIPELINE=1`对应的已有完整证据在`checks/2026-10-28-live60/coord-pipeline-proof`。
+
+本轮60Hz验收使用已发布的原生1080p标定代次，电脑有源信号1920×1080/60Hz，运行唯一的`stage/run.sh --mode cam2 --kms`进程并每秒采样，连续累加至少10000个新warp、consume和DMA帧。联合记录capture日志的source/skipped，要求稳态skipped不增加、错误及discard为0。启动前无人消费造成的历史skipped绝对值不作为测试期丢帧。结束时SIGTERM该进程、等待EOS排空，核对submitted=rendered且dropped=0，再恢复显示；不能让两个捕获进程同时争用DMA。headless只作为显示影响的对照测试。
+
+采集写入对照：`build.ps1 -CaptureWriteBanks 1`恢复原单缓存；2启用双256B写缓存。`-CaptureFifoBits 11/13/14`分别是32/128/256KiB有效像素缓存，SOF/EOF元数据另占空间。每个组合都须重新验证最终时序和资源；FIFO更深不自动代表平均吞吐达标。默认构建和下载要求所有时序通过且最差setup≥+0.197ns，临时诊断例外不能沿用为正式验收。
 
 若输出scratch满等待远高于源tile等待，下一包应验证短行写突发与DDR仲裁占用，不应仅凭先验假设增加source缓存。平均AR突发仍受硬件16-beat上限限制；TIL1没有伪造256-beat能力。
+
+## 10. 像素选择流水级与独立后端复现
+
+`WARP_SAMPLE_PIPELINE=0`保持原选择器，1在缓存bank选择后增加一拍，同时延迟有效位、边界mask与插值权重；配置入口是`build.ps1 -SamplePipeline 1`。小帧及背压对照可运行：
+
+```sh
+python sim/regress.py --tests warp_fast_sample warp_fast_sample_stall warp_fast_sample_legacy_coord warp_fast hdmi_live_sample
+python sim/full_frame.py --params checks/2026-10-28-live60/capture2-fifo13-s8/fifo13_resume.applied.json --modes fast_sample --out build/full-live60-sample --timeout 1800
+```
+
+2026-10-29全帧结果为2073600像素最大误差0；日志和源码hash在`checks/2026-10-29-live60/sample-pipeline-proof`。每个候选都须重新完成物理实现及最终STA，不能借用这个功能仿真作为时序证据。
+
+若试用旧合格实现导出的DDR PHY位置作为布局提示，先使用`build.ps1 -Action dev_map -RtlSnapshot`完成本次映射，再追加提示；重新运行整个PDS工程可能再次映射并覆盖PCF。独立`pds_shell -action place_route`以本次map ADF和工程为输入，工作目录必须设为候选`place_route`目录；之后从`report_timing`目录对新PNR ADF执行独立`-action report_timing`，以最终`.rtr`验收。不能以hold修复后的中间summary替代最终STA。
+
+生成位流可使用已核实的Tcl `set_arch -family Logos2 -device PG2L100H -speedgrade -6 -package FBG484`和`gen_bit_stream -force_to_run -input_db_file {本次PNR ADF绝对路径} -scbv {High Voltage}`。基准PNR重生成位流已比较，仅创建时间字段6字节不同，配置载荷相同；这不免除每个新候选的最终时序检查和DONE/CRC回读。
+
+导出提示含`-no_check`，部分名称会在重新优化时消失或改变位置，必须用`generate_constraint`从本次PNR再次导出并逐实例比对。读权重2诊断候选的2032条旧PHY位置仅1321条完全保持，不能声称锁定整个PHY，也不能把旧实现的时序裕量套用到新候选。
+
+USB远程助手当前配置的客户端可能与旧版本目录不同；只读取其`VirtualHerePath`字段，使用当前客户端执行`LIST`/设备操作。含空格的API命令通过PowerShell `Start-Process -ArgumentList`传入时须保留整段引号，如`'"STOP USING,列表中的FTDI地址"'`，避免把`STOP`和`USING`拆成两个参数。`LIST`中的已占用及Windows驱动OK仍不能证明可编程；必须以PDS成功打开电缆并扫描到PG2L100H为准。
+
+
+## 11. 采集计数流水线与有限联测
+
+`build.ps1 -CaptureCountPipeline 1`预寄存采集端的`total-1`，拆开减法与最终128-bit像素字的使能路径；默认0保留原实现。`python sim/regress.py --tests hdmi_rx_count_ab hdmi_live_count_pipe`分别逐周期比较完整1080p数据/帧标记，并测试真实PCIe模型。仿真覆盖8像素最小帧、几何切换、空拍、坏帧与FIFO溢出，证据在`checks/2026-10-30-live60/capture-count-proof`。不能以此替代最终STA。
+
+ARM仓库的`sh tools/bench_live60.sh <RAM输出目录>`同时运行有限22000帧显示和18000帧精简硬件追踪，启动显示3秒后自动开始计数，避免人工延迟导致追踪跨到EOS后空闲。默认沿用三槽解耦、256B复制、直接RGB565和可选3复制线程；设置`FPGA_COPY_WORKERS=2`可对照。显示及追踪都结束后才检查源帧日志，结果为`result.txt`和两个独立JSON判定。测试结束后归档RAM记录，避免重启丢失。
+
+可选`FPGA_KMS_POOL=1`使用kmssink通过ALLOCATION查询提供的缓冲池；填充时遵循VideoMeta的实际pitch和offset，不依赖私有KMS头文件。默认关闭，保留系统内存GstBuffer路径。查询池模式与普通路径都须通过`make -C tests kms-copy CC_HOST=cc`，验证全1080p、补齐行、源缓冲复用、保留帧和池退役。随后重新跑相同有限联测；不能只凭省去一次复制判定吞吐改善。
+
+联测前分别确认电脑→FPGA的有源信号与ARM→屏幕的真实模式，两者不是同一条HDMI链路。ARM显示曾为720p60且DPMS关闭了扫描输出，现已设置HDMI-1为1080p60。临时关闭屏保/DPMS做对照时，退出必须恢复测试前设置；不能把一次模式/电源设置变化混入其他A/B收益。源帧/EOS通过、逐帧周期通过与正式setup≥+0.197ns三项缺一不可。

@@ -1,0 +1,22 @@
+{
+  "build": "build\\live60-weight2-phy-reroute",
+  "bit_sha256": "61c8f0d5e11378c9d0b5f3fa92ca2a95dbe52c8f4365f1d90e042047177a3e99",
+  "worst_final_setup_ns": 0.118,
+  "all_pds_constraints_met": true,
+  "formal_minimum_setup_ns": 0.197,
+  "formal_timing_pass": false,
+  "sram_diagnostic_authorized": true,
+  "downloaded": false,
+  "blocking_condition": "After USB link restart, PDS fresh cable check returns CableList is empty. Windows enumerates FTDI A/B; VirtualHere TCP peer is 10.144.144.2:7575 and device is bound to this host. D2XX access is intermittent; FT_Open previously returned Win32 error31. No evidence establishes another user owner. PnP device restart denied under medium integrity.",
+  "warp_read_weight": 2,
+  "sample_pipeline": 0,
+  "phy_constraint_verification": {
+    "expected": 2032,
+    "retained_exactly": 1321,
+    "absent_in_export": 120,
+    "relocated_in_export": 591,
+    "fully_locked": false
+  },
+  "arm_boot_id": "e7422cf4-2ae3-47bc-a831-600171baabb7",
+  "arm_boot_firmware": "Viewer rejected BAR0 magic 54321000; qualified SRAM bit not retained through reboot"
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "library": "F:/PDS_2022.2-SP6.4/bin/ftd2xx.dll",
+    "enumerate_status": 0,
+    "count": 0,
+    "interfaces": []
+  },
+  {
+    "library": "F:/PDS_2022.2-SP6.4/driver/amd64/ftd2xx64.dll",
+    "enumerate_status": 0,
+    "count": 0,
+    "interfaces": []
+  }
+]

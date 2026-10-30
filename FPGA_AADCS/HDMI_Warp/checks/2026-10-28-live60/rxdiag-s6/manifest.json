@@ -1,0 +1,14 @@
+{
+  "status": "temporary diagnostic programmed with explicit user margin exception",
+  "build": "build/live60-rxcompact-s6",
+  "seed": 6,
+  "capture_fifo_bits": 11,
+  "capture_write_banks": 1,
+  "coord_pipeline": 0,
+  "setup_wns_ns": 0.064,
+  "production_minimum_setup_ns": 0.197,
+  "done": 1,
+  "crc_err": 0,
+  "bitstream_sha256": "51d4aae14e14b402e2d1427057dc9b07cd9cdfc109be5ec75c2a5e1fa6a12b4e",
+  "diagnosis": "Native calibration reproduces ~40fps; ~20/s discarded captures match FIFO failures; invalid input/geometry/markers/timeouts do not increase."
+}

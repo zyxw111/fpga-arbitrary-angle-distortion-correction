@@ -1,0 +1,9 @@
+{
+  "arm_binary_sha256": "01364a5c8b36c8beade828e6d3616512def73628b3adf0c9604659ce8e82d535",
+  "copy_workers": 3,
+  "logging": "userdata filesystem",
+  "hardware_acceptance_pass": true,
+  "source_and_presentation_pass": false,
+  "overall_pass": false,
+  "limitation": "Late 960578us stall outside hardware trace window; later 55-source jump. Longest contiguous segment 15775 frames but 59.786763fps. Hardware-window pass is not complete end-to-end acceptance."
+}

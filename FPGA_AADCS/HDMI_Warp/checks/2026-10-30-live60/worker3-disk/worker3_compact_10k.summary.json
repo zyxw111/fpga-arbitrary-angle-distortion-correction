@@ -1,0 +1,78 @@
+{
+  "complete": true,
+  "compact_snapshots": true,
+  "seconds": 174.9943520304762,
+  "totals": {
+    "ddr_cycles": 22968008704,
+    "host_cycles": 10937171249,
+    "captured_frames": 10500,
+    "warped_frames": 10500,
+    "consumed_frames": 10500,
+    "dma_frames": 10500,
+    "discarded_captures": 0,
+    "fifo_failed_frames": 0,
+    "invalid_input_frames": 0,
+    "marker_errors": 0,
+    "capture_timeouts": 0
+  },
+  "fps": {
+    "captured_frames": 60.00193650919299,
+    "warped_frames": 60.00193650919299,
+    "consumed_frames": 60.00193650919299,
+    "dma_frames": 60.00193650919299
+  },
+  "observed_max_warp_ms": 16.84072380952381,
+  "observed_max_dma_ms": 14.26584037336189,
+  "missed_frame_observations": {
+    "warp": 0,
+    "dma": 0
+  },
+  "error_flags": "0x0",
+  "host_hz": 62500138.55930181,
+  "capture_diagnostics_available": true,
+  "first_snapshot": {
+    "sequence": 129594,
+    "ddr_hz": 131250000,
+    "host_constraint_hz": 125000000,
+    "counters": {
+      "ddr_cycles": 2745171967,
+      "host_cycles": 284729207,
+      "captured_frames": 23631,
+      "warped_frames": 23630,
+      "consumed_frames": 23629,
+      "dma_frames": 23629,
+      "discarded_captures": 1,
+      "last_warp_cycles": 2206568,
+      "last_dma_cycles": 860396,
+      "error_flags": 0,
+      "capture_magic": 1381516337,
+      "fifo_failed_frames": 0,
+      "invalid_input_frames": 32799033,
+      "marker_errors": 0,
+      "capture_timeouts": 0
+    }
+  },
+  "last_snapshot": {
+    "sequence": 151498,
+    "ddr_hz": 131250000,
+    "host_constraint_hz": 125000000,
+    "counters": {
+      "ddr_cycles": 4238344191,
+      "host_cycles": 2631965864,
+      "captured_frames": 34131,
+      "warped_frames": 34130,
+      "consumed_frames": 34129,
+      "dma_frames": 34129,
+      "discarded_captures": 1,
+      "last_warp_cycles": 2182050,
+      "last_dma_cycles": 870799,
+      "error_flags": 0,
+      "capture_magic": 1381516337,
+      "fifo_failed_frames": 0,
+      "invalid_input_frames": 32799033,
+      "marker_errors": 0,
+      "capture_timeouts": 0
+    }
+  },
+  "hardware_acceptance_pass": true
+}

@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 module tb_warp_perf;
- reg clk=0,hclk=0,rst_n=0;always #5 clk=~clk;always #7 hclk=~hclk;
+ reg clk=0,hclk=0,rst_n=0,host_run=1;always #5 clk=~clk;always #7 if(host_run)hclk=~hclk;
  reg [3:0] active=0,frames=0;reg [1:0] queue_wait=0,av=0,ar=0,rv=0,rl=0;
  reg [27:0] addr=0;reg [7:0] len=0,err=0;reg [2:0] wb=0;
  wire [1023:0] counts;
@@ -10,6 +10,7 @@ module tb_warp_perf;
  reg [11:0] status_addr=0;wire [127:0] status;
  reg dma_busy=0;reg [31:0] pages=7;
  warp_perf_regs #(.SNAPSHOT_BITS(6)) regs(.dclk(clk),.hclk(hclk),.rst_n(rst_n),.counters(counts),
+  .capture_counters({32'd11,32'd10,32'd9,32'd8,32'd7,32'd6,32'd5,32'd4,32'd3,32'd2,32'd1,32'h52584431}),
   .tile_counters({32'd6,32'd5,32'd4,32'd3,32'd2,32'd1,32'h201,32'h54494c31}),
   .dma_busy(dma_busy),.frame_ready(1'b1),.source_read(1'b0),.txvalid(1'b0),.txready(1'b1),
   .page_completed(pages),.status_addr(status_addr),.status_data(status));
@@ -18,7 +19,7 @@ module tb_warp_perf;
   @(posedge clk);#1;end endtask
  task check(input integer word,input [31:0] expected);
  begin if(counts[word*32+:32]!==expected)$fatal(1,"counter %0d got %0d expected %0d",word,counts[word*32+:32],expected);end endtask
- integer i,j;reg [31:0] seq;
+ integer i,j;reg [31:0] seq;reg [1695:0] held_snapshot;
  initial begin
   #21;rst_n=1;
   for(i=0;i<16;i=i+1)tick(1,0,0,i<8?28'h2000000:28'h1000,8'h03);
@@ -56,7 +57,18 @@ module tb_warp_perf;
   if(status!=={32'd2,32'd1,32'h201,32'h54494c31})$fatal(1,"tile snapshot bank0 %h",status);
   status_addr=44;#1;
   if(status!=={32'd6,32'd5,32'd4,32'd3})$fatal(1,"tile snapshot bank1 %h",status);
+  status_addr=45;#1;if(status!=={32'd3,32'd2,32'd1,32'h52584431})$fatal(1,"capture diagnostics bank0 %h",status);
+  status_addr=47;#1;if(status!=={32'd11,32'd10,32'd9,32'd8})$fatal(1,"capture diagnostics bank2 %h",status);
   status_addr=0;#1;if(status!==0)$fatal(1,"legacy bank changed");
+  // A paused host must not allow the source to overwrite an unacknowledged
+  // bundle, even though the periodic snapshot timer keeps expiring.
+  @(negedge hclk);host_run=0;
+  wait(regs.request!=regs.ack_sync[1]);#1;held_snapshot=regs.held;
+  repeat(200)@(posedge clk);#1;
+  if(regs.held!==held_snapshot)$fatal(1,"CDC source overwritten while host paused");
+  host_run=1;repeat(150)@(posedge hclk);
+  status_addr=32;#1;
+  if(status[31:0]!==32'h50524630 || status[95:64]<=seq)$fatal(1,"CDC did not recover after host pause");
   tick(0,1,1,0,0);tick(0,0,0,0,0);tick(0,0,0,0,0);
   if(!counts[31*32+8])$fatal(1,"unexpected response not reported");
   @(negedge clk);rst_n=0;#1;check(0,0);check(31,0);

@@ -1,0 +1,33 @@
+{
+  "complete": true,
+  "seconds": 10.162199405714286,
+  "totals": {
+    "ddr_cycles": 1333788672,
+    "host_cycles": 635138977,
+    "captured_frames": 600,
+    "warped_frames": 600,
+    "consumed_frames": 600,
+    "dma_frames": 600,
+    "discarded_captures": 0,
+    "fifo_failed_frames": 0,
+    "invalid_input_frames": 0,
+    "marker_errors": 0,
+    "capture_timeouts": 0
+  },
+  "fps": {
+    "captured_frames": 59.042336805811466,
+    "warped_frames": 59.042336805811466,
+    "consumed_frames": 59.042336805811466,
+    "dma_frames": 59.042336805811466
+  },
+  "observed_max_warp_ms": 17.09182476190476,
+  "observed_max_dma_ms": 13.559599674444994,
+  "missed_frame_observations": {
+    "warp": 0,
+    "dma": 0
+  },
+  "error_flags": "0x0",
+  "host_hz": 62500148.997554235,
+  "capture_diagnostics_available": true,
+  "hardware_acceptance_pass": false
+}

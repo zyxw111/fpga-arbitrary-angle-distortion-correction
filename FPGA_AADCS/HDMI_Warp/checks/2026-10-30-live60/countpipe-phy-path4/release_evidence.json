@@ -1,0 +1,63 @@
+{
+  "state": "programmed and displayed at 1080p60; occasional source drops remain",
+  "files_sha256": {
+    "hdmi_warp.pcf": "975aee67c8056b73f28f429924ba839193884ac97f1067861931524c45f53040",
+    "device_map/hdmi_warp_top_map.adf": "3103cf7010be245fa3659c377ab42f42bd86a5b303eb31f58db662a0c98b09bd",
+    "place_route/hdmi_warp_top_pnr.adf": "79be0de9cad26d9ae377b5f9f34ce4275c707ac30f6bc79e36256f11ca6eab93",
+    "report_timing/hdmi_warp_top.rtr": "406ec9f63d4331828a68e0a52eb6ce10847ee112c9e2ba81dc7782130f9c4ad0",
+    "generate_bitstream/hdmi_warp_top.sbit": "37cf17a1df91b044ba026a99b1c7cdcd45aa40843980eb998fc7bf17cc23409e"
+  },
+  "minimum_setup_ns": 0.197,
+  "actual_worst_setup_ns": 0.271,
+  "all_timing_constraints_met": true,
+  "LUT": 19154,
+  "FF": 28955,
+  "DRM": 109.5,
+  "APM": 199,
+  "baseline_resources": {
+    "LUT": 19203,
+    "FF": 27829,
+    "DRM": 109.5,
+    "APM": 199
+  },
+  "quality_max_error": 0,
+  "quality_pixels": 2073600,
+  "arm_binary_sha256": "06aa900f26b93c2f0ba614bbdc9992d29376d173bc8b542a8b6751fb584ef712",
+  "board_boot_id": "ed1d9b9d-7569-4ec0-894d-02db2bee4067",
+  "calibration_sha256": "a00d33db68853eb619e11d5dbd6cc151382b81230fae5f7dad54a89635540586",
+  "formal_board_result": "Timing and pixel checks pass. 21989 consecutive source frames at 60.000864fps; repeat had four steady-state single-frame source gaps in 14000 verified frames. Joint zero-drop acceptance is not guaranteed.",
+  "board_test_summaries": {
+    "formal271": {
+      "verified_frames": 22000,
+      "continuous_source_frames": 21989,
+      "continuous_source_fps": 60.00086377448696,
+      "kms_submitted": 22000,
+      "kms_rendered": 22000,
+      "kms_dropped": 0,
+      "trace_frames": 18000,
+      "trace_fps": 59.99988209394599,
+      "max_warp_ms": 16.881729523809526,
+      "max_dma_ms": 14.264922022450458,
+      "missed_warp_observations": 1,
+      "missed_dma_observations": 2,
+      "hardware_acceptance_pass": false
+    },
+    "formal271_repeat": {
+      "verified_frames": 14000,
+      "continuous_source_frames": 7010,
+      "steady_state_missing_source_frames": 4,
+      "kms_submitted": 14000,
+      "kms_rendered": 14000,
+      "kms_dropped": 0,
+      "trace_frames": 10500,
+      "trace_fps": 59.980029997141436,
+      "max_warp_ms": 16.874460952380954,
+      "max_dma_ms": 14.2725409278374,
+      "missed_warp_observations": 0,
+      "missed_dma_observations": 0,
+      "hardware_acceptance_pass": true,
+      "source_and_presentation_pass": false
+    }
+  },
+  "raw_board_evidence": "/userdata/warpchecks_20261030/formal271 and formal271_repeat"
+}

@@ -1,0 +1,143 @@
+{
+  "input_size": [
+    1920,
+    1080
+  ],
+  "output_size": [
+    1920,
+    1080
+  ],
+  "source_scale": 1.0,
+  "roi_cropped": false,
+  "assumption": "HDMI contains the calibration image uniformly resized, without cropping",
+  "output_K": [
+    [
+      903.7876179421422,
+      0,
+      938.0636355704763
+    ],
+    [
+      0,
+      640.3084001723388,
+      515.2244414264843
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  "coefficients": {
+    "a00": 1.082191416003753,
+    "a01": 0.0,
+    "a02": 1.1368683772161603e-13,
+    "a10": 0.0,
+    "a11": 1.5273314938979485,
+    "a12": -294.649818685315,
+    "fx": 978.0712020274658,
+    "fy": 977.9631853906237,
+    "cx": 1015.1644140796424,
+    "cy": 492.26869713133334,
+    "inv_fx": 0.0010224204515244671,
+    "inv_fy": 0.0010225333784937662,
+    "k1": -0.4140945515901778,
+    "k2": 0.2194826825751426,
+    "k3": -0.06305534188943517,
+    "p1": -1.6906869582290236e-05,
+    "p2": -4.721141507880536e-05
+  },
+  "order": [
+    "a00",
+    "a01",
+    "a02",
+    "a10",
+    "a11",
+    "a12",
+    "fx",
+    "fy",
+    "cx",
+    "cy",
+    "inv_fx",
+    "inv_fy",
+    "k1",
+    "k2",
+    "k3",
+    "p1",
+    "p2"
+  ],
+  "words": [
+    70922,
+    0,
+    0,
+    0,
+    100095,
+    -19310171,
+    64098874,
+    64091795,
+    66529815,
+    32261321,
+    1097816,
+    1097937,
+    -27138,
+    14384,
+    -4132,
+    -1,
+    -3
+  ],
+  "calibration_file": "/userdata/fpga-view-live-build/calibration/my_camera_params_1920x1080_20261027_a00d33db.json",
+  "calibration_sha256": "a00d33db68853eb619e11d5dbd6cc151382b81230fae5f7dad54a89635540586",
+  "before": {
+    "version": 196608,
+    "output_width": 1920,
+    "output_height": 1080,
+    "source_fps": 59.99979393939394,
+    "input_width": 1920,
+    "input_height": 1080,
+    "pixel_hz": 148499490,
+    "source_frames": 5303,
+    "receiver_flags": "0x9610003f",
+    "good_frames": 1315,
+    "dropped_frames": 0,
+    "flags": 0,
+    "accepted": 0,
+    "applied": 0,
+    "published": 0
+  },
+  "previous_shadow_words": [
+    65536,
+    0,
+    0,
+    0,
+    65536,
+    0,
+    67108864,
+    67108864,
+    62914560,
+    35389440,
+    1048576,
+    1048576,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "applied": 1,
+  "after": {
+    "version": 196608,
+    "output_width": 1920,
+    "output_height": 1080,
+    "source_fps": 59.99979393939394,
+    "input_width": 1920,
+    "input_height": 1080,
+    "pixel_hz": 148499480,
+    "source_frames": 5308,
+    "receiver_flags": "0x9610001f",
+    "good_frames": 1319,
+    "dropped_frames": 0,
+    "flags": 0,
+    "accepted": 1,
+    "applied": 1,
+    "published": 1
+  }
+}

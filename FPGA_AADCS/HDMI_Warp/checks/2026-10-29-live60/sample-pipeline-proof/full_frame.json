@@ -1,0 +1,53 @@
+{
+  "inputs": {
+    "key": "60c7276f6af7c5cee77fbd750c8ea3559f98d38f470d33c4d085f385c378f096",
+    "calibration_record_sha256": "94c381309b40a986a5c010516ef34daff2c6641168ece49d3faabc53a22ffdd9",
+    "words": [
+      70922,
+      0,
+      0,
+      0,
+      100095,
+      -19310171,
+      64098874,
+      64091795,
+      66529815,
+      32261321,
+      1097816,
+      1097937,
+      -27138,
+      14384,
+      -4132,
+      -1,
+      -3
+    ],
+    "hashes": {
+      "source.hex": "5ddbb55f5997e686d4d53c9d8727e2457508f885686cec1c949185139c25145a",
+      "map.hex": "f166abcde6c03a6710637724a16a902a38cac275f6c6740f42850af64c67aaf8",
+      "golden.hex": "f3b54fd98323b0970b5653cdd10f8877fd45e15d2149d772c7bc90cab2048290"
+    },
+    "pixels": 2073600
+  },
+  "results": [
+    {
+      "mode": "fast_sample",
+      "pixels": 2073600,
+      "max_absolute_error": 0,
+      "psnr_db": "Infinity (bit exact)",
+      "cycles": 1656065,
+      "checksum": "aef8e443",
+      "seconds": 421.7039999999997,
+      "source_hashes": {
+        "source\\rtl\\warp_tiles.v": "5f58637f11bd3041bc666464a8b10de6165fb59afe9aa27d6ae0fd275de4fffa",
+        "source\\rtl\\tile_fetch.v": "ee0c7438a3dfce4b1f5ce8054fad71132097fc1525e79fc7db1bdbc3bb9eb830",
+        "source\\rtl\\bilin.v": "eb73fb652f3963d790c4f446f56282cf88266a70d31fd260250f87e2365a6aa1",
+        "source\\rtl\\video_ddr_arb.v": "a7c8d3502c6675ae1da191f6815f3b84f5c4606b7878dfb3e0e509595fb5ea91",
+        "sim\\ddrmodel.sv": "b139e63a819c6f4cd5fdb17d31f682814a0f743cdbe5f6f1e5719749288c4668",
+        "sim\\tb_warp_full.sv": "3060a0345814d0de0c7cc99fe1bb5f561b1e2b4eb53224b7692811fa53e566d0",
+        "source\\rtl\\warp_fast.v": "5831e534a211d5d4061061cfe087b85b298441dd0d0df091497c02eae211602a",
+        "source\\rtl\\hdmi_map_pipe.v": "4626eb2ac69b0cc6d7b6b27510bae93cab3fa5bdfdf0ca7272af94b95b3e9949",
+        "sim\\tb_warp_full_fast_sample.sv": "5b6f0d13c4ba17482e508443ef2084ecbd404c1ba48be751be1d08024fd34f60"
+      }
+    }
+  ]
+}

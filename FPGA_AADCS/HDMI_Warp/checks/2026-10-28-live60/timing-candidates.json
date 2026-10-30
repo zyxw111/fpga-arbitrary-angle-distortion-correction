@@ -1,0 +1,1353 @@
+[
+  {
+    "report": "F:\\AADCS_git_zyxw\\FPGA_AADCS\\HDMI_Warp\\build\\live60-final\\report_timing\\hdmi_warp_top.rtr",
+    "all_constraints_met": true,
+    "minimum_setup_ns": 0.197,
+    "worst_setup_ns": 0.382,
+    "pass_timing": true,
+    "setup_clocks": [
+      {
+        "launch": "board_ref125",
+        "capture": "board_ref125",
+        "wns_ns": 3.537
+      },
+      {
+        "launch": "ref_clk",
+        "capture": "ref_clk",
+        "wns_ns": 37.875
+      },
+      {
+        "launch": "rst_clk",
+        "capture": "rst_clk",
+        "wns_ns": 37.201
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 0.382
+      },
+      {
+        "launch": "phy_dq_sysclk_1",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 2.699
+      },
+      {
+        "launch": "phy_dq_sysclk_0",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 3.395
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_0",
+        "wns_ns": 1.186
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_1",
+        "wns_ns": 1.144
+      },
+      {
+        "launch": "pclk",
+        "capture": "pclk",
+        "wns_ns": 1.077
+      },
+      {
+        "launch": "pclk_div2",
+        "capture": "pclk_div2",
+        "wns_ns": 0.825
+      },
+      {
+        "launch": "pcie_ref_clk",
+        "capture": "pcie_ref_clk",
+        "wns_ns": 6.138
+      },
+      {
+        "launch": "hdmi_pclk",
+        "capture": "hdmi_pclk",
+        "wns_ns": 0.522
+      }
+    ],
+    "build": "live60-final",
+    "programmed": false
+  },
+  {
+    "report": "F:\\AADCS_git_zyxw\\FPGA_AADCS\\HDMI_Warp\\build\\live60-rxdiag\\report_timing\\hdmi_warp_top.rtr",
+    "all_constraints_met": false,
+    "minimum_setup_ns": 0.197,
+    "worst_setup_ns": -0.228,
+    "pass_timing": false,
+    "setup_clocks": [
+      {
+        "launch": "board_ref125",
+        "capture": "board_ref125",
+        "wns_ns": 3.236
+      },
+      {
+        "launch": "ref_clk",
+        "capture": "ref_clk",
+        "wns_ns": 37.244
+      },
+      {
+        "launch": "rst_clk",
+        "capture": "rst_clk",
+        "wns_ns": 33.64
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 0.051
+      },
+      {
+        "launch": "phy_dq_sysclk_0",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 4.279
+      },
+      {
+        "launch": "phy_dq_sysclk_1",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 2.466
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_0",
+        "wns_ns": 0.922
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_1",
+        "wns_ns": -0.228
+      },
+      {
+        "launch": "pclk",
+        "capture": "pclk",
+        "wns_ns": 0.601
+      },
+      {
+        "launch": "pclk_div2",
+        "capture": "pclk_div2",
+        "wns_ns": 0.153
+      },
+      {
+        "launch": "pcie_ref_clk",
+        "capture": "pcie_ref_clk",
+        "wns_ns": 5.73
+      },
+      {
+        "launch": "hdmi_pclk",
+        "capture": "hdmi_pclk",
+        "wns_ns": 0.293
+      }
+    ],
+    "build": "live60-rxdiag",
+    "programmed": false
+  },
+  {
+    "report": "F:\\AADCS_git_zyxw\\FPGA_AADCS\\HDMI_Warp\\build\\live60-rxdiag-s5\\report_timing\\hdmi_warp_top.rtr",
+    "all_constraints_met": false,
+    "minimum_setup_ns": 0.197,
+    "worst_setup_ns": -0.388,
+    "pass_timing": false,
+    "setup_clocks": [
+      {
+        "launch": "board_ref125",
+        "capture": "board_ref125",
+        "wns_ns": 2.343
+      },
+      {
+        "launch": "ref_clk",
+        "capture": "ref_clk",
+        "wns_ns": 37.338
+      },
+      {
+        "launch": "rst_clk",
+        "capture": "rst_clk",
+        "wns_ns": 35.165
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": -0.388
+      },
+      {
+        "launch": "phy_dq_sysclk_1",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 2.191
+      },
+      {
+        "launch": "phy_dq_sysclk_0",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 4.019
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_0",
+        "wns_ns": 0.283
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_1",
+        "wns_ns": 0.074
+      },
+      {
+        "launch": "pclk",
+        "capture": "pclk",
+        "wns_ns": 0.467
+      },
+      {
+        "launch": "pclk_div2",
+        "capture": "pclk_div2",
+        "wns_ns": 0.368
+      },
+      {
+        "launch": "pcie_ref_clk",
+        "capture": "pcie_ref_clk",
+        "wns_ns": 6.546
+      },
+      {
+        "launch": "hdmi_pclk",
+        "capture": "hdmi_pclk",
+        "wns_ns": 0.09
+      }
+    ],
+    "build": "live60-rxdiag-s5",
+    "programmed": false
+  },
+  {
+    "report": "F:\\AADCS_git_zyxw\\FPGA_AADCS\\HDMI_Warp\\build\\live60-rxdiag-s7\\report_timing\\hdmi_warp_top.rtr",
+    "all_constraints_met": false,
+    "minimum_setup_ns": 0.197,
+    "worst_setup_ns": -0.688,
+    "pass_timing": false,
+    "setup_clocks": [
+      {
+        "launch": "board_ref125",
+        "capture": "board_ref125",
+        "wns_ns": 2.64
+      },
+      {
+        "launch": "ref_clk",
+        "capture": "ref_clk",
+        "wns_ns": 38.058
+      },
+      {
+        "launch": "rst_clk",
+        "capture": "rst_clk",
+        "wns_ns": 37.107
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 0.541
+      },
+      {
+        "launch": "phy_dq_sysclk_1",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 2.486
+      },
+      {
+        "launch": "phy_dq_sysclk_0",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 3.355
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_0",
+        "wns_ns": 0.782
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_1",
+        "wns_ns": 0.564
+      },
+      {
+        "launch": "pclk",
+        "capture": "pclk",
+        "wns_ns": 0.574
+      },
+      {
+        "launch": "pclk_div2",
+        "capture": "pclk_div2",
+        "wns_ns": -0.688
+      },
+      {
+        "launch": "pcie_ref_clk",
+        "capture": "pcie_ref_clk",
+        "wns_ns": 6.225
+      },
+      {
+        "launch": "hdmi_pclk",
+        "capture": "hdmi_pclk",
+        "wns_ns": -0.022
+      }
+    ],
+    "build": "live60-rxdiag-s7",
+    "programmed": false
+  },
+  {
+    "report": "F:\\AADCS_git_zyxw\\FPGA_AADCS\\HDMI_Warp\\build\\live60-fifo13\\report_timing\\hdmi_warp_top.rtr",
+    "all_constraints_met": false,
+    "minimum_setup_ns": 0.197,
+    "worst_setup_ns": -0.059,
+    "pass_timing": false,
+    "setup_clocks": [
+      {
+        "launch": "board_ref125",
+        "capture": "board_ref125",
+        "wns_ns": 0.113
+      },
+      {
+        "launch": "ref_clk",
+        "capture": "ref_clk",
+        "wns_ns": 37.878
+      },
+      {
+        "launch": "rst_clk",
+        "capture": "rst_clk",
+        "wns_ns": 37.091
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": -0.059
+      },
+      {
+        "launch": "phy_dq_sysclk_1",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 2.319
+      },
+      {
+        "launch": "phy_dq_sysclk_0",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 3.453
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_0",
+        "wns_ns": 0.83
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_1",
+        "wns_ns": 0.632
+      },
+      {
+        "launch": "pclk",
+        "capture": "pclk",
+        "wns_ns": 0.4
+      },
+      {
+        "launch": "pclk_div2",
+        "capture": "pclk_div2",
+        "wns_ns": 0.209
+      },
+      {
+        "launch": "pcie_ref_clk",
+        "capture": "pcie_ref_clk",
+        "wns_ns": 5.984
+      },
+      {
+        "launch": "hdmi_pclk",
+        "capture": "hdmi_pclk",
+        "wns_ns": 0.6
+      }
+    ],
+    "build": "live60-fifo13",
+    "programmed": false
+  },
+  {
+    "report": "F:\\AADCS_git_zyxw\\FPGA_AADCS\\HDMI_Warp\\build\\live60-rxcompact\\report_timing\\hdmi_warp_top.rtr",
+    "all_constraints_met": false,
+    "minimum_setup_ns": 0.197,
+    "worst_setup_ns": -0.005,
+    "pass_timing": false,
+    "setup_clocks": [
+      {
+        "launch": "board_ref125",
+        "capture": "board_ref125",
+        "wns_ns": 2.489
+      },
+      {
+        "launch": "ref_clk",
+        "capture": "ref_clk",
+        "wns_ns": 37.231
+      },
+      {
+        "launch": "rst_clk",
+        "capture": "rst_clk",
+        "wns_ns": 36.881
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": -0.005
+      },
+      {
+        "launch": "phy_dq_sysclk_0",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 3.735
+      },
+      {
+        "launch": "phy_dq_sysclk_1",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 1.828
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_0",
+        "wns_ns": 0.716
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_1",
+        "wns_ns": 0.411
+      },
+      {
+        "launch": "pclk",
+        "capture": "pclk",
+        "wns_ns": 1.087
+      },
+      {
+        "launch": "pclk_div2",
+        "capture": "pclk_div2",
+        "wns_ns": 0.7
+      },
+      {
+        "launch": "pcie_ref_clk",
+        "capture": "pcie_ref_clk",
+        "wns_ns": 5.971
+      },
+      {
+        "launch": "hdmi_pclk",
+        "capture": "hdmi_pclk",
+        "wns_ns": 0.547
+      }
+    ],
+    "build": "live60-rxcompact",
+    "programmed": false
+  },
+  {
+    "report": "F:\\AADCS_git_zyxw\\FPGA_AADCS\\HDMI_Warp\\build\\live60-fifo13-compact\\report_timing\\hdmi_warp_top.rtr",
+    "all_constraints_met": false,
+    "minimum_setup_ns": 0.197,
+    "worst_setup_ns": -0.546,
+    "pass_timing": false,
+    "setup_clocks": [
+      {
+        "launch": "board_ref125",
+        "capture": "board_ref125",
+        "wns_ns": 1.851
+      },
+      {
+        "launch": "ref_clk",
+        "capture": "ref_clk",
+        "wns_ns": 37.224
+      },
+      {
+        "launch": "rst_clk",
+        "capture": "rst_clk",
+        "wns_ns": 36.925
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 0.255
+      },
+      {
+        "launch": "phy_dq_sysclk_1",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": -0.546
+      },
+      {
+        "launch": "phy_dq_sysclk_0",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 3.359
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_0",
+        "wns_ns": 0.428
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_1",
+        "wns_ns": -0.158
+      },
+      {
+        "launch": "pclk",
+        "capture": "pclk",
+        "wns_ns": 0.592
+      },
+      {
+        "launch": "pclk_div2",
+        "capture": "pclk_div2",
+        "wns_ns": 0.58
+      },
+      {
+        "launch": "pcie_ref_clk",
+        "capture": "pcie_ref_clk",
+        "wns_ns": 5.853
+      },
+      {
+        "launch": "hdmi_pclk",
+        "capture": "hdmi_pclk",
+        "wns_ns": 0.672
+      }
+    ],
+    "build": "live60-fifo13-compact",
+    "programmed": false
+  },
+  {
+    "report": "F:\\AADCS_git_zyxw\\FPGA_AADCS\\HDMI_Warp\\build\\live60-startfix\\report_timing\\hdmi_warp_top.rtr",
+    "all_constraints_met": true,
+    "minimum_setup_ns": 0.197,
+    "worst_setup_ns": 0.012,
+    "pass_timing": false,
+    "setup_clocks": [
+      {
+        "launch": "board_ref125",
+        "capture": "board_ref125",
+        "wns_ns": 3.051
+      },
+      {
+        "launch": "ref_clk",
+        "capture": "ref_clk",
+        "wns_ns": 37.836
+      },
+      {
+        "launch": "rst_clk",
+        "capture": "rst_clk",
+        "wns_ns": 37.147
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 0.274
+      },
+      {
+        "launch": "phy_dq_sysclk_1",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 1.682
+      },
+      {
+        "launch": "phy_dq_sysclk_0",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 3.509
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_0",
+        "wns_ns": 0.697
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_1",
+        "wns_ns": 0.133
+      },
+      {
+        "launch": "pclk",
+        "capture": "pclk",
+        "wns_ns": 1.065
+      },
+      {
+        "launch": "pclk_div2",
+        "capture": "pclk_div2",
+        "wns_ns": 0.012
+      },
+      {
+        "launch": "pcie_ref_clk",
+        "capture": "pcie_ref_clk",
+        "wns_ns": 6.166
+      },
+      {
+        "launch": "hdmi_pclk",
+        "capture": "hdmi_pclk",
+        "wns_ns": 0.53
+      }
+    ],
+    "build": "live60-startfix",
+    "programmed": false
+  },
+  {
+    "report": "F:\\AADCS_git_zyxw\\FPGA_AADCS\\HDMI_Warp\\build\\live60-fifo13-startfix\\report_timing\\hdmi_warp_top.rtr",
+    "all_constraints_met": true,
+    "minimum_setup_ns": 0.197,
+    "worst_setup_ns": 0.309,
+    "pass_timing": true,
+    "setup_clocks": [
+      {
+        "launch": "board_ref125",
+        "capture": "board_ref125",
+        "wns_ns": 3.329
+      },
+      {
+        "launch": "ref_clk",
+        "capture": "ref_clk",
+        "wns_ns": 37.402
+      },
+      {
+        "launch": "rst_clk",
+        "capture": "rst_clk",
+        "wns_ns": 36.941
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 0.309
+      },
+      {
+        "launch": "phy_dq_sysclk_1",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 1.484
+      },
+      {
+        "launch": "phy_dq_sysclk_0",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 3.367
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_0",
+        "wns_ns": 0.601
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_1",
+        "wns_ns": 1.08
+      },
+      {
+        "launch": "pclk",
+        "capture": "pclk",
+        "wns_ns": 0.602
+      },
+      {
+        "launch": "pclk_div2",
+        "capture": "pclk_div2",
+        "wns_ns": 0.71
+      },
+      {
+        "launch": "pcie_ref_clk",
+        "capture": "pcie_ref_clk",
+        "wns_ns": 5.864
+      },
+      {
+        "launch": "hdmi_pclk",
+        "capture": "hdmi_pclk",
+        "wns_ns": 0.532
+      }
+    ],
+    "build": "live60-fifo13-startfix",
+    "programmed": true
+  },
+  {
+    "report": "F:\\AADCS_git_zyxw\\FPGA_AADCS\\HDMI_Warp\\build\\live60-capture2\\report_timing\\hdmi_warp_top.rtr",
+    "all_constraints_met": true,
+    "minimum_setup_ns": 0.197,
+    "worst_setup_ns": 0.209,
+    "pass_timing": true,
+    "setup_clocks": [
+      {
+        "launch": "board_ref125",
+        "capture": "board_ref125",
+        "wns_ns": 2.922
+      },
+      {
+        "launch": "ref_clk",
+        "capture": "ref_clk",
+        "wns_ns": 37.209
+      },
+      {
+        "launch": "rst_clk",
+        "capture": "rst_clk",
+        "wns_ns": 37.07
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 0.593
+      },
+      {
+        "launch": "phy_dq_sysclk_1",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 2.26
+      },
+      {
+        "launch": "phy_dq_sysclk_0",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 3.257
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_0",
+        "wns_ns": 0.234
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_1",
+        "wns_ns": 0.23
+      },
+      {
+        "launch": "pclk",
+        "capture": "pclk",
+        "wns_ns": 0.984
+      },
+      {
+        "launch": "pclk_div2",
+        "capture": "pclk_div2",
+        "wns_ns": 0.3
+      },
+      {
+        "launch": "pcie_ref_clk",
+        "capture": "pcie_ref_clk",
+        "wns_ns": 5.955
+      },
+      {
+        "launch": "hdmi_pclk",
+        "capture": "hdmi_pclk",
+        "wns_ns": 0.209
+      }
+    ],
+    "build": "live60-capture2",
+    "programmed": true
+  },
+  {
+    "report": "F:\\AADCS_git_zyxw\\FPGA_AADCS\\HDMI_Warp\\build\\live60-capture2-fifo13\\report_timing\\hdmi_warp_top.rtr",
+    "all_constraints_met": true,
+    "minimum_setup_ns": 0.197,
+    "worst_setup_ns": 0.188,
+    "pass_timing": false,
+    "setup_clocks": [
+      {
+        "launch": "board_ref125",
+        "capture": "board_ref125",
+        "wns_ns": 3.055
+      },
+      {
+        "launch": "ref_clk",
+        "capture": "ref_clk",
+        "wns_ns": 38.107
+      },
+      {
+        "launch": "rst_clk",
+        "capture": "rst_clk",
+        "wns_ns": 37.102
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 0.188
+      },
+      {
+        "launch": "phy_dq_sysclk_1",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 2.384
+      },
+      {
+        "launch": "phy_dq_sysclk_0",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 3.397
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_0",
+        "wns_ns": 1.129
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_1",
+        "wns_ns": 0.87
+      },
+      {
+        "launch": "pclk",
+        "capture": "pclk",
+        "wns_ns": 0.442
+      },
+      {
+        "launch": "pclk_div2",
+        "capture": "pclk_div2",
+        "wns_ns": 0.326
+      },
+      {
+        "launch": "pcie_ref_clk",
+        "capture": "pcie_ref_clk",
+        "wns_ns": 6.093
+      },
+      {
+        "launch": "hdmi_pclk",
+        "capture": "hdmi_pclk",
+        "wns_ns": 0.22
+      }
+    ],
+    "build": "live60-capture2-fifo13",
+    "programmed": false
+  },
+  {
+    "report": "F:\\AADCS_git_zyxw\\FPGA_AADCS\\HDMI_Warp\\build\\live60-capture2-fifo13-s6\\report_timing\\hdmi_warp_top.rtr",
+    "all_constraints_met": false,
+    "minimum_setup_ns": 0.197,
+    "worst_setup_ns": -0.122,
+    "pass_timing": false,
+    "setup_clocks": [
+      {
+        "launch": "board_ref125",
+        "capture": "board_ref125",
+        "wns_ns": 2.262
+      },
+      {
+        "launch": "ref_clk",
+        "capture": "ref_clk",
+        "wns_ns": 37.951
+      },
+      {
+        "launch": "rst_clk",
+        "capture": "rst_clk",
+        "wns_ns": 34.227
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": -0.122
+      },
+      {
+        "launch": "phy_dq_sysclk_1",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 2.431
+      },
+      {
+        "launch": "phy_dq_sysclk_0",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 3.595
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_0",
+        "wns_ns": 0.399
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_1",
+        "wns_ns": 0.873
+      },
+      {
+        "launch": "pclk",
+        "capture": "pclk",
+        "wns_ns": 0.727
+      },
+      {
+        "launch": "pclk_div2",
+        "capture": "pclk_div2",
+        "wns_ns": 0.606
+      },
+      {
+        "launch": "pcie_ref_clk",
+        "capture": "pcie_ref_clk",
+        "wns_ns": 5.777
+      },
+      {
+        "launch": "hdmi_pclk",
+        "capture": "hdmi_pclk",
+        "wns_ns": 0.312
+      }
+    ],
+    "build": "live60-capture2-fifo13-s6",
+    "programmed": false
+  },
+  {
+    "report": "F:\\AADCS_git_zyxw\\FPGA_AADCS\\HDMI_Warp\\build\\live60-capture2-fifo13-s8\\report_timing\\hdmi_warp_top.rtr",
+    "all_constraints_met": true,
+    "minimum_setup_ns": 0.197,
+    "worst_setup_ns": 0.265,
+    "pass_timing": true,
+    "setup_clocks": [
+      {
+        "launch": "board_ref125",
+        "capture": "board_ref125",
+        "wns_ns": 1.378
+      },
+      {
+        "launch": "ref_clk",
+        "capture": "ref_clk",
+        "wns_ns": 37.871
+      },
+      {
+        "launch": "rst_clk",
+        "capture": "rst_clk",
+        "wns_ns": 36.934
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 0.457
+      },
+      {
+        "launch": "phy_dq_sysclk_1",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 2.148
+      },
+      {
+        "launch": "phy_dq_sysclk_0",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 3.427
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_0",
+        "wns_ns": 1.132
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_1",
+        "wns_ns": 0.544
+      },
+      {
+        "launch": "pclk",
+        "capture": "pclk",
+        "wns_ns": 0.899
+      },
+      {
+        "launch": "pclk_div2",
+        "capture": "pclk_div2",
+        "wns_ns": 0.363
+      },
+      {
+        "launch": "pcie_ref_clk",
+        "capture": "pcie_ref_clk",
+        "wns_ns": 5.869
+      },
+      {
+        "launch": "hdmi_pclk",
+        "capture": "hdmi_pclk",
+        "wns_ns": 0.265
+      }
+    ],
+    "build": "live60-capture2-fifo13-s8",
+    "programmed": true
+  },
+  {
+    "report": "F:\\AADCS_git_zyxw\\FPGA_AADCS\\HDMI_Warp\\build\\live60-fifo13-weight2\\report_timing\\hdmi_warp_top.rtr",
+    "all_constraints_met": false,
+    "minimum_setup_ns": 0.197,
+    "worst_setup_ns": -1.065,
+    "pass_timing": false,
+    "setup_clocks": [
+      {
+        "launch": "board_ref125",
+        "capture": "board_ref125",
+        "wns_ns": 2.746
+      },
+      {
+        "launch": "ref_clk",
+        "capture": "ref_clk",
+        "wns_ns": 37.816
+      },
+      {
+        "launch": "rst_clk",
+        "capture": "rst_clk",
+        "wns_ns": 37.087
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": -0.132
+      },
+      {
+        "launch": "phy_dq_sysclk_1",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": -0.258
+      },
+      {
+        "launch": "phy_dq_sysclk_0",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 3.366
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_0",
+        "wns_ns": 0.683
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_1",
+        "wns_ns": -1.065
+      },
+      {
+        "launch": "pclk",
+        "capture": "pclk",
+        "wns_ns": 0.604
+      },
+      {
+        "launch": "pclk_div2",
+        "capture": "pclk_div2",
+        "wns_ns": 0.432
+      },
+      {
+        "launch": "pcie_ref_clk",
+        "capture": "pcie_ref_clk",
+        "wns_ns": 5.868
+      },
+      {
+        "launch": "hdmi_pclk",
+        "capture": "hdmi_pclk",
+        "wns_ns": 0.174
+      }
+    ],
+    "build": "live60-fifo13-weight2",
+    "programmed": false
+  },
+  {
+    "report": "F:\\AADCS_git_zyxw\\FPGA_AADCS\\HDMI_Warp\\build\\live60-fifo13-weight2-s9\\report_timing\\hdmi_warp_top.rtr",
+    "all_constraints_met": false,
+    "minimum_setup_ns": 0.197,
+    "worst_setup_ns": -1.096,
+    "pass_timing": false,
+    "setup_clocks": [
+      {
+        "launch": "board_ref125",
+        "capture": "board_ref125",
+        "wns_ns": 1.51
+      },
+      {
+        "launch": "ref_clk",
+        "capture": "ref_clk",
+        "wns_ns": 37.659
+      },
+      {
+        "launch": "rst_clk",
+        "capture": "rst_clk",
+        "wns_ns": 36.496
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 0.198
+      },
+      {
+        "launch": "phy_dq_sysclk_1",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": -0.855
+      },
+      {
+        "launch": "phy_dq_sysclk_0",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 3.301
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_0",
+        "wns_ns": -0.441
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_1",
+        "wns_ns": -1.096
+      },
+      {
+        "launch": "pclk",
+        "capture": "pclk",
+        "wns_ns": 0.76
+      },
+      {
+        "launch": "pclk_div2",
+        "capture": "pclk_div2",
+        "wns_ns": -0.011
+      },
+      {
+        "launch": "pcie_ref_clk",
+        "capture": "pcie_ref_clk",
+        "wns_ns": 5.283
+      },
+      {
+        "launch": "hdmi_pclk",
+        "capture": "hdmi_pclk",
+        "wns_ns": 0.072
+      }
+    ],
+    "build": "live60-fifo13-weight2-s9",
+    "programmed": false
+  },
+  {
+    "report": "F:\\AADCS_git_zyxw\\FPGA_AADCS\\HDMI_Warp\\build\\live60-fifo13-weight2-normal\\report_timing\\hdmi_warp_top.rtr",
+    "all_constraints_met": true,
+    "minimum_setup_ns": 0.197,
+    "worst_setup_ns": 0.101,
+    "pass_timing": false,
+    "setup_clocks": [
+      {
+        "launch": "board_ref125",
+        "capture": "board_ref125",
+        "wns_ns": 1.682
+      },
+      {
+        "launch": "ref_clk",
+        "capture": "ref_clk",
+        "wns_ns": 37.757
+      },
+      {
+        "launch": "rst_clk",
+        "capture": "rst_clk",
+        "wns_ns": 36.625
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 0.101
+      },
+      {
+        "launch": "phy_dq_sysclk_1",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 2.16
+      },
+      {
+        "launch": "phy_dq_sysclk_0",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 3.503
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_0",
+        "wns_ns": 1.097
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_1",
+        "wns_ns": 0.627
+      },
+      {
+        "launch": "pclk",
+        "capture": "pclk",
+        "wns_ns": 0.389
+      },
+      {
+        "launch": "pclk_div2",
+        "capture": "pclk_div2",
+        "wns_ns": 0.341
+      },
+      {
+        "launch": "pcie_ref_clk",
+        "capture": "pcie_ref_clk",
+        "wns_ns": 5.921
+      },
+      {
+        "launch": "hdmi_pclk",
+        "capture": "hdmi_pclk",
+        "wns_ns": 0.311
+      }
+    ],
+    "build": "live60-fifo13-weight2-normal",
+    "programmed": false
+  },
+  {
+    "report": "F:\\AADCS_git_zyxw\\FPGA_AADCS\\HDMI_Warp\\build\\live60-fifo13-weight2-phyloc\\report_timing\\hdmi_warp_top.rtr",
+    "all_constraints_met": false,
+    "minimum_setup_ns": 0.197,
+    "worst_setup_ns": -1.065,
+    "pass_timing": false,
+    "setup_clocks": [
+      {
+        "launch": "board_ref125",
+        "capture": "board_ref125",
+        "wns_ns": 2.746
+      },
+      {
+        "launch": "ref_clk",
+        "capture": "ref_clk",
+        "wns_ns": 37.816
+      },
+      {
+        "launch": "rst_clk",
+        "capture": "rst_clk",
+        "wns_ns": 37.087
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": -0.132
+      },
+      {
+        "launch": "phy_dq_sysclk_1",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": -0.258
+      },
+      {
+        "launch": "phy_dq_sysclk_0",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 3.366
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_0",
+        "wns_ns": 0.683
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_1",
+        "wns_ns": -1.065
+      },
+      {
+        "launch": "pclk",
+        "capture": "pclk",
+        "wns_ns": 0.604
+      },
+      {
+        "launch": "pclk_div2",
+        "capture": "pclk_div2",
+        "wns_ns": 0.432
+      },
+      {
+        "launch": "pcie_ref_clk",
+        "capture": "pcie_ref_clk",
+        "wns_ns": 5.868
+      },
+      {
+        "launch": "hdmi_pclk",
+        "capture": "hdmi_pclk",
+        "wns_ns": 0.174
+      }
+    ],
+    "build": "live60-fifo13-weight2-phyloc",
+    "programmed": false,
+    "placement_export_retained": false,
+    "note": "Device mapping overwrote the pre-map appended placement export; same result as seed8. Not a valid constrained-placement experiment."
+  },
+  {
+    "report": "F:\\AADCS_git_zyxw\\FPGA_AADCS\\HDMI_Warp\\build\\live60-fifo13-weight2-normal-s8\\report_timing\\hdmi_warp_top.rtr",
+    "all_constraints_met": false,
+    "minimum_setup_ns": 0.197,
+    "worst_setup_ns": -1.065,
+    "pass_timing": false,
+    "setup_clocks": [
+      {
+        "launch": "board_ref125",
+        "capture": "board_ref125",
+        "wns_ns": 2.746
+      },
+      {
+        "launch": "ref_clk",
+        "capture": "ref_clk",
+        "wns_ns": 37.816
+      },
+      {
+        "launch": "rst_clk",
+        "capture": "rst_clk",
+        "wns_ns": 37.087
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": -0.132
+      },
+      {
+        "launch": "phy_dq_sysclk_1",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": -0.258
+      },
+      {
+        "launch": "phy_dq_sysclk_0",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 3.366
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_0",
+        "wns_ns": 0.683
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_1",
+        "wns_ns": -1.065
+      },
+      {
+        "launch": "pclk",
+        "capture": "pclk",
+        "wns_ns": 0.604
+      },
+      {
+        "launch": "pclk_div2",
+        "capture": "pclk_div2",
+        "wns_ns": 0.432
+      },
+      {
+        "launch": "pcie_ref_clk",
+        "capture": "pcie_ref_clk",
+        "wns_ns": 5.868
+      },
+      {
+        "launch": "hdmi_pclk",
+        "capture": "hdmi_pclk",
+        "wns_ns": 0.174
+      }
+    ],
+    "build": "live60-fifo13-weight2-normal-s8",
+    "programmed": false
+  },
+  {
+    "report": "F:\\AADCS_git_zyxw\\FPGA_AADCS\\HDMI_Warp\\build\\live60-fifo13-weight2-normal-s6\\report_timing\\hdmi_warp_top.rtr",
+    "all_constraints_met": false,
+    "minimum_setup_ns": 0.197,
+    "worst_setup_ns": -0.347,
+    "pass_timing": false,
+    "setup_clocks": [
+      {
+        "launch": "board_ref125",
+        "capture": "board_ref125",
+        "wns_ns": 2.314
+      },
+      {
+        "launch": "ref_clk",
+        "capture": "ref_clk",
+        "wns_ns": 38.215
+      },
+      {
+        "launch": "rst_clk",
+        "capture": "rst_clk",
+        "wns_ns": 36.986
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 0.37
+      },
+      {
+        "launch": "phy_dq_sysclk_1",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 1.368
+      },
+      {
+        "launch": "phy_dq_sysclk_0",
+        "capture": "ddrphy_sysclk",
+        "wns_ns": 3.495
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_0",
+        "wns_ns": 1.078
+      },
+      {
+        "launch": "ddrphy_sysclk",
+        "capture": "phy_dq_sysclk_1",
+        "wns_ns": 1.033
+      },
+      {
+        "launch": "pclk",
+        "capture": "pclk",
+        "wns_ns": 0.544
+      },
+      {
+        "launch": "pclk_div2",
+        "capture": "pclk_div2",
+        "wns_ns": 0.752
+      },
+      {
+        "launch": "pcie_ref_clk",
+        "capture": "pcie_ref_clk",
+        "wns_ns": 5.667
+      },
+      {
+        "launch": "hdmi_pclk",
+        "capture": "hdmi_pclk",
+        "wns_ns": -0.347
+      }
+    ],
+    "build": "live60-fifo13-weight2-normal-s6",
+    "programmed": false
+  }
+]

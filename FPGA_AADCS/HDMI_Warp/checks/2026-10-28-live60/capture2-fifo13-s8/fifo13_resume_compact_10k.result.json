@@ -1,0 +1,35 @@
+nohup: ignoring input
+{
+  "complete": true,
+  "compact_snapshots": true,
+  "seconds": 174.98636288,
+  "totals": {
+    "ddr_cycles": 22966960128,
+    "host_cycles": 10936673060,
+    "captured_frames": 10500,
+    "warped_frames": 10500,
+    "consumed_frames": 10501,
+    "dma_frames": 10501,
+    "discarded_captures": 0,
+    "fifo_failed_frames": 0,
+    "invalid_input_frames": 0,
+    "marker_errors": 0,
+    "capture_timeouts": 0
+  },
+  "fps": {
+    "captured_frames": 60.00467594837982,
+    "warped_frames": 60.00467594837982,
+    "consumed_frames": 60.01039067942253,
+    "dma_frames": 60.01039067942253
+  },
+  "observed_max_warp_ms": 17.090910476190476,
+  "observed_max_dma_ms": 13.53942457989707,
+  "missed_frame_observations": {
+    "warp": 0,
+    "dma": 0
+  },
+  "error_flags": "0x0",
+  "host_hz": 62500145.03987386,
+  "capture_diagnostics_available": true,
+  "hardware_acceptance_pass": false
+}

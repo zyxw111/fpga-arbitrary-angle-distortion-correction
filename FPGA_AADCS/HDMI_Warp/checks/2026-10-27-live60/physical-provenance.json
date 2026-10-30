@@ -1,0 +1,12 @@
+{
+  "status": "rejected experiment; not used by live60-v9, live60-final or later candidates",
+  "reason": "Reusing DDR PHY placements failed Place-0006 at i_ca_group[0].u_tserdes_ca0; production uses ordinary seed-4 performance placement and IO-only PCF.",
+  "baseline_commit": "4033bda",
+  "baseline_bit_sha256": "95704b6bd7b704e556078e1eea643e35086e15dcf2de6b74f3a9173c49eacf2f",
+  "matched_constraints": 857,
+  "source_files": {
+    "build/wp1-overlap/place_route/hdmi_warp_top_pnr.adf": "d3852213c7f834993d4670a0341b6935cb350050ad6ee97681980a61a790e2b5",
+    "build/physical-export/wp1.pcf": "2964a2833defea7d8c99395da4b634e1f976d8893d68aed9cced8b99fcae8712",
+    "build/live60-v6b/place_route/hdmi_warp_top_pnr.netlist": "2aa29d125ea0b2415db11d32fd4b3fdcc2bc686e359e1f833f38eba4734a1132"
+  }
+}

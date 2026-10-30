@@ -1,0 +1,48 @@
+{
+  "build": "build\\live60-weight2-phy-reroute",
+  "bit_sha256": "61c8f0d5e11378c9d0b5f3fa92ca2a95dbe52c8f4365f1d90e042047177a3e99",
+  "worst_final_setup_ns": 0.118,
+  "formal_minimum_setup_ns": 0.197,
+  "all_pds_constraints_met": true,
+  "formal_timing_pass": false,
+  "user_authorized_sram_diagnostic": true,
+  "downloaded": true,
+  "program_result": 0,
+  "done": 1,
+  "crc_err": 0,
+  "rbcrc_err": 0,
+  "warp_read_weight": 2,
+  "sample_pipeline": 0,
+  "arm_boot_id": "ed1d9b9d-7569-4ec0-894d-02db2bee4067",
+  "arm_binary_sha256": "eebf19155f61e4264433b6513db29cc1b4f01faec470ecea3c0106f17b286d9d",
+  "board_performance_status": "Failed end-to-end acceptance",
+  "hardware_acceptance_pass": false,
+  "source_and_presentation_pass": false,
+  "fps": {
+    "captured_frames": 59.71839409748107,
+    "warped_frames": 59.71839409748107,
+    "consumed_frames": 59.72408156358559,
+    "dma_frames": 59.72408156358559
+  },
+  "observed_max_warp_ms": 16.854704761904763,
+  "observed_max_dma_ms": 14.267697944431607,
+  "missed_frame_observations": {
+    "warp": 1,
+    "dma": 0
+  },
+  "longest_contiguous_run": {
+    "frames": 2826,
+    "first_frame": 16422,
+    "last_frame": 19247,
+    "first_source": 16486,
+    "last_source": 19311,
+    "generation": 1,
+    "seconds": 47.100148,
+    "fps": 59.97858010976951
+  },
+  "kms_totals": {
+    "submitted": 22000,
+    "rendered": 22000,
+    "dropped": 0
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "version": 196608,
+  "output_width": 1920,
+  "output_height": 1080,
+  "source_fps": 59.9998303030303,
+  "input_width": 1920,
+  "input_height": 1080,
+  "pixel_hz": 148499580,
+  "source_frames": 38243,
+  "receiver_flags": "0x9610001f",
+  "good_frames": 22710,
+  "dropped_frames": 1,
+  "flags": 0,
+  "accepted": 1,
+  "applied": 1,
+  "published": 1
+}

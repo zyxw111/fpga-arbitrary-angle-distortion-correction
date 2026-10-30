@@ -1,0 +1,25 @@
+{
+  "create_status": 0,
+  "list_status": 0,
+  "count": 2,
+  "devices": [
+    {
+      "flags": 1,
+      "opened": true,
+      "type": 3,
+      "id": "0x0",
+      "location": "0x0",
+      "serial": "",
+      "description": ""
+    },
+    {
+      "flags": 1,
+      "opened": true,
+      "type": 3,
+      "id": "0x0",
+      "location": "0x0",
+      "serial": "",
+      "description": ""
+    }
+  ]
+}

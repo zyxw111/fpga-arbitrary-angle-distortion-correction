@@ -1,4 +1,4 @@
-param([string]$PdsRoot='F:\PDS_2022.2-SP6.4',[switch]$Debug,[string]$BuildDir='build')
+param([string]$PdsRoot='F:\PDS_2022.2-SP6.4',[switch]$Debug,[string]$BuildDir='build',[ValidateRange(0,100)][double]$MinimumSetupNs=0.197)
 $ErrorActionPreference='Stop'
 $buildRoot=Join-Path $PSScriptRoot $BuildDir
 if($Debug){$buildRoot=Join-Path $buildRoot 'debug'}
@@ -8,6 +8,10 @@ if(!(Test-Path -LiteralPath $bit) -or !(Test-Path -LiteralPath $timing) -or
    !(Select-String -LiteralPath $timing -SimpleMatch 'Design Summary : All Constraints Met.')){
  throw 'Build this HDMI project successfully, including timing, before programming.'
 }
+$programPython=Join-Path $env:USERPROFILE '.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe'
+if(!(Test-Path -LiteralPath $programPython)){$programPython='python'}
+& $programPython (Join-Path $PSScriptRoot 'tools/check_timing.py') $timing --minimum $MinimumSetupNs
+if($LASTEXITCODE -ne 0){throw "Final timing report fails the required +$MinimumSetupNs ns setup margin; not programming."}
 if(!(Get-NetTCPConnection -LocalPort 65420 -State Listen -ErrorAction SilentlyContinue)){
  $programJtagServer=Start-Process -FilePath (Join-Path $PdsRoot 'bin/cdt_js.exe') -WorkingDirectory $buildRoot -WindowStyle Hidden -PassThru
  $programServerDeadline=[DateTime]::UtcNow.AddSeconds(30)

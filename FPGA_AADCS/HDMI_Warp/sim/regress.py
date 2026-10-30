@@ -72,12 +72,27 @@ def main():
         t0=time.monotonic();top='tb_'+name
         sources=[p for p in sorted((ROOT/'source/rtl').glob('*.v')) if p.stem!='hdmi_config']
         sources += [out/'test_config.v',ROOT/'sim'/f'{top}.sv']
+        if name=='warp_dual_cache':
+            from vendor_models import drm36k_model
+            sources += [drm36k_model(out)]
+        if name.startswith('video_ddr_weight'):
+            sources += [ROOT/'sim/ddrmodel.sv']
+            if name!='video_ddr_weight':sources += [ROOT/'sim/tb_video_ddr_weight.sv']
+        if name in ('fetch_queue','fetch_immediate'):
+            sources += [ROOT/'sim/ddrmodel.sv']
+            if name=='fetch_immediate':sources += [ROOT/'sim/tb_fetch_queue.sv']
+        if name in ('burst_double','burst_legacy'):
+            sources += [ROOT/'sim/ddrmodel.sv']
+            if name=='burst_legacy':sources += [ROOT/'sim/tb_burst_double.sv']
         if name.startswith('warp_tiles'):
             sources += [ROOT/'sim/ddrmodel.sv']
             if name!='warp_tiles':sources += [ROOT/'sim/tb_warp_tiles.sv']
-        if name in ('hdmi_live_perf_off','hdmi_live_serial'):
+        if name.startswith('warp_fast'):
+            sources += [ROOT/'sim/ddrmodel.sv']
+            if name!='warp_fast':sources += [ROOT/'sim/tb_warp_fast.sv']
+        if name in ('hdmi_live_perf_off','hdmi_live_serial','hdmi_live_fast','hdmi_live_weight','hdmi_live_sample','hdmi_live_count_pipe'):
             sources += [ROOT/'sim/tb_hdmi_live_pcie.sv']
-        if name in ('hdmi_pcie','hdmi_v2_pcie','hdmi_live_pcie','hdmi_live_perf_off','hdmi_live_serial'):
+        if name in ('hdmi_pcie','hdmi_v2_pcie','hdmi_live_pcie','hdmi_live_perf_off','hdmi_live_serial','hdmi_live_fast','hdmi_live_weight','hdmi_live_sample','hdmi_live_count_pipe'):
             sources += [ROOT/'sim/ddrmodel.sv',ROOT/'sim/pcie_ram_model.sv']
             sources += [p for p in (ROOT/'source/pcie_dma').rglob('*.v') if 'ips2l_pcie_dma_ram' not in str(p)]
         pre=out/f'{top}.pre.v';artifact=out/f'{top}.vvp';artifact.unlink(missing_ok=True)
@@ -93,7 +108,7 @@ def main():
         inputs={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in input_paths}
         log=run([core/'ivlpp.exe','-L','-o',pre,*sources])
         log+=run([core/'ivl.exe','-C',core/'vvp.conf','-C',cfg,pre])
-        log+=run([args.bin.resolve()/'vvp.exe',artifact],timeout=1200 if name=='video_rx' else 420 if name in ('hdmi_live_pcie','hdmi_live_perf_off','hdmi_live_serial') else 180)
+        log+=run([args.bin.resolve()/'vvp.exe',artifact],timeout=1200 if name=='video_rx' else 420 if name.startswith('warp_fast') or name.startswith('hdmi_live') else 180)
         (out/f'{top}.log').write_text(log)
         if 'PASS' not in log:raise RuntimeError(log)
         print(next(line for line in log.splitlines() if 'PASS' in line),flush=True)

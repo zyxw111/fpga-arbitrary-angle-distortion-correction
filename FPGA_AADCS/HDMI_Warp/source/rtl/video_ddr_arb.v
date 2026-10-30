@@ -1,6 +1,6 @@
 // Writes retain ownership through LAST. Reads use an ordered owner FIFO so
 // multiple AR commands can be outstanding; each client reserves its returns.
-module video_ddr_arb #(parameter WRITERS=3,READERS=2)(
+module video_ddr_arb #(parameter WRITERS=3,READERS=2,READ0_WEIGHT=1)(
  input clk,rst_n,
  input [WRITERS-1:0] wav,output reg [WRITERS-1:0] war,
  input [WRITERS*28-1:0] waa,input [WRITERS*4-1:0] wal,
@@ -17,6 +17,8 @@ module video_ddr_arb #(parameter WRITERS=3,READERS=2)(
  reg [1:0] wphase,rphase;
  wire wbusy=wphase!=0,rbusy=rphase!=0;
  reg [WB-1:0] wo,wnext,wsel;reg [RB-1:0] ro,rnext,rsel;
+ localparam QW=READ0_WEIGHT<=1?1:$clog2(READ0_WEIGHT);
+ reg [QW-1:0] read0_run;
  integer i,n;
  reg [RB-1:0] read_owner[0:15];reg [3:0] read_head,read_tail;reg [4:0] read_count;
  wire read_push=arvalid && arready;
@@ -46,7 +48,7 @@ module video_ddr_arb #(parameter WRITERS=3,READERS=2)(
  assign arvalid=rphase==1;
  assign araddr=raa[ro*28+:28];assign arlen=ral[ro*4+:4];assign rd=rdata;
  always @(posedge clk or negedge rst_n)
- if(!rst_n)begin wphase<=0;rphase<=0;wo<=0;ro<=0;wnext<=0;rnext<=0;read_head<=0;read_tail<=0;read_count<=0;end
+ if(!rst_n)begin wphase<=0;rphase<=0;wo<=0;ro<=0;wnext<=0;rnext<=0;read0_run<=0;read_head<=0;read_tail<=0;read_count<=0;end
  else begin
   case(wphase)
    0:if(whave)begin wo<=wsel;wphase<=1;end
@@ -55,7 +57,17 @@ module video_ddr_arb #(parameter WRITERS=3,READERS=2)(
   endcase
   case(rphase)
    0:if(rhave && read_count<16)begin ro<=rsel;rphase<=1;end
-   1:if(arready)begin rphase<=0;rnext<=ro==READERS-1?0:ro+1'b1;end
+   1:if(arready)begin
+    rphase<=0;
+    // Optional command weighting for the two existing readers. Ownership,
+    // queue capacity and in-order return routing do not change. With both
+    // requesting, host reader 1 waits at most READ0_WEIGHT accepted source
+    // commands; an absent preferred reader is always bypassed.
+    if(READERS==2 && READ0_WEIGHT>1)begin
+     if(ro==0 && read0_run<READ0_WEIGHT-1)begin read0_run<=read0_run+1'b1;rnext<=0;end
+     else begin read0_run<=0;rnext<=ro==0?1:0;end
+    end else rnext<=ro==READERS-1?0:ro+1'b1;
+   end
   endcase
   if(read_push)begin read_owner[read_tail]<=ro;read_tail<=read_tail+1'b1;end
   if(read_pop)read_head<=read_head+1'b1;

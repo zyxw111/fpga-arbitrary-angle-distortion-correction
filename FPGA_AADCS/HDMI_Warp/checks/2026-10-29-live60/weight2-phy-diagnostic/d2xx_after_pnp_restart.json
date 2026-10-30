@@ -1,0 +1,19 @@
+{
+  "after_user_pnp_restart": true,
+  "count": 2,
+  "enumeration_status": 0,
+  "interfaces": [
+    {
+      "index": 0,
+      "open_status": 3,
+      "win32_error": 31,
+      "win32_message": "连到系统上的设备没有发挥作用。"
+    },
+    {
+      "index": 1,
+      "open_status": 3,
+      "win32_error": 31,
+      "win32_message": "连到系统上的设备没有发挥作用。"
+    }
+  ]
+}

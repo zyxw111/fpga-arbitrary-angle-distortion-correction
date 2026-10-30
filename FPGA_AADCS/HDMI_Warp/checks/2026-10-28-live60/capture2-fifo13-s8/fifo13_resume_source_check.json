@@ -1,0 +1,24 @@
+{
+  "log": "/userdata/warpchecks_20261028/fifo13_resume_verbose_22000.log",
+  "verified_frame_records": 22000,
+  "discontinuities": 6,
+  "duplicate_sources": 0,
+  "longest_contiguous_run": {
+    "frames": 20866,
+    "first_frame": 1140,
+    "last_frame": 22005,
+    "first_source": 69419,
+    "last_source": 90284,
+    "generation": 1,
+    "seconds": 347.758175,
+    "fps": 59.99858953711153
+  },
+  "kms_totals": {
+    "submitted": 22000,
+    "rendered": 22000,
+    "dropped": 0
+  },
+  "minimum_frames": 10000,
+  "minimum_fps": 59.9,
+  "source_and_presentation_pass": true
+}

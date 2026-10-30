@@ -1,0 +1,11 @@
+{
+  "source_build": "F:\\AADCS_git_zyxw\\FPGA_AADCS\\HDMI_Warp\\build\\live60-weight2-sample",
+  "source_map_sha256": "2c7b5e83bab5d55d1721a86b621415d98abef7ff1b1b066399d3293e358a47fc",
+  "copied_map_sha256": "2c7b5e83bab5d55d1721a86b621415d98abef7ff1b1b066399d3293e358a47fc",
+  "warp_read_weight": 2,
+  "sample_pipeline": 1,
+  "seed": 8,
+  "route_mode": "performance",
+  "phy_hints": 2032,
+  "reason": "Retry the interrupted PHY-hinted implementation; normal4 without these hints failed final DDR PHY timing -0.344ns."
+}

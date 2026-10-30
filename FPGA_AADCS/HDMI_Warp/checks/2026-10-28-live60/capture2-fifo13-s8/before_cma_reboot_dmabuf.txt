@@ -1,0 +1,39 @@
+
+Dma-buf Objects:
+size    	flags   	mode    	count   	exp_name	ino     	name
+03686400	00000002	00080007	00000008	system-uncached	00000018	1442-Xorg
+	Attached Devices:
+	fde60000.gpu
+	fde60000.gpu
+	display-subsystem
+Total 3 devices attached
+
+03686400	00000002	00080007	00000008	system-uncached	00000017	1442-Xorg
+	Attached Devices:
+	fde60000.gpu
+	fde60000.gpu
+	display-subsystem
+Total 3 devices attached
+
+08294400	00000002	00080007	00000008	system-uncached	00000016	1442-Xorg
+	Attached Devices:
+	fde60000.gpu
+	fde60000.gpu
+	display-subsystem
+Total 3 devices attached
+
+08294400	00000002	00080007	00000008	system-uncached	00000015	1442-Xorg
+	Attached Devices:
+	fde60000.gpu
+	fde60000.gpu
+	display-subsystem
+Total 3 devices attached
+
+13516800	00000002	00080007	00000006	system-uncached	00000010	1442-Xorg
+	Attached Devices:
+	fde60000.gpu
+	display-subsystem
+Total 2 devices attached
+
+
+Total 5 objects, 37478400 bytes

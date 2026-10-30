@@ -1,0 +1,25 @@
+{
+  "stage": "device_map, not final post-route timing",
+  "counts": {
+    "qualified_baseline": {
+      "APM": 199.0,
+      "FF": 27829.0,
+      "LUT": 19203.0,
+      "DRM": 109.5
+    },
+    "weight2_sample1": {
+      "APM": 199.0,
+      "FF": 28922.0,
+      "LUT": 19324.0,
+      "DRM": 109.5
+    }
+  },
+  "qualified_baseline_report_sha256": "aa5015b802240ac3b619a861a86e4b762bcb94ff83e5ca1dbe5c6b4d37cbe4dd",
+  "weight2_sample1_report_sha256": "5d0d16a64527ca265e43c50beb44a13b22d970063fcece766e5ccb4c8613740e",
+  "delta": {
+    "APM": 0.0,
+    "FF": 1093.0,
+    "LUT": 121.0,
+    "DRM": 0.0
+  }
+}

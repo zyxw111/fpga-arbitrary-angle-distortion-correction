@@ -1,0 +1,44 @@
+{
+  "build": "build/live60-fifo13-startfix",
+  "status": "programmed; 600-frame 60fps acceptance failed; FIFO improvement only",
+  "setup_wns_ns": 0.309,
+  "capture_fifo_bits": 13,
+  "capture_write_banks": 1,
+  "coord_pipeline": 0,
+  "done": 1,
+  "crc_err": 0,
+  "bitstream_sha256": "53f816ba435aa5f40b7d05d735e71f2d2c5b017f68d2d6a67ee481b47ecf82a9",
+  "trace": {
+    "complete": true,
+    "seconds": 10.417852220952382,
+    "totals": {
+      "ddr_cycles": 1367343104,
+      "host_cycles": 651117314,
+      "captured_frames": 601,
+      "warped_frames": 600,
+      "consumed_frames": 600,
+      "dma_frames": 600,
+      "discarded_captures": 24,
+      "fifo_failed_frames": 24,
+      "invalid_input_frames": 0,
+      "marker_errors": 0,
+      "capture_timeouts": 0
+    },
+    "fps": {
+      "captured_frames": 57.68943418023045,
+      "warped_frames": 57.59344510505535,
+      "consumed_frames": 57.59344510505535,
+      "dma_frames": 57.59344510505535
+    },
+    "observed_max_warp_ms": 17.08159238095238,
+    "observed_max_dma_ms": 13.574623681242695,
+    "missed_frame_observations": {
+      "warp": 0,
+      "dma": 0
+    },
+    "error_flags": "0x0",
+    "host_hz": 62500148.801350154,
+    "capture_diagnostics_available": true,
+    "hardware_acceptance_pass": false
+  }
+}

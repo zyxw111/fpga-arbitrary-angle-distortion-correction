@@ -1,0 +1,12 @@
+[
+  {
+    "library": "F:/PDS_2022.2-SP6.4/bin/ftd2xx.dll",
+    "status": 0,
+    "count": 2
+  },
+  {
+    "library": "F:/PDS_2022.2-SP6.4/driver/amd64/ftd2xx64.dll",
+    "status": 0,
+    "count": 2
+  }
+]

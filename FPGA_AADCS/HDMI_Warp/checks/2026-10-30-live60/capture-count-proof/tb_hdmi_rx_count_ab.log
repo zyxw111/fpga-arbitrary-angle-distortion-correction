@@ -1,0 +1,2 @@
+PASS capture count A/B: cycle-exact full 1080p payload/markers, 8-pixel boundary, geometry changes, bubbles, bad frames and FIFO overflow
+F:\AADCS_git_zyxw\FPGA_AADCS\HDMI_Warp\sim\tb_hdmi_rx_count_ab.sv:45: $finish called at 20753810000 (1ps)

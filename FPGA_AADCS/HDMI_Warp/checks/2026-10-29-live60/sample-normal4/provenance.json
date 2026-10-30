@@ -1,0 +1,9 @@
+{
+  "source_build": "F:\\AADCS_git_zyxw\\FPGA_AADCS\\HDMI_Warp\\build\\live60-weight2-sample",
+  "source_map_sha256": "2c7b5e83bab5d55d1721a86b621415d98abef7ff1b1b066399d3293e358a47fc",
+  "copied_map_sha256": "2c7b5e83bab5d55d1721a86b621415d98abef7ff1b1b066399d3293e358a47fc",
+  "physical_hints_removed": 2032,
+  "reason": "Previous native PNR process absent, log ended without completion at 17:05:50; no final PNR ADF. Try normal seed4 without imported PHY hints to avoid congested partial placement.",
+  "warp_read_weight": 2,
+  "sample_pipeline": 1
+}

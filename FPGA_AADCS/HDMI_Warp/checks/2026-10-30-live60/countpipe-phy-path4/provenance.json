@@ -1,0 +1,15 @@
+{
+  "map_sha256": "3103cf7010be245fa3659c377ab42f42bd86a5b303eb31f58db662a0c98b09bd",
+  "source_snapshot": "F:\\AADCS_git_zyxw\\FPGA_AADCS\\HDMI_Warp\\build\\live60-countpipe-critical4\\rtl_source_sha256.json",
+  "warp_read_weight": 2,
+  "sample_pipeline": 1,
+  "capture_count_pipeline": 1,
+  "seed": 4,
+  "route_mode": "normal",
+  "phy_path_hints": [
+    "def_inst_site {u_mem/u_ddr/u_ddrphy_top/ddrphy_slice_top/i_dqs_group[1].ddrphy_data_slice/ddrphy_dqs_rddata_align/ck_dqs_diff[1]/opit_0_inv_L6QL5Q1} CLMA_327_642 FYB -no_check",
+    "def_inst_site {u_mem/u_ddr/u_ddrphy_top/ddrphy_slice_top/i_dqs_group[1].ddrphy_data_slice/ddrphy_wdata_path_adj/N657_7[0]/gateop_perm} CLMS_345_691 FYB -no_check",
+    "def_inst_site {u_mem/u_ddr/u_ddrphy_top/ddrphy_slice_top/i_dqs_group[1].ddrphy_data_slice/ddrphy_wdata_path_adj/N659[0]/LUT6_inst_perm} CLMA_357_690 FYB -no_check"
+  ],
+  "basis": "Prior candidate -1.222ns ck_dqs_diff to DQS TS_CTRL path; good baseline sites, candidate exported exact instance names. Actual binding remains to verify."
+}

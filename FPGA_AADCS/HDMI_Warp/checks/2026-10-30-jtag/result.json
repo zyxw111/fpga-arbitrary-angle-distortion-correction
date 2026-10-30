@@ -1,0 +1,14 @@
+{
+  "device": "PG2L100H",
+  "scan_result": 0,
+  "done": 1,
+  "init_complete": 1,
+  "pll_lock": 1,
+  "crc_err": 0,
+  "rbcrc_err": 0,
+  "timeout": 0,
+  "status_register": "0x081ffca0",
+  "operation": "Read-only JTAG scan and status read",
+  "bitstream_downloaded": false,
+  "timestamp": "2026-10-30T12:55:03.0897673+08:00"
+}

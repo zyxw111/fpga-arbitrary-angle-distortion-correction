@@ -1,0 +1,24 @@
+{
+  "log": "/userdata/warpchecks_20261030/weight2_verbose_22000.log",
+  "verified_frame_records": 22000,
+  "discontinuities": 67,
+  "duplicate_sources": 0,
+  "longest_contiguous_run": {
+    "frames": 2826,
+    "first_frame": 16422,
+    "last_frame": 19247,
+    "first_source": 16486,
+    "last_source": 19311,
+    "generation": 1,
+    "seconds": 47.100148,
+    "fps": 59.97858010976951
+  },
+  "kms_totals": {
+    "submitted": 22000,
+    "rendered": 22000,
+    "dropped": 0
+  },
+  "minimum_frames": 10000,
+  "minimum_fps": 59.9,
+  "source_and_presentation_pass": false
+}

@@ -32,6 +32,8 @@ def generate(params):
     if mark.exists():
         previous=json.loads(mark.read_text())
         if previous.get('key')==key and all((OUT/n).exists() and sha(OUT/n)==previous['hashes'].get(n) for n in names):
+            previous['calibration_record_sha256']=sha(params)
+            mark.write_text(json.dumps(previous,indent=2)+'\n')
             return previous
     w,h=1920,1080;golden=[0]*(w*h)
     with (OUT/'source.hex').open('w',encoding='ascii') as f:
@@ -59,19 +61,24 @@ def generate(params):
 
 
 def main():
+    global OUT
     ap=argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--params',type=Path,default=ROOT/'checks/2026-10-27-phase0/v2-calibration.json')
     ap.add_argument('--bin',type=Path,default=Path('F:/AADCS_git/.cache/tools/iverilog/bin'))
-    ap.add_argument('--modes',nargs='+',choices=['serial','overlap'],default=['serial','overlap'])
-    args=ap.parse_args();OUT.mkdir(parents=True,exist_ok=True)
+    ap.add_argument('--modes',nargs='+',choices=['serial','overlap','fast','fast_sample'],default=['serial','overlap'])
+    ap.add_argument('--out',type=Path,default=OUT)
+    ap.add_argument('--timeout',type=int,default=1800,help='Per command; unrolled dual-coordinate RTL is CPU intensive in Icarus')
+    args=ap.parse_args();OUT=args.out.resolve();OUT.mkdir(parents=True,exist_ok=True)
     inputs=generate(args.params);core=args.bin.parent/'lib/ivl'
+    (OUT/'config_words.hex').write_text(''.join(f'{w&0xffffffff:08x}\n' for w in inputs['words']),encoding='ascii')
     os.environ['PATH']=str(args.bin)+os.pathsep+os.environ['PATH']
     results=[]
     for mode in args.modes:
-        top='tb_warp_full_serial' if mode=='serial' else 'tb_warp_full'
+        top={'serial':'tb_warp_full_serial','overlap':'tb_warp_full','fast':'tb_warp_full_fast','fast_sample':'tb_warp_full_fast_sample'}[mode]
         sources=[ROOT/'source/rtl'/n for n in ['warp_tiles.v','tile_fetch.v','bilin.v','video_ddr_arb.v']]
         sources += [ROOT/'sim/ddrmodel.sv',ROOT/'sim/tb_warp_full.sv']
         if mode=='serial':sources += [ROOT/'sim/tb_warp_full_serial.sv']
+        if mode in ('fast','fast_sample'):sources += [ROOT/'source/rtl/warp_fast.v',ROOT/'source/rtl/hdmi_map_pipe.v',ROOT/'sim'/(top+'.sv')]
         hashes={str(p.relative_to(ROOT)):sha(p) for p in sources}
         artifact=OUT/(top+'.vvp');pre=OUT/(top+'.pre.v');cfg=OUT/(top+'.cfg')
         lines=[f'root:{top}',f'basedir:{core.as_posix()}','generation:2012','generation:assertions',
@@ -82,11 +89,11 @@ def main():
         commands=[[core/'ivlpp.exe','-L','-o',pre,*sources],
                   [core/'ivl.exe','-C',core/'vvp.conf','-C',cfg,pre],
                   [args.bin/'vvp.exe',artifact,'+SOURCE='+str(OUT/'source.hex'),
-                   '+MAP='+str(OUT/'map.hex'),'+GOLDEN='+str(OUT/'golden.hex')]]
+                   '+MAP='+str(OUT/'map.hex'),'+GOLDEN='+str(OUT/'golden.hex'),'+PARAMS='+str(OUT/'config_words.hex')]]
         began=time.monotonic();log=OUT/(mode+'.log')
         with log.open('w') as output:
             for command in commands:
-                subprocess.run([str(x) for x in command],cwd=ROOT,stdout=output,stderr=subprocess.STDOUT,check=True,timeout=900)
+                subprocess.run([str(x) for x in command],cwd=ROOT,stdout=output,stderr=subprocess.STDOUT,check=True,timeout=args.timeout)
         text=log.read_text();match=re.search(r'PASS FULL1080 mode=(\d+) pixels=(\d+) max_error=0 cycles=(\d+) checksum=([0-9a-fA-F]+)',text)
         if not match:raise RuntimeError(text[-2000:])
         assert all(sha(p)==hashes[str(p.relative_to(ROOT))] for p in sources),'Source changed during full-frame simulation'

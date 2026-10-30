@@ -1,0 +1,843 @@
+{"sequence": 514205, "dma": {"frame": 219559, "advance": 1, "cycles": 777510}}
+{"sequence": 514207, "warp": {"frame": 219562, "advance": 1, "cycles": 2143651}, "dma": {"frame": 219560, "advance": 1, "cycles": 836079}}
+{"sequence": 514209, "warp": {"frame": 219563, "advance": 1, "cycles": 2122755}, "dma": {"frame": 219561, "advance": 1, "cycles": 824341}}
+{"sequence": 514211, "warp": {"frame": 219564, "advance": 1, "cycles": 2187248}, "dma": {"frame": 219562, "advance": 1, "cycles": 840593}}
+{"sequence": 514213, "warp": {"frame": 219565, "advance": 1, "cycles": 2133576}}
+{"sequence": 514214, "dma": {"frame": 219563, "advance": 1, "cycles": 825774}}
+{"sequence": 514215, "dma": {"frame": 219564, "advance": 1, "cycles": 827232}}
+{"sequence": 514216, "warp": {"frame": 219566, "advance": 1, "cycles": 2171640}}
+{"sequence": 514217, "dma": {"frame": 219565, "advance": 1, "cycles": 841453}}
+{"sequence": 514218, "warp": {"frame": 219567, "advance": 1, "cycles": 2219641}}
+{"sequence": 514219, "dma": {"frame": 219566, "advance": 1, "cycles": 834077}}
+{"sequence": 514220, "warp": {"frame": 219568, "advance": 1, "cycles": 2182585}}
+{"sequence": 514221, "dma": {"frame": 219567, "advance": 1, "cycles": 826165}}
+{"sequence": 514222, "warp": {"frame": 219569, "advance": 1, "cycles": 2195989}}
+{"sequence": 514223, "dma": {"frame": 219568, "advance": 1, "cycles": 838659}}
+{"sequence": 514224, "warp": {"frame": 219570, "advance": 1, "cycles": 2189456}}
+{"sequence": 514225, "dma": {"frame": 219569, "advance": 1, "cycles": 832979}}
+{"sequence": 514226, "warp": {"frame": 219571, "advance": 1, "cycles": 2199258}}
+{"sequence": 514227, "dma": {"frame": 219570, "advance": 1, "cycles": 823794}}
+{"sequence": 514228, "warp": {"frame": 219572, "advance": 1, "cycles": 2146788}}
+{"sequence": 514229, "dma": {"frame": 219571, "advance": 1, "cycles": 836125}}
+{"sequence": 514230, "warp": {"frame": 219573, "advance": 1, "cycles": 2216329}}
+{"sequence": 514231, "dma": {"frame": 219572, "advance": 1, "cycles": 832372}}
+{"sequence": 514232, "warp": {"frame": 219574, "advance": 1, "cycles": 2183186}}
+{"sequence": 514233, "dma": {"frame": 219573, "advance": 1, "cycles": 824674}}
+{"sequence": 514234, "warp": {"frame": 219575, "advance": 1, "cycles": 2209191}}
+{"sequence": 514235, "dma": {"frame": 219574, "advance": 1, "cycles": 841281}}
+{"sequence": 514236, "dma": {"frame": 219575, "advance": 1, "cycles": 839832}}
+{"sequence": 514237, "warp": {"frame": 219576, "advance": 1, "cycles": 2195012}}
+{"sequence": 514238, "dma": {"frame": 219576, "advance": 1, "cycles": 828749}}
+{"sequence": 514239, "warp": {"frame": 219577, "advance": 1, "cycles": 2180529}}
+{"sequence": 514240, "dma": {"frame": 219577, "advance": 1, "cycles": 842898}}
+{"sequence": 514241, "warp": {"frame": 219578, "advance": 1, "cycles": 2190793}}
+{"sequence": 514242, "dma": {"frame": 219578, "advance": 1, "cycles": 835592}}
+{"sequence": 514243, "warp": {"frame": 219579, "advance": 1, "cycles": 2180332}}
+{"sequence": 514244, "dma": {"frame": 219579, "advance": 1, "cycles": 827720}}
+{"sequence": 514245, "warp": {"frame": 219580, "advance": 1, "cycles": 2170243}}
+{"sequence": 514247, "warp": {"frame": 219581, "advance": 1, "cycles": 2180037}, "dma": {"frame": 219580, "advance": 1, "cycles": 839086}}
+{"sequence": 514249, "warp": {"frame": 219582, "advance": 1, "cycles": 2176847}, "dma": {"frame": 219581, "advance": 1, "cycles": 835389}}
+{"sequence": 514251, "warp": {"frame": 219583, "advance": 1, "cycles": 2169423}, "dma": {"frame": 219582, "advance": 1, "cycles": 827449}}
+{"sequence": 514253, "warp": {"frame": 219584, "advance": 1, "cycles": 2185100}, "dma": {"frame": 219583, "advance": 1, "cycles": 840788}}
+{"sequence": 514255, "warp": {"frame": 219585, "advance": 1, "cycles": 2177211}, "dma": {"frame": 219584, "advance": 1, "cycles": 834542}}
+{"sequence": 514257, "warp": {"frame": 219586, "advance": 1, "cycles": 2168174}, "dma": {"frame": 219585, "advance": 1, "cycles": 826706}}
+{"sequence": 514259, "warp": {"frame": 219587, "advance": 1, "cycles": 2189248}, "dma": {"frame": 219586, "advance": 1, "cycles": 843376}}
+{"sequence": 514261, "warp": {"frame": 219588, "advance": 1, "cycles": 2181174}, "dma": {"frame": 219587, "advance": 1, "cycles": 836069}}
+{"sequence": 514263, "dma": {"frame": 219588, "advance": 1, "cycles": 827246}}
+{"sequence": 514264, "warp": {"frame": 219589, "advance": 1, "cycles": 2170103}}
+{"sequence": 514265, "dma": {"frame": 219589, "advance": 1, "cycles": 841045}}
+{"sequence": 514266, "warp": {"frame": 219590, "advance": 1, "cycles": 2182959}}
+{"sequence": 514267, "dma": {"frame": 219590, "advance": 1, "cycles": 837285}}
+{"sequence": 514268, "warp": {"frame": 219591, "advance": 1, "cycles": 2184570}}
+{"sequence": 514269, "dma": {"frame": 219591, "advance": 1, "cycles": 828193}}
+{"sequence": 514270, "warp": {"frame": 219592, "advance": 1, "cycles": 2172142}}
+{"sequence": 514271, "dma": {"frame": 219592, "advance": 1, "cycles": 839786}}
+{"sequence": 514272, "warp": {"frame": 219593, "advance": 1, "cycles": 2185303}}
+{"sequence": 514274, "warp": {"frame": 219594, "advance": 1, "cycles": 2174015}, "dma": {"frame": 219593, "advance": 1, "cycles": 833932}}
+{"sequence": 514276, "warp": {"frame": 219595, "advance": 1, "cycles": 2168233}, "dma": {"frame": 219594, "advance": 1, "cycles": 826532}}
+{"sequence": 514278, "warp": {"frame": 219596, "advance": 1, "cycles": 2186157}, "dma": {"frame": 219595, "advance": 1, "cycles": 841481}}
+{"sequence": 514280, "warp": {"frame": 219597, "advance": 1, "cycles": 2175815}, "dma": {"frame": 219596, "advance": 1, "cycles": 835219}}
+{"sequence": 514282, "warp": {"frame": 219598, "advance": 1, "cycles": 2166105}, "dma": {"frame": 219597, "advance": 1, "cycles": 826448}}
+{"sequence": 514284, "warp": {"frame": 219599, "advance": 1, "cycles": 2184991}, "dma": {"frame": 219598, "advance": 1, "cycles": 841012}}
+{"sequence": 514286, "warp": {"frame": 219600, "advance": 1, "cycles": 2176357}, "dma": {"frame": 219599, "advance": 1, "cycles": 835347}}
+{"sequence": 514288, "warp": {"frame": 219601, "advance": 1, "cycles": 2166434}, "dma": {"frame": 219600, "advance": 1, "cycles": 826653}}
+{"sequence": 514290, "dma": {"frame": 219601, "advance": 1, "cycles": 841943}}
+{"sequence": 514291, "warp": {"frame": 219602, "advance": 1, "cycles": 2187349}}
+{"sequence": 514292, "dma": {"frame": 219602, "advance": 1, "cycles": 835661}}
+{"sequence": 514293, "warp": {"frame": 219603, "advance": 1, "cycles": 2178455}}
+{"sequence": 514294, "dma": {"frame": 219603, "advance": 1, "cycles": 827554}}
+{"sequence": 514295, "warp": {"frame": 219604, "advance": 1, "cycles": 2169310}}
+{"sequence": 514296, "dma": {"frame": 219604, "advance": 1, "cycles": 841612}}
+{"sequence": 514297, "warp": {"frame": 219605, "advance": 1, "cycles": 2185340}}
+{"sequence": 514298, "dma": {"frame": 219605, "advance": 1, "cycles": 835066}}
+{"sequence": 514299, "warp": {"frame": 219606, "advance": 1, "cycles": 2175714}}
+{"sequence": 514301, "warp": {"frame": 219607, "advance": 1, "cycles": 2165642}, "dma": {"frame": 219606, "advance": 1, "cycles": 826554}}
+{"sequence": 514303, "warp": {"frame": 219608, "advance": 1, "cycles": 2184068}, "dma": {"frame": 219607, "advance": 1, "cycles": 841351}}
+{"sequence": 514305, "warp": {"frame": 219609, "advance": 1, "cycles": 2175739}, "dma": {"frame": 219608, "advance": 1, "cycles": 834998}}
+{"sequence": 514307, "warp": {"frame": 219610, "advance": 1, "cycles": 2166888}, "dma": {"frame": 219609, "advance": 1, "cycles": 825871}}
+{"sequence": 514309, "warp": {"frame": 219611, "advance": 1, "cycles": 2182863}, "dma": {"frame": 219610, "advance": 1, "cycles": 840466}}
+{"sequence": 514311, "warp": {"frame": 219612, "advance": 1, "cycles": 2178421}, "dma": {"frame": 219611, "advance": 1, "cycles": 835772}}
+{"sequence": 514313, "warp": {"frame": 219613, "advance": 1, "cycles": 2170049}, "dma": {"frame": 219612, "advance": 1, "cycles": 826242}}
+{"sequence": 514315, "warp": {"frame": 219614, "advance": 1, "cycles": 2186776}, "dma": {"frame": 219613, "advance": 1, "cycles": 841284}}
+{"sequence": 514317, "dma": {"frame": 219614, "advance": 1, "cycles": 836296}}
+{"sequence": 514318, "warp": {"frame": 219615, "advance": 1, "cycles": 2177997}}
+{"sequence": 514319, "dma": {"frame": 219615, "advance": 1, "cycles": 826371}}
+{"sequence": 514320, "warp": {"frame": 219616, "advance": 1, "cycles": 2164765}}
+{"sequence": 514321, "dma": {"frame": 219616, "advance": 1, "cycles": 841418}}
+{"sequence": 514322, "warp": {"frame": 219617, "advance": 1, "cycles": 2186651}}
+{"sequence": 514323, "dma": {"frame": 219617, "advance": 1, "cycles": 835059}}
+{"sequence": 514324, "warp": {"frame": 219618, "advance": 1, "cycles": 2177653}}
+{"sequence": 514325, "dma": {"frame": 219618, "advance": 1, "cycles": 826583}}
+{"sequence": 514326, "warp": {"frame": 219619, "advance": 1, "cycles": 2166406}}
+{"sequence": 514328, "warp": {"frame": 219620, "advance": 1, "cycles": 2183219}, "dma": {"frame": 219619, "advance": 1, "cycles": 840853}}
+{"sequence": 514330, "warp": {"frame": 219621, "advance": 1, "cycles": 2178161}, "dma": {"frame": 219620, "advance": 1, "cycles": 836371}}
+{"sequence": 514332, "warp": {"frame": 219622, "advance": 1, "cycles": 2168131}, "dma": {"frame": 219621, "advance": 1, "cycles": 826291}}
+{"sequence": 514334, "warp": {"frame": 219623, "advance": 1, "cycles": 2185905}, "dma": {"frame": 219622, "advance": 1, "cycles": 841608}}
+{"sequence": 514336, "warp": {"frame": 219624, "advance": 1, "cycles": 2180939}, "dma": {"frame": 219623, "advance": 1, "cycles": 836544}}
+{"sequence": 514338, "warp": {"frame": 219625, "advance": 1, "cycles": 2167991}, "dma": {"frame": 219624, "advance": 1, "cycles": 827246}}
+{"sequence": 514340, "warp": {"frame": 219626, "advance": 1, "cycles": 2187139}, "dma": {"frame": 219625, "advance": 1, "cycles": 842899}}
+{"sequence": 514342, "warp": {"frame": 219627, "advance": 1, "cycles": 2176405}, "dma": {"frame": 219626, "advance": 1, "cycles": 836521}}
+{"sequence": 514344, "warp": {"frame": 219628, "advance": 1, "cycles": 2170240}, "dma": {"frame": 219627, "advance": 1, "cycles": 826857}}
+{"sequence": 514346, "dma": {"frame": 219628, "advance": 1, "cycles": 841113}}
+{"sequence": 514347, "warp": {"frame": 219629, "advance": 1, "cycles": 2184543}}
+{"sequence": 514348, "dma": {"frame": 219629, "advance": 1, "cycles": 835281}}
+{"sequence": 514349, "warp": {"frame": 219630, "advance": 1, "cycles": 2176249}}
+{"sequence": 514350, "dma": {"frame": 219630, "advance": 1, "cycles": 826443}}
+{"sequence": 514351, "warp": {"frame": 219631, "advance": 1, "cycles": 2165807}}
+{"sequence": 514352, "dma": {"frame": 219631, "advance": 1, "cycles": 842209}}
+{"sequence": 514353, "warp": {"frame": 219632, "advance": 1, "cycles": 2188659}}
+{"sequence": 514354, "dma": {"frame": 219632, "advance": 1, "cycles": 835730}}
+{"sequence": 514355, "warp": {"frame": 219633, "advance": 1, "cycles": 2177381}}
+{"sequence": 514357, "warp": {"frame": 219634, "advance": 1, "cycles": 2168870}, "dma": {"frame": 219633, "advance": 1, "cycles": 826767}}
+{"sequence": 514359, "warp": {"frame": 219635, "advance": 1, "cycles": 2186358}, "dma": {"frame": 219634, "advance": 1, "cycles": 841220}}
+{"sequence": 514361, "warp": {"frame": 219636, "advance": 1, "cycles": 2175988}, "dma": {"frame": 219635, "advance": 1, "cycles": 835299}}
+{"sequence": 514363, "warp": {"frame": 219637, "advance": 1, "cycles": 2165376}, "dma": {"frame": 219636, "advance": 1, "cycles": 826089}}
+{"sequence": 514365, "warp": {"frame": 219638, "advance": 1, "cycles": 2182058}, "dma": {"frame": 219637, "advance": 1, "cycles": 839695}}
+{"sequence": 514367, "warp": {"frame": 219639, "advance": 1, "cycles": 2179907}, "dma": {"frame": 219638, "advance": 1, "cycles": 836568}}
+{"sequence": 514369, "warp": {"frame": 219640, "advance": 1, "cycles": 2170383}, "dma": {"frame": 219639, "advance": 1, "cycles": 827164}}
+{"sequence": 514371, "warp": {"frame": 219641, "advance": 1, "cycles": 2185679}, "dma": {"frame": 219640, "advance": 1, "cycles": 841635}}
+{"sequence": 514373, "dma": {"frame": 219641, "advance": 1, "cycles": 835955}}
+{"sequence": 514374, "warp": {"frame": 219642, "advance": 1, "cycles": 2179667}}
+{"sequence": 514375, "dma": {"frame": 219642, "advance": 1, "cycles": 827244}}
+{"sequence": 514376, "warp": {"frame": 219643, "advance": 1, "cycles": 2165195}}
+{"sequence": 514377, "dma": {"frame": 219643, "advance": 1, "cycles": 840735}}
+{"sequence": 514378, "warp": {"frame": 219644, "advance": 1, "cycles": 2186170}}
+{"sequence": 514379, "dma": {"frame": 219644, "advance": 1, "cycles": 834966}}
+{"sequence": 514380, "warp": {"frame": 219645, "advance": 1, "cycles": 2175842}}
+{"sequence": 514381, "dma": {"frame": 219645, "advance": 1, "cycles": 826078}}
+{"sequence": 514382, "warp": {"frame": 219646, "advance": 1, "cycles": 2165080}}
+{"sequence": 514384, "warp": {"frame": 219647, "advance": 1, "cycles": 2185389}, "dma": {"frame": 219646, "advance": 1, "cycles": 841192}}
+{"sequence": 514386, "warp": {"frame": 219648, "advance": 1, "cycles": 2183425}, "dma": {"frame": 219647, "advance": 1, "cycles": 836868}}
+{"sequence": 514388, "warp": {"frame": 219649, "advance": 1, "cycles": 2167718}, "dma": {"frame": 219648, "advance": 1, "cycles": 826805}}
+{"sequence": 514390, "warp": {"frame": 219650, "advance": 1, "cycles": 2185790}, "dma": {"frame": 219649, "advance": 1, "cycles": 842177}}
+{"sequence": 514392, "warp": {"frame": 219651, "advance": 1, "cycles": 2179615}, "dma": {"frame": 219650, "advance": 1, "cycles": 835979}}
+{"sequence": 514394, "warp": {"frame": 219652, "advance": 1, "cycles": 2168847}, "dma": {"frame": 219651, "advance": 1, "cycles": 826965}}
+{"sequence": 514396, "warp": {"frame": 219653, "advance": 1, "cycles": 2185201}, "dma": {"frame": 219652, "advance": 1, "cycles": 840956}}
+{"sequence": 514398, "warp": {"frame": 219654, "advance": 1, "cycles": 2178062}, "dma": {"frame": 219653, "advance": 1, "cycles": 835935}}
+{"sequence": 514400, "dma": {"frame": 219654, "advance": 1, "cycles": 827521}}
+{"sequence": 514401, "warp": {"frame": 219655, "advance": 1, "cycles": 2171395}}
+{"sequence": 514402, "dma": {"frame": 219655, "advance": 1, "cycles": 840892}}
+{"sequence": 514403, "warp": {"frame": 219656, "advance": 1, "cycles": 2185585}}
+{"sequence": 514404, "dma": {"frame": 219656, "advance": 1, "cycles": 835684}}
+{"sequence": 514405, "warp": {"frame": 219657, "advance": 1, "cycles": 2178087}}
+{"sequence": 514406, "dma": {"frame": 219657, "advance": 1, "cycles": 827685}}
+{"sequence": 514407, "warp": {"frame": 219658, "advance": 1, "cycles": 2170121}}
+{"sequence": 514408, "dma": {"frame": 219658, "advance": 1, "cycles": 840842}}
+{"sequence": 514409, "warp": {"frame": 219659, "advance": 1, "cycles": 2184485}}
+{"sequence": 514411, "warp": {"frame": 219660, "advance": 1, "cycles": 2178198}, "dma": {"frame": 219659, "advance": 1, "cycles": 835872}}
+{"sequence": 514413, "warp": {"frame": 219661, "advance": 1, "cycles": 2167609}, "dma": {"frame": 219660, "advance": 1, "cycles": 827664}}
+{"sequence": 514415, "warp": {"frame": 219662, "advance": 1, "cycles": 2185259}, "dma": {"frame": 219661, "advance": 1, "cycles": 841172}}
+{"sequence": 514417, "warp": {"frame": 219663, "advance": 1, "cycles": 2178406}, "dma": {"frame": 219662, "advance": 1, "cycles": 836418}}
+{"sequence": 514419, "warp": {"frame": 219664, "advance": 1, "cycles": 2167743}, "dma": {"frame": 219663, "advance": 1, "cycles": 827113}}
+{"sequence": 514421, "warp": {"frame": 219665, "advance": 1, "cycles": 2186158}, "dma": {"frame": 219664, "advance": 1, "cycles": 841761}}
+{"sequence": 514423, "warp": {"frame": 219666, "advance": 1, "cycles": 2179727}, "dma": {"frame": 219665, "advance": 1, "cycles": 835844}}
+{"sequence": 514425, "warp": {"frame": 219667, "advance": 1, "cycles": 2168435}, "dma": {"frame": 219666, "advance": 1, "cycles": 827030}}
+{"sequence": 514427, "dma": {"frame": 219667, "advance": 1, "cycles": 842505}}
+{"sequence": 514428, "warp": {"frame": 219668, "advance": 1, "cycles": 2186337}}
+{"sequence": 514429, "dma": {"frame": 219668, "advance": 1, "cycles": 835393}}
+{"sequence": 514430, "warp": {"frame": 219669, "advance": 1, "cycles": 2175968}}
+{"sequence": 514431, "dma": {"frame": 219669, "advance": 1, "cycles": 827197}}
+{"sequence": 514432, "warp": {"frame": 219670, "advance": 1, "cycles": 2166152}}
+{"sequence": 514433, "dma": {"frame": 219670, "advance": 1, "cycles": 840802}}
+{"sequence": 514434, "warp": {"frame": 219671, "advance": 1, "cycles": 2182044}}
+{"sequence": 514435, "dma": {"frame": 219671, "advance": 1, "cycles": 836435}}
+{"sequence": 514436, "warp": {"frame": 219672, "advance": 1, "cycles": 2180380}}
+{"sequence": 514438, "warp": {"frame": 219673, "advance": 1, "cycles": 2169580}, "dma": {"frame": 219672, "advance": 1, "cycles": 828504}}
+{"sequence": 514440, "warp": {"frame": 219674, "advance": 1, "cycles": 2183634}, "dma": {"frame": 219673, "advance": 1, "cycles": 839845}}
+{"sequence": 514442, "warp": {"frame": 219675, "advance": 1, "cycles": 2178112}, "dma": {"frame": 219674, "advance": 1, "cycles": 836045}}
+{"sequence": 514444, "warp": {"frame": 219676, "advance": 1, "cycles": 2168843}, "dma": {"frame": 219675, "advance": 1, "cycles": 827329}}
+{"sequence": 514446, "warp": {"frame": 219677, "advance": 1, "cycles": 2183935}, "dma": {"frame": 219676, "advance": 1, "cycles": 840586}}
+{"sequence": 514448, "warp": {"frame": 219678, "advance": 1, "cycles": 2177229}, "dma": {"frame": 219677, "advance": 1, "cycles": 836173}}
+{"sequence": 514450, "warp": {"frame": 219679, "advance": 1, "cycles": 2164251}, "dma": {"frame": 219678, "advance": 1, "cycles": 826260}}
+{"sequence": 514452, "warp": {"frame": 219680, "advance": 1, "cycles": 2185246}, "dma": {"frame": 219679, "advance": 1, "cycles": 842033}}
+{"sequence": 514454, "dma": {"frame": 219680, "advance": 1, "cycles": 835752}}
+{"sequence": 514455, "warp": {"frame": 219681, "advance": 1, "cycles": 2177195}}
+{"sequence": 514456, "dma": {"frame": 219681, "advance": 1, "cycles": 828018}}
+{"sequence": 514457, "warp": {"frame": 219682, "advance": 1, "cycles": 2174465}}
+{"sequence": 514458, "dma": {"frame": 219682, "advance": 1, "cycles": 841873}}
+{"sequence": 514459, "warp": {"frame": 219683, "advance": 1, "cycles": 2186332}}
+{"sequence": 514460, "dma": {"frame": 219683, "advance": 1, "cycles": 835898}}
+{"sequence": 514461, "warp": {"frame": 219684, "advance": 1, "cycles": 2178610}}
+{"sequence": 514462, "dma": {"frame": 219684, "advance": 1, "cycles": 826747}}
+{"sequence": 514463, "warp": {"frame": 219685, "advance": 1, "cycles": 2166999}}
+{"sequence": 514465, "warp": {"frame": 219686, "advance": 1, "cycles": 2183839}, "dma": {"frame": 219685, "advance": 1, "cycles": 840293}}
+{"sequence": 514467, "warp": {"frame": 219687, "advance": 1, "cycles": 2175934}, "dma": {"frame": 219686, "advance": 1, "cycles": 835951}}
+{"sequence": 514469, "warp": {"frame": 219688, "advance": 1, "cycles": 2167066}, "dma": {"frame": 219687, "advance": 1, "cycles": 827221}}
+{"sequence": 514471, "warp": {"frame": 219689, "advance": 1, "cycles": 2182312}, "dma": {"frame": 219688, "advance": 1, "cycles": 840649}}
+{"sequence": 514473, "warp": {"frame": 219690, "advance": 1, "cycles": 2177301}, "dma": {"frame": 219689, "advance": 1, "cycles": 836468}}
+{"sequence": 514475, "warp": {"frame": 219691, "advance": 1, "cycles": 2169949}, "dma": {"frame": 219690, "advance": 1, "cycles": 827672}}
+{"sequence": 514477, "warp": {"frame": 219692, "advance": 1, "cycles": 2180326}, "dma": {"frame": 219691, "advance": 1, "cycles": 839260}}
+{"sequence": 514479, "warp": {"frame": 219693, "advance": 1, "cycles": 2174440}, "dma": {"frame": 219692, "advance": 1, "cycles": 835328}}
+{"sequence": 514481, "dma": {"frame": 219693, "advance": 1, "cycles": 827072}}
+{"sequence": 514482, "warp": {"frame": 219694, "advance": 1, "cycles": 2167672}}
+{"sequence": 514483, "dma": {"frame": 219694, "advance": 1, "cycles": 839212}}
+{"sequence": 514484, "warp": {"frame": 219695, "advance": 1, "cycles": 2180652}}
+{"sequence": 514485, "dma": {"frame": 219695, "advance": 1, "cycles": 835410}}
+{"sequence": 514486, "warp": {"frame": 219696, "advance": 1, "cycles": 2178711}}
+{"sequence": 514487, "dma": {"frame": 219696, "advance": 1, "cycles": 828006}}
+{"sequence": 514488, "warp": {"frame": 219697, "advance": 1, "cycles": 2168267}}
+{"sequence": 514489, "dma": {"frame": 219697, "advance": 1, "cycles": 840756}}
+{"sequence": 514490, "warp": {"frame": 219698, "advance": 1, "cycles": 2184701}}
+{"sequence": 514492, "warp": {"frame": 219699, "advance": 1, "cycles": 2179841}, "dma": {"frame": 219698, "advance": 1, "cycles": 836456}}
+{"sequence": 514494, "warp": {"frame": 219700, "advance": 1, "cycles": 2171320}, "dma": {"frame": 219699, "advance": 1, "cycles": 827756}}
+{"sequence": 514496, "warp": {"frame": 219701, "advance": 1, "cycles": 2183456}, "dma": {"frame": 219700, "advance": 1, "cycles": 841340}}
+{"sequence": 514498, "warp": {"frame": 219702, "advance": 1, "cycles": 2176883}, "dma": {"frame": 219701, "advance": 1, "cycles": 834301}}
+{"sequence": 514500, "warp": {"frame": 219703, "advance": 1, "cycles": 2168052}, "dma": {"frame": 219702, "advance": 1, "cycles": 826302}}
+{"sequence": 514502, "warp": {"frame": 219704, "advance": 1, "cycles": 2189006}, "dma": {"frame": 219703, "advance": 1, "cycles": 842158}}
+{"sequence": 514504, "warp": {"frame": 219705, "advance": 1, "cycles": 2178899}, "dma": {"frame": 219704, "advance": 1, "cycles": 836338}}
+{"sequence": 514506, "warp": {"frame": 219706, "advance": 1, "cycles": 2172440}, "dma": {"frame": 219705, "advance": 1, "cycles": 827491}}
+{"sequence": 514508, "dma": {"frame": 219706, "advance": 1, "cycles": 842210}}
+{"sequence": 514509, "warp": {"frame": 219707, "advance": 1, "cycles": 2190467}}
+{"sequence": 514510, "dma": {"frame": 219707, "advance": 1, "cycles": 836097}}
+{"sequence": 514511, "warp": {"frame": 219708, "advance": 1, "cycles": 2186713}}
+{"sequence": 514512, "dma": {"frame": 219708, "advance": 1, "cycles": 825475}}
+{"sequence": 514513, "warp": {"frame": 219709, "advance": 1, "cycles": 2165305}}
+{"sequence": 514514, "dma": {"frame": 219709, "advance": 1, "cycles": 841362}}
+{"sequence": 514515, "warp": {"frame": 219710, "advance": 1, "cycles": 2194579}}
+{"sequence": 514516, "dma": {"frame": 219710, "advance": 1, "cycles": 836192}}
+{"sequence": 514517, "warp": {"frame": 219711, "advance": 1, "cycles": 2180968}}
+{"sequence": 514519, "warp": {"frame": 219712, "advance": 1, "cycles": 2166798}, "dma": {"frame": 219711, "advance": 1, "cycles": 825979}}
+{"sequence": 514521, "warp": {"frame": 219713, "advance": 1, "cycles": 2185494}, "dma": {"frame": 219712, "advance": 1, "cycles": 840815}}
+{"sequence": 514523, "warp": {"frame": 219714, "advance": 1, "cycles": 2180511}, "dma": {"frame": 219713, "advance": 1, "cycles": 835717}}
+{"sequence": 514525, "warp": {"frame": 219715, "advance": 1, "cycles": 2172404}, "dma": {"frame": 219714, "advance": 1, "cycles": 826609}}
+{"sequence": 514527, "warp": {"frame": 219716, "advance": 1, "cycles": 2188720}, "dma": {"frame": 219715, "advance": 1, "cycles": 841220}}
+{"sequence": 514529, "warp": {"frame": 219717, "advance": 1, "cycles": 2183987}, "dma": {"frame": 219716, "advance": 1, "cycles": 836175}}
+{"sequence": 514531, "warp": {"frame": 219718, "advance": 1, "cycles": 2169280}, "dma": {"frame": 219717, "advance": 1, "cycles": 826419}}
+{"sequence": 514533, "warp": {"frame": 219719, "advance": 1, "cycles": 2183521}, "dma": {"frame": 219718, "advance": 1, "cycles": 840210}}
+{"sequence": 514535, "dma": {"frame": 219719, "advance": 1, "cycles": 835021}}
+{"sequence": 514536, "warp": {"frame": 219720, "advance": 1, "cycles": 2179796}}
+{"sequence": 514537, "dma": {"frame": 219720, "advance": 1, "cycles": 825910}}
+{"sequence": 514538, "warp": {"frame": 219721, "advance": 1, "cycles": 2167179}}
+{"sequence": 514539, "dma": {"frame": 219721, "advance": 1, "cycles": 839477}}
+{"sequence": 514540, "warp": {"frame": 219722, "advance": 1, "cycles": 2186157}}
+{"sequence": 514541, "dma": {"frame": 219722, "advance": 1, "cycles": 835617}}
+{"sequence": 514542, "warp": {"frame": 219723, "advance": 1, "cycles": 2181230}}
+{"sequence": 514544, "warp": {"frame": 219724, "advance": 1, "cycles": 2169671}, "dma": {"frame": 219723, "advance": 1, "cycles": 826425}}
+{"sequence": 514546, "warp": {"frame": 219725, "advance": 1, "cycles": 2182396}, "dma": {"frame": 219724, "advance": 1, "cycles": 839264}}
+{"sequence": 514548, "warp": {"frame": 219726, "advance": 1, "cycles": 2179403}, "dma": {"frame": 219725, "advance": 1, "cycles": 835115}}
+{"sequence": 514550, "warp": {"frame": 219727, "advance": 1, "cycles": 2168204}, "dma": {"frame": 219726, "advance": 1, "cycles": 826023}}
+{"sequence": 514552, "warp": {"frame": 219728, "advance": 1, "cycles": 2183052}, "dma": {"frame": 219727, "advance": 1, "cycles": 839545}}
+{"sequence": 514554, "warp": {"frame": 219729, "advance": 1, "cycles": 2178736}, "dma": {"frame": 219728, "advance": 1, "cycles": 834704}}
+{"sequence": 514556, "warp": {"frame": 219730, "advance": 1, "cycles": 2166165}, "dma": {"frame": 219729, "advance": 1, "cycles": 827057}}
+{"sequence": 514558, "dma": {"frame": 219730, "advance": 1, "cycles": 838674}}
+{"sequence": 514559, "warp": {"frame": 219731, "advance": 1, "cycles": 2180051}}
+{"sequence": 514560, "dma": {"frame": 219731, "advance": 1, "cycles": 835359}}
+{"sequence": 514561, "warp": {"frame": 219732, "advance": 1, "cycles": 2177917}}
+{"sequence": 514562, "dma": {"frame": 219732, "advance": 1, "cycles": 827532}}
+{"sequence": 514563, "warp": {"frame": 219733, "advance": 1, "cycles": 2171753}}
+{"sequence": 514564, "dma": {"frame": 219733, "advance": 1, "cycles": 840468}}
+{"sequence": 514565, "warp": {"frame": 219734, "advance": 1, "cycles": 2185657}}
+{"sequence": 514566, "dma": {"frame": 219734, "advance": 1, "cycles": 836331}}
+{"sequence": 514567, "warp": {"frame": 219735, "advance": 1, "cycles": 2183052}}
+{"sequence": 514569, "warp": {"frame": 219736, "advance": 1, "cycles": 2168867}, "dma": {"frame": 219735, "advance": 1, "cycles": 826130}}
+{"sequence": 514571, "warp": {"frame": 219737, "advance": 1, "cycles": 2180861}, "dma": {"frame": 219736, "advance": 1, "cycles": 838458}}
+{"sequence": 514573, "warp": {"frame": 219738, "advance": 1, "cycles": 2182185}, "dma": {"frame": 219737, "advance": 1, "cycles": 836090}}
+{"sequence": 514575, "warp": {"frame": 219739, "advance": 1, "cycles": 2170230}, "dma": {"frame": 219738, "advance": 1, "cycles": 826158}}
+{"sequence": 514577, "warp": {"frame": 219740, "advance": 1, "cycles": 2182867}, "dma": {"frame": 219739, "advance": 1, "cycles": 840462}}
+{"sequence": 514579, "warp": {"frame": 219741, "advance": 1, "cycles": 2181616}, "dma": {"frame": 219740, "advance": 1, "cycles": 835739}}
+{"sequence": 514581, "warp": {"frame": 219742, "advance": 1, "cycles": 2167286}, "dma": {"frame": 219741, "advance": 1, "cycles": 826148}}
+{"sequence": 514583, "dma": {"frame": 219742, "advance": 1, "cycles": 839646}}
+{"sequence": 514584, "warp": {"frame": 219743, "advance": 1, "cycles": 2183797}}
+{"sequence": 514585, "dma": {"frame": 219743, "advance": 1, "cycles": 836213}}
+{"sequence": 514586, "warp": {"frame": 219744, "advance": 1, "cycles": 2181739}}
+{"sequence": 514587, "dma": {"frame": 219744, "advance": 1, "cycles": 825490}}
+{"sequence": 514588, "warp": {"frame": 219745, "advance": 1, "cycles": 2167015}}
+{"sequence": 514589, "dma": {"frame": 219745, "advance": 1, "cycles": 839973}}
+{"sequence": 514590, "warp": {"frame": 219746, "advance": 1, "cycles": 2182491}}
+{"sequence": 514592, "warp": {"frame": 219747, "advance": 1, "cycles": 2178907}, "dma": {"frame": 219746, "advance": 1, "cycles": 835411}}
+{"sequence": 514594, "warp": {"frame": 219748, "advance": 1, "cycles": 2164144}, "dma": {"frame": 219747, "advance": 1, "cycles": 824386}}
+{"sequence": 514596, "warp": {"frame": 219749, "advance": 1, "cycles": 2180880}, "dma": {"frame": 219748, "advance": 1, "cycles": 839024}}
+{"sequence": 514598, "warp": {"frame": 219750, "advance": 1, "cycles": 2182313}, "dma": {"frame": 219749, "advance": 1, "cycles": 835522}}
+{"sequence": 514600, "warp": {"frame": 219751, "advance": 1, "cycles": 2169675}, "dma": {"frame": 219750, "advance": 1, "cycles": 826587}}
+{"sequence": 514602, "warp": {"frame": 219752, "advance": 1, "cycles": 2187164}, "dma": {"frame": 219751, "advance": 1, "cycles": 840873}}
+{"sequence": 514604, "warp": {"frame": 219753, "advance": 1, "cycles": 2177303}, "dma": {"frame": 219752, "advance": 1, "cycles": 834689}}
+{"sequence": 514606, "warp": {"frame": 219754, "advance": 1, "cycles": 2169454}, "dma": {"frame": 219753, "advance": 1, "cycles": 826972}}
+{"sequence": 514608, "dma": {"frame": 219754, "advance": 1, "cycles": 840932}}
+{"sequence": 514609, "warp": {"frame": 219755, "advance": 1, "cycles": 2183521}}
+{"sequence": 514610, "dma": {"frame": 219755, "advance": 1, "cycles": 834805}}
+{"sequence": 514611, "warp": {"frame": 219756, "advance": 1, "cycles": 2178570}}
+{"sequence": 514612, "dma": {"frame": 219756, "advance": 1, "cycles": 825387}}
+{"sequence": 514613, "warp": {"frame": 219757, "advance": 1, "cycles": 2167380}}
+{"sequence": 514614, "dma": {"frame": 219757, "advance": 1, "cycles": 838953}}
+{"sequence": 514615, "warp": {"frame": 219758, "advance": 1, "cycles": 2182299}}
+{"sequence": 514617, "warp": {"frame": 219759, "advance": 1, "cycles": 2179354}, "dma": {"frame": 219758, "advance": 1, "cycles": 835917}}
+{"sequence": 514619, "warp": {"frame": 219760, "advance": 1, "cycles": 2172160}, "dma": {"frame": 219759, "advance": 1, "cycles": 827338}}
+{"sequence": 514621, "warp": {"frame": 219761, "advance": 1, "cycles": 2185931}, "dma": {"frame": 219760, "advance": 1, "cycles": 839867}}
+{"sequence": 514623, "warp": {"frame": 219762, "advance": 1, "cycles": 2182872}, "dma": {"frame": 219761, "advance": 1, "cycles": 835557}}
+{"sequence": 514625, "warp": {"frame": 219763, "advance": 1, "cycles": 2166184}, "dma": {"frame": 219762, "advance": 1, "cycles": 825355}}
+{"sequence": 514627, "warp": {"frame": 219764, "advance": 1, "cycles": 2184666}, "dma": {"frame": 219763, "advance": 1, "cycles": 840033}}
+{"sequence": 514629, "warp": {"frame": 219765, "advance": 1, "cycles": 2178836}, "dma": {"frame": 219764, "advance": 1, "cycles": 835586}}
+{"sequence": 514631, "dma": {"frame": 219765, "advance": 1, "cycles": 825989}}
+{"sequence": 514632, "warp": {"frame": 219766, "advance": 1, "cycles": 2167242}}
+{"sequence": 514633, "dma": {"frame": 219766, "advance": 1, "cycles": 839328}}
+{"sequence": 514634, "warp": {"frame": 219767, "advance": 1, "cycles": 2182648}}
+{"sequence": 514635, "dma": {"frame": 219767, "advance": 1, "cycles": 834954}}
+{"sequence": 514636, "warp": {"frame": 219768, "advance": 1, "cycles": 2182974}}
+{"sequence": 514637, "dma": {"frame": 219768, "advance": 1, "cycles": 826211}}
+{"sequence": 514638, "warp": {"frame": 219769, "advance": 1, "cycles": 2169395}}
+{"sequence": 514639, "dma": {"frame": 219769, "advance": 1, "cycles": 840232}}
+{"sequence": 514640, "warp": {"frame": 219770, "advance": 1, "cycles": 2184245}}
+{"sequence": 514642, "warp": {"frame": 219771, "advance": 1, "cycles": 2191292}, "dma": {"frame": 219770, "advance": 1, "cycles": 838235}}
+{"sequence": 514644, "warp": {"frame": 219772, "advance": 1, "cycles": 2170172}, "dma": {"frame": 219771, "advance": 1, "cycles": 826245}}
+{"sequence": 514646, "warp": {"frame": 219773, "advance": 1, "cycles": 2184193}, "dma": {"frame": 219772, "advance": 1, "cycles": 839850}}
+{"sequence": 514648, "warp": {"frame": 219774, "advance": 1, "cycles": 2181273}, "dma": {"frame": 219773, "advance": 1, "cycles": 835545}}
+{"sequence": 514650, "warp": {"frame": 219775, "advance": 1, "cycles": 2166337}, "dma": {"frame": 219774, "advance": 1, "cycles": 825791}}
+{"sequence": 514652, "warp": {"frame": 219776, "advance": 1, "cycles": 2184106}, "dma": {"frame": 219775, "advance": 1, "cycles": 840791}}
+{"sequence": 514654, "warp": {"frame": 219777, "advance": 1, "cycles": 2180870}, "dma": {"frame": 219776, "advance": 1, "cycles": 836638}}
+{"sequence": 514656, "dma": {"frame": 219777, "advance": 1, "cycles": 825718}}
+{"sequence": 514657, "warp": {"frame": 219778, "advance": 1, "cycles": 2166143}}
+{"sequence": 514658, "dma": {"frame": 219778, "advance": 1, "cycles": 840342}}
+{"sequence": 514659, "warp": {"frame": 219779, "advance": 1, "cycles": 2188758}}
+{"sequence": 514660, "dma": {"frame": 219779, "advance": 1, "cycles": 836312}}
+{"sequence": 514661, "warp": {"frame": 219780, "advance": 1, "cycles": 2181523}}
+{"sequence": 514662, "dma": {"frame": 219780, "advance": 1, "cycles": 825529}}
+{"sequence": 514663, "warp": {"frame": 219781, "advance": 1, "cycles": 2165344}}
+{"sequence": 514665, "warp": {"frame": 219782, "advance": 1, "cycles": 2181855}, "dma": {"frame": 219781, "advance": 1, "cycles": 839855}}
+{"sequence": 514667, "warp": {"frame": 219783, "advance": 1, "cycles": 2178795}, "dma": {"frame": 219782, "advance": 1, "cycles": 834488}}
+{"sequence": 514669, "warp": {"frame": 219784, "advance": 1, "cycles": 2168401}, "dma": {"frame": 219783, "advance": 1, "cycles": 826031}}
+{"sequence": 514671, "warp": {"frame": 219785, "advance": 1, "cycles": 2183053}, "dma": {"frame": 219784, "advance": 1, "cycles": 839027}}
+{"sequence": 514673, "warp": {"frame": 219786, "advance": 1, "cycles": 2177344}, "dma": {"frame": 219785, "advance": 1, "cycles": 834979}}
+{"sequence": 514675, "warp": {"frame": 219787, "advance": 1, "cycles": 2170656}, "dma": {"frame": 219786, "advance": 1, "cycles": 826674}}
+{"sequence": 514677, "warp": {"frame": 219788, "advance": 1, "cycles": 2185489}, "dma": {"frame": 219787, "advance": 1, "cycles": 839841}}
+{"sequence": 514679, "dma": {"frame": 219788, "advance": 1, "cycles": 836014}}
+{"sequence": 514680, "warp": {"frame": 219789, "advance": 1, "cycles": 2182127}}
+{"sequence": 514681, "dma": {"frame": 219789, "advance": 1, "cycles": 825706}}
+{"sequence": 514682, "warp": {"frame": 219790, "advance": 1, "cycles": 2166924}}
+{"sequence": 514683, "dma": {"frame": 219790, "advance": 1, "cycles": 838839}}
+{"sequence": 514684, "warp": {"frame": 219791, "advance": 1, "cycles": 2181249}}
+{"sequence": 514685, "dma": {"frame": 219791, "advance": 1, "cycles": 835560}}
+{"sequence": 514686, "warp": {"frame": 219792, "advance": 1, "cycles": 2180627}}
+{"sequence": 514687, "dma": {"frame": 219792, "advance": 1, "cycles": 825480}}
+{"sequence": 514688, "warp": {"frame": 219793, "advance": 1, "cycles": 2165571}}
+{"sequence": 514690, "warp": {"frame": 219794, "advance": 1, "cycles": 2184011}, "dma": {"frame": 219793, "advance": 1, "cycles": 839568}}
+{"sequence": 514692, "warp": {"frame": 219795, "advance": 1, "cycles": 2176733}, "dma": {"frame": 219794, "advance": 1, "cycles": 834477}}
+{"sequence": 514694, "warp": {"frame": 219796, "advance": 1, "cycles": 2166008}, "dma": {"frame": 219795, "advance": 1, "cycles": 825985}}
+{"sequence": 514696, "warp": {"frame": 219797, "advance": 1, "cycles": 2183810}, "dma": {"frame": 219796, "advance": 1, "cycles": 839717}}
+{"sequence": 514698, "warp": {"frame": 219798, "advance": 1, "cycles": 2180976}, "dma": {"frame": 219797, "advance": 1, "cycles": 835281}}
+{"sequence": 514700, "warp": {"frame": 219799, "advance": 1, "cycles": 2168247}, "dma": {"frame": 219798, "advance": 1, "cycles": 825809}}
+{"sequence": 514702, "warp": {"frame": 219800, "advance": 1, "cycles": 2182069}, "dma": {"frame": 219799, "advance": 1, "cycles": 839958}}
+{"sequence": 514704, "dma": {"frame": 219800, "advance": 1, "cycles": 834844}}
+{"sequence": 514705, "warp": {"frame": 219801, "advance": 1, "cycles": 2176027}}
+{"sequence": 514706, "dma": {"frame": 219801, "advance": 1, "cycles": 826137}}
+{"sequence": 514707, "warp": {"frame": 219802, "advance": 1, "cycles": 2168229}}
+{"sequence": 514708, "dma": {"frame": 219802, "advance": 1, "cycles": 840449}}
+{"sequence": 514709, "warp": {"frame": 219803, "advance": 1, "cycles": 2186242}}
+{"sequence": 514710, "dma": {"frame": 219803, "advance": 1, "cycles": 835949}}
+{"sequence": 514711, "warp": {"frame": 219804, "advance": 1, "cycles": 2180047}}
+{"sequence": 514713, "warp": {"frame": 219805, "advance": 1, "cycles": 2074635}, "dma": {"frame": 219804, "advance": 1, "cycles": 819486}}
+{"sequence": 514715, "warp": {"frame": 219806, "advance": 1, "cycles": 2234255}, "dma": {"frame": 219805, "advance": 1, "cycles": 839820}}
+{"sequence": 514717, "warp": {"frame": 219807, "advance": 1, "cycles": 1982229}}
+{"sequence": 514718, "dma": {"frame": 219806, "advance": 1, "cycles": 827337}}
+{"sequence": 514719, "warp": {"frame": 219808, "advance": 1, "cycles": 2231865}}
+{"sequence": 514720, "dma": {"frame": 219807, "advance": 1, "cycles": 822169}}
+{"sequence": 514721, "warp": {"frame": 219809, "advance": 1, "cycles": 2159940}}
+{"sequence": 514722, "dma": {"frame": 219808, "advance": 1, "cycles": 835820}}
+{"sequence": 514723, "warp": {"frame": 219810, "advance": 1, "cycles": 2238597}}
+{"sequence": 514724, "dma": {"frame": 219809, "advance": 1, "cycles": 833689}}
+{"sequence": 514725, "warp": {"frame": 219811, "advance": 1, "cycles": 2148426}}
+{"sequence": 514726, "dma": {"frame": 219810, "advance": 1, "cycles": 824170}}
+{"sequence": 514727, "dma": {"frame": 219811, "advance": 1, "cycles": 845239}}
+{"sequence": 514728, "warp": {"frame": 219812, "advance": 1, "cycles": 2232814}}
+{"sequence": 514730, "warp": {"frame": 219813, "advance": 1, "cycles": 2185889}, "dma": {"frame": 219812, "advance": 1, "cycles": 837739}}
+{"sequence": 514731, "dma": {"frame": 219813, "advance": 1, "cycles": 826311}}
+{"sequence": 514732, "warp": {"frame": 219814, "advance": 1, "cycles": 2168392}}
+{"sequence": 514734, "warp": {"frame": 219815, "advance": 1, "cycles": 2192639}, "dma": {"frame": 219814, "advance": 1, "cycles": 842031}}
+{"sequence": 514736, "warp": {"frame": 219816, "advance": 1, "cycles": 2181188}, "dma": {"frame": 219815, "advance": 1, "cycles": 835531}}
+{"sequence": 514738, "warp": {"frame": 219817, "advance": 1, "cycles": 2169270}, "dma": {"frame": 219816, "advance": 1, "cycles": 825950}}
+{"sequence": 514740, "warp": {"frame": 219818, "advance": 1, "cycles": 2185288}, "dma": {"frame": 219817, "advance": 1, "cycles": 840012}}
+{"sequence": 514742, "warp": {"frame": 219819, "advance": 1, "cycles": 2181077}, "dma": {"frame": 219818, "advance": 1, "cycles": 836175}}
+{"sequence": 514744, "warp": {"frame": 219820, "advance": 1, "cycles": 2168827}, "dma": {"frame": 219819, "advance": 1, "cycles": 826173}}
+{"sequence": 514746, "warp": {"frame": 219821, "advance": 1, "cycles": 2187392}, "dma": {"frame": 219820, "advance": 1, "cycles": 840882}}
+{"sequence": 514748, "warp": {"frame": 219822, "advance": 1, "cycles": 2181180}, "dma": {"frame": 219821, "advance": 1, "cycles": 835980}}
+{"sequence": 514750, "warp": {"frame": 219823, "advance": 1, "cycles": 2169146}, "dma": {"frame": 219822, "advance": 1, "cycles": 826635}}
+{"sequence": 514752, "dma": {"frame": 219823, "advance": 1, "cycles": 840685}}
+{"sequence": 514753, "warp": {"frame": 219824, "advance": 1, "cycles": 2185554}}
+{"sequence": 514754, "dma": {"frame": 219824, "advance": 1, "cycles": 834189}}
+{"sequence": 514755, "warp": {"frame": 219825, "advance": 1, "cycles": 2177311}}
+{"sequence": 514756, "dma": {"frame": 219825, "advance": 1, "cycles": 825197}}
+{"sequence": 514757, "warp": {"frame": 219826, "advance": 1, "cycles": 2166603}}
+{"sequence": 514758, "dma": {"frame": 219826, "advance": 1, "cycles": 841101}}
+{"sequence": 514759, "warp": {"frame": 219827, "advance": 1, "cycles": 2187203}}
+{"sequence": 514760, "dma": {"frame": 219827, "advance": 1, "cycles": 834992}}
+{"sequence": 514761, "warp": {"frame": 219828, "advance": 1, "cycles": 2179741}}
+{"sequence": 514763, "warp": {"frame": 219829, "advance": 1, "cycles": 2167772}, "dma": {"frame": 219828, "advance": 1, "cycles": 825870}}
+{"sequence": 514765, "warp": {"frame": 219830, "advance": 1, "cycles": 2184177}, "dma": {"frame": 219829, "advance": 1, "cycles": 839535}}
+{"sequence": 514767, "warp": {"frame": 219831, "advance": 1, "cycles": 2178145}, "dma": {"frame": 219830, "advance": 1, "cycles": 834287}}
+{"sequence": 514769, "warp": {"frame": 219832, "advance": 1, "cycles": 2169549}, "dma": {"frame": 219831, "advance": 1, "cycles": 825841}}
+{"sequence": 514771, "warp": {"frame": 219833, "advance": 1, "cycles": 2185474}, "dma": {"frame": 219832, "advance": 1, "cycles": 841367}}
+{"sequence": 514773, "warp": {"frame": 219834, "advance": 1, "cycles": 2179586}, "dma": {"frame": 219833, "advance": 1, "cycles": 835346}}
+{"sequence": 514775, "warp": {"frame": 219835, "advance": 1, "cycles": 2166334}, "dma": {"frame": 219834, "advance": 1, "cycles": 825939}}
+{"sequence": 514777, "dma": {"frame": 219835, "advance": 1, "cycles": 839587}}
+{"sequence": 514778, "warp": {"frame": 219836, "advance": 1, "cycles": 2182453}}
+{"sequence": 514779, "dma": {"frame": 219836, "advance": 1, "cycles": 835091}}
+{"sequence": 514780, "warp": {"frame": 219837, "advance": 1, "cycles": 2179826}}
+{"sequence": 514781, "dma": {"frame": 219837, "advance": 1, "cycles": 826620}}
+{"sequence": 514782, "warp": {"frame": 219838, "advance": 1, "cycles": 2170437}}
+{"sequence": 514783, "dma": {"frame": 219838, "advance": 1, "cycles": 839132}}
+{"sequence": 514784, "warp": {"frame": 219839, "advance": 1, "cycles": 2179732}}
+{"sequence": 514786, "warp": {"frame": 219840, "advance": 1, "cycles": 2176084}, "dma": {"frame": 219839, "advance": 1, "cycles": 833288}}
+{"sequence": 514788, "warp": {"frame": 219841, "advance": 1, "cycles": 2170113}, "dma": {"frame": 219840, "advance": 1, "cycles": 826994}}
+{"sequence": 514790, "warp": {"frame": 219842, "advance": 1, "cycles": 2183912}, "dma": {"frame": 219841, "advance": 1, "cycles": 840499}}
+{"sequence": 514792, "warp": {"frame": 219843, "advance": 1, "cycles": 2178932}, "dma": {"frame": 219842, "advance": 1, "cycles": 835239}}
+{"sequence": 514794, "warp": {"frame": 219844, "advance": 1, "cycles": 2171837}, "dma": {"frame": 219843, "advance": 1, "cycles": 827516}}
+{"sequence": 514796, "warp": {"frame": 219845, "advance": 1, "cycles": 2184603}, "dma": {"frame": 219844, "advance": 1, "cycles": 839526}}
+{"sequence": 514798, "warp": {"frame": 219846, "advance": 1, "cycles": 2185715}, "dma": {"frame": 219845, "advance": 1, "cycles": 837059}}
+{"sequence": 514800, "dma": {"frame": 219846, "advance": 1, "cycles": 827094}}
+{"sequence": 514801, "warp": {"frame": 219847, "advance": 1, "cycles": 2170071}}
+{"sequence": 514802, "dma": {"frame": 219847, "advance": 1, "cycles": 838093}}
+{"sequence": 514803, "warp": {"frame": 219848, "advance": 1, "cycles": 2179761}}
+{"sequence": 514804, "dma": {"frame": 219848, "advance": 1, "cycles": 833569}}
+{"sequence": 514805, "warp": {"frame": 219849, "advance": 1, "cycles": 2177219}}
+{"sequence": 514806, "dma": {"frame": 219849, "advance": 1, "cycles": 826123}}
+{"sequence": 514807, "warp": {"frame": 219850, "advance": 1, "cycles": 2171021}}
+{"sequence": 514808, "dma": {"frame": 219850, "advance": 1, "cycles": 839279}}
+{"sequence": 514809, "warp": {"frame": 219851, "advance": 1, "cycles": 2184732}}
+{"sequence": 514811, "warp": {"frame": 219852, "advance": 1, "cycles": 2179004}, "dma": {"frame": 219851, "advance": 1, "cycles": 834468}}
+{"sequence": 514813, "warp": {"frame": 219853, "advance": 1, "cycles": 2168285}, "dma": {"frame": 219852, "advance": 1, "cycles": 826042}}
+{"sequence": 514815, "warp": {"frame": 219854, "advance": 1, "cycles": 2181962}, "dma": {"frame": 219853, "advance": 1, "cycles": 839185}}
+{"sequence": 514817, "warp": {"frame": 219855, "advance": 1, "cycles": 2176340}, "dma": {"frame": 219854, "advance": 1, "cycles": 834919}}
+{"sequence": 514819, "warp": {"frame": 219856, "advance": 1, "cycles": 2166245}, "dma": {"frame": 219855, "advance": 1, "cycles": 826137}}
+{"sequence": 514821, "warp": {"frame": 219857, "advance": 1, "cycles": 2182630}, "dma": {"frame": 219856, "advance": 1, "cycles": 838824}}
+{"sequence": 514823, "warp": {"frame": 219858, "advance": 1, "cycles": 2176959}, "dma": {"frame": 219857, "advance": 1, "cycles": 834708}}
+{"sequence": 514825, "dma": {"frame": 219858, "advance": 1, "cycles": 826345}}
+{"sequence": 514826, "warp": {"frame": 219859, "advance": 1, "cycles": 2167858}}
+{"sequence": 514827, "dma": {"frame": 219859, "advance": 1, "cycles": 838301}}
+{"sequence": 514828, "warp": {"frame": 219860, "advance": 1, "cycles": 2181757}}
+{"sequence": 514829, "dma": {"frame": 219860, "advance": 1, "cycles": 834060}}
+{"sequence": 514830, "warp": {"frame": 219861, "advance": 1, "cycles": 2177972}}
+{"sequence": 514831, "dma": {"frame": 219861, "advance": 1, "cycles": 825569}}
+{"sequence": 514832, "warp": {"frame": 219862, "advance": 1, "cycles": 2167739}}
+{"sequence": 514834, "warp": {"frame": 219863, "advance": 1, "cycles": 2182832}, "dma": {"frame": 219862, "advance": 1, "cycles": 839177}}
+{"sequence": 514836, "warp": {"frame": 219864, "advance": 1, "cycles": 2182874}, "dma": {"frame": 219863, "advance": 1, "cycles": 835621}}
+{"sequence": 514838, "warp": {"frame": 219865, "advance": 1, "cycles": 2169171}, "dma": {"frame": 219864, "advance": 1, "cycles": 826761}}
+{"sequence": 514840, "warp": {"frame": 219866, "advance": 1, "cycles": 2187249}, "dma": {"frame": 219865, "advance": 1, "cycles": 840805}}
+{"sequence": 514842, "warp": {"frame": 219867, "advance": 1, "cycles": 2180447}, "dma": {"frame": 219866, "advance": 1, "cycles": 834758}}
+{"sequence": 514844, "warp": {"frame": 219868, "advance": 1, "cycles": 2169985}, "dma": {"frame": 219867, "advance": 1, "cycles": 826628}}
+{"sequence": 514846, "warp": {"frame": 219869, "advance": 1, "cycles": 2179502}, "dma": {"frame": 219868, "advance": 1, "cycles": 838420}}
+{"sequence": 514848, "dma": {"frame": 219869, "advance": 1, "cycles": 835208}}
+{"sequence": 514849, "warp": {"frame": 219870, "advance": 1, "cycles": 2178829}}
+{"sequence": 514850, "dma": {"frame": 219870, "advance": 1, "cycles": 827056}}
+{"sequence": 514851, "warp": {"frame": 219871, "advance": 1, "cycles": 2168256}}
+{"sequence": 514852, "dma": {"frame": 219871, "advance": 1, "cycles": 842690}}
+{"sequence": 514853, "warp": {"frame": 219872, "advance": 1, "cycles": 2197128}}
+{"sequence": 514854, "dma": {"frame": 219872, "advance": 1, "cycles": 834918}}
+{"sequence": 514855, "warp": {"frame": 219873, "advance": 1, "cycles": 2178394}}
+{"sequence": 514856, "dma": {"frame": 219873, "advance": 1, "cycles": 826374}}
+{"sequence": 514857, "warp": {"frame": 219874, "advance": 1, "cycles": 2170074}}
+{"sequence": 514859, "warp": {"frame": 219875, "advance": 1, "cycles": 2201407}, "dma": {"frame": 219874, "advance": 1, "cycles": 845247}}
+{"sequence": 514861, "warp": {"frame": 219876, "advance": 1, "cycles": 2184307}, "dma": {"frame": 219875, "advance": 1, "cycles": 836001}}
+{"sequence": 514863, "warp": {"frame": 219877, "advance": 1, "cycles": 2166932}, "dma": {"frame": 219876, "advance": 1, "cycles": 826057}}
+{"sequence": 514865, "warp": {"frame": 219878, "advance": 1, "cycles": 2187248}, "dma": {"frame": 219877, "advance": 1, "cycles": 840139}}
+{"sequence": 514867, "warp": {"frame": 219879, "advance": 1, "cycles": 2176850}, "dma": {"frame": 219878, "advance": 1, "cycles": 833968}}
+{"sequence": 514869, "warp": {"frame": 219880, "advance": 1, "cycles": 2166779}, "dma": {"frame": 219879, "advance": 1, "cycles": 825725}}
+{"sequence": 514871, "warp": {"frame": 219881, "advance": 1, "cycles": 2185570}, "dma": {"frame": 219880, "advance": 1, "cycles": 840003}}
+{"sequence": 514873, "dma": {"frame": 219881, "advance": 1, "cycles": 835661}}
+{"sequence": 514874, "warp": {"frame": 219882, "advance": 1, "cycles": 2180448}}
+{"sequence": 514875, "dma": {"frame": 219882, "advance": 1, "cycles": 824500}}
+{"sequence": 514876, "warp": {"frame": 219883, "advance": 1, "cycles": 2163249}}
+{"sequence": 514877, "dma": {"frame": 219883, "advance": 1, "cycles": 837646}}
+{"sequence": 514878, "warp": {"frame": 219884, "advance": 1, "cycles": 2177547}}
+{"sequence": 514879, "dma": {"frame": 219884, "advance": 1, "cycles": 835858}}
+{"sequence": 514880, "warp": {"frame": 219885, "advance": 1, "cycles": 2179976}}
+{"sequence": 514881, "dma": {"frame": 219885, "advance": 1, "cycles": 825612}}
+{"sequence": 514882, "warp": {"frame": 219886, "advance": 1, "cycles": 2167747}}
+{"sequence": 514884, "warp": {"frame": 219887, "advance": 1, "cycles": 2182440}, "dma": {"frame": 219886, "advance": 1, "cycles": 839147}}
+{"sequence": 514886, "warp": {"frame": 219888, "advance": 1, "cycles": 2177403}, "dma": {"frame": 219887, "advance": 1, "cycles": 834857}}
+{"sequence": 514888, "warp": {"frame": 219889, "advance": 1, "cycles": 2165111}, "dma": {"frame": 219888, "advance": 1, "cycles": 826225}}
+{"sequence": 514890, "warp": {"frame": 219890, "advance": 1, "cycles": 2186393}, "dma": {"frame": 219889, "advance": 1, "cycles": 841238}}
+{"sequence": 514892, "warp": {"frame": 219891, "advance": 1, "cycles": 2182100}, "dma": {"frame": 219890, "advance": 1, "cycles": 836309}}
+{"sequence": 514894, "warp": {"frame": 219892, "advance": 1, "cycles": 2166479}, "dma": {"frame": 219891, "advance": 1, "cycles": 825373}}
+{"sequence": 514896, "warp": {"frame": 219893, "advance": 1, "cycles": 2184252}, "dma": {"frame": 219892, "advance": 1, "cycles": 839393}}
+{"sequence": 514898, "dma": {"frame": 219893, "advance": 1, "cycles": 835732}}
+{"sequence": 514899, "warp": {"frame": 219894, "advance": 1, "cycles": 2179630}}
+{"sequence": 514900, "dma": {"frame": 219894, "advance": 1, "cycles": 826595}}
+{"sequence": 514901, "warp": {"frame": 219895, "advance": 1, "cycles": 2169002}}
+{"sequence": 514902, "dma": {"frame": 219895, "advance": 1, "cycles": 840027}}
+{"sequence": 514903, "warp": {"frame": 219896, "advance": 1, "cycles": 2183013}}
+{"sequence": 514904, "dma": {"frame": 219896, "advance": 1, "cycles": 835447}}
+{"sequence": 514905, "warp": {"frame": 219897, "advance": 1, "cycles": 2180688}}
+{"sequence": 514907, "warp": {"frame": 219898, "advance": 1, "cycles": 2169632}, "dma": {"frame": 219897, "advance": 1, "cycles": 826926}}
+{"sequence": 514909, "warp": {"frame": 219899, "advance": 1, "cycles": 2184465}, "dma": {"frame": 219898, "advance": 1, "cycles": 840403}}
+{"sequence": 514911, "warp": {"frame": 219900, "advance": 1, "cycles": 2178450}, "dma": {"frame": 219899, "advance": 1, "cycles": 834663}}
+{"sequence": 514913, "warp": {"frame": 219901, "advance": 1, "cycles": 2165523}, "dma": {"frame": 219900, "advance": 1, "cycles": 824221}}
+{"sequence": 514915, "warp": {"frame": 219902, "advance": 1, "cycles": 2187807}, "dma": {"frame": 219901, "advance": 1, "cycles": 841530}}
+{"sequence": 514917, "warp": {"frame": 219903, "advance": 1, "cycles": 2184097}, "dma": {"frame": 219902, "advance": 1, "cycles": 835467}}
+{"sequence": 514919, "warp": {"frame": 219904, "advance": 1, "cycles": 2167266}, "dma": {"frame": 219903, "advance": 1, "cycles": 825878}}
+{"sequence": 514921, "dma": {"frame": 219904, "advance": 1, "cycles": 839413}}
+{"sequence": 514922, "warp": {"frame": 219905, "advance": 1, "cycles": 2183748}}
+{"sequence": 514923, "dma": {"frame": 219905, "advance": 1, "cycles": 836578}}
+{"sequence": 514924, "warp": {"frame": 219906, "advance": 1, "cycles": 2182044}}
+{"sequence": 514925, "dma": {"frame": 219906, "advance": 1, "cycles": 827156}}
+{"sequence": 514926, "warp": {"frame": 219907, "advance": 1, "cycles": 2169009}}
+{"sequence": 514927, "dma": {"frame": 219907, "advance": 1, "cycles": 838542}}
+{"sequence": 514928, "warp": {"frame": 219908, "advance": 1, "cycles": 2179864}}
+{"sequence": 514929, "dma": {"frame": 219908, "advance": 1, "cycles": 834782}}
+{"sequence": 514930, "warp": {"frame": 219909, "advance": 1, "cycles": 2181107}}
+{"sequence": 514932, "warp": {"frame": 219910, "advance": 1, "cycles": 2169461}, "dma": {"frame": 219909, "advance": 1, "cycles": 826134}}
+{"sequence": 514934, "warp": {"frame": 219911, "advance": 1, "cycles": 2183897}, "dma": {"frame": 219910, "advance": 1, "cycles": 839997}}
+{"sequence": 514936, "warp": {"frame": 219912, "advance": 1, "cycles": 2179787}, "dma": {"frame": 219911, "advance": 1, "cycles": 835192}}
+{"sequence": 514938, "warp": {"frame": 219913, "advance": 1, "cycles": 2167157}, "dma": {"frame": 219912, "advance": 1, "cycles": 826304}}
+{"sequence": 514940, "warp": {"frame": 219914, "advance": 1, "cycles": 2180524}, "dma": {"frame": 219913, "advance": 1, "cycles": 838405}}
+{"sequence": 514942, "warp": {"frame": 219915, "advance": 1, "cycles": 2178005}, "dma": {"frame": 219914, "advance": 1, "cycles": 835069}}
+{"sequence": 514944, "warp": {"frame": 219916, "advance": 1, "cycles": 2167384}, "dma": {"frame": 219915, "advance": 1, "cycles": 825842}}
+{"sequence": 514946, "dma": {"frame": 219916, "advance": 1, "cycles": 839981}}
+{"sequence": 514947, "warp": {"frame": 219917, "advance": 1, "cycles": 2184978}}
+{"sequence": 514948, "dma": {"frame": 219917, "advance": 1, "cycles": 834423}}
+{"sequence": 514949, "warp": {"frame": 219918, "advance": 1, "cycles": 2178907}}
+{"sequence": 514950, "dma": {"frame": 219918, "advance": 1, "cycles": 827324}}
+{"sequence": 514951, "warp": {"frame": 219919, "advance": 1, "cycles": 2170826}}
+{"sequence": 514952, "dma": {"frame": 219919, "advance": 1, "cycles": 838551}}
+{"sequence": 514953, "warp": {"frame": 219920, "advance": 1, "cycles": 2179761}}
+{"sequence": 514955, "warp": {"frame": 219921, "advance": 1, "cycles": 2177411}, "dma": {"frame": 219920, "advance": 1, "cycles": 834708}}
+{"sequence": 514957, "warp": {"frame": 219922, "advance": 1, "cycles": 2166928}, "dma": {"frame": 219921, "advance": 1, "cycles": 825470}}
+{"sequence": 514959, "warp": {"frame": 219923, "advance": 1, "cycles": 2187546}, "dma": {"frame": 219922, "advance": 1, "cycles": 840680}}
+{"sequence": 514961, "warp": {"frame": 219924, "advance": 1, "cycles": 2182741}, "dma": {"frame": 219923, "advance": 1, "cycles": 835819}}
+{"sequence": 514963, "warp": {"frame": 219925, "advance": 1, "cycles": 2168599}, "dma": {"frame": 219924, "advance": 1, "cycles": 826171}}
+{"sequence": 514965, "warp": {"frame": 219926, "advance": 1, "cycles": 2180644}, "dma": {"frame": 219925, "advance": 1, "cycles": 838296}}
+{"sequence": 514967, "warp": {"frame": 219927, "advance": 1, "cycles": 2179251}, "dma": {"frame": 219926, "advance": 1, "cycles": 835023}}
+{"sequence": 514969, "warp": {"frame": 219928, "advance": 1, "cycles": 2165787}, "dma": {"frame": 219927, "advance": 1, "cycles": 825660}}
+{"sequence": 514971, "dma": {"frame": 219928, "advance": 1, "cycles": 837703}}
+{"sequence": 514972, "warp": {"frame": 219929, "advance": 1, "cycles": 2179869}}
+{"sequence": 514973, "dma": {"frame": 219929, "advance": 1, "cycles": 836120}}
+{"sequence": 514974, "warp": {"frame": 219930, "advance": 1, "cycles": 2183359}}
+{"sequence": 514975, "dma": {"frame": 219930, "advance": 1, "cycles": 826489}}
+{"sequence": 514976, "warp": {"frame": 219931, "advance": 1, "cycles": 2169072}}
+{"sequence": 514977, "dma": {"frame": 219931, "advance": 1, "cycles": 838832}}
+{"sequence": 514978, "warp": {"frame": 219932, "advance": 1, "cycles": 2182863}}
+{"sequence": 514980, "warp": {"frame": 219933, "advance": 1, "cycles": 2179794}, "dma": {"frame": 219932, "advance": 1, "cycles": 834295}}
+{"sequence": 514982, "warp": {"frame": 219934, "advance": 1, "cycles": 2166908}, "dma": {"frame": 219933, "advance": 1, "cycles": 825861}}
+{"sequence": 514984, "warp": {"frame": 219935, "advance": 1, "cycles": 2184332}, "dma": {"frame": 219934, "advance": 1, "cycles": 839873}}
+{"sequence": 514986, "warp": {"frame": 219936, "advance": 1, "cycles": 2179301}, "dma": {"frame": 219935, "advance": 1, "cycles": 834755}}
+{"sequence": 514988, "warp": {"frame": 219937, "advance": 1, "cycles": 2166725}, "dma": {"frame": 219936, "advance": 1, "cycles": 825305}}
+{"sequence": 514990, "warp": {"frame": 219938, "advance": 1, "cycles": 2182866}, "dma": {"frame": 219937, "advance": 1, "cycles": 839459}}
+{"sequence": 514992, "warp": {"frame": 219939, "advance": 1, "cycles": 2176645}, "dma": {"frame": 219938, "advance": 1, "cycles": 834504}}
+{"sequence": 514994, "dma": {"frame": 219939, "advance": 1, "cycles": 825875}}
+{"sequence": 514995, "warp": {"frame": 219940, "advance": 1, "cycles": 2165071}}
+{"sequence": 514996, "dma": {"frame": 219940, "advance": 1, "cycles": 839037}}
+{"sequence": 514997, "warp": {"frame": 219941, "advance": 1, "cycles": 2181824}}
+{"sequence": 514998, "dma": {"frame": 219941, "advance": 1, "cycles": 833988}}
+{"sequence": 514999, "warp": {"frame": 219942, "advance": 1, "cycles": 2176742}}
+{"sequence": 515000, "dma": {"frame": 219942, "advance": 1, "cycles": 826052}}
+{"sequence": 515001, "warp": {"frame": 219943, "advance": 1, "cycles": 2167574}}
+{"sequence": 515002, "dma": {"frame": 219943, "advance": 1, "cycles": 840215}}
+{"sequence": 515003, "warp": {"frame": 219944, "advance": 1, "cycles": 2183676}}
+{"sequence": 515005, "warp": {"frame": 219945, "advance": 1, "cycles": 2177925}, "dma": {"frame": 219944, "advance": 1, "cycles": 834033}}
+{"sequence": 515007, "warp": {"frame": 219946, "advance": 1, "cycles": 2166906}, "dma": {"frame": 219945, "advance": 1, "cycles": 824972}}
+{"sequence": 515009, "warp": {"frame": 219947, "advance": 1, "cycles": 2182057}, "dma": {"frame": 219946, "advance": 1, "cycles": 839130}}
+{"sequence": 515011, "warp": {"frame": 219948, "advance": 1, "cycles": 2181823}, "dma": {"frame": 219947, "advance": 1, "cycles": 835887}}
+{"sequence": 515013, "warp": {"frame": 219949, "advance": 1, "cycles": 2167380}, "dma": {"frame": 219948, "advance": 1, "cycles": 826126}}
+{"sequence": 515015, "warp": {"frame": 219950, "advance": 1, "cycles": 2182159}, "dma": {"frame": 219949, "advance": 1, "cycles": 838992}}
+{"sequence": 515017, "warp": {"frame": 219951, "advance": 1, "cycles": 2177910}, "dma": {"frame": 219950, "advance": 1, "cycles": 834462}}
+{"sequence": 515019, "dma": {"frame": 219951, "advance": 1, "cycles": 825737}}
+{"sequence": 515020, "warp": {"frame": 219952, "advance": 1, "cycles": 2165205}}
+{"sequence": 515021, "dma": {"frame": 219952, "advance": 1, "cycles": 840613}}
+{"sequence": 515022, "warp": {"frame": 219953, "advance": 1, "cycles": 2187394}}
+{"sequence": 515023, "dma": {"frame": 219953, "advance": 1, "cycles": 835070}}
+{"sequence": 515024, "warp": {"frame": 219954, "advance": 1, "cycles": 2182151}}
+{"sequence": 515025, "dma": {"frame": 219954, "advance": 1, "cycles": 826085}}
+{"sequence": 515026, "warp": {"frame": 219955, "advance": 1, "cycles": 2169787}}
+{"sequence": 515028, "warp": {"frame": 219956, "advance": 1, "cycles": 2183756}, "dma": {"frame": 219955, "advance": 1, "cycles": 840495}}
+{"sequence": 515030, "warp": {"frame": 219957, "advance": 1, "cycles": 2177743}, "dma": {"frame": 219956, "advance": 1, "cycles": 835094}}
+{"sequence": 515032, "warp": {"frame": 219958, "advance": 1, "cycles": 2166124}, "dma": {"frame": 219957, "advance": 1, "cycles": 825993}}
+{"sequence": 515034, "warp": {"frame": 219959, "advance": 1, "cycles": 2181606}, "dma": {"frame": 219958, "advance": 1, "cycles": 838711}}
+{"sequence": 515036, "warp": {"frame": 219960, "advance": 1, "cycles": 2182104}, "dma": {"frame": 219959, "advance": 1, "cycles": 835156}}
+{"sequence": 515038, "warp": {"frame": 219961, "advance": 1, "cycles": 2167520}, "dma": {"frame": 219960, "advance": 1, "cycles": 825736}}
+{"sequence": 515040, "warp": {"frame": 219962, "advance": 1, "cycles": 2182385}, "dma": {"frame": 219961, "advance": 1, "cycles": 839814}}
+{"sequence": 515042, "dma": {"frame": 219962, "advance": 1, "cycles": 834967}}
+{"sequence": 515043, "warp": {"frame": 219963, "advance": 1, "cycles": 2179760}}
+{"sequence": 515044, "dma": {"frame": 219963, "advance": 1, "cycles": 826256}}
+{"sequence": 515045, "warp": {"frame": 219964, "advance": 1, "cycles": 2168041}}
+{"sequence": 515046, "dma": {"frame": 219964, "advance": 1, "cycles": 840776}}
+{"sequence": 515047, "warp": {"frame": 219965, "advance": 1, "cycles": 2182546}}
+{"sequence": 515048, "dma": {"frame": 219965, "advance": 1, "cycles": 835445}}
+{"sequence": 515049, "warp": {"frame": 219966, "advance": 1, "cycles": 2182233}}
+{"sequence": 515050, "dma": {"frame": 219966, "advance": 1, "cycles": 825275}}
+{"sequence": 515051, "warp": {"frame": 219967, "advance": 1, "cycles": 2167288}}
+{"sequence": 515053, "warp": {"frame": 219968, "advance": 1, "cycles": 2184890}, "dma": {"frame": 219967, "advance": 1, "cycles": 839750}}
+{"sequence": 515055, "warp": {"frame": 219969, "advance": 1, "cycles": 2181296}, "dma": {"frame": 219968, "advance": 1, "cycles": 835765}}
+{"sequence": 515057, "warp": {"frame": 219970, "advance": 1, "cycles": 2168382}, "dma": {"frame": 219969, "advance": 1, "cycles": 826658}}
+{"sequence": 515059, "warp": {"frame": 219971, "advance": 1, "cycles": 2181847}, "dma": {"frame": 219970, "advance": 1, "cycles": 838309}}
+{"sequence": 515061, "warp": {"frame": 219972, "advance": 1, "cycles": 2178335}, "dma": {"frame": 219971, "advance": 1, "cycles": 834136}}
+{"sequence": 515063, "warp": {"frame": 219973, "advance": 1, "cycles": 2166379}, "dma": {"frame": 219972, "advance": 1, "cycles": 826331}}
+{"sequence": 515065, "warp": {"frame": 219974, "advance": 1, "cycles": 2183771}, "dma": {"frame": 219973, "advance": 1, "cycles": 839673}}
+{"sequence": 515067, "dma": {"frame": 219974, "advance": 1, "cycles": 833716}}
+{"sequence": 515068, "warp": {"frame": 219975, "advance": 1, "cycles": 2175713}}
+{"sequence": 515069, "dma": {"frame": 219975, "advance": 1, "cycles": 825682}}
+{"sequence": 515070, "warp": {"frame": 219976, "advance": 1, "cycles": 2166476}}
+{"sequence": 515071, "dma": {"frame": 219976, "advance": 1, "cycles": 839607}}
+{"sequence": 515072, "warp": {"frame": 219977, "advance": 1, "cycles": 2182139}}
+{"sequence": 515073, "dma": {"frame": 219977, "advance": 1, "cycles": 834336}}
+{"sequence": 515074, "warp": {"frame": 219978, "advance": 1, "cycles": 2175135}}
+{"sequence": 515075, "dma": {"frame": 219978, "advance": 1, "cycles": 825308}}
+{"sequence": 515076, "warp": {"frame": 219979, "advance": 1, "cycles": 2164528}}
+{"sequence": 515078, "warp": {"frame": 219980, "advance": 1, "cycles": 2183424}, "dma": {"frame": 219979, "advance": 1, "cycles": 839475}}
+{"sequence": 515080, "warp": {"frame": 219981, "advance": 1, "cycles": 2182064}, "dma": {"frame": 219980, "advance": 1, "cycles": 835675}}
+{"sequence": 515082, "warp": {"frame": 219982, "advance": 1, "cycles": 2165575}, "dma": {"frame": 219981, "advance": 1, "cycles": 825212}}
+{"sequence": 515084, "warp": {"frame": 219983, "advance": 1, "cycles": 2183874}, "dma": {"frame": 219982, "advance": 1, "cycles": 839857}}
+{"sequence": 515086, "warp": {"frame": 219984, "advance": 1, "cycles": 2179754}, "dma": {"frame": 219983, "advance": 1, "cycles": 834812}}
+{"sequence": 515088, "warp": {"frame": 219985, "advance": 1, "cycles": 2168852}, "dma": {"frame": 219984, "advance": 1, "cycles": 825659}}
+{"sequence": 515090, "dma": {"frame": 219985, "advance": 1, "cycles": 838851}}
+{"sequence": 515091, "warp": {"frame": 219986, "advance": 1, "cycles": 2182231}}
+{"sequence": 515092, "dma": {"frame": 219986, "advance": 1, "cycles": 835859}}
+{"sequence": 515093, "warp": {"frame": 219987, "advance": 1, "cycles": 2180106}}
+{"sequence": 515094, "dma": {"frame": 219987, "advance": 1, "cycles": 826615}}
+{"sequence": 515095, "warp": {"frame": 219988, "advance": 1, "cycles": 2170280}}
+{"sequence": 515096, "dma": {"frame": 219988, "advance": 1, "cycles": 841352}}
+{"sequence": 515097, "warp": {"frame": 219989, "advance": 1, "cycles": 2191312}}
+{"sequence": 515098, "dma": {"frame": 219989, "advance": 1, "cycles": 834597}}
+{"sequence": 515099, "warp": {"frame": 219990, "advance": 1, "cycles": 2181662}}
+{"sequence": 515101, "warp": {"frame": 219991, "advance": 1, "cycles": 2167122}, "dma": {"frame": 219990, "advance": 1, "cycles": 824885}}
+{"sequence": 515103, "warp": {"frame": 219992, "advance": 1, "cycles": 2182205}, "dma": {"frame": 219991, "advance": 1, "cycles": 838927}}
+{"sequence": 515105, "warp": {"frame": 219993, "advance": 1, "cycles": 2182147}, "dma": {"frame": 219992, "advance": 1, "cycles": 835262}}
+{"sequence": 515107, "warp": {"frame": 219994, "advance": 1, "cycles": 2169525}, "dma": {"frame": 219993, "advance": 1, "cycles": 826745}}
+{"sequence": 515109, "warp": {"frame": 219995, "advance": 1, "cycles": 2183000}, "dma": {"frame": 219994, "advance": 1, "cycles": 838528}}
+{"sequence": 515111, "warp": {"frame": 219996, "advance": 1, "cycles": 2182872}, "dma": {"frame": 219995, "advance": 1, "cycles": 836011}}
+{"sequence": 515113, "warp": {"frame": 219997, "advance": 1, "cycles": 2164630}, "dma": {"frame": 219996, "advance": 1, "cycles": 825520}}
+{"sequence": 515115, "dma": {"frame": 219997, "advance": 1, "cycles": 839408}}
+{"sequence": 515116, "warp": {"frame": 219998, "advance": 1, "cycles": 2183511}}
+{"sequence": 515117, "dma": {"frame": 219998, "advance": 1, "cycles": 835251}}
+{"sequence": 515118, "warp": {"frame": 219999, "advance": 1, "cycles": 2180962}}
+{"sequence": 515119, "dma": {"frame": 219999, "advance": 1, "cycles": 825445}}
+{"sequence": 515120, "warp": {"frame": 220000, "advance": 1, "cycles": 2166245}}
+{"sequence": 515121, "dma": {"frame": 220000, "advance": 1, "cycles": 840736}}
+{"sequence": 515122, "warp": {"frame": 220001, "advance": 1, "cycles": 2186977}}
+{"sequence": 515123, "dma": {"frame": 220001, "advance": 1, "cycles": 834557}}
+{"sequence": 515124, "warp": {"frame": 220002, "advance": 1, "cycles": 2179801}}
+{"sequence": 515126, "warp": {"frame": 220003, "advance": 1, "cycles": 2168060}, "dma": {"frame": 220002, "advance": 1, "cycles": 825959}}
+{"sequence": 515128, "warp": {"frame": 220004, "advance": 1, "cycles": 2182385}, "dma": {"frame": 220003, "advance": 1, "cycles": 839643}}
+{"sequence": 515130, "warp": {"frame": 220005, "advance": 1, "cycles": 2195185}, "dma": {"frame": 220004, "advance": 1, "cycles": 840281}}
+{"sequence": 515132, "warp": {"frame": 220006, "advance": 1, "cycles": 2165605}, "dma": {"frame": 220005, "advance": 1, "cycles": 824797}}
+{"sequence": 515134, "warp": {"frame": 220007, "advance": 1, "cycles": 2182055}, "dma": {"frame": 220006, "advance": 1, "cycles": 840368}}
+{"sequence": 515136, "warp": {"frame": 220008, "advance": 1, "cycles": 2194822}, "dma": {"frame": 220007, "advance": 1, "cycles": 838612}}
+{"sequence": 515138, "warp": {"frame": 220009, "advance": 1, "cycles": 2167810}, "dma": {"frame": 220008, "advance": 1, "cycles": 825394}}
+{"sequence": 515140, "dma": {"frame": 220009, "advance": 1, "cycles": 841284}}
+{"sequence": 515141, "warp": {"frame": 220010, "advance": 1, "cycles": 2186458}}
+{"sequence": 515142, "dma": {"frame": 220010, "advance": 1, "cycles": 837657}}
+{"sequence": 515143, "warp": {"frame": 220011, "advance": 1, "cycles": 2189196}}
+{"sequence": 515144, "dma": {"frame": 220011, "advance": 1, "cycles": 825309}}
+{"sequence": 515145, "warp": {"frame": 220012, "advance": 1, "cycles": 2166815}}
+{"sequence": 515146, "dma": {"frame": 220012, "advance": 1, "cycles": 838520}}
+{"sequence": 515147, "warp": {"frame": 220013, "advance": 1, "cycles": 2181746}}
+{"sequence": 515149, "warp": {"frame": 220014, "advance": 1, "cycles": 2182091}, "dma": {"frame": 220013, "advance": 1, "cycles": 835520}}
+{"sequence": 515151, "warp": {"frame": 220015, "advance": 1, "cycles": 2165851}, "dma": {"frame": 220014, "advance": 1, "cycles": 826234}}
+{"sequence": 515153, "warp": {"frame": 220016, "advance": 1, "cycles": 2181990}, "dma": {"frame": 220015, "advance": 1, "cycles": 838352}}
+{"sequence": 515155, "warp": {"frame": 220017, "advance": 1, "cycles": 2181081}, "dma": {"frame": 220016, "advance": 1, "cycles": 835406}}
+{"sequence": 515157, "warp": {"frame": 220018, "advance": 1, "cycles": 2170365}, "dma": {"frame": 220017, "advance": 1, "cycles": 826498}}
+{"sequence": 515159, "warp": {"frame": 220019, "advance": 1, "cycles": 2183776}, "dma": {"frame": 220018, "advance": 1, "cycles": 840349}}
+{"sequence": 515161, "warp": {"frame": 220020, "advance": 1, "cycles": 2180264}, "dma": {"frame": 220019, "advance": 1, "cycles": 834451}}
+{"sequence": 515163, "dma": {"frame": 220020, "advance": 1, "cycles": 825475}}
+{"sequence": 515164, "warp": {"frame": 220021, "advance": 1, "cycles": 2166474}}
+{"sequence": 515165, "dma": {"frame": 220021, "advance": 1, "cycles": 839672}}
+{"sequence": 515166, "warp": {"frame": 220022, "advance": 1, "cycles": 2183708}}
+{"sequence": 515167, "dma": {"frame": 220022, "advance": 1, "cycles": 835031}}
+{"sequence": 515168, "warp": {"frame": 220023, "advance": 1, "cycles": 2177129}}
+{"sequence": 515169, "dma": {"frame": 220023, "advance": 1, "cycles": 827082}}
+{"sequence": 515170, "warp": {"frame": 220024, "advance": 1, "cycles": 2171583}}
+{"sequence": 515171, "dma": {"frame": 220024, "advance": 1, "cycles": 841035}}
+{"sequence": 515172, "warp": {"frame": 220025, "advance": 1, "cycles": 2184729}}
+{"sequence": 515174, "warp": {"frame": 220026, "advance": 1, "cycles": 2182628}, "dma": {"frame": 220025, "advance": 1, "cycles": 836260}}
+{"sequence": 515176, "warp": {"frame": 220027, "advance": 1, "cycles": 2167580}, "dma": {"frame": 220026, "advance": 1, "cycles": 825889}}
+{"sequence": 515178, "warp": {"frame": 220028, "advance": 1, "cycles": 2201992}, "dma": {"frame": 220027, "advance": 1, "cycles": 845235}}
+{"sequence": 515180, "warp": {"frame": 220029, "advance": 1, "cycles": 2180693}, "dma": {"frame": 220028, "advance": 1, "cycles": 835119}}
+{"sequence": 515182, "warp": {"frame": 220030, "advance": 1, "cycles": 2169844}, "dma": {"frame": 220029, "advance": 1, "cycles": 827087}}
+{"sequence": 515184, "warp": {"frame": 220031, "advance": 1, "cycles": 2198348}, "dma": {"frame": 220030, "advance": 1, "cycles": 842681}}
+{"sequence": 515186, "warp": {"frame": 220032, "advance": 1, "cycles": 2181821}, "dma": {"frame": 220031, "advance": 1, "cycles": 835854}}
+{"sequence": 515188, "dma": {"frame": 220032, "advance": 1, "cycles": 825052}}
+{"sequence": 515189, "warp": {"frame": 220033, "advance": 1, "cycles": 2166419}}
+{"sequence": 515190, "dma": {"frame": 220033, "advance": 1, "cycles": 838851}}
+{"sequence": 515191, "warp": {"frame": 220034, "advance": 1, "cycles": 2184316}}
+{"sequence": 515192, "dma": {"frame": 220034, "advance": 1, "cycles": 833550}}
+{"sequence": 515193, "warp": {"frame": 220035, "advance": 1, "cycles": 2177979}}
+{"sequence": 515194, "dma": {"frame": 220035, "advance": 1, "cycles": 825251}}
+{"sequence": 515195, "warp": {"frame": 220036, "advance": 1, "cycles": 2167950}}
+{"sequence": 515197, "warp": {"frame": 220037, "advance": 1, "cycles": 2181475}, "dma": {"frame": 220036, "advance": 1, "cycles": 838785}}
+{"sequence": 515199, "warp": {"frame": 220038, "advance": 1, "cycles": 2174729}, "dma": {"frame": 220037, "advance": 1, "cycles": 833617}}
+{"sequence": 515201, "warp": {"frame": 220039, "advance": 1, "cycles": 2168289}, "dma": {"frame": 220038, "advance": 1, "cycles": 825821}}
+{"sequence": 515203, "warp": {"frame": 220040, "advance": 1, "cycles": 2187176}, "dma": {"frame": 220039, "advance": 1, "cycles": 841666}}
+{"sequence": 515205, "warp": {"frame": 220041, "advance": 1, "cycles": 2183017}, "dma": {"frame": 220040, "advance": 1, "cycles": 835644}}
+{"sequence": 515207, "warp": {"frame": 220042, "advance": 1, "cycles": 2168255}, "dma": {"frame": 220041, "advance": 1, "cycles": 825831}}
+{"sequence": 515209, "warp": {"frame": 220043, "advance": 1, "cycles": 2179834}, "dma": {"frame": 220042, "advance": 1, "cycles": 838366}}
+{"sequence": 515211, "warp": {"frame": 220044, "advance": 1, "cycles": 2174058}, "dma": {"frame": 220043, "advance": 1, "cycles": 833356}}
+{"sequence": 515213, "dma": {"frame": 220044, "advance": 1, "cycles": 828275}}
+{"sequence": 515214, "warp": {"frame": 220045, "advance": 1, "cycles": 2177873}}
+{"sequence": 515215, "dma": {"frame": 220045, "advance": 1, "cycles": 842819}}
+{"sequence": 515216, "warp": {"frame": 220046, "advance": 1, "cycles": 2192557}}
+{"sequence": 515217, "dma": {"frame": 220046, "advance": 1, "cycles": 834674}}
+{"sequence": 515218, "warp": {"frame": 220047, "advance": 1, "cycles": 2178229}}
+{"sequence": 515219, "dma": {"frame": 220047, "advance": 1, "cycles": 827280}}
+{"sequence": 515220, "warp": {"frame": 220048, "advance": 1, "cycles": 2171974}}
+{"sequence": 515222, "warp": {"frame": 220049, "advance": 1, "cycles": 2186341}, "dma": {"frame": 220048, "advance": 1, "cycles": 842097}}
+{"sequence": 515224, "warp": {"frame": 220050, "advance": 1, "cycles": 2176650}, "dma": {"frame": 220049, "advance": 1, "cycles": 835538}}
+{"sequence": 515226, "warp": {"frame": 220051, "advance": 1, "cycles": 2169526}, "dma": {"frame": 220050, "advance": 1, "cycles": 826637}}
+{"sequence": 515228, "warp": {"frame": 220052, "advance": 1, "cycles": 2188117}, "dma": {"frame": 220051, "advance": 1, "cycles": 841761}}
+{"sequence": 515230, "warp": {"frame": 220053, "advance": 1, "cycles": 2178633}, "dma": {"frame": 220052, "advance": 1, "cycles": 834457}}
+{"sequence": 515232, "warp": {"frame": 220054, "advance": 1, "cycles": 2166226}, "dma": {"frame": 220053, "advance": 1, "cycles": 825900}}
+{"sequence": 515234, "warp": {"frame": 220055, "advance": 1, "cycles": 2182336}, "dma": {"frame": 220054, "advance": 1, "cycles": 839159}}
+{"sequence": 515236, "dma": {"frame": 220055, "advance": 1, "cycles": 836052}}
+{"sequence": 515237, "warp": {"frame": 220056, "advance": 1, "cycles": 2180799}}
+{"sequence": 515238, "dma": {"frame": 220056, "advance": 1, "cycles": 826511}}
+{"sequence": 515239, "warp": {"frame": 220057, "advance": 1, "cycles": 2170457}}
+{"sequence": 515240, "dma": {"frame": 220057, "advance": 1, "cycles": 839591}}
+{"sequence": 515242, "warp": {"frame": 220058, "advance": 1, "cycles": 2185859}, "dma": {"frame": 220058, "advance": 1, "cycles": 834973}}
+{"sequence": 515243, "warp": {"frame": 220059, "advance": 1, "cycles": 2182019}}
+{"sequence": 515245, "warp": {"frame": 220060, "advance": 1, "cycles": 2184361}, "dma": {"frame": 220059, "advance": 1, "cycles": 830604}}
+{"sequence": 515247, "warp": {"frame": 220061, "advance": 1, "cycles": 2186216}, "dma": {"frame": 220060, "advance": 1, "cycles": 840264}}
+{"sequence": 515249, "warp": {"frame": 220062, "advance": 1, "cycles": 2180136}, "dma": {"frame": 220061, "advance": 1, "cycles": 834769}}
+{"sequence": 515251, "warp": {"frame": 220063, "advance": 1, "cycles": 2169897}, "dma": {"frame": 220062, "advance": 1, "cycles": 826994}}
+{"sequence": 515253, "warp": {"frame": 220064, "advance": 1, "cycles": 2186567}, "dma": {"frame": 220063, "advance": 1, "cycles": 840660}}
+{"sequence": 515255, "warp": {"frame": 220065, "advance": 1, "cycles": 2181904}, "dma": {"frame": 220064, "advance": 1, "cycles": 835480}}
+{"sequence": 515257, "warp": {"frame": 220066, "advance": 1, "cycles": 2170959}, "dma": {"frame": 220065, "advance": 1, "cycles": 827424}}
+{"sequence": 515259, "warp": {"frame": 220067, "advance": 1, "cycles": 2184054}, "dma": {"frame": 220066, "advance": 1, "cycles": 839094}}
+{"sequence": 515261, "dma": {"frame": 220067, "advance": 1, "cycles": 834611}}
+{"sequence": 515262, "warp": {"frame": 220068, "advance": 1, "cycles": 2178384}}
+{"sequence": 515263, "dma": {"frame": 220068, "advance": 1, "cycles": 826608}}
+{"sequence": 515264, "warp": {"frame": 220069, "advance": 1, "cycles": 2169227}}
+{"sequence": 515265, "dma": {"frame": 220069, "advance": 1, "cycles": 838848}}
+{"sequence": 515266, "warp": {"frame": 220070, "advance": 1, "cycles": 2181491}}
+{"sequence": 515267, "dma": {"frame": 220070, "advance": 1, "cycles": 834898}}
+{"sequence": 515268, "warp": {"frame": 220071, "advance": 1, "cycles": 2179234}}
+{"sequence": 515269, "dma": {"frame": 220071, "advance": 1, "cycles": 825161}}
+{"sequence": 515270, "warp": {"frame": 220072, "advance": 1, "cycles": 2165411}}
+{"sequence": 515272, "warp": {"frame": 220073, "advance": 1, "cycles": 2179932}, "dma": {"frame": 220072, "advance": 1, "cycles": 839504}}
+{"sequence": 515274, "warp": {"frame": 220074, "advance": 1, "cycles": 2176289}, "dma": {"frame": 220073, "advance": 1, "cycles": 835603}}
+{"sequence": 515276, "warp": {"frame": 220075, "advance": 1, "cycles": 2169187}, "dma": {"frame": 220074, "advance": 1, "cycles": 826789}}
+{"sequence": 515278, "warp": {"frame": 220076, "advance": 1, "cycles": 2187266}, "dma": {"frame": 220075, "advance": 1, "cycles": 840499}}
+{"sequence": 515280, "warp": {"frame": 220077, "advance": 1, "cycles": 2177076}, "dma": {"frame": 220076, "advance": 1, "cycles": 833530}}
+{"sequence": 515282, "warp": {"frame": 220078, "advance": 1, "cycles": 2166670}, "dma": {"frame": 220077, "advance": 1, "cycles": 825643}}
+{"sequence": 515284, "dma": {"frame": 220078, "advance": 1, "cycles": 839523}}
+{"sequence": 515285, "warp": {"frame": 220079, "advance": 1, "cycles": 2186010}}
+{"sequence": 515286, "dma": {"frame": 220079, "advance": 1, "cycles": 834815}}
+{"sequence": 515287, "warp": {"frame": 220080, "advance": 1, "cycles": 2179615}}
+{"sequence": 515288, "dma": {"frame": 220080, "advance": 1, "cycles": 825973}}
+{"sequence": 515289, "warp": {"frame": 220081, "advance": 1, "cycles": 2165331}}
+{"sequence": 515290, "dma": {"frame": 220081, "advance": 1, "cycles": 839569}}
+{"sequence": 515291, "warp": {"frame": 220082, "advance": 1, "cycles": 2182208}}
+{"sequence": 515292, "dma": {"frame": 220082, "advance": 1, "cycles": 834334}}
+{"sequence": 515293, "warp": {"frame": 220083, "advance": 1, "cycles": 2175722}}
+{"sequence": 515295, "warp": {"frame": 220084, "advance": 1, "cycles": 2168896}, "dma": {"frame": 220083, "advance": 1, "cycles": 825448}}
+{"sequence": 515297, "warp": {"frame": 220085, "advance": 1, "cycles": 2185994}, "dma": {"frame": 220084, "advance": 1, "cycles": 840673}}
+{"sequence": 515299, "warp": {"frame": 220086, "advance": 1, "cycles": 2178681}, "dma": {"frame": 220085, "advance": 1, "cycles": 833929}}
+{"sequence": 515301, "warp": {"frame": 220087, "advance": 1, "cycles": 2165804}, "dma": {"frame": 220086, "advance": 1, "cycles": 825133}}
+{"sequence": 515303, "warp": {"frame": 220088, "advance": 1, "cycles": 2188116}, "dma": {"frame": 220087, "advance": 1, "cycles": 841473}}
+{"sequence": 515305, "warp": {"frame": 220089, "advance": 1, "cycles": 2180380}, "dma": {"frame": 220088, "advance": 1, "cycles": 835628}}
+{"sequence": 515307, "warp": {"frame": 220090, "advance": 1, "cycles": 2167624}, "dma": {"frame": 220089, "advance": 1, "cycles": 825884}}
+{"sequence": 515309, "dma": {"frame": 220090, "advance": 1, "cycles": 840216}}
+{"sequence": 515310, "warp": {"frame": 220091, "advance": 1, "cycles": 2182857}}
+{"sequence": 515311, "dma": {"frame": 220091, "advance": 1, "cycles": 835390}}
+{"sequence": 515312, "warp": {"frame": 220092, "advance": 1, "cycles": 2179164}}
+{"sequence": 515313, "dma": {"frame": 220092, "advance": 1, "cycles": 824662}}
+{"sequence": 515314, "warp": {"frame": 220093, "advance": 1, "cycles": 2165864}}
+{"sequence": 515315, "dma": {"frame": 220093, "advance": 1, "cycles": 839270}}
+{"sequence": 515316, "warp": {"frame": 220094, "advance": 1, "cycles": 2182383}}
+{"sequence": 515317, "dma": {"frame": 220094, "advance": 1, "cycles": 834309}}
+{"sequence": 515318, "warp": {"frame": 220095, "advance": 1, "cycles": 2176178}}
+{"sequence": 515320, "warp": {"frame": 220096, "advance": 1, "cycles": 2165771}, "dma": {"frame": 220095, "advance": 1, "cycles": 825125}}
+{"sequence": 515322, "warp": {"frame": 220097, "advance": 1, "cycles": 2185491}, "dma": {"frame": 220096, "advance": 1, "cycles": 840913}}
+{"sequence": 515324, "warp": {"frame": 220098, "advance": 1, "cycles": 2180334}, "dma": {"frame": 220097, "advance": 1, "cycles": 835368}}
+{"sequence": 515326, "warp": {"frame": 220099, "advance": 1, "cycles": 2172328}, "dma": {"frame": 220098, "advance": 1, "cycles": 826353}}
+{"sequence": 515328, "warp": {"frame": 220100, "advance": 1, "cycles": 2184929}, "dma": {"frame": 220099, "advance": 1, "cycles": 841216}}
+{"sequence": 515330, "warp": {"frame": 220101, "advance": 1, "cycles": 2181492}, "dma": {"frame": 220100, "advance": 1, "cycles": 835708}}
+{"sequence": 515332, "warp": {"frame": 220102, "advance": 1, "cycles": 2171925}, "dma": {"frame": 220101, "advance": 1, "cycles": 826508}}
+{"sequence": 515334, "dma": {"frame": 220102, "advance": 1, "cycles": 841423}}
+{"sequence": 515335, "warp": {"frame": 220103, "advance": 1, "cycles": 2186852}}
+{"sequence": 515336, "dma": {"frame": 220103, "advance": 1, "cycles": 834856}}
+{"sequence": 515337, "warp": {"frame": 220104, "advance": 1, "cycles": 2179474}}
+{"sequence": 515338, "dma": {"frame": 220104, "advance": 1, "cycles": 826201}}
+{"sequence": 515339, "warp": {"frame": 220105, "advance": 1, "cycles": 2168652}}
+{"sequence": 515340, "dma": {"frame": 220105, "advance": 1, "cycles": 838871}}
+{"sequence": 515341, "warp": {"frame": 220106, "advance": 1, "cycles": 2180194}}
+{"sequence": 515343, "warp": {"frame": 220107, "advance": 1, "cycles": 2175796}, "dma": {"frame": 220106, "advance": 1, "cycles": 833451}}
+{"sequence": 515345, "warp": {"frame": 220108, "advance": 1, "cycles": 2169985}, "dma": {"frame": 220107, "advance": 1, "cycles": 826060}}
+{"sequence": 515347, "warp": {"frame": 220109, "advance": 1, "cycles": 2184203}, "dma": {"frame": 220108, "advance": 1, "cycles": 839976}}
+{"sequence": 515349, "warp": {"frame": 220110, "advance": 1, "cycles": 2182130}, "dma": {"frame": 220109, "advance": 1, "cycles": 836147}}
+{"sequence": 515351, "warp": {"frame": 220111, "advance": 1, "cycles": 2168319}, "dma": {"frame": 220110, "advance": 1, "cycles": 826548}}
+{"sequence": 515353, "warp": {"frame": 220112, "advance": 1, "cycles": 2185530}, "dma": {"frame": 220111, "advance": 1, "cycles": 840245}}
+{"sequence": 515355, "warp": {"frame": 220113, "advance": 1, "cycles": 2177415}, "dma": {"frame": 220112, "advance": 1, "cycles": 833826}}
+{"sequence": 515357, "dma": {"frame": 220113, "advance": 1, "cycles": 826343}}
+{"sequence": 515358, "warp": {"frame": 220114, "advance": 1, "cycles": 2168025}}
+{"sequence": 515359, "dma": {"frame": 220114, "advance": 1, "cycles": 839143}}
+{"sequence": 515360, "warp": {"frame": 220115, "advance": 1, "cycles": 2181295}}
+{"sequence": 515361, "dma": {"frame": 220115, "advance": 1, "cycles": 834576}}
+{"sequence": 515362, "warp": {"frame": 220116, "advance": 1, "cycles": 2177641}}
+{"sequence": 515363, "dma": {"frame": 220116, "advance": 1, "cycles": 825714}}
+{"sequence": 515364, "warp": {"frame": 220117, "advance": 1, "cycles": 2164653}}
+{"sequence": 515365, "dma": {"frame": 220117, "advance": 1, "cycles": 839772}}
+{"sequence": 515366, "warp": {"frame": 220118, "advance": 1, "cycles": 2183505}}
+{"sequence": 515368, "warp": {"frame": 220119, "advance": 1, "cycles": 2179826}, "dma": {"frame": 220118, "advance": 1, "cycles": 834641}}
+{"sequence": 515370, "warp": {"frame": 220120, "advance": 1, "cycles": 2166823}, "dma": {"frame": 220119, "advance": 1, "cycles": 824996}}
+{"sequence": 515372, "warp": {"frame": 220121, "advance": 1, "cycles": 2183421}, "dma": {"frame": 220120, "advance": 1, "cycles": 839987}}
+{"sequence": 515374, "warp": {"frame": 220122, "advance": 1, "cycles": 2177463}, "dma": {"frame": 220121, "advance": 1, "cycles": 834372}}
+{"sequence": 515376, "warp": {"frame": 220123, "advance": 1, "cycles": 2166611}, "dma": {"frame": 220122, "advance": 1, "cycles": 826636}}
+{"sequence": 515378, "warp": {"frame": 220124, "advance": 1, "cycles": 2185460}, "dma": {"frame": 220123, "advance": 1, "cycles": 840869}}
+{"sequence": 515380, "warp": {"frame": 220125, "advance": 1, "cycles": 2180826}, "dma": {"frame": 220124, "advance": 1, "cycles": 836876}}
+{"sequence": 515382, "dma": {"frame": 220125, "advance": 1, "cycles": 825487}}
+{"sequence": 515383, "warp": {"frame": 220126, "advance": 1, "cycles": 2165282}}
+{"sequence": 515384, "dma": {"frame": 220126, "advance": 1, "cycles": 841135}}
+{"sequence": 515385, "warp": {"frame": 220127, "advance": 1, "cycles": 2185113}}
+{"sequence": 515386, "dma": {"frame": 220127, "advance": 1, "cycles": 835297}}
+{"sequence": 515387, "warp": {"frame": 220128, "advance": 1, "cycles": 2180395}}
+{"sequence": 515388, "dma": {"frame": 220128, "advance": 1, "cycles": 825582}}
+{"sequence": 515389, "warp": {"frame": 220129, "advance": 1, "cycles": 2169300}}
+{"sequence": 515391, "warp": {"frame": 220130, "advance": 1, "cycles": 2183629}, "dma": {"frame": 220129, "advance": 1, "cycles": 839688}}
+{"sequence": 515393, "warp": {"frame": 220131, "advance": 1, "cycles": 2180559}, "dma": {"frame": 220130, "advance": 1, "cycles": 834322}}
+{"sequence": 515395, "warp": {"frame": 220132, "advance": 1, "cycles": 2165297}, "dma": {"frame": 220131, "advance": 1, "cycles": 825101}}
+{"sequence": 515397, "warp": {"frame": 220133, "advance": 1, "cycles": 2181145}, "dma": {"frame": 220132, "advance": 1, "cycles": 838642}}
+{"sequence": 515399, "warp": {"frame": 220134, "advance": 1, "cycles": 2179278}, "dma": {"frame": 220133, "advance": 1, "cycles": 834093}}
+{"sequence": 515401, "warp": {"frame": 220135, "advance": 1, "cycles": 2167560}, "dma": {"frame": 220134, "advance": 1, "cycles": 825829}}
+{"sequence": 515403, "warp": {"frame": 220136, "advance": 1, "cycles": 2185912}, "dma": {"frame": 220135, "advance": 1, "cycles": 841404}}
+{"sequence": 515405, "dma": {"frame": 220136, "advance": 1, "cycles": 835563}}
+{"sequence": 515406, "warp": {"frame": 220137, "advance": 1, "cycles": 2181233}}
+{"sequence": 515407, "dma": {"frame": 220137, "advance": 1, "cycles": 825653}}
+{"sequence": 515408, "warp": {"frame": 220138, "advance": 1, "cycles": 2164494}}
+{"sequence": 515409, "dma": {"frame": 220138, "advance": 1, "cycles": 839265}}
+{"sequence": 515410, "warp": {"frame": 220139, "advance": 1, "cycles": 2179249}}
+{"sequence": 515411, "dma": {"frame": 220139, "advance": 1, "cycles": 836085}}
+{"sequence": 515412, "warp": {"frame": 220140, "advance": 1, "cycles": 2179351}}
+{"sequence": 515413, "dma": {"frame": 220140, "advance": 1, "cycles": 825694}}
+{"sequence": 515414, "warp": {"frame": 220141, "advance": 1, "cycles": 2164244}}
+{"sequence": 515416, "warp": {"frame": 220142, "advance": 1, "cycles": 2182547}, "dma": {"frame": 220141, "advance": 1, "cycles": 839768}}
+{"sequence": 515418, "warp": {"frame": 220143, "advance": 1, "cycles": 2183426}, "dma": {"frame": 220142, "advance": 1, "cycles": 835234}}
+{"sequence": 515420, "warp": {"frame": 220144, "advance": 1, "cycles": 2169514}, "dma": {"frame": 220143, "advance": 1, "cycles": 826059}}
+{"sequence": 515422, "warp": {"frame": 220145, "advance": 1, "cycles": 2186106}, "dma": {"frame": 220144, "advance": 1, "cycles": 841005}}
+{"sequence": 515424, "warp": {"frame": 220146, "advance": 1, "cycles": 2178957}, "dma": {"frame": 220145, "advance": 1, "cycles": 835887}}
+{"sequence": 515426, "warp": {"frame": 220147, "advance": 1, "cycles": 2170450}, "dma": {"frame": 220146, "advance": 1, "cycles": 827021}}
+{"sequence": 515428, "warp": {"frame": 220148, "advance": 1, "cycles": 2184747}, "dma": {"frame": 220147, "advance": 1, "cycles": 839384}}
+{"sequence": 515430, "dma": {"frame": 220148, "advance": 1, "cycles": 835053}}
+{"sequence": 515431, "warp": {"frame": 220149, "advance": 1, "cycles": 2179252}}
+{"sequence": 515432, "dma": {"frame": 220149, "advance": 1, "cycles": 826917}}
+{"sequence": 515433, "warp": {"frame": 220150, "advance": 1, "cycles": 2168527}}
+{"sequence": 515434, "dma": {"frame": 220150, "advance": 1, "cycles": 839109}}
+{"sequence": 515435, "warp": {"frame": 220151, "advance": 1, "cycles": 2183466}}
+{"sequence": 515436, "dma": {"frame": 220151, "advance": 1, "cycles": 834483}}
+{"sequence": 515437, "warp": {"frame": 220152, "advance": 1, "cycles": 2178164}}
+{"sequence": 515438, "dma": {"frame": 220152, "advance": 1, "cycles": 826100}}
+{"sequence": 515439, "warp": {"frame": 220153, "advance": 1, "cycles": 2170027}}
+{"sequence": 515441, "warp": {"frame": 220154, "advance": 1, "cycles": 2182141}, "dma": {"frame": 220153, "advance": 1, "cycles": 839124}}
+{"sequence": 515443, "warp": {"frame": 220155, "advance": 1, "cycles": 2174710}, "dma": {"frame": 220154, "advance": 1, "cycles": 833046}}
+{"sequence": 515445, "warp": {"frame": 220156, "advance": 1, "cycles": 2171569}, "dma": {"frame": 220155, "advance": 1, "cycles": 826643}}
+{"sequence": 515447, "warp": {"frame": 220157, "advance": 1, "cycles": 2183639}, "dma": {"frame": 220156, "advance": 1, "cycles": 839403}}
+{"sequence": 515449, "warp": {"frame": 220158, "advance": 1, "cycles": 2182451}, "dma": {"frame": 220157, "advance": 1, "cycles": 835552}}
+{"sequence": 515451, "warp": {"frame": 220159, "advance": 1, "cycles": 2168383}, "dma": {"frame": 220158, "advance": 1, "cycles": 826063}}
+{"sequence": 515453, "warp": {"frame": 220160, "advance": 1, "cycles": 2179362}, "dma": {"frame": 220159, "advance": 1, "cycles": 838286}}
+{"sequence": 515455, "dma": {"frame": 220160, "advance": 1, "cycles": 834298}}
+{"sequence": 515456, "warp": {"frame": 220161, "advance": 1, "cycles": 2179463}}
