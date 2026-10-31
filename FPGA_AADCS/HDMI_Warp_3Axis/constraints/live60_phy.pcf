@@ -1,0 +1,16 @@
+# Placement hints for the measured DDR PHY cross-clock path. These are not
+# timing exceptions. Final independent STA must still meet +0.197 ns.
+# The packer may relocate LUT hints; inspect actual_placement.pcf after PNR.
+def_inst_site {u_mem/u_ddr/u_ddrphy_top/ddrphy_slice_top/i_dqs_group[1].ddrphy_data_slice/ddrphy_dqs_rddata_align/ck_dqs_diff[1]/opit_0_inv_L6QL5Q1} CLMA_327_642 FYB -no_check
+def_inst_site {u_mem/u_ddr/u_ddrphy_top/ddrphy_slice_top/i_dqs_group[1].ddrphy_data_slice/ddrphy_wdata_path_adj/N657_7[0]/gateop_perm} CLMS_345_691 FYB -no_check
+def_inst_site {u_mem/u_ddr/u_ddrphy_top/ddrphy_slice_top/i_dqs_group[1].ddrphy_data_slice/ddrphy_wdata_path_adj/N659[0]/LUT6_inst_perm} CLMA_357_690 FYB -no_check
+
+# Measured near-PCIe RAM placement for >=0.197ns margin.
+def_inst_site {u_ips2l_pcie_wrap/U_IPS2L_PCIE_TOP/U_IPS2L_PCIE_HARD_CTRL/pcie2_iip_exrcvdata_rams/U_ipm2l_sdpram_rcv_data_ram/ADDR_LOOP[0].DATA_LOOP[0].U_GTP_DRM18K_E1/gopdrm_18k_inv} DRM_298_948 DRM0 -no_check
+def_inst_site {u_ips2l_pcie_wrap/U_IPS2L_PCIE_TOP/U_IPS2L_PCIE_HARD_CTRL/pcie2_iip_exrcvdata_rams/U_ipm2l_sdpram_rcv_data_ram/ADDR_LOOP[0].DATA_LOOP[1].U_GTP_DRM18K_E1/gopdrm_18k_inv} DRM_298_1008 DRM1 -no_check
+def_inst_site {u_ips2l_pcie_wrap/U_IPS2L_PCIE_TOP/U_IPS2L_PCIE_HARD_CTRL/pcie2_iip_exrcvdata_rams/U_ipm2l_sdpram_rcv_data_ram/ADDR_LOOP[0].DATA_LOOP[2].U_GTP_DRM18K_E1/gopdrm_18k_inv} DRM_298_948 DRM1 -no_check
+def_inst_site {u_ips2l_pcie_wrap/U_IPS2L_PCIE_TOP/U_IPS2L_PCIE_HARD_CTRL/pcie2_iip_exrcvdata_rams/U_ipm2l_sdpram_rcv_data_ram/ADDR_LOOP[0].DATA_LOOP[3].U_GTP_DRM18K_E1/gopdrm_18k_inv} DRM_322_888 DRM0 -no_check
+def_inst_site {u_ips2l_pcie_wrap/U_IPS2L_PCIE_TOP/U_IPS2L_PCIE_HARD_CTRL/pcie2_iip_exrcvhdr_rams/U_ipm2l_sdpram_rcv_header_ram/ADDR_LOOP[0].DATA_LOOP[0].U_GTP_DRM18K_E1/gopdrm_18k_inv} DRM_298_1008 DRM0 -no_check
+def_inst_site {u_ips2l_pcie_wrap/U_IPS2L_PCIE_TOP/U_IPS2L_PCIE_HARD_CTRL/pcie2_iip_exrcvhdr_rams/U_ipm2l_sdpram_rcv_header_ram/ADDR_LOOP[0].DATA_LOOP[1].U_GTP_DRM18K_E1/gopdrm_18k_inv} DRM_298_1038 DRM0 -no_check
+def_inst_site {u_ips2l_pcie_wrap/U_IPS2L_PCIE_TOP/U_IPS2L_PCIE_HARD_CTRL/pcie2_iip_exrcvhdr_rams/U_ipm2l_sdpram_rcv_header_ram/ADDR_LOOP[0].DATA_LOOP[2].U_GTP_DRM18K_E1/gopdrm_18k_inv} DRM_298_978 DRM0 -no_check
+def_inst_site {u_ips2l_pcie_wrap/U_IPS2L_PCIE_TOP/U_IPS2L_PCIE_HARD_CTRL/pcie2_iip_exrcvhdr_rams/U_ipm2l_sdpram_rcv_header_ram/ADDR_LOOP[0].DATA_LOOP[3].U_GTP_DRM18K_E1/gopdrm_18k_inv} DRM_298_1038 DRM1 -no_check

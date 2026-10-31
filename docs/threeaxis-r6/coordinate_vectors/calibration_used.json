@@ -1,0 +1,67 @@
+{
+  "K": [
+    [
+      978.7473801718866,
+      0.0,
+      1013.1742065539484
+    ],
+    [
+      0.0,
+      975.9435157152985,
+      517.8779889311561
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "dist": [
+    [
+      -0.382924933061507,
+      0.15278237252506488,
+      0.000275162668818189,
+      -0.0007367818787366312,
+      -0.028330259103500476
+    ]
+  ],
+  "image_size": [
+    1920,
+    1080
+  ],
+  "rms": 1.1203754894833746,
+  "per_view_rms": [
+    0.5800032615661621,
+    0.7110105752944946,
+    1.8722481727600098,
+    1.0546655654907227,
+    1.0968588590621948,
+    1.2147126197814941,
+    1.154959797859192,
+    1.7576007843017578,
+    0.5658652782440186,
+    0.6038293242454529,
+    0.6163251996040344,
+    1.0701069831848145,
+    0.7543489933013916,
+    0.5742655396461487,
+    1.3735949993133545,
+    1.099740982055664,
+    1.5924606323242188,
+    1.1367794275283813
+  ],
+  "board_cols": 8,
+  "board_rows": 5,
+  "square": 1.0,
+  "alpha": 1.0,
+  "n_views": 18,
+  "params_version": 2,
+  "created_at": "2026-10-31 12:12:55",
+  "cv_version": "5.0.0",
+  "source_calibration": "my_camera_params.json",
+  "source_sha256": "68a2aca562f0e31b87a97e274e704aa6d42db914e32558ef92fc2ffdfdac34c8",
+  "conversion": "Uniform 1280x720 -> 1920x1080: scale fx,fy,cx,cy by 1.5; unchanged Brown coefficients; ideal output P=K",
+  "verification": "30 raw frames 2026-10-31; line RMS median about 0.26 px, former calibration about 1.98 px; not a new full multiview calibration",
+  "source_path": "D:\\QQ_Download\\FPGA仿射上位机_便携版_Win64\\FPGA仿射上位机_便携版_Win64\\calibration\\my_camera_params.json",
+  "user_selected_file_sha256": "68a2aca562f0e31b87a97e274e704aa6d42db914e32558ef92fc2ffdfdac34c8"
+}

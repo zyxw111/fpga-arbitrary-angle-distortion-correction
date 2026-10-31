@@ -1,0 +1,409 @@
+[
+  {
+    "index": 0,
+    "requested_pose": [
+      0,
+      0,
+      0
+    ],
+    "reported_pose": {
+      "angles_deg": [
+        0.004052907448389495,
+        -0.015916456479507752,
+        0.057895112490943854
+      ],
+      "rms_px": 0.29512687086705863,
+      "cell_px": 91.23276728932301,
+      "max_tile_span": [
+        50.07810087797065,
+        20.037850703468962
+      ],
+      "min_z": 0.9989779498021291,
+      "max_radius2": 1.0124038151166497,
+      "mirror_fraction_estimate": 0.0
+    },
+    "grid": {
+      "center": [
+        960.0184783935547,
+        540.0623092651367
+      ],
+      "row_degrees": 0.0018509128868247132,
+      "cell_aspect_ratio": 0.9996248216362529,
+      "orthogonality_cos": 0.00014456997135854502,
+      "affine_grid_rms_px": 0.30004615051570405,
+      "line_rms_px": 0.17260135425506085
+    },
+    "passed": true,
+    "source": "known-angle chessboard replay -> actual HDMI -> actual FPGA -> PCIe capture"
+  },
+  {
+    "index": 1,
+    "requested_pose": [
+      8,
+      0,
+      0
+    ],
+    "reported_pose": {
+      "angles_deg": [
+        8.002852437910908,
+        -0.0032014198394623113,
+        0.016390904051065983
+      ],
+      "rms_px": 0.19184338660497544,
+      "cell_px": 91.23276728932301,
+      "max_tile_span": [
+        56.06491029137533,
+        29.079854902226877
+      ],
+      "min_z": 0.999721879433125,
+      "max_radius2": 1.0118203979919962,
+      "mirror_fraction_estimate": 0.0
+    },
+    "grid": {
+      "center": [
+        960.0254669189453,
+        540.0193176269531
+      ],
+      "row_degrees": -0.00209351300253745,
+      "cell_aspect_ratio": 0.9999846835648638,
+      "orthogonality_cos": 7.121036273772967e-06,
+      "affine_grid_rms_px": 0.21892893656036935,
+      "line_rms_px": 0.12995753583146183
+    },
+    "passed": true,
+    "source": "known-angle chessboard replay -> actual HDMI -> actual FPGA -> PCIe capture"
+  },
+  {
+    "index": 2,
+    "requested_pose": [
+      -8,
+      0,
+      0
+    ],
+    "reported_pose": {
+      "angles_deg": [
+        -7.9967386115017485,
+        0.008940738266846349,
+        0.015897418489201648
+      ],
+      "rms_px": 0.1809193597443059,
+      "cell_px": 91.23276728932301,
+      "max_tile_span": [
+        56.07966083911143,
+        29.086013192823067
+      ],
+      "min_z": 0.9996799581513396,
+      "max_radius2": 1.0120611378137212,
+      "mirror_fraction_estimate": 0.0
+    },
+    "grid": {
+      "center": [
+        960.0451049804688,
+        540.0375747680664
+      ],
+      "row_degrees": 0.005149357828659429,
+      "cell_aspect_ratio": 0.9997608061979818,
+      "orthogonality_cos": 0.00018641156290725882,
+      "affine_grid_rms_px": 0.20693080015413157,
+      "line_rms_px": 0.12955220509451468
+    },
+    "passed": true,
+    "source": "known-angle chessboard replay -> actual HDMI -> actual FPGA -> PCIe capture"
+  },
+  {
+    "index": 3,
+    "requested_pose": [
+      0,
+      8,
+      0
+    ],
+    "reported_pose": {
+      "angles_deg": [
+        0.0009688243603532613,
+        8.03287130181577,
+        0.017265347605713296
+      ],
+      "rms_px": 0.24748140342153696,
+      "cell_px": 91.23276728932301,
+      "max_tile_span": [
+        66.20201875256302,
+        25.634041085198966
+      ],
+      "min_z": 0.9308172580795506,
+      "max_radius2": 1.1613158756004667,
+      "mirror_fraction_estimate": 0.0
+    },
+    "grid": {
+      "center": [
+        960.0558319091797,
+        540.1119384765625
+      ],
+      "row_degrees": -0.0011212469557776428,
+      "cell_aspect_ratio": 1.000297363008434,
+      "orthogonality_cos": 0.00016840554569864951,
+      "affine_grid_rms_px": 0.2542717541953542,
+      "line_rms_px": 0.17210282882099315
+    },
+    "passed": true,
+    "source": "known-angle chessboard replay -> actual HDMI -> actual FPGA -> PCIe capture"
+  },
+  {
+    "index": 4,
+    "requested_pose": [
+      0,
+      -8,
+      0
+    ],
+    "reported_pose": {
+      "angles_deg": [
+        -0.0012794962558533459,
+        -8.032811810178835,
+        -0.016527049020273146
+      ],
+      "rms_px": 0.26957737914514784,
+      "cell_px": 91.23276728932301,
+      "max_tile_span": [
+        66.20904464331491,
+        25.603390383851472
+      ],
+      "min_z": 0.9309523057752442,
+      "max_radius2": 1.1612998721839625,
+      "mirror_fraction_estimate": 0.0
+    },
+    "grid": {
+      "center": [
+        960.0870513916016,
+        539.9929275512695
+      ],
+      "row_degrees": 0.0054764515633909105,
+      "cell_aspect_ratio": 1.0002215831028747,
+      "orthogonality_cos": 0.00014615352082592584,
+      "affine_grid_rms_px": 0.29292257600250393,
+      "line_rms_px": 0.19241999659405032
+    },
+    "passed": true,
+    "source": "known-angle chessboard replay -> actual HDMI -> actual FPGA -> PCIe capture"
+  },
+  {
+    "index": 5,
+    "requested_pose": [
+      0,
+      0,
+      8
+    ],
+    "reported_pose": {
+      "angles_deg": [
+        -0.001998319843523452,
+        -0.008084138987267729,
+        8.047508406477299
+      ],
+      "rms_px": 0.30772237844454214,
+      "cell_px": 91.23276728932301,
+      "max_tile_span": [
+        72.10488378023226,
+        33.81805248733156
+      ],
+      "min_z": 0.8772851758621791,
+      "max_radius2": 1.2935020864173379,
+      "mirror_fraction_estimate": 0.0
+    },
+    "grid": {
+      "center": [
+        960.0879058837891,
+        540.0442810058594
+      ],
+      "row_degrees": 0.0003459117972905064,
+      "cell_aspect_ratio": 0.9997770152182824,
+      "orthogonality_cos": 3.101205293967801e-05,
+      "affine_grid_rms_px": 0.3254706809028415,
+      "line_rms_px": 0.20873100842494505
+    },
+    "passed": true,
+    "source": "known-angle chessboard replay -> actual HDMI -> actual FPGA -> PCIe capture"
+  },
+  {
+    "index": 6,
+    "requested_pose": [
+      0,
+      0,
+      -8
+    ],
+    "reported_pose": {
+      "angles_deg": [
+        -0.005850307151336333,
+        0.024202862844780043,
+        -8.020047027565225
+      ],
+      "rms_px": 0.2866430019888505,
+      "cell_px": 91.23276728932301,
+      "max_tile_span": [
+        72.13930345076452,
+        33.79587257743954
+      ],
+      "min_z": 0.8774435420418524,
+      "max_radius2": 1.2954289284181277,
+      "mirror_fraction_estimate": 0.0
+    },
+    "grid": {
+      "center": [
+        959.9989471435547,
+        540.0483169555664
+      ],
+      "row_degrees": -0.0009415510123967379,
+      "cell_aspect_ratio": 1.000021517295006,
+      "orthogonality_cos": 0.00015870447890764503,
+      "affine_grid_rms_px": 0.3097970746921424,
+      "line_rms_px": 0.19626248207368582
+    },
+    "passed": true,
+    "source": "known-angle chessboard replay -> actual HDMI -> actual FPGA -> PCIe capture"
+  },
+  {
+    "index": 7,
+    "requested_pose": [
+      8,
+      5,
+      -5
+    ],
+    "reported_pose": {
+      "angles_deg": [
+        7.996947053595777,
+        4.890661154903295,
+        -5.050882972186654
+      ],
+      "rms_px": 0.20535423533910427,
+      "cell_px": 91.23276728932301,
+      "max_tile_span": [
+        79.84362743247083,
+        44.69972928216647
+      ],
+      "min_z": 0.8808984884598509,
+      "max_radius2": 1.2864087719233803,
+      "mirror_fraction_estimate": 0.0
+    },
+    "grid": {
+      "center": [
+        960.0963745117188,
+        540.0099105834961
+      ],
+      "row_degrees": 0.009647121988228365,
+      "cell_aspect_ratio": 0.9996791928522933,
+      "orthogonality_cos": 0.00019091044010563626,
+      "affine_grid_rms_px": 0.25137606744345137,
+      "line_rms_px": 0.11885167963593564
+    },
+    "passed": true,
+    "source": "known-angle chessboard replay -> actual HDMI -> actual FPGA -> PCIe capture"
+  },
+  {
+    "index": 8,
+    "requested_pose": [
+      -8,
+      -5,
+      5
+    ],
+    "reported_pose": {
+      "angles_deg": [
+        -8.000171175929337,
+        -4.960749931100293,
+        4.974686183586873
+      ],
+      "rms_px": 0.21861941935829854,
+      "cell_px": 91.23276728932301,
+      "max_tile_span": [
+        83.7094433272357,
+        43.857668519977054
+      ],
+      "min_z": 0.8816272691729278,
+      "max_radius2": 1.281065495165177,
+      "mirror_fraction_estimate": 0.0
+    },
+    "grid": {
+      "center": [
+        960.0153198242188,
+        540.0334396362305
+      ],
+      "row_degrees": -0.004113399583700096,
+      "cell_aspect_ratio": 0.9998576646014647,
+      "orthogonality_cos": 6.389076358350819e-05,
+      "affine_grid_rms_px": 0.24969526867624842,
+      "line_rms_px": 0.15016807163295862
+    },
+    "passed": true,
+    "source": "known-angle chessboard replay -> actual HDMI -> actual FPGA -> PCIe capture"
+  },
+  {
+    "index": 9,
+    "requested_pose": [
+      180,
+      0,
+      0
+    ],
+    "reported_pose": {
+      "angles_deg": [
+        -179.9945648341097,
+        -0.012860105718181017,
+        -0.033994155182399226
+      ],
+      "rms_px": 0.2940747990518613,
+      "cell_px": 91.23276728932301,
+      "max_tile_span": [
+        50.06353796181058,
+        20.019883977297845
+      ],
+      "min_z": 0.9993691366574085,
+      "max_radius2": 1.0132931189038092,
+      "mirror_fraction_estimate": 0.0
+    },
+    "grid": {
+      "center": [
+        959.9918670654297,
+        539.9328918457031
+      ],
+      "row_degrees": 0.0010383737901116644,
+      "cell_aspect_ratio": 0.999613888902781,
+      "orthogonality_cos": 0.00019341093377272877,
+      "affine_grid_rms_px": 0.30187714823157974,
+      "line_rms_px": 0.17471424238131136
+    },
+    "passed": true,
+    "source": "known-angle chessboard replay -> actual HDMI -> actual FPGA -> PCIe capture"
+  },
+  {
+    "index": 10,
+    "requested_pose": [
+      0,
+      0,
+      0
+    ],
+    "reported_pose": {
+      "angles_deg": [
+        0.004052907460809634,
+        -0.015916456854626147,
+        0.05789511210422798
+      ],
+      "rms_px": 0.29512687086705863,
+      "cell_px": 91.23276728932301,
+      "max_tile_span": [
+        50.07810087775919,
+        20.037850703118032
+      ],
+      "min_z": 0.9989779498048185,
+      "max_radius2": 1.0124038150981376,
+      "mirror_fraction_estimate": 0.0
+    },
+    "grid": {
+      "center": [
+        960.01806640625,
+        540.0615005493164
+      ],
+      "row_degrees": 0.0008592673546035501,
+      "cell_aspect_ratio": 0.9996016624889681,
+      "orthogonality_cos": 0.00015047559050094606,
+      "affine_grid_rms_px": 0.2991601900118033,
+      "line_rms_px": 0.17172328120702543
+    },
+    "passed": true,
+    "source": "known-angle chessboard replay -> actual HDMI -> actual FPGA -> PCIe capture"
+  }
+]

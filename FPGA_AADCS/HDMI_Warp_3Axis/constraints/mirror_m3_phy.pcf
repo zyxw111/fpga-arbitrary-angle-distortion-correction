@@ -1,0 +1,7 @@
+# M2 STA-driven local hints. No timing exceptions or clock changes.
+def_inst_site {u_mem/u_ddr/u_ddrphy_top/ddrphy_slice_top/i_dqs_group[0].ddrphy_data_slice/ddrphy_data_slice_wrlvl/wrlvl_dqs_en/opit_0_inv_L6QL5} CLMA_357_660 FYA -no_check
+def_inst_site {u_mem/u_ddr/u_ddrphy_top/ddrphy_slice_top/i_dqs_group[0].ddrphy_data_slice/ddrphy_data_slice_wrlvl/wrlvl_dq_seq[8]/opit_0_inv_L5Q} CLMA_357_667 FYC -no_check
+def_inst_site {u_mem/u_ddr/u_ddrphy_top/ddrphy_slice_top/i_dqs_group[0].ddrphy_data_slice/ddrphy_wdata_path_adj/phy_wrdata_en_r[0]/opit_0_inv_L6QQ} CLMA_357_661 FYA -no_check
+def_inst_site {u_mem/u_ddr/u_ddrphy_top/ddrphy_slice_top/i_dqs_group[1].ddrphy_data_slice/ddrphy_dqs_rddata_align/rddata_r1[23]/opit_0_inv_srl} CLMA_357_714 FFAPP0 -no_check
+def_inst_site {u_mem/u_ddr/u_ddrphy_top/ddrphy_slice_top/i_dqs_group[1].ddrphy_data_slice/ddrphy_dqs_rddata_align/rddata_r1[44]/opit_0_inv_srl} CLMA_357_744 FFAPP0 -no_check
+def_inst_site {u_mem/u_ddr/u_ddrphy_top/ddrphy_slice_top/i_dqs_group[1].ddrphy_data_slice/ddrphy_dqs_rddata_align/rddata_r1[11]/opit_0_inv_srl} CLMA_357_708 FFAPP0 -no_check

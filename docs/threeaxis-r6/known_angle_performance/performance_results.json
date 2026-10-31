@@ -1,0 +1,227 @@
+[
+  {
+    "pose": [
+      0,
+      0,
+      0
+    ],
+    "warped_fps_median": 59.60464477539063,
+    "warped_fps_min": 59.60464477539063,
+    "consumed_fps_median": 59.60464477539063,
+    "warp_ms_median": 16.69873523809524,
+    "camera_fps": 60.06568998377839,
+    "processor_fps": 59.97983870977596,
+    "preview_fps": 60.038167120665626,
+    "hdmi_fps": 59.9936396659173,
+    "control_hz": 54.0,
+    "errors": [
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0"
+    ],
+    "fifo_failed_frames": 0,
+    "discarded_captures": 0
+  },
+  {
+    "pose": [
+      8,
+      0,
+      0
+    ],
+    "warped_fps_median": 57.61782328287761,
+    "warped_fps_min": 57.61782328287761,
+    "consumed_fps_median": 58.078765869140625,
+    "warp_ms_median": 17.290925714285713,
+    "camera_fps": 60.04196254447218,
+    "processor_fps": 59.97983870977596,
+    "preview_fps": 60.061981946500026,
+    "hdmi_fps": 59.996337702641064,
+    "control_hz": 56.0,
+    "errors": [
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0"
+    ],
+    "fifo_failed_frames": 0,
+    "discarded_captures": 0
+  },
+  {
+    "pose": [
+      15,
+      0,
+      0
+    ],
+    "warped_fps_median": 55.07469177246094,
+    "warped_fps_min": 54.63759104410808,
+    "consumed_fps_median": 55.07469177246094,
+    "warp_ms_median": 18.124746666666667,
+    "camera_fps": 60.031033185545475,
+    "processor_fps": 59.97983870977596,
+    "preview_fps": 59.944295126688125,
+    "hdmi_fps": 59.998207112423245,
+    "control_hz": 56.0,
+    "errors": [
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0"
+    ],
+    "fifo_failed_frames": 0,
+    "discarded_captures": 0
+  },
+  {
+    "pose": [
+      0,
+      20,
+      0
+    ],
+    "warped_fps_median": 60.08148193359375,
+    "warped_fps_min": 59.60464477539063,
+    "consumed_fps_median": 60.08148193359375,
+    "warp_ms_median": 16.58903619047619,
+    "camera_fps": 60.022914798127545,
+    "processor_fps": 59.97983870977596,
+    "preview_fps": 60.057862469990575,
+    "hdmi_fps": 60.010191646753945,
+    "control_hz": 54.0,
+    "errors": [
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0"
+    ],
+    "fifo_failed_frames": 0,
+    "discarded_captures": 0
+  },
+  {
+    "pose": [
+      0,
+      0,
+      20
+    ],
+    "warped_fps_median": 59.08012390136719,
+    "warped_fps_min": 59.08012390136719,
+    "consumed_fps_median": 59.60464477539063,
+    "warp_ms_median": 16.859253333333335,
+    "camera_fps": 60.02011292547681,
+    "processor_fps": 59.97983870977596,
+    "preview_fps": 60.027718681989384,
+    "hdmi_fps": 59.99250244977134,
+    "control_hz": 54.0,
+    "errors": [
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0"
+    ],
+    "fifo_failed_frames": 0,
+    "discarded_captures": 0
+  },
+  {
+    "pose": [
+      12,
+      10,
+      -10
+    ],
+    "warped_fps_median": 56.0760498046875,
+    "warped_fps_min": 56.0760498046875,
+    "consumed_fps_median": 56.6244125366211,
+    "warp_ms_median": 17.76225523809524,
+    "camera_fps": 60.015803256940366,
+    "processor_fps": 59.97983870977596,
+    "preview_fps": 60.0960810082177,
+    "hdmi_fps": 60.01961683185617,
+    "control_hz": 55.0,
+    "errors": [
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0"
+    ],
+    "fifo_failed_frames": 0,
+    "discarded_captures": 0
+  },
+  {
+    "pose": [
+      45,
+      0,
+      0
+    ],
+    "warped_fps_median": 30.040740966796875,
+    "warped_fps_min": 29.802322387695316,
+    "consumed_fps_median": 30.040740966796875,
+    "warp_ms_median": 21.189706666666666,
+    "camera_fps": 60.014608828828145,
+    "processor_fps": 59.97983870977596,
+    "preview_fps": 60.01452855928253,
+    "hdmi_fps": 60.01782176248634,
+    "control_hz": 52.0,
+    "errors": [
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0"
+    ],
+    "fifo_failed_frames": 75,
+    "discarded_captures": 75
+  },
+  {
+    "pose": [
+      90,
+      0,
+      0
+    ],
+    "warped_fps_median": 20.02716064453125,
+    "warped_fps_min": 19.86821492513021,
+    "consumed_fps_median": 20.02716064453125,
+    "warp_ms_median": 19.872998095238096,
+    "camera_fps": 60.01306770452815,
+    "processor_fps": 59.97983870977596,
+    "preview_fps": 60.01127808595458,
+    "hdmi_fps": 59.994997728020515,
+    "control_hz": 55.0,
+    "errors": [
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0"
+    ],
+    "fifo_failed_frames": 101,
+    "discarded_captures": 101
+  },
+  {
+    "pose": [
+      0,
+      0,
+      0
+    ],
+    "warped_fps_median": 60.08148193359375,
+    "warped_fps_min": 59.08012390136719,
+    "consumed_fps_median": 60.08148193359375,
+    "warp_ms_median": 16.72951619047619,
+    "camera_fps": 60.0114897207682,
+    "processor_fps": 59.97983870977596,
+    "preview_fps": 59.03925570587073,
+    "hdmi_fps": 60.01371262464214,
+    "control_hz": 54.0,
+    "errors": [
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0"
+    ],
+    "fifo_failed_frames": 0,
+    "discarded_captures": 0
+  }
+]

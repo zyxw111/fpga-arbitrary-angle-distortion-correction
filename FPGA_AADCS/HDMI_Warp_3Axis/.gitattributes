@@ -1,0 +1,3 @@
+# Preserve exact RTL/IP bytes corresponding to the signed-off R6 snapshot.
+source/** -text
+ipcore/** -text

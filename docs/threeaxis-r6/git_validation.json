@@ -1,0 +1,19 @@
+{
+  "windows_host_tests": {
+    "total": 83,
+    "passed": 82,
+    "posix_only_skipped": 1
+  },
+  "arm_native_build": "PASS",
+  "arm_conversion_checks": 32,
+  "arm_cam2_cam3_tests": "PASS",
+  "arm_decoupled_three_worker_pipeline": "PASS",
+  "arm_ssh_v2_session": "PASS",
+  "fpga_atomic_cdc_and_dma_isolation": "PASS",
+  "fpga_ddr_bilinear_stall_and_invalid_rays": "PASS",
+  "fpga_current_lens_bit_exact_vectors": 768,
+  "hardware_known_angle_cases": 31,
+  "worst_setup_ns": 0.199,
+  "minimum_setup_ns": 0.197,
+  "all_angles_60fps": false
+}

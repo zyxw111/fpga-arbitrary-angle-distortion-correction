@@ -1,0 +1,8 @@
+{
+  "vectors": 768,
+  "valid_vectors": 576,
+  "max_error_pixels": 0.07381727566195635,
+  "rms_error_pixels": 0.04264140916157336,
+  "includes_real_nonzero_brown": true,
+  "rtl_status": "PASS"
+}

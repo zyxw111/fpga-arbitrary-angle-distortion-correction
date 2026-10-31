@@ -1,0 +1,6 @@
+build/
+log/
+__pycache__/
+*.pyc
+*.log
+*.before_*

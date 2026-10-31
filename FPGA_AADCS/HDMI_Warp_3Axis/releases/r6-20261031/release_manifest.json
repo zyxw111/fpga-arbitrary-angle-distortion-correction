@@ -1,0 +1,13 @@
+{
+  "created": "2026-10-31T20:55:04.8396212+08:00",
+  "bit_sha256": "A017344BB78CB5961D2F415C844ECBA80E4ED5B904AAB8EC9790A209873C5886",
+  "map_sha256": "CDFBE54DE0ECEBFC6D5710B20095134F5F67B2F043B3D5F50343BEF593E089AD",
+  "pcf_sha256": "EB5D7BED8DAFD8BAF363E98F15F28743A419E505D0608870CABF69F26EBE82AC",
+  "minimum_setup_ns": 0.197,
+  "seed": 4,
+  "route_mode": "normal",
+  "board_programmed": false,
+  "warp_read_weight": 2,
+  "sample_pipeline": 1,
+  "capture_count_pipeline": 1
+}
